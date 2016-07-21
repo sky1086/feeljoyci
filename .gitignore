@@ -1,0 +1,11 @@
+.DS_Store
+.buildpath
+.htaccess
+.project
+.settings
+.settings/
+.settings/*
+/application/config/database.php
+/application/config/config.php
+/application/controllers/.DS_Store
+/application/.DS_Store
