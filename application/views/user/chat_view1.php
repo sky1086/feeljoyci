@@ -237,7 +237,7 @@ $(document).ready(function() {
             <div class="chat p-20">
                 <ul>
                     <li class="message-right animated fadeinright">
-                        <img alt="" src="img/user3.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/man.png">
                         <div class="message">
                             <p>
                                 Hello! The brown fox jumps over.
@@ -247,7 +247,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-left animated fadeinright delay-1">
-                        <img alt="" src="img/user2.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/woman.png">
                         <div class="message first">
                             <p>
                                 The quick, brown fox jumps over a lazy dog.
@@ -268,7 +268,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-right animated fadeinright delay-2">
-                        <img alt="" src="img/user3.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/man.png">
                         <div class="message">
                             <p>
                                 Quick, Baz, get my woven!
@@ -278,7 +278,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-left animated fadeinright delay-3">
-                        <img alt="" src="img/user2.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/woman.png">
                         <div class="message">
                             <p>
                                 Call me now!
@@ -287,7 +287,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-right animated fadeinright delay-4">
-                        <img alt="" src="img/user3.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/man.png">
                         <div class="message first">
                             <p>
                                 Let's watch my latest shots.
@@ -301,7 +301,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-left animated fadeinright delay-5">
-                        <img alt="" src="img/user2.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/woman.png">
                         <div class="message first">
                             <p>
                                 Junk MTV quiz graced...
@@ -320,7 +320,7 @@ $(document).ready(function() {
                     </li>
 
                     <li class="message-right animated fadeinright delay-6">
-                        <img alt="" src="img/user3.jpg">
+                        <img alt="" src="<?php echo base_url();?>img/man.png">
                         <div class="message">
                             <p>
                                 Quick zephyrs blow, vexing daft Jim.
@@ -517,7 +517,7 @@ $(document).ready(function() {
                 <div class="facebook">
                     <h6 class="follow-us">Notifications</h6>
                     <div class="face-notification">
-                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <img src="<?php echo base_url();?>img/woman.png" alt="" class="cricle">
                         <div>
                             <p>Mike Green</p>
                             <span>Sent you a message</span>
@@ -533,7 +533,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                     <div class="face-notification">
-                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
                         <div>
                             <p>Mike Green</p>
                             <span>Post something...</span>
@@ -559,7 +559,7 @@ $(document).ready(function() {
 
                 <div class="chat-sidebar">
                     <div class="chat-img">
-                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <img src="<?php echo base_url();?>img/woman.png" alt="" class="cricle">
                         <span class="dot green"></span>
                     </div>
                     <div class="chat-message">
@@ -571,7 +571,7 @@ $(document).ready(function() {
 
                 <div class="chat-sidebar">
                     <div class="chat-img">
-                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
                         <span class="dot orange"></span>
                     </div>
                     <div class="chat-message">
@@ -619,7 +619,7 @@ $(document).ready(function() {
 
                 <div class="chat-sidebar">
                     <div class="chat-img">
-                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
                         <span class="dot green"></span>
                     </div>
                     <div class="chat-message">
