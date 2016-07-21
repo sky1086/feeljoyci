@@ -1,5 +1,11 @@
 <?php $this->load->view('admin/header1');?>
-
+<style>
+<!--
+.user-age{
+          width:28% !important;
+        }
+-->
+</style>
 <section class="main-sec">
         <div class="left">
         </div>
@@ -7,9 +13,15 @@
             <div class="mid-sec">
                 <div class="main">
                   <div class="signup-sec" style="text-align:center;">
+                  <?php 
+                  if($step == 1){?>
                     <div class="main-head"><h5>Sign up to FeelJoy</h5></div>
                       <a class="btn ggl-su"><i class="fa fa-google-plus" aria-hidden="true"></i>
   Sign up via Google</a>
+                  <?php 
+                  }elseif($step == 2){?>
+                  <div class="main-head"><h5>Just a few more details</h5></div>
+                  <?php }?>
                   </div>
                     <div class="details row" style="margin-bottom:0">
                     <?php 

@@ -2048,6 +2048,8 @@ footer.page-footer .footer-copyright i {
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    border:0.5px solid;
+    border-color: #c4ccdf;
 }
 .chat ul li.message-right .message {
     margin-right: 55px;
@@ -2060,6 +2062,8 @@ footer.page-footer .footer-copyright i {
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    border:0.5px solid;
+    border-color: #c4ccdf;
 }
 .chat ul li.message-left .message {
     background-color: #f0f8ff;

@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql.hostinger.in',
-	'username' => 'u198752769_uchat',
-	'password' => 'mychat123',
-	'database' => 'u198752769_chat',
+	'hostname' => '127.0.0.1',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'mychat',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

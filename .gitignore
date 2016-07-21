@@ -1,4 +1,6 @@
 .DS_Store
+**/.DS_Store
+*.DS_Store
 .buildpath
 .htaccess
 .project
@@ -6,6 +8,6 @@
 .settings/
 .settings/*
 application/config/database.php
-/application/controllers/.DS_Store
-/application/.DS_Store
+application/controllers/.DS_Store
+application/.DS_Store
 .gitignore
