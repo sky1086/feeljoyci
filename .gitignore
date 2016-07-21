@@ -5,7 +5,7 @@
 .settings
 .settings/
 .settings/*
-/application/config/database.php
-/application/config/config.php
+application/config/database.php
 /application/controllers/.DS_Store
 /application/.DS_Store
+.gitignore
