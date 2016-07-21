@@ -1,14 +1,13 @@
 <?php
 error_reporting(0);
 ?>
-<script src="<?php echo base_url();?>js/chat/moment.min.js"></script>
-<script src="<?php echo base_url();?>js/chat/livestamp.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/chat/style.css" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!--  link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/chat/style.css" media="screen"-->
 
 <link href="<?php echo base_url();?>lib-emoji/emoji.css?cb=<?=time()?>" rel="stylesheet" type="text/css" />
 
 <link href="<?php echo base_url();?>css/chat/jquery.cssemoticons.css" media="screen" rel="stylesheet" type="text/css" />
-<script src="<?php echo base_url();?>js/chat/jquery.cssemoticons.min.js" type="text/javascript"></script>
+
 
 <div class="chatbar" id="chatbar">
 
@@ -76,19 +75,15 @@ function getOldChat(fid){
 					$.each( rsp.msgData, function( key, value ) {
 						var match = value.time.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
 						var date = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
-					$design += '<div class="float-fix">'+
-					'<div class="'+value.clsname+'">'+
-						'<div class="msg-bg">'+
-							'<div class="msgA">'+
+					$design = '<li class="message-'+(value.clsname == 'm-rply'?'right':'left')+' animated fadeinright">'+
+						'<img alt="" src="<?php echo base_url();?>img/man.png">'+
+						'<div class="message">'+
+							'<p>'+
 							value.msg+
-								'<div class="">'+
-									'<div class="msg-time time-'+value.id+'" data-livestamp="'+((date.getTime() / 1000)+19800)+'"></div>'+
-									'<div class="'+(value.clsname == 'm-rply'?'myrply-i':'myrply-f')+'"></div>'+
-								'</div>'+
-							'</div>'+
+							'</p>'+
 						'</div>'+
-					'</div>'+
-				'</div>';
+						'<span class="msg-time time-'+value.id+'" data-livestamp="'+((date.getTime() / 1000)+19800)+'"></span>'+
+				'</li>';
 				
 					$('.time-'+value.id).livestamp();
 					$('#dataHelper').attr('last-id', value.id);
@@ -96,7 +91,7 @@ function getOldChat(fid){
 				
 				$('#cstream').prepend($design);
 			
-				$('.msgA').emoticonize({
+				$('.message').emoticonize({
 					//delay: 800,
 					//animate: false,
 					//exclude: 'pre, code, .no-emoticons'
@@ -123,22 +118,20 @@ function sendMsg(){
 					$('#msenger textarea').val('');
 					$('#msenger textarea').focus();
 					//$design = '<div>'+rsp.msg+'<span class="time-'+rsp.lid+'"></span></div>';
-					$design = '<div class="float-fix">'+
-									'<div class="m-rply">'+
-										'<div class="msg-bg">'+
-											'<div class="msgA">'+
+					
+					$design = '<li class="message-right animated fadeinright">'+
+									'<img alt="" src="<?php echo base_url();?>img/man.png">'+
+										'<div class="message">'+
+											'<p>'+
 												rsp.msg+
-												'<div class="">'+
-													'<div class="msg-time time-'+rsp.lid+'"></div>'+
-													'<div class="myrply-i"></div>'+
-												'</div>'+
-											'</div>'+
+											'</p>'+
 										'</div>'+
-									'</div>'+
-								'</div>';
+										'<span class="msg-time time-'+rsp.lid+'"></span>'+
+								'</li>';
+
 					$('#cstream').append($design);
 					
-					$('.msgA').emoticonize({
+					$('.message').emoticonize({
 						//delay: 800,
 						//animate: false,
 						//exclude: 'pre, code, .no-emoticons'
@@ -171,6 +164,7 @@ function checkStatus(){
 
 // Check for latest message
 setInterval(function(){checkStatus();}, 5000);
+getOldChat(10);
 
 function getMsg(){
 	$fid = $('#fid').val();
@@ -183,28 +177,25 @@ function getMsg(){
 				if(parseInt(rsp.status) == 0){
 					//alert(rsp.msg);
 				}else if(parseInt(rsp.status) == 1){
-					$design = '<div class="float-fix">'+
-									'<div class="f-rply">'+
-										'<div class="msg-bg">'+
-											'<div class="msgA">'+
+					
+					$design = '<li class="message-left animated fadeinright delay-1">'+
+									'<img alt="" src="<?php echo base_url();?>img/man.png">'+
+										'<div class="message">'+
+											'<p>'+
 												rsp.msg+
-												'<div class="">'+
-													'<div class="msg-time time-'+rsp.lid+'"></div>'+
-													'<div class="myrply-f"></div>'+
-												'</div>'+
-											'</div>'+
+											'<p>'+
 										'</div>'+
-									'</div>'+
-								'</div>';
+										'<span class="msg-time time-'+rsp.lid+'"></span>'+
+								'</li>';			
 
 					//open chat box if not already
-					if($(".chatcontainer").length == 0){
-						showChat(rsp.from);
-					}
+					//if($(".chatcontainer").length == 0){
+						//showChat(rsp.from);
+					//}
 								
 					$('#cstream').append($design);
 
-					$('.msgA').emoticonize({
+					$('.message').emoticonize({
 						//delay: 800,
 						//animate: false,
 						//exclude: 'pre, code, .no-emoticons'
@@ -229,3 +220,48 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+
+<div class="page animated fadeinup">
+
+            <div class="chat p-20" id="chat">
+                <ul id="cstream">
+                    
+                </ul>
+			</div>
+        </div>
+        <!-- End of Page Contents -->
+    <!-- End of Main Container -->
+    <div class="meta_holder">
+    <form method="post" id="msenger" action="">
+        <div class="chat-text-holder">
+            <div class="left">
+            	<input type="hidden" name="fid" id="fid" value="10">
+                <textarea class="chat-text-box" placeholder="Type a message" name="msg" id="msg-min"></textarea>
+            </div>
+            <div class="right">
+                <input type="button" class="send-button" value="" id="sb-mt" />
+            </div>
+            <div id="dataHelper" last-id=""></div>
+        </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    
+    <script src="<?php echo base_url();?>js/helper.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/HeadsUp.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
+    <!--  script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script-->
+    <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
+    <!--  script src="<?php echo base_url();?>js/main.js"></script-->
+    <script src="<?php echo base_url();?>js/chat/moment.min.js"></script>
+	<script src="<?php echo base_url();?>js/chat/livestamp.js"></script>
+	<script src="<?php echo base_url();?>js/chat/jquery.cssemoticons.min.js" type="text/javascript"></script>
+    
+</body>
+
+</html>
