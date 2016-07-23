@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Shuttle - Material Design Mobile Template</title>
+    <title>Feeljoy: chat</title>
     <meta name="description" content="Material Design Mobile Template">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -121,7 +121,7 @@
             <div class="open-left" id="open-left" data-activates="slide-out-left">
                 <i class="ion-android-menu"></i>
             </div>
-            <h1 class="title">Shuttle</h1>
+            <h1 class="title">Feeljoy</h1>
             <div class="open-right" id="open-right">
                 <i class="ion-android-alert"></i>
             </div>

@@ -1544,7 +1544,7 @@ footer.page-footer .footer-copyright i {
     border-bottom-right-radius: 20px;
 }
 .chat ul li.message-left {
-    margin-bottom: 36px;
+    margin-bottom: 15px;
 }
 .chat ul li.message-right .message.first {
     border-top-left-radius: 20px;
@@ -1574,7 +1574,7 @@ footer.page-footer .footer-copyright i {
 }
 .message-right > span,
 .message-left > span {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: block;
 }
 .message-left > span {
@@ -2037,7 +2037,7 @@ footer.page-footer .footer-copyright i {
     border-bottom-right-radius: 20px;
 }
 .chat ul li.message-left {
-    margin-bottom: 36px;
+    margin-bottom: 15px;
 }
 .chat ul li.message-right .message.first {
     border-top-left-radius: 20px;
@@ -2071,7 +2071,7 @@ footer.page-footer .footer-copyright i {
 }
 .message-right > span,
 .message-left > span {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: block;
 }
 .message-left > span {

@@ -75,7 +75,7 @@ function getOldChat(fid){
 					$.each( rsp.msgData, function( key, value ) {
 						var match = value.time.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
 						var date = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
-					$design = '<li class="message-'+(value.clsname == 'm-rply'?'right':'left')+' animated fadeinright">'+
+					$design += '<li class="message-'+(value.clsname == 'm-rply'?'right':'left')+' animated fadeinright">'+
 						'<img alt="" src="<?php echo base_url();?>img/man.png">'+
 						'<div class="message">'+
 							'<p>'+
@@ -164,7 +164,6 @@ function checkStatus(){
 
 // Check for latest message
 setInterval(function(){checkStatus();}, 5000);
-getOldChat(9);
 
 function getMsg(){
 	$fid = $('#fid').val();
@@ -234,14 +233,14 @@ $(document).ready(function() {
         <!-- End of Page Contents -->
     <!-- End of Main Container -->
     <div class="meta_holder">
-    <form method="post" id="msenger" action="">
+    <form method="post" id="msenger" action="" onsubmit="return submitMsg();">
         <div class="chat-text-holder">
             <div class="left">
             	<input type="hidden" name="fid" id="fid" value="9">
                 <textarea class="chat-text-box" placeholder="Type a message" name="msg" id="msg-min"></textarea>
             </div>
             <div class="right">
-                <input type="button" class="send-button" value="" id="sb-mt" />
+                <input type="submit" class="send-button" value="" id="sb-mt" />
             </div>
             <div id="dataHelper" last-id=""></div>
         </div>
@@ -261,6 +260,9 @@ $(document).ready(function() {
     <script src="<?php echo base_url();?>js/chat/moment.min.js"></script>
 	<script src="<?php echo base_url();?>js/chat/livestamp.js"></script>
 	<script src="<?php echo base_url();?>js/chat/jquery.cssemoticons.min.js" type="text/javascript"></script>
+	<script>
+	getOldChat(9);
+	</script>
     
 </body>
 

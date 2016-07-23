@@ -108,10 +108,18 @@ class ChatM extends CI_Controller
 					
 					if(!empty($qurGet)){
 						$msg = '';
+						$ms_num = count($qurGet);
 						foreach ($qurGet as $msr=>$msv){
 							$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
-							$msg = Emoji::html_to_emoji($decoded_msg)."<br>";
+							$msg = Emoji::html_to_emoji($decoded_msg);
 							$qurGet[$msr]['msg'] = $msg;
+							if($ms_num > 1){
+								$qurGet[$msr]['cls'] = '';
+								if($msv == reset($qurGet))
+									$qurGet[$msr]['cls'] = 'first';
+								if($msv == end($qurGet))
+									$qurGet[$msr]['cls'] = 'last';
+							}
 							unset($qurGet[$msr]['int_vec']);
 						}
 						$json = array('status' => 1, 'msgData' => $qurGet);
