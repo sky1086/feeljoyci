@@ -149,7 +149,7 @@
                             <input name="step" type="hidden" value="1">
                         </form>
                         <a class="waves-effect waves-light btn signup-btn" onclick="return document.forms.addform.submit();">Sign up</a>
-                        <p>Already have an account? <a href="login.html"><span style="color:blue;">Login</span></a></p>
+                        <p>Already have an account? <a href="/"><span style="color:blue;">Login</span></a></p>
                         <?php }elseif ($step ==2){?>
                         <?php echo form_open(base_url().'signup/adduser', 'class="col s12" id="dataform" name="dataform"');?>
                             <div class="row">
