@@ -9,10 +9,11 @@ $attributes = 'name="login" class="col s12" onsubmit="return processInput();" au
             <div class="mid-sec">
                 <div class="main">
                   <div class="signup-sec" style="text-align:center;">
-                    <div class="main-head"><h5>Log in to FeelJoy</h5></div>
+                    <div class="main-head"><h4>Log in to FeelJoy</h4></div>
                       <a class="btn ggl-su"><i class="fa fa-google-plus" aria-hidden="true"></i>
   Sign up via Google</a>
                   </div>
+                  <hr class="separate">
                     <div class="details row" style="margin-bottom:0">
                         <?php echo validation_errors(); ?>
                         <?php echo form_open('login/process',$attributes); ?>
@@ -28,14 +29,19 @@ $attributes = 'name="login" class="col s12" onsubmit="return processInput();" au
                                     <label for="password">Password</label>
                                 </div>
                             </div>
-                        
+                        </div>
+                </div>
                         <div class="extras">
+                            <div class="extras-btn">
+                                <a class="waves-effect waves-light btn login-btn" onclick="processInput();">Login</a>
+                            </div>
                             <ul>
                                 <!-- li><a>Forgot Password?</a></li-->
                                 <li><a href="signup/user">Sign Up</a></li>
+                                <li>&nbsp;</li>
                             </ul>
                         </div>
-                        <a class="waves-effect waves-light btn login-btn" onclick="processInput();">Login</a>
+                        
                         </form>
                     </div>
                 </div>

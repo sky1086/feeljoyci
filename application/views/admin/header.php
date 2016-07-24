@@ -66,7 +66,7 @@
         }
 
         .chat-text-holder {
-            border-radius: 8px;
+            border-radius: 6px;
             height: 50px;
             background-color: rgba(86, 182, 139, 0.80);
             display: flex;
@@ -87,8 +87,12 @@
             resize: none;
             padding: 5px 5px 5px 12px;
             border: none;
-            box-shadow: 0px 1px 3px #f0f0f0;
+            /*box-shadow: 0px 1px 3px #fff;*/
             border-radius: 3px;
+            background-color: #fff;
+            border-color: #fff;
+            border-width: 1px;
+            overflow: hidden;
         }
 
         .right {
@@ -121,7 +125,7 @@
             <div class="open-left" id="open-left" data-activates="slide-out-left">
                 <i class="ion-android-menu"></i>
             </div>
-            <h1 class="title">Feeljoy</h1>
+            <h1 class="title">FeelJoy</h1>
             <div class="open-right" id="open-right">
                 <i class="ion-android-alert"></i>
             </div>
