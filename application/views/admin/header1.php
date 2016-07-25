@@ -1,5 +1,6 @@
 <!doctype html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo lang('spidioLogin');?></title>
     <title>FeelJoy - Signup</title>
     <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.min.css" />
