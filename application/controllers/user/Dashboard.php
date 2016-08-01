@@ -4,7 +4,7 @@ class Dashboard extends CI_Controller{
    
     function __construct(){
         parent::__construct();
-    	$this->authentication->isLoggedIn();  
+    	$this->authentication->isLoggedIn(array(ACCOUNT_USER));  
 		$this->load->model(array('dashboard_model', 'chat/chat_model'));
 	    }
 

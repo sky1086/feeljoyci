@@ -6,7 +6,7 @@ class Chat extends CI_Controller
 {
 	function __construct(){
 		parent::__construct();
-		$this->authentication->isLoggedIn();
+		$this->authentication->isLoggedIn(array(ACCOUNT_USER));
 		$this->load->model(array('chat/chat_model'));
 	}
 	

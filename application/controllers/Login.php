@@ -50,7 +50,7 @@ class Login extends CI_Controller{
 		        	}
 					if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
 			    		if($this->session->userdata('usertype') == ACCOUNT_USER){
-			    			redirect('user/dashboard');
+			    			redirect('user/listeners');
 			    		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){
 			    			redirect('listener/dashboard');
 			    		}else{

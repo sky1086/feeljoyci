@@ -5,9 +5,14 @@ class Authentication extends CI_Model{
         parent::__construct();
     }
     
-	public function isLoggedIn(){
+	public function isLoggedIn($allowed){
 		//valid users who can login into system interface
-		$validusers = in_array($this->session->userdata('usertype'),array(ACCOUNT_LISTENER, ACCOUNT_ADMIN, ACCOUNT_USER));
+		$allowedUser = array(ACCOUNT_USER, ACCOUNT_ADMIN, ACCOUNT_LISTENER);
+		
+		if(!empty($allowed))
+		$allowedUser = $allowed;
+		
+		$validusers = in_array($this->session->userdata('usertype'),$allowedUser);
 		//var_dump($validusers, $this->session->userdata());exit;
         if(!$this->session->userdata('validated') || empty($this->session->userdata('userid')) || !$validusers){
         	//store url to redirect in case of not logged in
@@ -49,7 +54,7 @@ class Authentication extends CI_Model{
     	}
     	if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
     		if($this->session->userdata('usertype') == ACCOUNT_USER){
-    			redirect('user/dashboard');
+    			redirect('user/listeners');
     		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){
     			redirect('listener/dashboard');
     		}else{
