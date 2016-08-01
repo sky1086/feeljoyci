@@ -97,8 +97,11 @@ function getOldChat(fid){
 					//exclude: 'pre, code, .no-emoticons'
 				});
 				
-				$('#chat').scrollTop ($('#cstream').height());
+				$(function () {
+			           $("html, body").animate({
+						scrollTop: $('html, body').get(0).scrollHeight + 2000}, 2500);});
 				}
+				
 			}
 		});
 }
@@ -139,7 +142,7 @@ function sendMsg(){
 					
 					$('.time-'+rsp.lid).livestamp();
 					$('#dataHelper').attr('last-id', rsp.lid);
-					$('#chat').scrollTop($('#cstream').height());
+					$(document).scrollTop($(document).height() + 100);
 				}
 			}
 		});
@@ -200,9 +203,9 @@ function getMsg(){
 						//exclude: 'pre, code, .no-emoticons'
 					});
 					
-					$('#chat').scrollTop ($('#cstream').height());
 					$('.time-'+rsp.lid).livestamp();
 					$('#dataHelper').attr('last-id', rsp.lid);	
+					$(document).scrollTop($(document).height());
 				}
 			}
 	});

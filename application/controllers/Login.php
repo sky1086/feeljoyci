@@ -7,6 +7,7 @@ class Login extends CI_Controller{
         parent::__construct();
         $this->load->helper('cookie');
         $this->load->model('login_model');
+        if($this->session->userdata('validated'))
         $this->authentication->redirect2Dash();
     }
 

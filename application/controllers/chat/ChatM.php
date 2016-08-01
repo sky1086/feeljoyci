@@ -8,7 +8,7 @@ class ChatM extends CI_Controller
     {
         parent::__construct();
         $this->load->model('authentication');
-        $this->authentication->isLoggedIn();
+        //$this->authentication->isLoggedIn();
         $this->permission->enforceAccount(ACCOUNT_USER, ACCOUNT_LISTENER);
         $this->load->model(array(
             'chat/chat_model'

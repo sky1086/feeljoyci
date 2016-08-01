@@ -4,7 +4,7 @@
     function __construct(){
         parent::__construct();
         $this->load->model('authentication');
-        $this->authentication->isLoggedIn();
+        //$this->authentication->isLoggedIn();
     }
     
     public function index(){

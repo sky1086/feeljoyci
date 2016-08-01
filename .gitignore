@@ -10,4 +10,6 @@
 application/config/database.php
 application/controllers/.DS_Store
 application/.DS_Store
+application/models/.DS_Store
+application/views/.DS_Store
 .gitignore

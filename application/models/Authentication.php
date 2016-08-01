@@ -16,7 +16,7 @@ class Authentication extends CI_Model{
         	{
         		$this->session->sess_destroy();
         	}
-        	if(!empty($redirecturl) && stripos($redirecturl, 'login') === FALSE && stripos($redirecturl, 'sEcho') === FALSE)
+        	if(!empty($redirecturl) && stripos($redirecturl, 'login') === FALSE)
         	{//exclude login and datatable page requests
         		$this->session->set_userdata(array('redirecturl'=>base_url().substr($redirecturl,1)));
         	}
