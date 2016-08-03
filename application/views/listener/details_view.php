@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listenerprofile</title>
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
@@ -45,7 +46,7 @@
             </div>
           </div>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4 ">
+          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4" style="width:60%;">
               <div class="user-desc">
                 <h5><?php echo $listener['name']?></h5>
                 <p><?php echo $listener['qualification']?></p>

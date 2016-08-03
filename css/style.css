@@ -238,6 +238,7 @@ background: url(../images/profile-bg.png);
 	font-weight: 500;
 	text-align: justify;
 	margin-bottom: 5px;
+	width:90%;
 }
 ul.pro-star {
     margin-left: 10px;
@@ -345,12 +346,12 @@ ul.star img {
     font-weight: 600;
     padding-top: 16px;
 	text-align:left;
-	width:100px;
+	/*width:100px;*/
 	
 }
 .user-desc p{
 	font-size: 12px;
-	width:100px;
+	/*width:100px;*/
 	font-family: Roboto;
     font-weight: 500;
 	text-align:left;
