@@ -9,6 +9,7 @@
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Roboto|Titillium+Web' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="wrapper">
@@ -31,7 +32,7 @@
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        <div class="row">
       <div class="img-sty">
-          <div class="col-md-2 col-lg-2 col-sm-2 col-xs-4">
+          <div class="col-md-2 col-lg-2 col-sm-2 col-xs-4" style="width:25%;padding-right: 0px;">
           	
            <img src="<?php echo base_url();?>pics_listener/<?php echo $listener['profile_img']?>" class="img-responsive pic"/>
             <div class="star-group">
@@ -45,15 +46,15 @@
             </div>
           </div>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4 ">
+          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4" style="width:45%;">
             <div class="border-right">
               <div class="short-desc">
-                <h5><?php echo $listener['name'];?></h5>
-                <p><?php echo $listener['description'];?></p>
+                <h5><a href="<?php echo base_url();?>listener/details/index/<?php echo $listener['id'];?>"><?php echo $listener['name'];?></a></h5>
+                <p><?php echo $listener['qualification'];?></p>
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-lg-3 col-sm-3 col-xs-4">
+          <div class="col-md-3 col-lg-3 col-sm-3 col-xs-4" style="width:25%;">
             <div class="line">
               <div class="mesg"> <a href="<?php echo base_url();?>user/chat"><img src="<?php echo base_url();?>images/mesg.png" class="img-responsive "/> </a></div>
             </div>
