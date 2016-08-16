@@ -64,7 +64,7 @@ $(document).keyup(function(e){
 
 function submitMsg() {
     $('#msg-min').focus();
-	$('#msenger textarea').attr('readonly', 'readonly');
+	//$('#msenger textarea').attr('readonly', 'readonly');
 	$('#sb-mt').attr('disabled', 'disabled');	// Disable submit button
 	sendMsg();
 	return false;
