@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-var_dump($this->session->userdata());
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <!--  link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/chat/style.css" media="screen"-->
