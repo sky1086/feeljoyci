@@ -2,6 +2,7 @@
 error_reporting(0);
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="<?php echo base_url();?>js/mobile.js"></script>
 <!--  link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/chat/style.css" media="screen"-->
 
 <link href="<?php echo base_url();?>lib-emoji/emoji.css?cb=<?=time()?>" rel="stylesheet" type="text/css" />
@@ -49,13 +50,15 @@ $(document).keyup(function(e){
 		//$('#msenger textarea').val($txtVal +"\n\r");
 	}
 	if(!e.shiftKey && e.keyCode == 13){
+		if(!isMobile.any){
 		if($('#msenger textarea').val().trim() == ""){
 			$('#msenger textarea').val('');
 		}else{
 			$('#msenger textarea').attr('readonly', 'readonly');
 			$('#sb-mt').attr('disabled', 'disabled');	// Disable submit button
 			sendMsg();
-		}		
+		}
+		}
 	}
 });	
 
