@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Listenerlist</title>
+<title>FeelJoy</title>
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Roboto|Titillium+Web' rel='stylesheet' type='text/css'>
@@ -36,13 +36,13 @@
           	
            <img src="<?php echo base_url();?>pics_listener/<?php echo $listener['profile_img']?>" class="img-responsive pic"/>
             <div class="star-group">
-              <ul class="star">
+              <!--  ul class="star">
                 <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
                 <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
                 <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
                 <li><img src="<?php echo base_url();?>images/star2.png" class="img-responsive"/></li>
                 <li><img src="<?php echo base_url();?>images/star2.png" class="img-responsive"/></li>
-              </ul>
+              </ul-->
             </div>
           </div>
           </div>
@@ -56,7 +56,7 @@
           </div>
           <div class="col-md-3 col-lg-3 col-sm-3 col-xs-4" style="width:25%;">
             <div class="line">
-              <div class="mesg"> <a href="<?php echo base_url();?>user/chat"><img src="<?php echo base_url();?>images/mesg.png" class="img-responsive "/> </a></div>
+              <div class="mesg"> <a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id'];?>"><img src="<?php echo base_url();?>images/mesg.png" class="img-responsive "/> </a></div>
             </div>
           </div>
        </div>
@@ -70,7 +70,7 @@
     <div class="row">
     	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
         	<div class="mid-img">
-        		<img src="<?php echo base_url();?>images/line.png" class="img-responsive">
+        		<img src="<?php echo base_url();?>images/line.png" class="img-responsive" style="width: 40%;">
     		</div>
     	</div>
     </div>

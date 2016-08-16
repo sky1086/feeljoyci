@@ -9,7 +9,7 @@ class Login_model extends CI_Model{
         // grab user input
         $username = (!empty($username)?$username:$this->security->xss_clean($this->input->post('username')));
         $password = (!empty($password)?$password:$this->security->xss_clean($this->input->post('password')));
-        $this->db->select('userid, email, username, contact_name, user_type');
+        $this->db->select('userid, email, username, contact_name, user_type, profile_img');
         $this->db->from('user_detail');
         $this->db->where('email', $username);
         if($skipPass == 0)
@@ -29,6 +29,7 @@ class Login_model extends CI_Model{
             		'contact_name' => $row->contact_name,
             		'email' => $row->email,
             		'validated'=> true,
+            		'profile_img'=> $row->profile_img,
             		'usertype' => $accounts[$row->user_type]
                     );
             $this->session->set_userdata($data);

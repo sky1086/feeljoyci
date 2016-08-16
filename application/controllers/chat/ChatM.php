@@ -98,7 +98,7 @@ class ChatM extends CI_Controller
 					//$up = mysql_query("UPDATE `msg` SET  `status` = '0' WHERE `to`='$myid' && `from`='$fid'");
 				break;
 				case 'oMsg':
-					$msgArr = array('from' => $myid, 'status' => 0);
+					$msgArr = array('from' => $myid);
 					if($fid)
 						$msgArr['to'] = $fid;
 						
@@ -107,9 +107,7 @@ class ChatM extends CI_Controller
 					//while($rw = mysql_fetch_array($qur)){
 					
 					if(!empty($qurGet)){
-						$msg = '';
-						$ms_num = count($qurGet);
-						foreach ($qurGet as $msr=>$msv){
+						/*foreach ($qurGet as $msr=>$msv){
 							$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
 							$msg = Emoji::html_to_emoji($decoded_msg);
 							$qurGet[$msr]['msg'] = $msg;
@@ -121,7 +119,7 @@ class ChatM extends CI_Controller
 									$qurGet[$msr]['cls'] = 'last';
 							}
 							unset($qurGet[$msr]['int_vec']);
-						}
+						}*/
 						$json = array('status' => 1, 'msgData' => $qurGet);
 					}else{
 						$json = array('status' => 0);

@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+var_dump($this->session->userdata());
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <!--  link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/chat/style.css" media="screen"-->
@@ -44,7 +45,11 @@ function removeChat(){
 }
 
 $(document).keyup(function(e){
-	if(e.keyCode == 13){
+	if(e.shiftKey && e.keyCode == 13){
+		$txtVal = $('#msenger textarea').val();
+		//$('#msenger textarea').val($txtVal +"\n\r");
+	}
+	if(!e.shiftKey && e.keyCode == 13){
 		if($('#msenger textarea').val().trim() == ""){
 			$('#msenger textarea').val('');
 		}else{
@@ -73,20 +78,39 @@ function getOldChat(fid){
 				if(parseInt(rsp.status) == 1){
 					$design = '';
 					$.each( rsp.msgData, function( key, value ) {
-						var match = value.time.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
-						var date = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
-					$design += '<li class="message-'+(value.clsname == 'm-rply'?'right':'left')+' animated fadeinright">'+
-						'<img alt="" src="<?php echo base_url();?>img/man.png">'+
-						'<div class="message">'+
-							'<p>'+
-							value.msg+
-							'</p>'+
-						'</div>'+
-						'<span class="msg-time time-'+value.id+'" data-livestamp="'+((date.getTime() / 1000)+19800)+'"></span>'+
-				'</li>';
+						//var match = value.time.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
+						//var date = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
+						console.log();
+						$num_child = value.length;
+						$clsrow = '';
+						if(value[0]['id']){
+							if($num_child > 1)
+								$clsrow = 'first';
+							$design += '<li class="message-'+(value[0]['clsname'] == 'm-rply'?'right':'left')+' animated fadeinright">'+
+							'<img alt="" src="<?php echo base_url();?>img/man.png">';
+							$rc = 0;
+							$.each(value, function(rkey, rvalue){
+								$rc++;
+								if($rc == $num_child && $num_child != 1){
+									$clsrow = 'last';
+								}
+								
+							$design += '<div class="message '+$clsrow+'">'+
+								'<p>'+
+								rvalue.msg+
+								'</p>'+
+							'</div>';
+							$clsrow = '';
+							});
+							var rowid = value[$num_child-1];
+							var match = rowid['time'].match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/);
+							var date = new Date(match[1], match[2] - 1, match[3], match[4], match[5], match[6]);
+							$design +='<span class="msg-time time-'+rowid.id+'" data-livestamp="'+((date.getTime() / 1000)+19800)+'"></span>'+
+							'</li>';
 				
-					$('.time-'+value.id).livestamp();
-					$('#dataHelper').attr('last-id', value.id);
+						$('.time-'+rowid.id).livestamp();
+						$('#dataHelper').attr('last-id', rowid.id);
+						}
 				});
 				
 				$('#cstream').prepend($design);

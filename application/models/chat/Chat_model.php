@@ -89,26 +89,40 @@ class Chat_model extends CI_Model{
     		if($limit > 0){
     			$this->db->limit($limit);
     		}
-    
+   
     		$this->db->where('status = 0');
-    		$this->db->where('from = '.$where['from'].' and to = '.$where['to']);
     		$this->db->or_where('from = '.$where['to'].' and to = '.$where['from']);
+    		$this->db->where('from = '.$where['from'].' and to = '.$where['to']);
     		
     		$query = $this->db->get('msg');
-    		 
-    		if(count($query->result()))
+    		$result = $query->result_array();
+    		
+    		if(count($result))
     		{
+    			$result = array_reverse($result);
     			$msgs = array();
-    			foreach ($query->result_array() as $row){
+    			$i = 0;
+    			$lastid = '';
+    			foreach ($result as $row){
+    				if($lastid != $row['from']){
+    					$i++;
+    				}
+    				
+    				$decoded_msg = $this->chat_model->decodeMsg($row['msg'], $row['int_vec']);
+    				$msg = Emoji::html_to_emoji($decoded_msg);
+    				$row['msg'] = $msg;
+    				unset($row['int_vec']);
     				if($myid == $row['from']){
     					$row['clsname'] = 'm-rply';
-    					$msgs[$row['id']] = $row;
+    					$msgs[$i][] = $row;
     				}else{
     					$row['clsname'] = 'f-rply';
-    					$msgs[$row['id']] = $row;
+    					$msgs[$i][] = $row;
     				}
+    				$lastid = $row['from'];
     			}
-    			krsort($msgs);
+    			//krsort($msgs);
+    			//var_dump($msgs);
     			return $msgs;
     		}
     	}

@@ -12,7 +12,7 @@ $attributes = 'name="login" onsubmit="return processInput();" autocomplete="off"
   ================================================== -->
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	<!-- Force Latest IE rendering engine -->
-	<title>ibibo ADX PasswordRecovery</title>
+	<title>PasswordRecovery</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!--[if lt IE 9]>

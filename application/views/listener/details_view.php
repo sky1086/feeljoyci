@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Listenerprofile</title>
+<title>FeelJoy</title>
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Roboto|Titillium+Web' rel='stylesheet' type='text/css'>
@@ -32,7 +32,7 @@
       <div class="img-sty">
           <div class="col-md-3 col-lg-3 col-sm-3 col-xs-4">
            <img src="<?php echo base_url();?>pics_listener/<?php echo $listener['profile_img']?>" class="img-responsive propic"/>
-		   <p class="userrating">User Rating:</p>
+		   <!--p class="userrating">User Rating:</p>
 		   
             <div class="pro-star-group">
               <ul class="pro-star">
@@ -43,7 +43,7 @@
                 <li><img src="<?php echo base_url();?>/images/star2.png" class="img-responsive"/></li>
 				
               </ul>
-            </div>
+            </div-->
           </div>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4" style="width:60%;">
@@ -51,7 +51,9 @@
                 <h5><?php echo $listener['name']?></h5>
                 <p><?php echo $listener['qualification']?></p>
               </div>
+              
           </div>
+          <div style="width:15%;float:right;position:relative;top:-80px;"> <a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id']?>"><img src="http://chatweb.dev/images/mesg.png" class="img-responsive" style=""> </a></div>
           </div>
        </div>
       </div>
