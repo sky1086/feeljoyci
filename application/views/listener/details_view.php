@@ -53,7 +53,7 @@
               </div>
               
           </div>
-          <div style="width:15%;float:right;position:relative;top:-80px;"> <a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id']?>"><img src="http://chatweb.dev/images/mesg.png" class="img-responsive" style=""> </a></div>
+          <div style="width:15%;float:right;position:relative;top:-80px;"> <a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id']?>"><img src="<?php echo base_url();?>/images/mesg.png" class="img-responsive" style=""> </a></div>
           </div>
        </div>
       </div>
