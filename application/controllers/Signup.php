@@ -7,6 +7,7 @@ class Signup extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->session->set_userdata(array('redirecturl'=>null));
         $this->authentication->redirect2Dash();
         $this->load->model(array('signup_model','login_model'));
         $this->load->library(array(
