@@ -32,13 +32,13 @@ class User extends CI_Model{
     public function updateMainUsrTable($userdata = array()){
     	$data = array();
     	
-    	$data['contact_name'] = $userdata['given_name'].' '.$userdata['family_name'];
+    	$data['contact_name'] = $userdata['first_name'].' '.$userdata['last_name'];
     	$data['email'] = $userdata['email'];
     	$data['gender'] = $userdata['gender'];
     	//$userData['locale'] = $userdata['locale'];
     	//$userData['profile_url'] = $userdata['link'];
-    	$data['profile_img'] = $userdata['picture'];
-    	if($this->user_model->isUserEmailExists($userData['email'])){
+    	$data['profile_img'] = $userdata['picture_url'];
+    	if($this->user_model->isUserEmailExists($userdata['email'])){
     		$data['edited_date'] = date("Y-m-d H:i:s");
     		$update = $this->db->update('user_detail',$data,array('email'=>$data['email']));
     	}else{
