@@ -3,6 +3,7 @@ class User extends CI_Model{
 	function __construct() {
 		$this->tableName = 'users';
 		$this->primaryKey = 'id';
+		$this->load->model('user_model');
 	}
 	public function checkUser($data = array()){
 		$this->db->select($this->primaryKey);
