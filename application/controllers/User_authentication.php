@@ -4,7 +4,7 @@ class User_Authentication extends CI_Controller
     function __construct() {
 		parent::__construct();
 		// Load user model
-		$this->load->model('user');
+		$this->load->model(array('user','login_model'));
     }
     
     public function index(){
@@ -15,7 +15,7 @@ class User_Authentication extends CI_Controller
 		// Google Project API Credentials
 		$clientId = '679180648415-fch3v2k0t3qns5vml3hf1qp0drcspb6e.apps.googleusercontent.com';
         $clientSecret = 'r-03D8jBEPpmi_WWWA2rN-IK';
-        $redirectUrl = base_url();
+        $redirectUrl = base_url().'user_authentication/';
 		
 		// Google Client Configuration
         $gClient = new Google_Client();
@@ -24,8 +24,10 @@ class User_Authentication extends CI_Controller
         $gClient->setClientSecret($clientSecret);
         $gClient->setRedirectUri($redirectUrl);
         $google_oauthV2 = new Google_Oauth2Service($gClient);
-
-        if (isset($_REQUEST['code'])) {
+		
+        $pos = strpos($_SERVER['REQUEST_URI'], 'code=');
+        
+        if ($pos !== false) {
             $gClient->authenticate();
             $this->session->set_userdata('token', $gClient->getAccessToken());
             redirect($redirectUrl);
@@ -51,15 +53,14 @@ class User_Authentication extends CI_Controller
 			// Insert or update user data
             $userID = $this->user->checkUser($userData);
             if(!empty($userID)){
-                $data['userData'] = $userData;
-                $this->session->set_userdata('userData',$userData);
+                $this->login_model->forceUserLogin($userData['email']);
             } else {
                $data['userData'] = array();
             }
         } else {
             $data['authUrl'] = $gClient->createAuthUrl();
         }
-		$this->load->view('user_authentication/index',$data);
+		//$this->load->view('user_authentication/index',$data);
     }
 	
 	public function logout() {

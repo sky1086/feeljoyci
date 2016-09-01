@@ -15,6 +15,18 @@ public function isUserExists($username)
 	        return false;
 	    }
 	}
+	
+	public function isUserEmailExists($email)
+	{
+		$query = $this->db->query('select userid from user_detail where email = "'.$email.'"');
+		if ($query->num_rows() > 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 public function addSystemUser($data){
 	//check for permission

@@ -34,7 +34,7 @@ color:#999999;
 <body>
 <?php
 if(!empty($authUrl)) {
-	echo '<a href="'.$authUrl.'"><img src="'.base_url().'assets/images/glogin.png" alt=""/></a>';
+	echo '<a href="'.$authUrl.'">Sign in with Google</a>';
 }else{
 
 ?>
