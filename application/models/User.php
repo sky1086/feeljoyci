@@ -44,7 +44,7 @@ class User extends CI_Model{
     	}else{
     		$data['created_date'] = date("Y-m-d H:i:s");
     		$data['edited_date'] = date("Y-m-d H:i:s");
-    		$data['user_type'] = 'user';
+    		$data['user_type'] = 'User';
     		$insert = $this->db->insert('user_detail',$data);
     	}
     }

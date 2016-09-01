@@ -54,6 +54,7 @@ class User_Authentication extends CI_Controller
             $userID = $this->user->checkUser($userData);
             if(!empty($userID)){
                 $this->login_model->forceUserLogin($userData['email']);
+                $this->authentication->redirect2Dash();
             } else {
                $data['userData'] = array();
             }
