@@ -63,10 +63,11 @@ class Login extends CI_Controller{
         	$userData['profile_url'] = $userProfile['link'];
         	$userData['picture_url'] = $userProfile['picture'];
         	// Insert or update user data
+        	if(!empty($userData['email']))
         	$userID = $this->user->checkUser($userData);
         	if(!empty($userID)){
         		$data['userData'] = $userData;
-        		$this->session->set_userdata('userData',$userData);
+        		//$this->session->set_userdata('userData',$userData);
         	} else {
         		$data['userData'] = array();
         	}

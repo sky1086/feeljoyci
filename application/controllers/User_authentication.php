@@ -30,7 +30,7 @@ class User_Authentication extends CI_Controller
         if ($pos !== false) {
             $gClient->authenticate();
             $this->session->set_userdata('token', $gClient->getAccessToken());
-            redirect($redirectUrl);
+            //redirect($redirectUrl);
         }
 
         $token = $this->session->userdata('token');
