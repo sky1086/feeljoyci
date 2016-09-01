@@ -57,7 +57,7 @@ class Authentication extends CI_Model{
     			redirect('user/listeners');
     		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){
     			redirect('listener/dashboard');
-    		}else{
+    		}elseif($this->session->userdata('usertype') == ACCOUNT_ADMIN){
     			redirect('admin/dashboard');
     		}
     	}

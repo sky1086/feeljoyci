@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller{
     function __construct(){
         parent::__construct();
 		$this->load->model('authentication');
-    	//$this->authentication->isLoggedIn();  
+    	$this->authentication->isLoggedIn(array(ACCOUNT_ADMIN));  
 		$this->load->model('dashboard_model');
 	    }
 
