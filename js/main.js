@@ -271,10 +271,10 @@ $('#open-left').sideNav({ // Trigger id
 $('.swipebox').swipebox();
 
 // Masonry
-$('.grid').masonry({
+/*$('.grid').masonry({
     itemSelector: '.grid-item'
 });
-
+*/
 // Material Layout
 $('.parallax').parallax();
 $(function () {

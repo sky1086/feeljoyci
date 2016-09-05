@@ -45,7 +45,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swipebox.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
@@ -112,6 +112,10 @@
             border-radius: 3px;
             background-position: center;
             background-size: 60%,60%;
+        }
+        a{
+        text-decoration:none; 
+        color:blue;
         }
     </style>
 </head>

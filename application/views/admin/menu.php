@@ -125,8 +125,8 @@
                 <div class="collapsible-body">
                     <ul class="collapsible">
                         <li>
-                            <a href="portfolio-filter.html">Add</a>
-                            <a href="portfolio-masonry.html">List Categories</a>
+                            <a href="<?php echo base_url();?>admin/category/add">Add</a>
+                            <a href="<?php echo base_url();?>admin/category">List Categories</a>
                         </li>
                     </ul>
                 </div>
@@ -138,8 +138,8 @@
                 <div class="collapsible-body">
                     <ul class="collapsible">
                         <li>
-                            <a href="portfolio-filter.html">Add</a>
-                            <a href="portfolio-masonry.html">List</a>
+                            <a href="<?php echo base_url();?>admin/question/add">Add</a>
+                            <a href="<?php echo base_url();?>admin/question">List</a>
                         </li>
                     </ul>
                 </div>
