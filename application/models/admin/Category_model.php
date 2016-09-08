@@ -13,8 +13,13 @@ class Category_model extends CI_Model{
         return array();
     }
     
-    public function getAllThemes(){
-    	$this->db->where('parentid', 0);
+    public function getAllThemes($id = 0){
+    	if($id > 0){
+    		$this->db->where('parentid', $id);
+    	}else{
+    		$this->db->where('parentid', 0);
+    	}
+    	
     	$query = $this->db->get('categories');
     	if ($query->num_rows() > 0) {
     		return $query->result();

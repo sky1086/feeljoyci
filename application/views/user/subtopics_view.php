@@ -121,14 +121,14 @@
 <body>
 <div id="panel">
     <!-- Main Container -->
-    <div id="main" class="main">
+     <div id="main" class="main">
 
         <!-- Toolbar -->
         <div id="toolbar" class="primary-color z-depth-1">
             <div class="open-left" id="open-left" data-activates="slide-out-left">
                 <i class="ion-android-menu"></i>
             </div>
-            <h1 class="title">FeelJoy</h1>
+            <h1 class="title" id="flip" ><?php echo $category[0]->name;?></h1>
             <div class="open-right" id="open-right">
                 <i class="ion-android-alert"></i>
             </div>
@@ -139,8 +139,33 @@
         <!-- End of Toolbar -->
 
         <!-- Page Contents -->
-        
-        </div>
+       <div class="wrapper">
+       <div class="container-fluid">
+       <div class="row">
+       <?php 
+       $numTopics = count($topics);
+       $cal_h = (100/($numTopics+1));
+       $height = ($numTopics>3)?$cal_h:'30';
+       $colors = array('#25C6DA', '#4DB6AC', '#81C783', '#AED581');
+       $color = 0;
+       foreach ($topics as $topic){?>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <a href="<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>">
+        <div class="eng2sec1" style="background-color:<?php echo $colors[$color];?>;<?php echo $height?>%">
+        <div id="flip">
+      <p class="text-center"><?php echo strtoupper($topic->name);?></p></div>
+       </div>
+       </a>
+       </div>
+       <?php 
+       $color++;
+       }?>
+       </div>
+       </div>
+       </div>
+        <!-- End of Page Contents -->
+
+    </div>
         <div class="page-3">
  <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red" style="    width: 130px !important;
@@ -154,108 +179,7 @@
     </ul>
   </div>
  </div> 
- <div class="wrapper">
-       <div class="container-fluid">
-       <ul class="nav nav-tabs" role="tablist">
-       <div class="row">
-       <?php 
-       $numTopics = count($topics);
-       $cal_h = (100/($numTopics+1));
-       $height = ($numTopics>3)?$cal_h:'30';
-       ?>
-       <div class="sec1" style="height: 150px;">
-       </div>
-       <?php 
-       foreach ($topics as $topic){?>
-       	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    	<li role="presentation"><a href="<?php echo base_url();?>user/topics/sub/<?php echo $topic->id;?>" aria-controls="profile" role="tab" data-toggle="tab">
-    	<div class="sec2 text-center" style="height: <?php echo $height;?>%;"><?php echo strtoupper($topic->name);?> </div>
-    	</a>
-    	</li>
-    	</div>
-       	
-       <?php }?>
-     
-     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
-    </li>
-    </div>
-     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
-    <div class="sec4"></div>
-    </li>
-    </div>
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
-    <div class="sec5"></div>
-    </li>
-    </div>
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
-    <div class="sec6"></div>
-    </li>
-    </div>
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
-    <div class="sec7"></div>
-    </li>
-    </div>
-  </ul>
-
-</div>
-        <!--------------
-       <div class="wrapper">
-       <div class="container-fluid">
-       <div class="row">
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec1">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <div class="sec2">
-      <p class="text-center">WORKPLACE</p>
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <a href="Content_Engine_2.html"><div class="sec2">
-      <p class="text-center">RELATIONSHIPS</p>
-       </div></a>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec3">
-       <div class="bottomimg">
-       <img src="<?php echo base_url();?>img/eng1.png" class="img-responsive" />
-       </div>
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec4">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec5">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec6">
-       </div>
-       </div>
-      
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec7">
-       </div>
-       </div>
-       
-       </div>
-       </div>
-       </div>
-------------------->
-        <!-- End of Page Contents -->
-
-        <!-- Sidebars -->
-       
-
-    </div>
+ 
     </div>
     <!-- End of Main Container -->
     
