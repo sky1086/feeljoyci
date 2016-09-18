@@ -169,7 +169,7 @@ $this->load->view('user/main-nav', $datas);?>
        	?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
-       	<div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[($color+1)];?>;" onclick="setColorCookie(this.className);">
+       	<div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
        	<div id="flip">
        	<p class="text-center"><?php echo strtoupper($other_data->name);?></p></div>
        	       </div>
