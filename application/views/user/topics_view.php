@@ -148,8 +148,13 @@
     	</div>
        	
        <?php }?>
+       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+    	<li role="presentation">
+    	<div class="sec2 text-center" style="height: 150px;padding-top:41px;">&nbsp; </div>
+    	</li>
+    	</div>
        </div>
-     <div style="position: fixed; display: block;height: 100px; width: 100%;bottom:0;">
+     <div style="position: fixed; display: block; width: 100%;bottom:0;">
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
     <li role="presentation">
     <div class="sec4"></div>
