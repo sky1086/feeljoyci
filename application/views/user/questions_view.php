@@ -1,3 +1,10 @@
+<?php 
+if(isset($Theme) && $Theme != ''){
+	$Theme = $Theme;
+}else {
+	$Theme = 't0';
+}
+	?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -52,12 +59,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
     <style>
-        .primary-color {
-            background-color: #7f8c8d !important;
-        }
-
         .meta_holder {
             width: 100%;
             height: 75px;
@@ -119,35 +123,38 @@
 </head>
 
 <body>
+
 <div id="panel">
     <!-- Main Container -->
      
     <div id="main" class="main">
 
         <!-- Toolbar -->
-        <div id="toolbar" class="primary-color z-depth-1">
-            <div class="open-left" id="open-left" data-activates="slide-out-left">
-                <i class="ion-android-menu"></i>
-           </div>
-            <h1 class="title" id="flip"><?php echo $category[0]->name;?></h1>
-            <div class="open-right" id="open-right">
-                <i class="ion-android-alert"></i>
-            </div>
-            <div class="open-right" id="open-right" data-activates="slide-out">
-                <i class="ion-android-person"></i>
-            </div>
-        </div>
+        <?php 
+$datas['heading'] = ucfirst($category[0]->name);
+$datas['Theme'] = $Theme;
+
+$this->load->view('user/main-nav', $datas);?>
+
+        
         <!-- End of Toolbar -->
 
         <!-- Page Contents -->
        <div class="wrapper">
        <div class="container-fluid">
        <div class="row">
-       <?php foreach ($questions as $question){?>
-	   <div class="eng3sec1">
+       <?php foreach ($questions as $question){
+       	$first = reset($questions);
+       	if($first == $question){
+       		$class = 'eng3sec1';
+       	}else {
+       		$class = 'eng3sec2';
+       	}
+       	?>
+	   <div class="<?php echo $class;?>">
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
-      <p class="eng3blue"><?php echo $category[0]->name;?></p>
-	  <a href="<?php echo base_url();?>user/questions/answer/<?php echo $category[0]->id.'/'.$question->id;?>" style="cursor: pointer;"><h2 class="eng3head"><?php echo ucfirst($question->question);?></h2></a>
+      <p class="eng3blue <?php echo $Theme.'-txt';?>"><?php echo $category[0]->name;?></p>
+	  <a href="<?php echo base_url();?>user/questions/answer/<?php echo $category[0]->id.'/'.$question->id.'/'.$Theme;?>" style="cursor: pointer;"><h2 class="eng3head"><?php echo ucfirst($question->question);?></h2></a>
        </div>
        </div>
        <?php }?>
@@ -156,19 +163,7 @@
        </div>
        </div>
 </div>
-        <div class="page-3">
- <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red" style="    width: 130px !important;
-    height: 130px !important;">
-     <img src="<?php echo base_url();?>img/eng2.png" class="img-responsive" />
-    </a>
-    <ul class="icons-sty">
-      <li><a class="btn-floating red" href="<?php echo base_url()?>user/topics"><img src="<?php echo base_url();?>img/paper.png" width="90" height="90" ></a> <p class="chat-sty-para">mindfulness</p></li>
-      <li><a class="btn-floating yellow darken-1" href="<?php echo base_url()?>user/listeners"><img src="<?php echo base_url();?>img/chat.png" width="90" height="90" class="img-responsive  chat-sty"> </a> <p class="chat-sty-para">Talk to a buddy</p></li>
-      
-    </ul>
-  </div>
- </div> 
+        <?php $this->load->view('user/button-float_view');?>
  
     </div>
     <!-- End of Main Container -->

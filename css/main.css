@@ -2342,3 +2342,43 @@ span.data-color {
   font-size: 1.2rem;
   margin: 0;
 }
+
+.t0 {
+    background-color: #7f8c8d !important;
+  }
+  
+.t0-txt{
+	color: #7f8c8d;
+}
+
+.t1 {
+    background-color: #25C6DA !important;
+  }
+  
+.t1-txt{
+	color: #25C6DA;
+}
+  
+.t2 {
+    background-color: #4DB6AC !important;
+  }
+  
+.t2-txt{
+	color: #4DB6AC;
+}
+
+.t3 {
+    background-color: #81C783 !important;
+  }
+  
+.t3-txt{
+	color: #81C783;
+}
+
+.t4 {
+    background-color: #AED581 !important;
+  }
+  
+.t4-txt{
+	color: #AED581;
+}

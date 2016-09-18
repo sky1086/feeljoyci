@@ -49,7 +49,7 @@
 .sec4{
 	background-color:#25c6da;
     width:100%;
-    height:30px;
+    height:20px;
 	color:#FFF;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	margin: 0 auto;
@@ -59,7 +59,7 @@
 .sec5{
 	background-color:#4db6ac;
     width:100%;
-    height:40px;
+    height:20px;
 	color:#FFF;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	margin: 0 auto;
@@ -69,7 +69,7 @@
 .sec6{
 	background-color:#81c783;
     width:100%;
-    height:50px;
+    height:20px;
 	color:#FFF;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	margin: 0 auto;
@@ -79,7 +79,7 @@
 .sec7{
 	background-color:#aed581;
     width:100%;
-    height:50px;
+    height:20px;
 	color:#FFF;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	margin: 0 auto;
@@ -102,22 +102,22 @@
 .eng2sec1{
 	background-color:#25C6DA;
     width:100%;
-    height:300px;
+    height:155px;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	color:#FFF;
 	margin: 0 auto;
 	font-size: 25px;
-	padding-top:150px;
+	padding-top:90px;
 }
 .eng2sec2{
 	background-color:#4DB6AC;
     width:100%;
-    height:250px;
+    height:100px;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	color:#FFF;
 	margin: 0 auto;
 	font-size: 25px;
-	padding-top:110px;
+	padding-top:35px;
 }
 .eng2sec3{
 	background-color:#81C783;
@@ -155,24 +155,24 @@
 .eng3sec1{
 	background-color:#ffffff;
     width:100%;
-    height:300px;
+    height:155px;
 	border-top:2px solid #acacac;
 	color:#FFF;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	margin: 0 auto;
 	font-size: 25px;
-	padding-top:150px;
+	padding-top:70px;
 }
 .eng3sec2{
 	background-color:#ffffff;
     width:100%;
-    height:300px;
+    height:100px;
 	border-top:2px solid #acacac;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	color:#FFF;
 	margin: 0 auto;
 	font-size: 25px;
-	padding-top:100px;
+	padding-top:30px;
 }
 .eng3sec3{
 	background-color:#ffffff;
@@ -217,6 +217,7 @@
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	text-align:left;
 	font-weight:500;
+	margin-bottom:5px;
 }
 .eng3head{
 	color:#000000;
@@ -251,7 +252,8 @@
 /*---------------------------------------------------------------------------------content-4------------------------------------------------*/
 .wrapper-content4{
 	    background: #25c6da;
-	    height: 695px;
+	    height:100%;
+	    min-height: 640px;
 }
 .wrapper-content4-in4 {
     background: #fff;
@@ -261,7 +263,6 @@
     border-radius: 6px;
 }
 .content4 h6 {
-color: #25C6DA;
     font-size: 16px;
     font-family: GT-Walsheim-Pro-Trial-Medium;
     text-align: left;
@@ -280,7 +281,7 @@ color: #25C6DA;
 a, a:link, a:hover, a:active, a:focus {
     outline: 0;
     text-decoration: none;
-    color: #fff !important;
+    /*color: #fff !important;*/
 }
 
 
@@ -364,17 +365,7 @@ a, a:link, a:hover, a:active, a:focus {
     border-radius: 100px;
     background-color: #fff;
 }
-.eng3sec1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 300px;
-    border-top: 2px solid #acacac;
-    color: #FFF;
-    font-family: GT-Walsheim-Pro-Trial-Medium;
-    margin: 0 auto;
-    font-size: 25px;
-    padding-top: 120px;
-}
+
 .eng3bottomimg {
     position: relative !important;
     width: 100px;
@@ -418,17 +409,7 @@ a, a:link, a:hover, a:active, a:focus {
     border-radius: 100px;
     background-color: #fff;
 }
-.eng3sec1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 300px;
-    border-top: 2px solid #acacac;
-    color: #FFF;
-    font-family: GT-Walsheim-Pro-Trial-Medium;
-    margin: 0 auto;
-    font-size: 25px;
-    padding-top: 120px;
-}
+
 .eng3bottomimg {
     position: relative !important;
     width: 105px;
@@ -471,17 +452,7 @@ a, a:link, a:hover, a:active, a:focus {
     border-radius: 100px;
     background-color: #fff;
 }
-.eng3sec1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 300px;
-    border-top: 2px solid #acacac;
-    color: #FFF;
-    font-family: GT-Walsheim-Pro-Trial-Medium;
-    margin: 0 auto;
-    font-size: 25px;
-    padding-top: 120px;
-}
+
 .eng3bottomimg {
     position: relative !important;
     width: 105px;
@@ -523,17 +494,7 @@ a, a:link, a:hover, a:active, a:focus {
     border-radius: 100px;
     background-color: #fff;
 }
-.eng3sec1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 300px;
-    border-top: 2px solid #acacac;
-    color: #FFF;
-    font-family: GT-Walsheim-Pro-Trial-Medium;
-    margin: 0 auto;
-    font-size: 25px;
-    padding-top: 120px;
-}
+
 .eng3bottomimg {
     position: relative !important;
     width: 120px;
@@ -573,17 +534,7 @@ a, a:link, a:hover, a:active, a:focus {
     border-radius: 100px;
     background-color: #fff;
 }
-.eng3sec1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 300px;
-    border-top: 2px solid #acacac;
-    color: #FFF;
-    font-family: GT-Walsheim-Pro-Trial-Medium;
-    margin: 0 auto;
-    font-size: 25px;
-    padding-top: 120px;
-}
+
 .eng3bottomimg {
     position: relative !important;
     width: 120px;
@@ -628,8 +579,8 @@ a, a:link, a:hover, a:active, a:focus {
 
 /*-------------------- nes css--------------------------------*/
 .page-3 ul {
-    bottom: 100px!important;
-    right: 15px!important;
+    bottom: 60px!important;
+    right: 5px!important;
 }
 .chat-sty
 {
@@ -672,6 +623,7 @@ a, a:link, a:hover, a:active, a:focus {
     box-shadow: 1px 1px 1px 1px #403e3e;
 	 transition: .3s;
     border-radius: 5px;
+    font-size:0.9em;
 }
 
 .page-3 .yellow.darken-1 {
@@ -679,8 +631,8 @@ a, a:link, a:hover, a:active, a:focus {
 }
 .icons-sty img
 {
-max-width: 75px;
-    height: 75px;	
+max-width: 60px;
+    height: 60px;	
 	left: 5px;
     top: 8px;
     position: relative;

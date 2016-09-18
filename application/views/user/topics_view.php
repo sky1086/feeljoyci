@@ -120,44 +120,17 @@
 
 <body>
 <div id="panel">
+<div id="main" class="main">
     <!-- Main Container -->
-    <div id="main" class="main">
-
-        <!-- Toolbar -->
-        <div id="toolbar" class="primary-color z-depth-1">
-            <div class="open-left" id="open-left" data-activates="slide-out-left">
-                <i class="ion-android-menu"></i>
-            </div>
-            <h1 class="title">FeelJoy</h1>
-            <div class="open-right" id="open-right">
-                <i class="ion-android-alert"></i>
-            </div>
-            <div class="open-right" id="open-right" data-activates="slide-out">
-                <i class="ion-android-person"></i>
-            </div>
-        </div>
-        <!-- End of Toolbar -->
-
-        <!-- Page Contents -->
-        
-        </div>
-        <div class="page-3">
- <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red" style="    width: 130px !important;
-    height: 130px !important;">
-     <img src="<?php echo base_url();?>img/eng2.png" class="img-responsive" />
-    </a>
-    <ul class="icons-sty">
-      <li><a class="btn-floating red" href="<?php echo base_url()?>user/topics"><img src="<?php echo base_url();?>img/paper.png" width="90" height="90" ></a> <p class="chat-sty-para">mindfulness</p></li>
-      <li><a class="btn-floating yellow darken-1" href="<?php echo base_url()?>user/listeners"><img src="<?php echo base_url();?>img/chat.png" width="90" height="90" class="img-responsive  chat-sty"> </a> <p class="chat-sty-para">Talk to a buddy</p></li>
-      
-    </ul>
-  </div>
- </div> 
+    
+    <?php $this->load->view('user/main-nav');?>
+    </div>
+       <?php $this->load->view('user/button-float_view');?>
  <div class="wrapper">
        <div class="container-fluid">
        <ul class="nav nav-tabs" role="tablist">
        <div class="row">
+       <div style="overflow:scroll">
        <?php 
        $numTopics = count($topics);
        $cal_h = (100/($numTopics+1));
@@ -175,7 +148,8 @@
     	</div>
        	
        <?php }?>
-     
+       </div>
+     <div style="position: fixed; display: block;height: 100px; width: 100%;bottom:0;">
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
     <li role="presentation">
     </li>
@@ -200,56 +174,10 @@
     <div class="sec7"></div>
     </li>
     </div>
+    </div>
   </ul>
 
 </div>
-        <!--------------
-       <div class="wrapper">
-       <div class="container-fluid">
-       <div class="row">
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec1">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <div class="sec2">
-      <p class="text-center">WORKPLACE</p>
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <a href="Content_Engine_2.html"><div class="sec2">
-      <p class="text-center">RELATIONSHIPS</p>
-       </div></a>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec3">
-       <div class="bottomimg">
-       <img src="<?php echo base_url();?>img/eng1.png" class="img-responsive" />
-       </div>
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec4">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec5">
-       </div>
-       </div>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec6">
-       </div>
-       </div>
-      
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="sec7">
-       </div>
-       </div>
-       
-       </div>
-       </div>
-       </div>
-------------------->
         <!-- End of Page Contents -->
 
         <!-- Sidebars -->

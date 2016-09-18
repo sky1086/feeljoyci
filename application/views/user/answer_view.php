@@ -1,3 +1,10 @@
+<?php 
+if(isset($Theme) && $Theme != ''){
+	$Theme = $Theme;
+}else {
+	$Theme = 't0';
+}
+	?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -119,70 +126,43 @@
 </head>
 
 <body>
+<script type="text/javascript">
+defineColors();
+</script>
 <div id="panel">
     <!-- Main Container -->
      
     <div id="main" class="main">
 
         <!-- Toolbar -->
-        <div id="toolbar" class="primary-color z-depth-1">
-            <div class="open-left" id="open-left" data-activates="slide-out-left">
-                <i class="ion-android-menu"></i>
-           </div>
-            <h1 class="title" id="flip"><?php echo $category[0]->name;?></h1>
-            <div class="open-right" id="open-right">
-                <i class="ion-android-alert"></i>
-            </div>
-            <div class="open-right" id="open-right" data-activates="slide-out">
-                <i class="ion-android-person"></i>
-            </div>
-        </div>
+         <?php 
+$datas['heading'] = ucfirst($category[0]->name);
+$datas['Theme'] = $Theme;
+
+$this->load->view('user/main-nav', $datas);?>
         <!-- End of Toolbar -->
 
         <!-- Page Contents -->
-       <div class="wrapper-content4">
+       <div class="wrapper-content4 <?php echo $Theme;?>">
            <div class="container-fluid">
                <div class="row">
                		<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
                     	<div class="wrapper-content4-in">
                         <div class="wrapper-content4-in4"> 
                                             <div class="content4">
-                                            <h6><?php echo ucfirst($questions[0]->question);?></h6>
+                                            <h6 class="<?php echo $Theme.'-txt';?>"><?php echo ucfirst($questions[0]->question);?></h6>
                                                  <p>"<?php echo ucfirst($questions[0]->answer);?>"</p>
                                      
                                           </div>     
                                     
-                      </div>     
-                       <div class="wrapper-content4-in3">
-                                    </div>       
-                            <div class="wrapper-content4-in1">
-                            
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                            </div>
-                                 <div class="wrapper-content4-in2">
-                                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                 </div>
-                                   
-                                     
+                      </div>             
                </div>
            </div>
       </div>
       </div>
       </div>  
 </div>
-        <div class="page-3">
- <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red" style="    width: 130px !important;
-    height: 130px !important;">
-     <img src="<?php echo base_url();?>img/eng2.png" class="img-responsive" />
-    </a>
-    <ul class="icons-sty">
-      <li><a class="btn-floating red" href="<?php echo base_url()?>user/topics"><img src="<?php echo base_url();?>img/paper.png" width="90" height="90" ></a> <p class="chat-sty-para">mindfulness</p></li>
-      <li><a class="btn-floating yellow darken-1" href="<?php echo base_url()?>user/listeners"><img src="<?php echo base_url();?>img/chat.png" width="90" height="90" class="img-responsive  chat-sty"> </a> <p class="chat-sty-para">Talk to a buddy</p></li>
-      
-    </ul>
-  </div>
- </div> 
+<?php $this->load->view('user/button-float_view');?>
  
     </div>
     <!-- End of Main Container -->
