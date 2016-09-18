@@ -137,7 +137,13 @@ $this->load->view('user/main-nav', $datas);?>
        $colors = array('25C6DA', '4DB6AC', '81C783', 'AED581');
        $theme = 1;
        $color = 0;
+       $other = 0;
        foreach ($topics as $topic){
+       	if($topic->name == 'other'){
+       		$other = 1;
+       		$other_data[] = $topic;
+       		continue;
+       	}
        	$first = reset($topics);
        if($first == $topic){
        	$class = 'eng2sec1';
@@ -157,7 +163,18 @@ $this->load->view('user/main-nav', $datas);?>
        <?php 
        $color++;
        $theme++;
-       }?>
+       }
+       if($other){?>
+       	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+       	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
+       	<div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[($color+1)];?>;" onclick="setColorCookie(this.className);">
+       	<div id="flip">
+       	<p class="text-center"><?php echo strtoupper($other_data->name);?></p></div>
+       	       </div>
+       	       </a>
+       	       </div>
+       <?php }
+       ?>
        </div>
        </div>
        </div>

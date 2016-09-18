@@ -152,10 +152,6 @@
      <div style="position: fixed; display: block;height: 100px; width: 100%;bottom:0;">
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
     <li role="presentation">
-    </li>
-    </div>
-     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <li role="presentation">
     <div class="sec4"></div>
     </li>
     </div>
