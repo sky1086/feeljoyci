@@ -164,7 +164,9 @@ $this->load->view('user/main-nav', $datas);?>
        $color++;
        $theme++;
        }
-       if($other){?>
+       if($other){
+       	$other_data = $other_data[0];
+       	?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
        	<div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[($color+1)];?>;" onclick="setColorCookie(this.className);">
