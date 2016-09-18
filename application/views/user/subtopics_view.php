@@ -139,7 +139,7 @@ $this->load->view('user/main-nav', $datas);?>
        $color = 0;
        $other = 0;
        foreach ($topics as $topic){
-       	if($topic->name == 'other'){
+       	if(strtolower($topic->name) == 'other'){
        		$other = 1;
        		$other_data[] = $topic;
        		continue;
