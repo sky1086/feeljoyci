@@ -6,13 +6,15 @@ class Question extends CI_Controller{
         parent::__construct();
 		$this->load->model('authentication');
     	$this->authentication->isLoggedIn(array(ACCOUNT_ADMIN));  
-		$this->load->model('admin/question_model');
+		$this->load->model(array('admin/question_model', 'admin/category_model'));
 		$this->load->library(array('form_validation'));
 	    }
 
     public function index(){
     	$queData = $this->question_model->getAllQuestions();
+    	$catData = $this->category_model->getAllSubCategories();
     	$data['quiz_data'] = $queData;
+    	$data['cat_data'] = $catData;
     	
 		$this->load->view('admin/question_view', $data);
     }
@@ -72,6 +74,21 @@ class Question extends CI_Controller{
     	$data['question'] = $data['question'][0];
    
     	$this->load->view('admin/questionedit_view', $data);
+    }
+    
+    public function catassoc(){
+    	$categories = '';
+    	$qid = '';
+    	
+    	if ($this->input->post('qid')) {
+    		$qid = $this->input->post('qid');
+    	}
+    	if ($this->input->post('categories')) {
+    		$string = $this->input->post('categories');
+    	}
+    	
+    	$view_data = $this->category_model->assocCatQuestion($string, $qid);
+    	echo $view_data;
     }
 }
 ?>
