@@ -158,7 +158,7 @@ $this->load->view('user/main-nav', $datas);?>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <a href="<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>/<?php echo 't'.$theme;?>">
         <div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-        <?php echo strtoupper($topic->name);?>
+        <p style="text-align:center;"><?php echo strtoupper($topic->name);?></p>
        </div>
        </a>
        </div>
@@ -172,7 +172,7 @@ $this->load->view('user/main-nav', $datas);?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
        	<div class="eng2sec2" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-       	<?php echo strtoupper($other_data->name);?>
+       	<p style="text-align:center;"><?php echo strtoupper($other_data->name);?></p>
        	       </div>
        	       </a>
        	       </div>

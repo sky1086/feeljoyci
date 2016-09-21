@@ -105,7 +105,7 @@
     height:155px;
 	font-family:GT-Walsheim-Pro-Trial-Medium;
 	color:#FFF;
-	margin: 0 auto;
+	margin: 55px 0 0 0;
 	font-size: 1em;
 	vertical-align:center;
 	text-align:center;
@@ -583,7 +583,7 @@ a, a:link, a:hover, a:active, a:focus {
 
 /*-------------------- nes css--------------------------------*/
 .page-3 ul {
-    bottom: 60px!important;
+    bottom: 40px!important;
     right: 5px!important;
 }
 .chat-sty
@@ -603,8 +603,8 @@ a, a:link, a:hover, a:active, a:focus {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    width: 92px !important;
-    height: 92px !important;
+    width: 70px !important;
+    height: 70px !important;
     line-height: 37px;
     padding: 0;
     background-color: #25c6da !important;
@@ -619,12 +619,12 @@ a, a:link, a:hover, a:active, a:focus {
 .chat-sty-para
 {position: relative;
     right: 131px;
-    bottom: 30px;
+    bottom: 10px;
     background: #dedede;
     color: #222;
     width: 124px;
     padding: 3px 0px;
-    box-shadow: 1px 1px 1px 1px #403e3e;
+    /*box-shadow: 1px 1px 1px 1px #403e3e;*/
 	 transition: .3s;
     border-radius: 5px;
     font-size:0.9em;
@@ -635,10 +635,10 @@ a, a:link, a:hover, a:active, a:focus {
 }
 .icons-sty img
 {
-max-width: 60px;
-    height: 60px;	
-	left: 5px;
-    top: 8px;
+max-width: 40px;
+    height: 40px;	
+	left: 3px;
+    top: 6px;
     position: relative;
 }
 

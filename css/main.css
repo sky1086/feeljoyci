@@ -752,6 +752,7 @@ footer.page-footer .footer-copyright i {
     text-align: center;
     margin: 0;
     flex-grow: 2;
+    padding-left:56px;
 }
 #toolbar.left-only .title {
     text-align: left;
