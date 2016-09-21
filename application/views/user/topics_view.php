@@ -103,6 +103,9 @@
             width: 100%;
             height: 100%;
         }
+        body{
+    		background-color: #7f8c8d;
+        }
 
         .send-button {
             background-image: url('icons/send-1x.png');
@@ -115,6 +118,9 @@
             background-position: center;
             background-size: 60%,60%;
         }
+        .nav-tabs {
+    border-bottom: 1px solid #acacac;
+}
     </style>
 </head>
 
@@ -148,11 +154,7 @@
     	</div>
        	
        <?php }?>
-       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    	<li role="presentation">
-    	<div class="sec2 text-center" style="height: 150px;padding-top:41px;">&nbsp; </div>
-    	</li>
-    	</div>
+       
        </div>
      <div style="position: fixed; display: block; width: 100%;bottom:0;">
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
