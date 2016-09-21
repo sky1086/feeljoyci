@@ -107,7 +107,9 @@
 	color:#FFF;
 	margin: 0 auto;
 	font-size: 1em;
-	padding-top:90px;
+	vertical-align:center;
+	text-align:center;
+	margin-top:55px;
 }
 .eng2sec2{
 	background-color:#4DB6AC;
@@ -117,7 +119,8 @@
 	color:#FFF;
 	margin: 0 auto;
 	font-size: 1em;
-	padding-top:35px;
+	vertical-align:center;
+	text-align:center;
 }
 .eng2sec3{
 	background-color:#81C783;

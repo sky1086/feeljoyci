@@ -133,8 +133,10 @@ $this->load->view('user/main-nav', $datas);?>
        <div class="container-fluid">
        <div class="row">
        <?php 
+       
        $numTopics = count($topics);
-       $colors = array('25C6DA', '4DB6AC', '81C783', 'AED581');
+       
+       $colors = array('25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA');
        $theme = 1;
        $color = 0;
        $other = 0;
@@ -152,11 +154,11 @@ $this->load->view('user/main-nav', $datas);?>
        }
        //echo $class;exit;
        	?>
+       	<div style="clear: both;"></div>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <a href="<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>/<?php echo 't'.$theme;?>">
         <div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-        <div id="flip">
-      <p class="text-center"><?php echo strtoupper($topic->name);?></p></div>
+        <?php echo strtoupper($topic->name);?>
        </div>
        </a>
        </div>
@@ -169,9 +171,8 @@ $this->load->view('user/main-nav', $datas);?>
        	?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
-       	<div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-       	<div id="flip">
-       	<p class="text-center"><?php echo strtoupper($other_data->name);?></p></div>
+       	<div class="eng2sec2" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
+       	<?php echo strtoupper($other_data->name);?>
        	       </div>
        	       </a>
        	       </div>
@@ -201,6 +202,30 @@ $this->load->view('user/main-nav', $datas);?>
     <script src="<?php echo base_url();?>js/vendor/swiper.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
     <script src="<?php echo base_url();?>js/main.js"></script>
+    <script>
+    	$(document).ready(function(){
+    	resizeDiv();
+    	});
+
+    	window.onresize = function(event) {
+    	resizeDiv();
+    	}
+
+    	function resizeDiv() {
+        	var topic = <?php echo $numTopics;?>;
+    	vpw = $(window).width();
+    	vph = $(window).height();
+    	if(topic && topic <=4){
+			vph = Math.ceil(vph/topic);
+        }else{
+			vph = 150;
+        }
+    	$('.eng2sec2').css({'height': + vph + 'px'});
+    	$('.eng2sec1').css({'height': + vph + 'px'});
+    	$('.eng2sec2').css({'line-height': + vph + 'px'});
+    	$('.eng2sec1').css({'line-height': + vph + 'px'});
+    	}
+    </script>
 </body>
 
 </html>
