@@ -13,17 +13,18 @@ class Questions extends CI_Controller{
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($id);
 	   		$data['questions'] = $this->question_model->getAssocQuestionDetails($id);
-	   		$data['Theme'] = $theme;
+	   		if ($theme){
+	   			$this->session->set_userdata(array('theme'=>$theme));
+	   		}
 	   		$this->load->view('user/questions_view', $data);
 	   	}
 	   }
 	   
-	   public function answer($catid,$id,$theme = ''){
+	   public function answer($catid,$id){
 	   	$id = (int)$id;
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($catid);
 	   		$data['questions'] = $this->question_model->getQuestionDetails($id);
-	   		$data['Theme'] = $theme;
 	   		$this->load->view('user/answer_view', $data);
 	   	}
 	   }

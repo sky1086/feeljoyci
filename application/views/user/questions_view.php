@@ -1,10 +1,3 @@
-<?php 
-if(isset($Theme) && $Theme != ''){
-	$Theme = $Theme;
-}else {
-	$Theme = 't0';
-}
-	?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -132,7 +125,6 @@ if(isset($Theme) && $Theme != ''){
         <!-- Toolbar -->
         <?php 
 $datas['heading'] = ucfirst($category[0]->name);
-$datas['Theme'] = $Theme;
 
 $this->load->view('user/main-nav', $datas);?>
 
@@ -153,8 +145,8 @@ $this->load->view('user/main-nav', $datas);?>
        	?>
 	   <div class="<?php echo $class;?>">
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
-      <p class="eng3blue <?php echo $Theme.'-txt';?>"><?php echo $category[0]->name;?></p>
-	  <a href="<?php echo base_url();?>user/questions/answer/<?php echo $category[0]->id.'/'.$question->id.'/'.$Theme;?>" style="cursor: pointer;"><h2 class="eng3head"><?php echo ucfirst($question->question);?></h2></a>
+      <p class="eng3blue <?php echo $this->session->userdata('theme').'-txt';?>"><?php echo $category[0]->name;?></p>
+	  <a href="<?php echo base_url();?>user/questions/answer/<?php echo $category[0]->id.'/'.$question->id;?>" style="cursor: pointer;"><h2 class="eng3head"><?php echo ucfirst($question->question);?></h2></a>
        </div>
        </div>
        <?php }?>
@@ -163,7 +155,7 @@ $this->load->view('user/main-nav', $datas);?>
        </div>
        </div>
 </div>
-        <?php $this->load->view('user/button-float_view');?>
+        <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
  
     </div>
     <!-- End of Main Container -->

@@ -4,9 +4,14 @@ if(isset($heading) && $heading != ''){
 }else{
   $heading = 'FeelJoy';
 }
+$align = "center";
+if(strlen($heading) > 24){
+	$align = 'left;padding-left:10px;';
+	
+}
 
-if(isset($Theme) && $Theme != ''){
-  $Theme = $Theme;
+if($this->session->userdata('theme') != ''){
+  $Theme = $this->session->userdata('theme');
 }else{
   $Theme = 'primary-color';
 }
@@ -14,7 +19,7 @@ if(isset($Theme) && $Theme != ''){
 
         <!-- Toolbar -->
         <div id="toolbar" class="<?php echo $Theme; ?> z-depth-1">
-            <h1 class="title"><?php echo $heading;?></h1>
+            <h1 class="title" style="text-align:<?php echo $align;?>"><?php echo $heading;?></h1>
             
             <div class="open-right" id="open-right" data-activates="slide-out">
                 <i class="ion-android-menu"></i>

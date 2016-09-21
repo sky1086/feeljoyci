@@ -131,7 +131,7 @@
     
     <?php $this->load->view('user/main-nav');?>
     </div>
-       <?php $this->load->view('user/button-float_view');?>
+       <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
  <div class="wrapper">
        <div class="container-fluid">
        <ul class="nav nav-tabs" role="tablist">

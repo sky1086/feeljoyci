@@ -1,10 +1,3 @@
-<?php 
-if(isset($Theme) && $Theme != ''){
-	$Theme = $Theme;
-}else {
-	$Theme = 't0';
-}
-	?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -137,20 +130,19 @@ defineColors();
         <!-- Toolbar -->
          <?php 
 $datas['heading'] = ucfirst($category[0]->name);
-$datas['Theme'] = $Theme;
 
 $this->load->view('user/main-nav', $datas);?>
         <!-- End of Toolbar -->
 
         <!-- Page Contents -->
-       <div class="wrapper-content4 <?php echo $Theme;?>">
+       <div class="wrapper-content4 <?php echo $this->session->userdata('theme');?>">
            <div class="container-fluid">
                <div class="row">
                		<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
                     	<div class="wrapper-content4-in">
                         <div class="wrapper-content4-in4"> 
                                             <div class="content4">
-                                            <h6 class="<?php echo $Theme.'-txt';?>"><?php echo ucfirst($questions[0]->question);?></h6>
+                                            <h6 class="<?php echo $this->session->userdata('theme').'-txt';?>"><?php echo ucfirst($questions[0]->question);?></h6>
                                                  <p>"<?php echo ucfirst($questions[0]->answer);?>"</p>
                                      
                                           </div>     
@@ -162,7 +154,7 @@ $this->load->view('user/main-nav', $datas);?>
       </div>
       </div>  
 </div>
-<?php $this->load->view('user/button-float_view');?>
+<?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
  
     </div>
     <!-- End of Main Container -->

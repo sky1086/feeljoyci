@@ -158,7 +158,7 @@ $this->load->view('user/main-nav', $datas);?>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <a href="<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>/<?php echo 't'.$theme;?>">
         <div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-        <p style="text-align:center;"><?php echo strtoupper($topic->name);?></p>
+        <p style="text-align:center;margin-bottom:0px;"><?php echo strtoupper($topic->name);?></p>
        </div>
        </a>
        </div>
@@ -172,7 +172,7 @@ $this->load->view('user/main-nav', $datas);?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
        	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
        	<div class="eng2sec2" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
-       	<p style="text-align:center;"><?php echo strtoupper($other_data->name);?></p>
+       	<p style="text-align:center;margin-bottom:0px;"><?php echo strtoupper($other_data->name);?></p>
        	       </div>
        	       </a>
        	       </div>
@@ -184,7 +184,7 @@ $this->load->view('user/main-nav', $datas);?>
         <!-- End of Page Contents -->
 
     </div>
-        <?php $this->load->view('user/button-float_view');?>
+        <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
  
     </div>
     <!-- End of Main Container -->

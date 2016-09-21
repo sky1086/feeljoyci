@@ -11,6 +11,7 @@ class Topics extends CI_Controller{
     public function index(){
     	$data['topics'] = $this->category_model->getAllThemes();
 		$this->load->view('user/topics_view', $data);
+		$this->session->set_userdata(array('theme'=>'t0'));
 	   }
 	   
 	   public function sub($id = 0){
@@ -18,6 +19,7 @@ class Topics extends CI_Controller{
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($id);
 	   		$data['topics'] = $this->category_model->getAllThemes($id);
+	   		$this->session->set_userdata(array('theme'=>'t0'));
 	   		$this->load->view('user/subtopics_view', $data);
 	   	}
 	   }
