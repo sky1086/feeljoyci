@@ -10,8 +10,8 @@ class Topics extends CI_Controller{
 
     public function index(){
     	$data['topics'] = $this->category_model->getAllThemes();
+    	$this->session->set_userdata(array('theme'=>'t0'));
 		$this->load->view('user/topics_view', $data);
-		$this->session->set_userdata(array('theme'=>'t0'));
 	   }
 	   
 	   public function sub($id = 0){

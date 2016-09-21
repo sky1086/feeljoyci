@@ -155,7 +155,10 @@ $this->load->view('user/main-nav', $datas);?>
        </div>
        </div>
 </div>
-        <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
+        <?php
+        include 'button-float_view.php';
+        //$this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));
+        ?>
  
     </div>
     <!-- End of Main Container -->
