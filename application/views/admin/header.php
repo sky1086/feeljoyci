@@ -114,6 +114,7 @@
             background-size: 60%,60%;
         }
     </style>
+    <?php $this->load->view('user/theme-common');?>
 </head>
 
 <body>
@@ -122,7 +123,7 @@
     <div id="main" class="main">
 
         <!-- Toolbar -->
-        <div id="toolbar" class="primary-color z-depth-1">
+        <div id="toolbar" class="primary-color z-depth-1 theme">
             <div class="open-left" id="open-left" data-activates="slide-out-left">
                 <i class="ion-android-menu"></i>
             </div>

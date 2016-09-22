@@ -8,14 +8,12 @@ class Questions extends CI_Controller{
 		$this->load->model(array('admin/question_model', 'admin/category_model'));
 	    }
 
-	   public function index($id = 0, $theme = ''){
+	   public function index($id = 0){
 	   	$id = (int)$id;
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($id);
 	   		$data['questions'] = $this->question_model->getAssocQuestionDetails($id);
-	   		if($theme && $theme != 't0'){
-	   			$this->session->set_userdata(array('theme'=>$theme));
-	   		}
+	   		
 	   		$this->load->view('user/questions_view', $data);
 	   	}
 	   }

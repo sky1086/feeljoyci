@@ -54,6 +54,7 @@
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
+    <script type="text/javascript">setCookie('ThemeColor', '', -1);</script>
     <style>
         .primary-color {
             background-color: #7f8c8d !important;
@@ -152,12 +153,11 @@ $this->load->view('user/main-nav', $datas);?>
        }else {
        	$class = 'eng2sec2';
        }
-       //echo $class;exit;
        	?>
        	<div style="clear: both;"></div>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <a href="<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>/<?php echo 't'.$theme;?>">
-        <div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
+        <a href="javascript:void(0);" onclick="setColorCookie('<?php echo 't'.$theme;?>', '<?php echo base_url();?>user/questions/index/<?php echo $topic->id;?>');">
+        <div class="<?php echo $class;?>" style="background-color:#<?php echo $colors[$color];?>;">
         <p style="text-align:center;margin-bottom:0px;"><?php echo strtoupper($topic->name);?></p>
        </div>
        </a>
@@ -170,8 +170,8 @@ $this->load->view('user/main-nav', $datas);?>
        	$other_data = $other_data[0];
        	?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       	<a href="<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>/<?php echo 't'.($theme);?>">
-       	<div class="eng2sec2" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie(this.className);">
+       	<a href="javascript:void(0);" onclick="setColorCookie('<?php echo 't'.$theme;?>', '<?php echo base_url();?>user/questions/index/<?php echo $other_data->id;?>');">
+       	<div class="eng2sec2" style="background-color:#<?php echo $colors[$color];?>;" onclick="setColorCookie('<?php echo 't'.$theme;?>');">
        	<p style="text-align:center;margin-bottom:0px;"><?php echo strtoupper($other_data->name);?></p>
        	       </div>
        	       </a>
@@ -194,7 +194,6 @@ $this->load->view('user/main-nav', $datas);?>
     <script src="<?php echo base_url();?>js/vendor/jquery-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>js/helper.js"></script>
     <script src="<?php echo base_url();?>js/vendor/HeadsUp.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
     <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.swipebox.min.js"></script>

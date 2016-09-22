@@ -264,15 +264,15 @@ $(document).ready(function() {
         </div>
         <!-- End of Page Contents -->
     <!-- End of Main Container -->
-    <div class="meta_holder">
+    <div class="meta_holder theme">
     <form method="post" id="msenger" action="" onsubmit="return submitMsg();">
-        <div class="chat-text-holder">
+        <div class="chat-text-holder theme">
             <div class="left">
             	<input type="hidden" name="fid" id="fid" value="<?php echo $list_id;?>">
                 <textarea class="chat-text-box" placeholder="Type a message" name="msg" id="msg-min"></textarea>
             </div>
             <div class="right">
-                <input type="submit" class="send-button" value="" id="sb-mt" />
+                <input type="submit" class="send-button theme" value="" id="sb-mt" />
             </div>
             <div id="dataHelper" last-id=""></div>
         </div>

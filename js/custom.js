@@ -1,25 +1,20 @@
-function setColorCookie(cls_name){
-	var rgb = document.querySelector('.'+cls_name).style['background-color'];
-	var color = '#' + rgb.substr(4, rgb.indexOf(')') - 4).split(',').map((color) => parseInt(color).toString(16)).join('');
-	setCookie('ThemeColor', color, 1);
+function setColorCookie(themeName, r_url){
+	setCookie('ThemeColor', themeName, 1);
+	setTimeout(function(){
+		window.location = r_url;
+	},500);
 }
 
-function getColorCookie(){
+function getColorTheme(){
 	return getCookie('ThemeColor');
-}
-
-function defineColors(){
-	var thmColor = getCookie('ThemeColor');
-	if(thmColor != '', thmColor != undefined){
-		document.write('<style>.primary-color {background-color: ' + thmColor + ' !important;}</style>');
-	}
 }
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = cname + "=" + cvalue + "; " + expires + ";path=/;";
+    
 }
 
 function getCookie(cname) {

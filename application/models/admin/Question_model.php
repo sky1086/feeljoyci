@@ -34,7 +34,6 @@ class Question_model extends CI_Model{
     }
     
     public function getAssocQuestionDetails($catid){
-    	$this->db->where('id', $catid);
     	$query = $this->db->query('select q.* from questions q, cat_question_assoc cqa where cqa.questid = q.id and cqa.catid = '.$catid);
     	if ($query->num_rows() > 0) {
     		return $query->result();

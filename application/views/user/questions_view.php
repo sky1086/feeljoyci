@@ -4,22 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>FeelJoy</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
-
+<meta http-equiv="Cache-Control" content="no-store" />
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
 
@@ -54,6 +40,7 @@
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
     <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
+    
     <style>
         .meta_holder {
             width: 100%;
@@ -132,7 +119,7 @@ $this->load->view('user/main-nav', $datas);?>
         <!-- End of Toolbar -->
 
         <!-- Page Contents -->
-       <div class="wrapper">
+       <div class="">
        <div class="container-fluid">
        <div class="row">
        <?php foreach ($questions as $question){
@@ -145,7 +132,7 @@ $this->load->view('user/main-nav', $datas);?>
        	?>
 	   <div class="<?php echo $class;?>">
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
-      <p class="eng3blue <?php echo $this->session->userdata('theme').'-txt';?>"><?php echo $category[0]->name;?></p>
+      <p class="eng3blue theme-txt"><?php echo $category[0]->name;?></p>
 	  <a href="<?php echo base_url();?>user/questions/answer/<?php echo $category[0]->id.'/'.$question->id;?>" style="cursor: pointer;"><h2 class="eng3head"><?php echo ucfirst($question->question);?></h2></a>
        </div>
        </div>
@@ -154,10 +141,11 @@ $this->load->view('user/main-nav', $datas);?>
        </div>
        </div>
        </div>
+       
 </div>
+
         <?php
-        include 'button-float_view.php';
-        //$this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));
+         $this->load->view('user/button-float_view');
         ?>
  
     </div>
@@ -168,14 +156,11 @@ $this->load->view('user/main-nav', $datas);?>
     <script src="<?php echo base_url();?>js/vendor/jquery-2.1.0.min.js"></script>
     <script src="<?php echo base_url();?>js/helper.js"></script>
     <script src="<?php echo base_url();?>js/vendor/HeadsUp.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
     <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.swipebox.min.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/swiper.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
-    <script src="<?php echo base_url();?>js/main.js"></script>
 </body>
 
 </html>

@@ -52,7 +52,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="<?php echo base_url();?>js/custom.js"></script>
     <script src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
+    <script type="text/javascript">setCookie('ThemeColor', '', -1);</script>
     <style>
         .primary-color {
             background-color: #7f8c8d !important;

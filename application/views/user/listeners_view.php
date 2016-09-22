@@ -10,11 +10,12 @@
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Roboto|Titillium+Web' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<?php $this->load->view('user/theme-common');?>
 </head>
 <body>
 <div class="wrapper">
 <header>
-	<div class="header-in">
+	<div class="header-in theme">
     	<h2 class="text-center">FeelJoy</h2>
     
     </div>

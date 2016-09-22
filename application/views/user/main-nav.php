@@ -5,20 +5,21 @@ if(isset($heading) && $heading != ''){
   $heading = 'FeelJoy';
 }
 $align = "center";
-if(strlen($heading) > 24){
-	$align = 'left;padding-left:10px;';
-	
+if(strlen($heading) > 15){
+	$align = 'left;padding-left:10px;font-size:1em;overflow:hidden;';
 }
 
-if($this->session->userdata('theme') != ''){
-  $Theme = $this->session->userdata('theme');
-}else{
-  $Theme = 'primary-color';
-}
 ?>
-
+<script>
+    var colorTh = getColorTheme();
+	if(colorTh != ''){
+		document.write('<link rel="stylesheet" href="<?php echo base_url();?>css/themes/' + colorTh + '.css">');
+	}else{
+		document.write('<link rel="stylesheet" href="<?php echo base_url();?>css/themes/t0.css">');
+		}
+    </script>
         <!-- Toolbar -->
-        <div id="toolbar" class="<?php echo $Theme; ?> z-depth-1">
+        <div id="toolbar" class="theme z-depth-1">
             <h1 class="title" style="text-align:<?php echo $align;?>"><?php echo $heading;?></h1>
             
             <div class="open-right" id="open-right" data-activates="slide-out">

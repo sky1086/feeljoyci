@@ -113,12 +113,13 @@
             width: 90%;
         }
     </style>
+    <?php $this->load->view('user/theme-common');?>
 </head>
 
 <body>
 
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper theme">
             <a href="#" class="brand-logo center">FeelJoy</a>
         </div>
     </nav>

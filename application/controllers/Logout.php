@@ -14,6 +14,7 @@
         	setcookie("sp_u", "", time()-60*60*24*100, "/");
         	setcookie("sp_p", "", time()-60*60*24*100, "/");
         }
+        setcookie("ThemeColor", "", time()-60*60*24*100, "/");
         redirect('login');
     }        
  }
