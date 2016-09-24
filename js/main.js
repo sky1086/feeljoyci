@@ -406,8 +406,8 @@ $(function () {
     // init swiper layout
     window.onload = function () {
         setTimeout(function () {
-            ResizeHandler = ResizeHandler || function () { };
-            ResizeHandler();
+            //ResizeHandler = ResizeHandler || function () { };
+            //ResizeHandler();
         }, 500)
     };
 
