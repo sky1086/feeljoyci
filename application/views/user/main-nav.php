@@ -30,7 +30,7 @@ if(strlen($heading) > 15){
             </div>
         </div>
         
-        <ul id="slide-out" class="side-nav">
+        <ul id="slide-out" class="side-nav" style="box-shadow:none;">
             <!-- Tabs -->
             <li>
                 <ul class="tabs">

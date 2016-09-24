@@ -1,8 +1,15 @@
 
 <div class="page-3">
  <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large theme">
-     <img src="<?php echo base_url();?>img/eng2.png" class="img-responsive" />
+    <a class="btn-floating btn-large theme buble-th">
+    <?php 
+    if($this->router->class == 'topics'){
+    	echo '<img src="'.base_url().'img/eng1.png" class="img-responsive" />';
+    }else{
+    	echo '<img src="'.base_url().'img/eng2.png" class="img-responsive" />';
+    }
+    	
+    ?>
     </a>
     <ul class="icons-sty">
       <li>

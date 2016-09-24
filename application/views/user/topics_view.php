@@ -138,7 +138,7 @@
        <div class="container-fluid">
        <ul class="nav nav-tabs" role="tablist">
        <div class="row">
-       <div style="overflow:scroll">
+       <div style="overflow:scroll;max-height: 500px;">
        <?php 
        $numTopics = count($topics);
        $cal_h = (100/($numTopics+1));
@@ -150,7 +150,7 @@
        foreach ($topics as $topic){?>
        	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
     	<li role="presentation"><a href="<?php echo base_url();?>user/topics/sub/<?php echo $topic->id;?>" aria-controls="profile" role="tab" data-toggle="tab">
-    	<div class="sec2 text-center" style="height: <?php echo $height;?>%;"><?php echo strtoupper($topic->name);?> </div>
+    	<div class="sec2 text-center" style="line-height:<?php echo $height;?>%;height: <?php echo $height;?>%;"><?php echo strtoupper($topic->name);?> </div>
     	</a>
     	</li>
     	</div>
