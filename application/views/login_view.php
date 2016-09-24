@@ -11,7 +11,7 @@ $attributes = 'name="login" class="col s12" onsubmit="return processInput();" au
                   <div class="signup-sec" style="text-align:center;">
                     <div class="main-head"><h4>Log in to FeelJoy</h4></div>
                       <a class="btn ggl-su" href="<?php echo $authUrl;?>"><i class="fa fa-google-plus" aria-hidden="true"></i>
-  Sign up via Google</a>
+  Sign in via Google</a>
                   </div>
                   <hr class="separate">
                     <div class="details row" style="margin-bottom:0">
