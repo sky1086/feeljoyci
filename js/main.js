@@ -50,8 +50,8 @@ var options = {
     },
     onAfter: function ($container, $newContent) {
         setTimeout(function () {
-            ResizeHandler = ResizeHandler || function () { };
-            ResizeHandler();
+        	//ResizeHandler = ResizeHandler || function () { };
+            //ResizeHandler();
         }, 500)
         initiate_plugins(); // All onAfter calls goes inside this function
     }

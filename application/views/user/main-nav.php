@@ -12,11 +12,14 @@ if(strlen($heading) > 15){
 ?>
 <script>
     var colorTh = getColorTheme();
+    var themeLink = document.createElement('link');
+    themeLink.rel = "stylesheet";
 	if(colorTh != ''){
-		document.write('<link rel="stylesheet" href="<?php echo base_url();?>css/themes/' + colorTh + '.css">');
+		themeLink.href = "<?php echo base_url();?>css/themes/" + colorTh + ".css";
 	}else{
-		document.write('<link rel="stylesheet" href="<?php echo base_url();?>css/themes/t0.css">');
+		themeLink.href = "<?php echo base_url();?>css/themes/t0.css";
 		}
+	document.getElementById('panel').appendChild(themeLink);
     </script>
         <!-- Toolbar -->
         <div id="toolbar" class="theme z-depth-1">
