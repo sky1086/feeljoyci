@@ -19,7 +19,7 @@ if(strlen($heading) > 15){
 	}else{
 		themeLink.href = "<?php echo base_url();?>css/themes/t0.css";
 		}
-	document.getElementById('panel').appendChild(themeLink);
+	document.getElementById('main').appendChild(themeLink);
     </script>
         <!-- Toolbar -->
         <div id="toolbar" class="theme z-depth-1">
@@ -42,7 +42,7 @@ if(strlen($heading) > 15){
                 <!-- Twitter -->
                 <div class="twitter">
                     <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/topics';">Quality-space</a></h6>
-                    <h6 class="follow-us"><a href="<?php echo base_url()?>user/listeners">Talk to a buddy</a></h6>
+                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/listeners';">Talk to a buddy</a></h6>
                     
                 </div>
 
@@ -103,7 +103,7 @@ if(strlen($heading) > 15){
                     </div>
                 </div-->
 
-                <a href="/logout" class="btn login-btn theme" style="color:#fff !important; background:#56b68b !important"> <i class="large input"></i> Logout</a>
+                <a href="/logout" class="btn login-btn theme" style="color:#fff !important;"> <i class="large input"></i> Logout</a>
             
             <?php }else{?>
             	<img src="<?php echo base_url();?>img/ryt.png">

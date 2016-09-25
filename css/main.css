@@ -912,6 +912,8 @@ footer.page-footer .footer-copyright i {
     font-family: 'Varela Round', sans-serif;
     font-size: 14px;
     color: #444;
+    float:none;
+    padding-left:0px;
 }
 .chat-message .small {
     display: block;

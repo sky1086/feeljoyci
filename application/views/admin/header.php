@@ -124,14 +124,8 @@
 
         <!-- Toolbar -->
         <div id="toolbar" class="primary-color z-depth-1 theme">
-            <div class="open-left" id="open-left" data-activates="slide-out-left">
-                <i class="ion-android-menu"></i>
-            </div>
             <h1 class="title">FeelJoy</h1>
-            <div class="open-right" id="open-right">
-                <i class="ion-android-alert"></i>
-            </div>
             <div class="open-right" id="open-right" data-activates="slide-out">
-                <i class="ion-android-person"></i>
+                <i class="ion-android-menu"></i>
             </div>
         </div>

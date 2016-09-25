@@ -1,99 +1,219 @@
 <?php //$this->load->view('admin/header');?>
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FeelJoy</title>
-<link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Roboto|Titillium+Web' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<?php $this->load->view('user/theme-common');?>
-</head>
-<body>
-<div class="wrapper">
-<header>
-	<div class="header-in theme">
-    	<h2 class="text-center">FeelJoy</h2>
-    
-    </div>
+<html class="no-js">
 
-</header>
-  <div class="head-top"> </div>
-  <div class="container">
-  
-  <!--------------------------------------- 1st row-------------------------------------->
-  <?php if(!empty($listeners) && count($listeners) > 0){
+<head>
+    <meta charset="utf-8">
+    <title>FeelJoy</title>
+    <meta name="description" content="Material Design Mobile Template">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
+    <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/" >
+    -->
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    -->
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <!-- Stylesheets -->
+    <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>css/style1.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/swipebox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
+    <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="<?php echo base_url();?>js/custom.js"></script>
+    <script src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
+    <style>
+        .primary-color {
+            background-color: #7f8c8d !important;
+        }
+
+        .meta_holder {
+            width: 100%;
+            height: 75px;
+            position: fixed;
+            ;
+            bottom: 0;
+            padding: 10px;
+            margin-bottom: -9px;
+        }
+
+        .chat-text-holder {
+            border-radius: 6px;
+            height: 50px;
+            background-color: rgba(86, 182, 139, 0.80);
+            display: flex;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15), 0  1px 4px rgba(0,0,0,0.20);
+        }
+
+        .left {
+            flex: 0 1 85%;
+            height: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .chat-text-box {
+            opacity: 1 !important;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            padding: 5px 5px 5px 12px;
+            border: none;
+            /*box-shadow: 0px 1px 3px #fff;*/
+            border-radius: 3px;
+            background-color: #fff;
+            border-color: #fff;
+            border-width: 1px;
+            overflow: hidden;
+        }
+
+        .right {
+            flex: 0 1 15%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .send-button {
+            background-image: url('icons/send-1x.png');
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 100%;
+            border: medium none;
+            background-color:rgb(119, 197, 162);
+            border-radius: 3px;
+            background-position: center;
+            background-size: 60%,60%;
+        }
+		.profile-div-text h1, p {
+    		width: 60%;
+    		float: left;
+    		padding-top: 0px;
+    		font-size: 12px;
+    		padding-left: 20px;
+    		margin-bottom: 0px;
+		}
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Container -->
+    <div id="main" class="main">
+
+        <?php $this->load->view('user/main-nav');?>
+    </div>
+       <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
+ <div class="wrapper">
+       <div class="container-fluid">
+       <div class="row">
+	   <div class="col-md-12 col-lg-12 col-sm-12  col-xs-12">
+       <div class="sec1 sec1new theme" style="height:100%;min-height:600px;">
+	     <div class="panel-body-sty1 theme">
+					
+			
+			</div>
+	   <div class="wrapper-new">
+	 <?php if(!empty($listeners) && count($listeners) > 0){
   foreach ($listeners as $listener){
   	?>
-   <div class="box-style">
-    <div class="row">
-     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="row">
-      <div class="img-sty">
-          <div class="col-md-2 col-lg-2 col-sm-2 col-xs-4" style="width:25%;padding-right: 0px;">
-          	
-           <img src="<?php echo base_url();?>pics_listener/<?php echo $listener['profile_img']?>" class="img-responsive pic"/>
-            <div class="star-group">
-              <!--  ul class="star">
-                <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
-                <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
-                <li><img src="<?php echo base_url();?>images/star1.png" class="img-responsive"/></li>
-                <li><img src="<?php echo base_url();?>images/star2.png" class="img-responsive"/></li>
-                <li><img src="<?php echo base_url();?>images/star2.png" class="img-responsive"/></li>
-              </ul-->
-            </div>
-          </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-4" style="width:45%;">
-            <div class="border-right">
-              <div class="short-desc">
-                <h5><a href="<?php echo base_url();?>listener/details/index/<?php echo $listener['id'];?>"><?php echo $listener['name'];?></a></h5>
-                <p><?php echo $listener['qualification'];?></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-3 col-xs-4" style="width:25%;">
-            <div class="line">
-              <div class="mesg"> <a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id'];?>"><img src="<?php echo base_url();?>images/mesg.png" class="img-responsive "/> </a></div>
-            </div>
-          </div>
+			<div class="panel-body-sty">
+					<div class="profile-div">
+					<a href="<?php echo base_url();?>listener/details/index/<?php echo $listener['id'];?>" style="border:0px;">
+						<img src="<?php echo base_url();?>pics_listener/<?php echo $listener['profile_img']?>" class="img-responsive">
+						</a>
+					</div>
+					<div class="profile-div-text">
+						<h1> <a href="<?php echo base_url();?>listener/details/index/<?php echo $listener['id'];?>" style="color: #1c212a;font-weight:800;font-family:'Varela Round', sans-serif;"><?php echo $listener['name'];?></a></h1>
+						<p style="text-align: left;"> <?php echo $listener['qualification'];?></p>
+				
+					</div>
+					<div class="profile-div-chat">
+					<a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id'];?>">
+					<img src="<?php echo base_url();?>img/chat-list.png" class="img-responsive">
+					</a>
+					</div>
+			
+			</div>
+			<?php }}else{?>
+			
+			<div class="panel-body-sty">
+					
+					<div class="profile-div-text">
+						<h1> No records found</h1>
+				
+					</div>
+			
+			</div>
+			<?php }?>
+	   </div>
+	   
+		</div>
        </div>
-       </div>
-      </div>
-      
-      </div>
-	
-	<!--------------------------------------- 1st row-------------------------------------->
-	
-    <div class="row">
-    	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-        	<div class="mid-img">
-        		<img src="<?php echo base_url();?>images/line.png" class="img-responsive" style="width: 40%;">
-    		</div>
-    	</div>
-    </div>
-    <?php }}else{?>
-    <div class="box-style">
-    <div class="row">
-     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-       <div class="row">
-              <div class="short-desc">
-                <h5 style="font-size: 25px;font-weight: 600;padding: 20px 0 30px 40px; text-align: left;">No records found</h5>
-              </div>
-       </div>
-       </div>
-      </div>
-      
-      </div>	
-    <?php }?>  
+    </div> 
   
-  </div>
-</div>
-</body>
-</html>
 
+</div>   
+
+</div>
+    <!-- End of Main Container -->
+    
+    <!-- Scripts -->
+    <script src="<?php echo base_url();?>js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="<?php echo base_url();?>js/helper.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/HeadsUp.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/jquery.swipebox.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/swiper.min.js"></script>
+    <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
+    <script src="<?php echo base_url();?>js/main.js"></script>
+    <script type="text/javascript">
+    if(getColorTheme() == ''){
+    	var classx = document.querySelectorAll('.btn-floating');
+    	for(cl in classx){
+    	classx[cl].classList.remove('buble-th');
+			
+        }
+    }
+    </script>
+</body>
+
+</html>
 
 <?php //$this->load->view('admin/footer');?>
