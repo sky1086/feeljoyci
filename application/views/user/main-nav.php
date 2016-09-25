@@ -41,51 +41,19 @@ if(strlen($heading) > 15){
             <li id="sidebar1" class="p-20">
                 <!-- Twitter -->
                 <div class="twitter">
-                    <h6 class="follow-us"><i class="ion-social-twitter"></i> Follow us on Twitter</h6>
-                    <div class="tweet">
-                        <h3>@Codnauts</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a href="#">#tempor</a>.</p>
-                    </div>
-                    <div class="tweet">
-                        <h3>@Codnauts</h3>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in <a href="#">#voluptate</a> culpa qui officia deserunt mollit anim.</p>
-                    </div>
-                    <div class="tweet">
-                        <h3>@Codnauts</h3>
-                        <p>At vero eos et accusamus et iusto odio <a href="#">#dignissimos</a> <a href="#">#ducimus</a> qui blanditiis praesentium.</p>
-                    </div>
-                </div>
-                <!-- Facebook -->
-                <div class="facebook">
-                    <h6 class="follow-us">Notifications</h6>
-                    <div class="face-notification">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <div>
-                            <p>Mike Green</p>
-                            <span>Sent you a message</span>
-                            <span class="small">Today at 16:48</span>
-                        </div>
-                    </div>
-                    <div class="face-notification">
-                        <img src="img/user.jpg" alt="" class="cricle">
-                        <div>
-                            <p>Lara Connors</p>
-                            <span>Post a photo with you</span>
-                            <span class="small">Today at 14:26</span>
-                        </div>
-                    </div>
-                    <div class="face-notification">
-                        <img src="img/woman-avatar.png" alt="" class="cricle">
-                        <div>
-                            <p>Mike Green</p>
-                            <span>Post something...</span>
-                            <span class="small">Yesterday at 03:19</span>
-                        </div>
-                    </div>
+                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/topics';">Quality-space</a></h6>
+                    <h6 class="follow-us"><a href="<?php echo base_url()?>user/listeners">Talk to a buddy</a></h6>
+                    
                 </div>
 
             </li>
             <li id="sidebar2" class="p-20">
+            <?php 
+            if(!empty($this->session->userdata('userid'))){
+            	//list of contacted listener
+            	$contactedListeners = $this->chat_model->getContactedListeners($this->session->userdata('userid'));
+            	foreach ($contactedListeners as $listener){
+            ?>
                 <!-- Chat -->
                 <div class="chat-sidebar">
                     <div class="chat-img">
@@ -93,13 +61,13 @@ if(strlen($heading) > 15){
                         <span class="dot green"></span>
                     </div>
                     <div class="chat-message">
-                        <p>Mike Green</p>
+                        <p><?php echo $listener['contact_name'];?></p>
                         <span>Sent you a message</span>
                         <span class="small">online</span>
                     </div>
                 </div>
-
-                <div class="chat-sidebar">
+				<?php }?>
+                <!--  div class="chat-sidebar">
                     <div class="chat-img">
                         <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
                         <span class="dot green"></span>
@@ -133,42 +101,15 @@ if(strlen($heading) > 15){
                         <span>Is offline.</span>
                         <span class="small">offline</span>
                     </div>
-                </div>
+                </div-->
 
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Sara Lower</p>
-                        <span>Sent you a message</span>
-                        <span class="small">online</span>
-                    </div>
-                </div>
+                <a href="/logout" class="btn login-btn theme" style="color:#fff !important; background:#56b68b !important"> <i class="large input"></i> Logout</a>
+            
+            <?php }else{?>
+            	<img src="<?php echo base_url();?>img/ryt.png">
+                <p style="padding-left:20px;"> Login to Talk to your Buddy</p>
 
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot grey"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Mick Pole</p>
-                        <span>Is offline.</span>
-                        <span class="small">offline</span>
-                    </div>
-                </div>
-
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                       <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>James Tree</p>
-                        <span>Awaiting your reply.</span>
-                        <span class="small">online</span>
-                    </div>
-                </div>
+				<a href="/login" class="btn login-btn theme" style="color:#fff;"> <i class="large input"></i> Login</a>
+            <?php }?>
             </li>
         </ul>

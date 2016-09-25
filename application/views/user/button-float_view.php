@@ -7,20 +7,31 @@
     	echo '<img src="'.base_url().'img/eng1.png" class="img-responsive" />';
     }else{
     	echo '<img src="'.base_url().'img/eng2.png" class="img-responsive" />';
-    }
-    	
+    }	
     ?>
     </a>
     <ul class="icons-sty">
       <li>
-      <a class="btn-floating theme" style="width:50px !important; height:50px !important;" href="<?php echo base_url()?>user/topics">
-      	<img src="<?php echo base_url();?>img/paper.png" width="90" height="90" >
+      <a class="btn-floating theme buble-th" style="width:50px !important; height:50px !important;" href="<?php echo base_url()?>user/topics">
+      	<?php 
+		    if($this->router->class == 'topics'){
+		    	echo '<img src="'.base_url().'img/paper1.png" style="width:35px;height:35px;left:8px;" />';
+		    }else{
+		    	echo '<img src="'.base_url().'img/paper.png" width="90" height="90" />';
+		    }
+    	?>
       </a> 
       <p class="chat-sty-para">Quality-Space</p>
       </li>
       <li>
-      <a class="btn-floating theme" style="width:50px !important; height:50px !important;" href="<?php echo base_url()?>user/listeners">
-      <img src="<?php echo base_url();?>img/chat.png" width="90" height="90" class="img-responsive  chat-sty">
+      <a class="btn-floating theme buble-th" style="width:50px !important; height:50px !important;" href="<?php echo base_url()?>user/listeners">
+      <?php 
+		    if($this->router->class == 'topics'){
+		    	echo '<img src="'.base_url().'img/chat1.png" style="width:35px;height:35px;" class="img-responsive  chat-sty" />';
+		    }else{
+		    	echo '<img src="'.base_url().'img/chat.png" width="90" height="90" class="img-responsive  chat-sty" />';
+		    }
+		?>
       </a> 
       <p class="chat-sty-para">Talk to a buddy</p>
       </li>

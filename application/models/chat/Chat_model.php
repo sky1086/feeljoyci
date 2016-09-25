@@ -183,6 +183,36 @@ class Chat_model extends CI_Model{
     	return $decrypted_string;
     
     }
+    
+    public function getContactedListeners($uid) {
+    	//select distinct(msg.to) from msg where msg.from = 9 group by msg.to order by max(id) desc limit 20;
+    	$this->db->select('msg.to');
+    	$this->db->from('msg');
+    	$this->db->where('msg.from', $uid);
+    	$this->db->group_by('msg.to');
+    	$this->db->order_by('max(id)', 'desc');
+    	$this->db->limit(20);
+    	
+    	$query = $this->db->get();
+    	 
+    	if(count($query->result()))
+    	{
+    		$userdata = array();
+    		$row = $query->result_array();
+    		foreach ($row as $user){
+    			$this->db->where('userid', $user['to']);
+    			$this->db->where('user_type', 'Listener');
+    			$query1 = $this->db->get('user_detail');
+    			if(count($query1->result()))
+    			{
+    				$userdata = $query1->result_array();
+    			}
+    		}
+    		return $userdata;
+    	}else{
+    		return false;
+    	}
+    }
 
 }
 ?>

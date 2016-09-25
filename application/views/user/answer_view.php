@@ -136,8 +136,7 @@ $this->load->view('user/main-nav', $datas);?>
 
         <!-- Page Contents -->
        <div class="wrapper-content4 theme">
-           <div class="container-fluid">
-               <div class="row">
+               <div class="row" style="">
                		<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
                     	<div class="wrapper-content4-in">
                         <div class="wrapper-content4-in4"> 
@@ -150,7 +149,6 @@ $this->load->view('user/main-nav', $datas);?>
                       </div>             
                </div>
            </div>
-      </div>
       </div>
       </div>  
 </div>

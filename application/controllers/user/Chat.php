@@ -10,7 +10,7 @@ class Chat extends CI_Controller
 		if($frndid)
 			$this->session->set_userdata('listenerid', $frndid);
 		$this->authentication->isLoggedIn(array(ACCOUNT_USER));
-		$this->load->model(array('chat/chat_model'));
+		//$this->load->model(array('chat/chat_model'));
 	}
 	
 	public function index($id){
