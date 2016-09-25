@@ -118,14 +118,6 @@
             background-position: center;
             background-size: 60%,60%;
         }
-		.profile-div-text h1, p {
-    		width: 60%;
-    		float: left;
-    		padding-top: 0px;
-    		font-size: 12px;
-    		padding-left: 20px;
-    		margin-bottom: 0px;
-		}
     </style>
 </head>
 
