@@ -49,12 +49,14 @@ class Question extends CI_Controller{
     	if($this->input->post('question')){
 	    	$this->form_validation->set_rules('question', 'Question', 'required');
 	    	$this->form_validation->set_rules('answer', 'Answer', 'required');
+	    	$this->form_validation->set_rules('priority', 'Priority', 'required');
 	    	$this->form_validation->set_rules('status', 'Status', 'required');
 	    	 
 	    	if ($this->form_validation->run() == TRUE) {
 	    		$detail['id']  		= $id;
 	    		$detail['question']       = $this->security->xss_clean($this->input->post('question'));
 	    		$detail['answer']       = $this->security->xss_clean($this->input->post('answer'));
+	    		$detail['priority']       = $this->security->xss_clean($this->input->post('priority'));
 	    		$detail['status']	= $this->security->xss_clean($this->input->post('status'));;
 	    		 
 	    		if(empty($data['errmsg'])){

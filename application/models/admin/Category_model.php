@@ -19,6 +19,8 @@ class Category_model extends CI_Model{
     	}else{
     		$this->db->where('parentid', 0);
     	}
+    	$this->db->where('status', 1);
+    	$this->db->order_by('priority', 'asc');
     	
     	$query = $this->db->get('categories');
     	if ($query->num_rows() > 0) {

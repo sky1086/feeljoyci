@@ -57,11 +57,13 @@ class Category extends CI_Controller{
     	if($this->input->post('category')){
 	    	$this->form_validation->set_rules('themetype', 'Theme', 'required');
 	    	$this->form_validation->set_rules('category', 'Category', 'required');
+	    	$this->form_validation->set_rules('priority', 'Priority', 'required');
 	    	$this->form_validation->set_rules('status', 'Status', 'required');
 	    	 
 	    	if ($this->form_validation->run() == TRUE) {
 	    		$cat['parentid']  		= $this->security->xss_clean($this->input->post('themetype'));
 	    		$cat['name']       = $this->security->xss_clean($this->input->post('category'));
+	    		$cat['priority']       = $this->security->xss_clean($this->input->post('priority'));
 	    		$cat['status']	= $this->security->xss_clean($this->input->post('status'));;
 	    		 
 	    		if(empty($data['errmsg'])){

@@ -46,6 +46,13 @@
               </tr>
               <tr>
               	<td></td>
+              	<td>Priority</td>
+              	<td>
+              	<input type="text" name="priority" value="<?php echo set_value('priority', $category->priority); ?>" required />
+              	</td>
+              </tr>
+              <tr>
+              	<td></td>
               	<td>Status</td>
               	<td>
               	<input type="radio" name="status" value='1' <?php echo  set_radio('status', '1', ($category->status == 1)); ?> id="active"/> <label for="active">Active</label> &nbsp;&nbsp;&nbsp;&nbsp;
