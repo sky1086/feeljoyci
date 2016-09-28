@@ -29,7 +29,7 @@
 		    if($this->router->class == 'topics'){
 		    	echo '<img src="'.base_url().'img/chat1.png" style="width:35px;height:35px;" class="img-responsive  chat-sty" />';
 		    }else{
-		    	echo '<img src="'.base_url().'img/chat.png" width="90" height="90" class="img-responsive  chat-sty" />';
+		    	echo '<img src="'.base_url().'img/chat2.png" style="width:30px;height:30px;left:1px;top:9px;" class="img-responsive  chat-sty" />';
 		    }
 		?>
       </a> 
