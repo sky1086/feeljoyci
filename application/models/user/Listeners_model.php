@@ -7,7 +7,7 @@ class Listeners_model extends CI_Model{
     
     public function getListeners($status = 1)
     {
-    	$qry = "select * from listener_detail where status = ".$status." order by name asc;";
+    	$qry = "select * from listener_detail where status = ".$status." order by priority asc;";
     	$query = $this->db->query($qry);
     	$resutls = $query->result_array();
     	$count = count($resutls);
