@@ -27,9 +27,9 @@
       <a class="btn-floating theme buble-th" style="width:50px !important; height:50px !important;" href="<?php echo base_url()?>user/listeners">
       <?php 
 		    if($this->router->class == 'topics'){
-		    	echo '<img src="'.base_url().'img/chat1.png" style="width:35px;height:35px;" class="img-responsive  chat-sty" />';
-		    }else{
 		    	echo '<img src="'.base_url().'img/chat2.png" style="width:30px;height:30px;left:1px;top:9px;" class="img-responsive  chat-sty" />';
+		    }else{
+		    	echo '<img src="'.base_url().'img/chat.png" style="width:40px;height:40px;left:1px;top:6px;" class="img-responsive  chat-sty" />';
 		    }
 		?>
       </a> 
