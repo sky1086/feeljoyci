@@ -22,7 +22,8 @@ if(strlen($heading) > 15){
 	document.getElementById('main').appendChild(themeLink);
     </script>
         <!-- Toolbar -->
-        <div id="toolbar" class="theme z-depth-1">
+        <!-- div id="toolbar" class="theme z-depth-1"-->
+        <div id="toolbar" class="theme">
             <h1 class="title" style="text-align:<?php echo $align;?>"><?php echo $heading;?></h1>
             
             <div class="open-right" id="open-right" data-activates="slide-out">
