@@ -274,7 +274,7 @@ $(document).ready(function() {
             <div class="right">
                 <!-- input type="submit" class="send-button theme ion-android-send" value="" id="sb-mt" /-->
                 <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:-2px;height:50px;">
-                <i class="ion-android-send" style="font-size:2.4em;"></i>
+                <i class="ion-android-send" style="font-size:2.4em;color:white;"></i>
                 </button>
             </div>
             <div id="dataHelper" last-id=""></div>

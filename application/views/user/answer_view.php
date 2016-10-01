@@ -116,6 +116,9 @@
             background-position: center;
             background-size: 60%,60%;
         }
+        html, body {
+    		height:100%;
+		}
     </style>
 </head>
 
@@ -123,7 +126,7 @@
 <script type="text/javascript">
 //defineColors();
 </script>
-<div id="panel">
+<div id="panel" style="width: 100%;height:100%;float:none;" class="theme">
     <!-- Main Container -->
      
     <div id="main" class="main">

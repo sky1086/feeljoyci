@@ -118,12 +118,16 @@
             background-position: center;
             background-size: 60%,60%;
         }
+        html, body {
+    		height:100%;
+		}
     </style>
 </head>
 
 <body>
 
     <!-- Main Container -->
+    <div style="width: 100%;height:100%;float:none;" class="theme">
     <div id="main" class="main">
 
         <?php $this->load->view('user/main-nav');?>
@@ -133,7 +137,7 @@
        <div class="container-fluid">
        <div class="row">
 	   <div class="col-md-12 col-lg-12 col-sm-12  col-xs-12">
-       <div class="sec1 sec1new theme" style="height:100%;min-height:600px;">
+       <div class="sec1 sec1new theme">
 	     <div class="panel-body-sty1 theme">
 					
 			
@@ -181,6 +185,7 @@
 
 </div>   
 
+</div>
 </div>
     <!-- End of Main Container -->
     
