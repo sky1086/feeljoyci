@@ -250,7 +250,6 @@ $(document).ready(function() {
 </script>
 
 
-
 <div class="page animated fadeinup">
 
             <div class="chat p-20" id="chat">
@@ -269,7 +268,7 @@ $(document).ready(function() {
                 <textarea class="chat-text-box" placeholder="Type a message" name="msg" id="msg-min"></textarea>
             </div>
             <div class="right">
-                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:-2px;height:50px;">
+                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:0px;height:50px;">
                 <i class="ion-android-send" style="font-size:2.4em;"></i>
                 </button>
             </div>

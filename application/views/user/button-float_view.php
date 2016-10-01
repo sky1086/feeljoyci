@@ -1,6 +1,8 @@
 
 <div class="page-3">
- <div class="fixed-action-btn vertical" style="bottom: 45px; right: 24px;">
+<div class="float-shade" style="display: none;background-color:#333; opacity:0.6;position:fixed; top:0; left:0; width:100%; height:100%;z-index:997;">
+</div>
+ <div class="fixed-action-btn click-to-toggle vertical" style="bottom: 45px; right: 24px;" >
     <a class="btn-floating btn-large theme buble-th">
     <?php 
     if($this->router->class == 'topics'){
@@ -29,7 +31,7 @@
 		    if($this->router->class == 'topics'){
 		    	echo '<img src="'.base_url().'img/chat2.png" style="width:30px;height:30px;left:1px;top:9px;" class="img-responsive  chat-sty" />';
 		    }else{
-		    	echo '<img src="'.base_url().'img/chat.png" style="width:40px;height:40px;left:1px;top:6px;" class="img-responsive  chat-sty" />';
+		    	echo '<img src="'.base_url().'img/chat.png" style="width:30px;height:30px;left:0px;top:9px;" class="img-responsive  chat-sty" />';
 		    }
 		?>
       </a> 

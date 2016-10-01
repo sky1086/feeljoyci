@@ -132,7 +132,7 @@
 
         <?php $this->load->view('user/main-nav');?>
     </div>
-       <?php $this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
+       <?php //$this->load->view('user/button-float_view', array('theme'=>$this->session->userdata('theme')));?>
  <div class="wrapper-profile">
        <div class="container-fluid">
        <div class="row">
@@ -186,15 +186,6 @@
     <script src="<?php echo base_url();?>js/vendor/swiper.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
     <script src="<?php echo base_url();?>js/main.js"></script>
-    <script type="text/javascript">
-    if(getColorTheme() == ''){
-    	var classx = document.querySelectorAll('.btn-floating');
-    	for(cl in classx){
-    	classx[cl].classList.remove('buble-th');
-			
-        }
-    }
-    </script>
 </body>
 
 </html>

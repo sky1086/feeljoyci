@@ -120,6 +120,19 @@
             </li-->
             <li>
                 <div class="collapsible-header waves-effect">
+                    <i class="ion-android-person"></i>Listeners<span class="more"><i class="ion-ios-arrow-right"></i></span>
+                </div>
+                <div class="collapsible-body">
+                    <ul class="collapsible">
+                        <li>
+                            <a href="<?php echo base_url();?>admin/category/add">Add</a>
+                            <a href="<?php echo base_url();?>admin/category">List Listeners</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header waves-effect">
                     <i class="ion-android-camera"></i>Theme/Categories<span class="more"><i class="ion-ios-arrow-right"></i></span>
                 </div>
                 <div class="collapsible-body">
