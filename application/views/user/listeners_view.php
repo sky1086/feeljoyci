@@ -142,7 +142,7 @@
 					
 			
 			</div>
-	   <div class="wrapper-new">
+	   <div class="wrapper-new theme">
 	 <?php if(!empty($listeners) && count($listeners) > 0){
   foreach ($listeners as $listener){
   	?>
