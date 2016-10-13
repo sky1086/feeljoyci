@@ -125,8 +125,8 @@
                 <div class="collapsible-body">
                     <ul class="collapsible">
                         <li>
-                            <a href="<?php echo base_url();?>admin/category/add">Add</a>
-                            <a href="<?php echo base_url();?>admin/category">List Listeners</a>
+                            <a href="<?php echo base_url();?>admin/listeners/add">Add</a>
+                            <a href="<?php echo base_url();?>admin/listeners">List Listeners</a>
                         </li>
                     </ul>
                 </div>
@@ -156,6 +156,15 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li>
+            <?php 
+            if($this->session->userdata('validated')){
+            	echo '<a href="javascript:void(0);" onclick="window.location=\''.base_url().'logout\'"><i class="ion-android-alert"></i> Logout</a>';
+            }else{
+            	echo '<i class="ion-android-alert"></i>';
+            }
+            ?>
             </li>
             <li><a href="contact.html" class="waves-effect"><i class="ion-android-map"></i> Dummy</a></li>
         </ul>

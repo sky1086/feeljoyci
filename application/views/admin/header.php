@@ -41,7 +41,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <!-- Icons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
@@ -121,11 +121,108 @@
 
     <!-- Main Container -->
     <div id="main" class="main">
-
+<div id="spam-overlay" onclick="toggleSpam();"></div>
         <!-- Toolbar -->
         <div id="toolbar" class="primary-color z-depth-1 theme">
             <h1 class="title">FeelJoy</h1>
+            <div class="open-right" onclick="toggleSpam();">
+                <i class="ion-android-alert"></i>
+            </div>
             <div class="open-right" id="open-right" data-activates="slide-out">
                 <i class="ion-android-menu"></i>
             </div>
         </div>
+        
+        <ul id="slide-out" class="side-nav" style="box-shadow:none;">
+            <!-- Tabs -->
+            <li>
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#sidebar1">Menu</a></li>
+                    <li class="tab col s3"><a href="#sidebar2" class="active">Chat</a></li>
+                </ul>
+            </li>
+            <li id="sidebar1" class="p-20">
+                <!-- Twitter -->
+                <div class="twitter">
+                    <h6 class="follow-us"><a href="javascript:void(0);" >Menu-space</a></h6>
+                    
+                </div>
+
+            </li>
+            <li id="sidebar2" class="p-20">
+            <?php 
+            if(!empty($this->session->userdata('userid'))){
+            	//list of contacted listener
+            	$contactedListeners = $this->chat_model->getContactedListeners($this->session->userdata('userid'));
+            	foreach ($contactedListeners as $listener){
+            ?>
+                <!-- Chat -->
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p><?php echo $listener['contact_name'];?></p>
+                        <span>Sent you a message</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+				<?php }?>
+                <!--  div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Lora Bell</p>
+                        <span>6 New messages</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
+                        <span class="dot orange"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Tony Lee</p>
+                        <span>Away from keyboard.</span>
+                        <span class="small">Away</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                         <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
+                        <span class="dot grey"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Jim Connor</p>
+                        <span>Is offline.</span>
+                        <span class="small">offline</span>
+                    </div>
+                </div-->
+
+                <a href="/logout" class="btn login-btn theme" style="color:#fff !important;"> <i class="large input"></i> Logout</a>
+            
+            <?php }else{?>
+            	<img src="<?php echo base_url();?>img/ryt.png">
+                <p style="padding-left:20px;"> Login to Talk to your Patient</p>
+
+				<a href="/login" class="btn login-btn theme" style="color:#fff;"> <i class="large input"></i> Login</a>
+            <?php }?>
+            </li>
+        </ul>
+        <div id="spam-div">
+        <h2>Are you sure?</h2>
+        <div class="tellus">Tell us why...</div>
+        <div class="spam-reason"> <i class="ion-android-mail" style="font-size:1.6rem"></i> Inappropriate Messages</div>
+        <div class="spam-reason"><i class="ion-social-snapchat-outline" style="font-size:1.6rem"></i> Feels like Spam</div>
+        <div class="spam-reason"><i class="ion-android-sad" style="font-size:1.6rem"></i> Bad behaviour</div>
+        <div style="line-height:3em;padding-top:10px;">
+        <a href="#" class="btn login-btn theme" style="color:#fff !important;border-radius:6px;width:80%;">Report User</a>
+        </div>
+        </div>
+        

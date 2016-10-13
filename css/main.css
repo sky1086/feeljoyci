@@ -2354,3 +2354,106 @@ span.data-color {
             padding: 10px;
             margin-bottom: -9px;
         }
+        
+#spam-overlay{
+	width:100%;
+	height:100%;
+	background-color:#000000;
+	opacity:0.8;
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:999;
+	overflow:hidden;
+	display:none;
+}
+
+#spam-div{
+	background-color:white;
+	border-radius: 10px;
+	position:fixed;
+  	top: 50%;
+  	left: 55%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: auto;
+	z-index:1000;
+	overflow:hidden;
+	text-align:center;
+	font-family:verdana;
+	padding:20px 0;
+	-webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    min-width:280px;
+    display:none;
+}
+.spam-reason{
+	border-bottom:1px solid #D0D3D3;
+	line-height:3em;
+	text-align:left;
+	padding:0 30px;
+	color:#505050;
+}
+.tellus{
+	border-bottom:1px solid #D0D3D3;
+	line-height:3em;
+	padding:0 30px;
+	font-size:1.2rem;
+	color:#2F2F2F;
+}
+#spam-div h2{
+	margin-bottom:0px;
+}
+
+.userlist{
+	float:left;
+	padding-top:20px;
+	padding-left:20px;
+	width:100%;
+}
+
+@media only screen and (min-width : 200px) and (max-width : 500px) {
+	.img-thumb{
+	max-width:80%;
+	height:auto;
+}
+.user-left{
+	width:20%;
+	float:left;
+	max-width:60%;
+}
+.user-middle{
+	width:40%;
+	float:left;
+}
+}
+
+@media only screen and (min-width : 500px) and (max-width : 2000px) {
+	.img-thumb{
+	max-width:90%;
+	height:auto;
+}
+.user-left{
+	width:20%;
+	float:left;
+	max-width:30%;
+}
+.user-middle{
+	width:50%;
+	float:left;
+}
+}
+
+.user-right{
+	float:right;
+	width:20%;
+}
+.chat-time{
+	font-size: 2.5vw;
+}
+.sepa-line{
+	clear:both;
+	border-bottom:1px solid #D6D6D6;
+	padding: 10px 0;
+	margin:0 20px 0 80px;
+}

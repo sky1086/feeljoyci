@@ -6,6 +6,7 @@ class Category_model extends CI_Model{
     }
     
     public function getAllCategories(){
+    	$this->db->order_by('priority', 'asc');
     	$query = $this->db->get('categories');
     	if ($query->num_rows() > 0) {
             return $query->result();
@@ -31,7 +32,7 @@ class Category_model extends CI_Model{
     
     public function getAllSubCategories(){
     	$this->db->where('parentid != 0');
-    	 
+    	$this->db->order_by('priority', 'asc');
     	$query = $this->db->get('categories');
     	if ($query->num_rows() > 0) {
     		return $query->result();

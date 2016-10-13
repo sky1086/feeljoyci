@@ -6,6 +6,7 @@ class Question_model extends CI_Model{
     }
     
     public function getAllQuestions(){
+    	$this->db->order_by('priority', 'asc');
     	$query = $this->db->get('questions');
     	if ($query->num_rows() > 0) {
             return $query->result();

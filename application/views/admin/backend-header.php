@@ -4,23 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>FeelJoy</title>
-    <meta name="description" content="Material Design Mobile Template">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
-    <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
-    <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#222222">
-
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
 
@@ -46,12 +32,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/swipebox.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <style>
         .primary-color {
             background-color: #56B68B !important;
@@ -133,18 +117,10 @@
             </div>
             <h1 class="title">FeelJoy</h1>
             <div class="open-right">
-            <?php 
-            
-            if($this->session->userdata('validated')){
-            	echo '<a href="'.base_url().'logout"><i class="ion-android-alert"></i></a>';
-            }else{
-            	echo '<i class="ion-android-alert"></i>';
-            }
-            ?>
             </div>
-            <div class="open-right" id="open-right" data-activates="slide-out">
+            <!-- div class="open-right" id="open-right" data-activates="slide-out">
                 <i class="ion-android-person"></i>
-            </div>
+            </div-->
         </div>
         <!-- End of Toolbar -->
 
