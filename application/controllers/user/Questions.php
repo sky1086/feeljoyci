@@ -13,8 +13,11 @@ class Questions extends CI_Controller{
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($id);
 	   		$data['questions'] = $this->question_model->getAssocQuestionDetails($id);
-	   		
-	   		$this->load->view('user/questions_view', $data);
+	   		if(empty($data['category'][0]->thirdclick) && !empty($data['questions'])){
+	   			$this->answer($id, $data['questions'][0]->id);
+	   		}else{
+	   			$this->load->view('user/questions_view', $data);
+	   		}
 	   	}
 	   }
 	   

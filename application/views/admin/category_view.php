@@ -16,6 +16,7 @@
               	<th>Theme</th>
               	<th>Category</th>
               	<th>Priority</th>
+              	<th>Third click</th>
               	<th>Status</th>
               	<th>Action</th>
               </tr>
@@ -26,10 +27,11 @@
  							<td>'.ucfirst($theme['name']).'</td>
         					<td></td>
        						<td>'.$theme['priority'].'</td>
+          					<td></td>
         					<td>'.$theme_status.'</td>
         					<td><a href="'.base_url().'admin/category/edit/'.$theme['id'].'">Edit</a></td>
         				</tr>
-          			<tr><td colspan="4"><hr style="margin:0 0 20px 0;"></td></tr>';
+          			<tr><td colspan="6"><hr style="margin:0 0 20px 0;"></td></tr>';
               		if(isset($categories[$theme['id']])){
               		foreach ($categories[$theme['id']] as $subCat){
               			$status = ($subCat["status"] == 1?'<font color="green">Active</font>':'<font color="red">Inactive</font>');
@@ -37,6 +39,7 @@
  							<td></td>
         					<td>'.ucfirst($subCat['name']).'</td>
               				<td>'.$subCat['priority'].'</td>
+              				<td>'.$subCat['thirdclick'].'</td>
         					<td>'.$status.'</td>
         					<td><a href="'.base_url().'admin/category/edit/'.$subCat['id'].'">Edit</a></td>
         				</tr>';

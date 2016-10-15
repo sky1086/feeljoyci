@@ -16,9 +16,9 @@ class Category extends CI_Controller{
     	$categories['themes'] = '';
     	foreach ($categoryData as $catd){
     		if($catd->parentid > 0){
-    			$categories[$catd->parentid][]= array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority);
+    			$categories[$catd->parentid][]= array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority, 'thirdclick' => $catd->thirdclick);
     		}elseif($catd->parentid == 0){
-    			$categories['themes'][] = array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority);
+    			$categories['themes'][] = array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority, 'thirdclick' => $catd->thirdclick);
     		}
     	}
     	$data['categories'] = $categories;
@@ -36,6 +36,7 @@ class Category extends CI_Controller{
     		$cat['parentid']  		= $this->security->xss_clean($this->input->post('themetype'));
     		$cat['name']       = $this->security->xss_clean($this->input->post('category'));
     		$cat['status']	= 1;
+    		$cat['thirdclick']       = $this->security->xss_clean($this->input->post('thirdclick'));
     		 
     		if(empty($data['errmsg'])){
     			$result = $this->category_model->addCategory($cat);
@@ -59,12 +60,14 @@ class Category extends CI_Controller{
 	    	$this->form_validation->set_rules('category', 'Category', 'required');
 	    	$this->form_validation->set_rules('priority', 'Priority', 'required');
 	    	$this->form_validation->set_rules('status', 'Status', 'required');
+	    	$this->form_validation->set_rules('thirdclick', 'Third click', 'required');
 	    	 
 	    	if ($this->form_validation->run() == TRUE) {
 	    		$cat['parentid']  		= $this->security->xss_clean($this->input->post('themetype'));
 	    		$cat['name']       = $this->security->xss_clean($this->input->post('category'));
 	    		$cat['priority']       = $this->security->xss_clean($this->input->post('priority'));
-	    		$cat['status']	= $this->security->xss_clean($this->input->post('status'));;
+	    		$cat['status']	= $this->security->xss_clean($this->input->post('status'));
+	    		$cat['thirdclick']       = $this->security->xss_clean($this->input->post('thirdclick'));
 	    		 
 	    		if(empty($data['errmsg'])){
 	    			$result = $this->category_model->updateCategory($id, $cat);

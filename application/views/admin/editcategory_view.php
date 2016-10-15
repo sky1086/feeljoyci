@@ -61,6 +61,14 @@
               </tr>
               <tr>
               	<td></td>
+              	<td>No 3rd click</td>
+              	<td>
+              	<input type="radio" name="thirdclick" value='1' checked <?php echo  set_radio('thirdclick', '1', ($category->thirdclick == 1)); ?> id="true"/> <label for="true">True</label> &nbsp;&nbsp;&nbsp;&nbsp;
+              	<input type="radio" name="thirdclick" value='0' <?php echo  set_radio('thirdclick', '0', ($category->thirdclick == 0)); ?> id="false"/> <label for="false">False</label>
+              	</td>
+              </tr>
+              <tr>
+              	<td></td>
               	<td></td>
               	<td>
               	<input class="waves-effect waves-light btn" type="Submit" name="Add" value="Save" onclick="this.form.submit();" />
