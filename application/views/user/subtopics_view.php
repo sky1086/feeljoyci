@@ -137,7 +137,7 @@ $this->load->view('user/main-nav', $datas);?>
        
        $numTopics = count($topics);
        
-       $colors = array('25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA');
+       $colors = array('25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA', '4DB6AC', '81C783', 'AED581', '25C6DA', '4DB6AC', '81C783', 'AED581');
        $theme = 1;
        $color = 0;
        $other = 0;

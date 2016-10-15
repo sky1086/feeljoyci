@@ -36,7 +36,7 @@
               			echo '<tr>
  							<td></td>
         					<td>'.ucfirst($subCat['name']).'</td>
-              				<td>'.$theme['priority'].'</td>
+              				<td>'.$subCat['priority'].'</td>
         					<td>'.$status.'</td>
         					<td><a href="'.base_url().'admin/category/edit/'.$subCat['id'].'">Edit</a></td>
         				</tr>';
