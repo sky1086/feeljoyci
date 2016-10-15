@@ -2375,9 +2375,7 @@ span.data-color {
 	border-radius: 10px;
 	position:fixed;
   	top: 50%;
-  	left: 55%;
-    margin-top: -50px;
-    margin-left: -50px;
+  	left: 50%;
     width: auto;
 	z-index:1000;
 	overflow:hidden;

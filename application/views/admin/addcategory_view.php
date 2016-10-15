@@ -44,10 +44,10 @@
               </tr>
               <tr>
               	<td></td>
-              	<td>No 3rd click</td>
+              	<td>3rd click</td>
               	<td>
-              	<input type="radio" name="thirdclick" value='1' checked <?php echo  set_radio('thirdclick', '1', 1); ?> id="active"/> <label for="active">True</label> &nbsp;&nbsp;&nbsp;&nbsp;
-              	<input type="radio" name="thirdclick" value='0' <?php echo  set_radio('thirdclick', '0', 0); ?> id="inactive"/> <label for="inactive">False</label>
+              	<input type="radio" name="thirdclick" value='1' checked <?php echo  set_radio('thirdclick', '1', 1); ?> id="active"/> <label for="active">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+              	<input type="radio" name="thirdclick" value='0' <?php echo  set_radio('thirdclick', '0', 0); ?> id="inactive"/> <label for="inactive">No</label>
               	</td>
               </tr>
               <tr>

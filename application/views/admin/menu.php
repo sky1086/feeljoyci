@@ -166,5 +166,4 @@
             }
             ?>
             </li>
-            <li><a href="contact.html" class="waves-effect"><i class="ion-android-map"></i> Dummy</a></li>
         </ul>

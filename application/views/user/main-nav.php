@@ -53,6 +53,7 @@ if(strlen($heading) > 15){
             if(!empty($this->session->userdata('userid'))){
             	//list of contacted listener
             	$contactedListeners = $this->chat_model->getContactedListeners($this->session->userdata('userid'));
+            	if(!empty($contactedListeners)){
             	foreach ($contactedListeners as $listener){
             ?>
                 <!-- Chat -->
@@ -67,42 +68,7 @@ if(strlen($heading) > 15){
                         <span class="small">online</span>
                     </div>
                 </div>
-				<?php }?>
-                <!--  div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Lora Bell</p>
-                        <span>6 New messages</span>
-                        <span class="small">online</span>
-                    </div>
-                </div>
-
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot orange"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Tony Lee</p>
-                        <span>Away from keyboard.</span>
-                        <span class="small">Away</span>
-                    </div>
-                </div>
-
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                         <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot grey"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Jim Connor</p>
-                        <span>Is offline.</span>
-                        <span class="small">offline</span>
-                    </div>
-                </div-->
+				<?php }}?>
 
                 <a href="/logout" class="btn login-btn theme" style="color:#fff !important;"> <i class="large input"></i> Logout</a>
             
