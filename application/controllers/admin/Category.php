@@ -16,9 +16,9 @@ class Category extends CI_Controller{
     	$categories['themes'] = '';
     	foreach ($categoryData as $catd){
     		if($catd->parentid > 0){
-    			$categories[$catd->parentid][]= array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status);
+    			$categories[$catd->parentid][]= array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority);
     		}elseif($catd->parentid == 0){
-    			$categories['themes'][] = array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status);
+    			$categories['themes'][] = array('id' => $catd->id, 'name' => $catd->name, 'status' => $catd->status, 'priority' => $catd->priority);
     		}
     	}
     	$data['categories'] = $categories;

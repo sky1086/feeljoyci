@@ -15,6 +15,7 @@
               <tr>
               	<th>Theme</th>
               	<th>Category</th>
+              	<th>Priority</th>
               	<th>Status</th>
               	<th>Action</th>
               </tr>
@@ -24,6 +25,7 @@
               		echo '<tr>
  							<td>'.ucfirst($theme['name']).'</td>
         					<td></td>
+       						<td>'.$theme['priority'].'</td>
         					<td>'.$theme_status.'</td>
         					<td><a href="'.base_url().'admin/category/edit/'.$theme['id'].'">Edit</a></td>
         				</tr>
@@ -34,6 +36,7 @@
               			echo '<tr>
  							<td></td>
         					<td>'.ucfirst($subCat['name']).'</td>
+              				<td>'.$theme['priority'].'</td>
         					<td>'.$status.'</td>
         					<td><a href="'.base_url().'admin/category/edit/'.$subCat['id'].'">Edit</a></td>
         				</tr>';

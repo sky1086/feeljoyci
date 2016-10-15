@@ -32,6 +32,9 @@
               			  <tr>
  							<td colspan="2"><b>Status: </b>'.$theme_status.'</td>
      					  </tr>
+              			  <tr>
+ 							<td colspan="2"><b>Priority: </b>'.$quiz->priority.'</td>
+     					  </tr>
               		      <tr>
  							<td> <b>Linked Categories: </b></td>
               					<td><select name="categories" class="linkCat" id="linkCat'.$quiz->id.'" multiple="multiple" style="height:40px;">';

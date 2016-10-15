@@ -54,7 +54,7 @@
               	<td></td>
               	<td></td>
               	<td>
-              	<input class="waves-effect waves-light btn" type="Submit" name="Add" value="Save" />
+              	<input class="waves-effect waves-light btn" type="Submit" name="Add" value="Save" onclick="this.form.submit();" />
               	</td>
               </tr>
               </table>

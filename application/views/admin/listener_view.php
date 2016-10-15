@@ -27,11 +27,14 @@
  							<td style="padding-top:20px;padding-left:20px;color:blue;" colspan="3">'.ucfirst($listener->name).' &nbsp;&nbsp;&nbsp;&nbsp;(<a href="'.base_url().'admin/listeners/edit/'.$listener->id.'">Edit</a>)<hr style="margin:0 0 5px 0;"></td>
      					  </tr>
      					  <tr>
-          					<td rowspan="4" style="width:20%;padding-left:20px;"><img src="'.base_url().'pics_listener/'.$listener->profile_img.'" style="width:100px; height:100px;" /></td>
+          					<td rowspan="5" style="width:20%;padding-left:20px;padding-top:5px;vertical-align:top;"><img src="'.base_url().'pics_listener/'.$listener->profile_img.'" style="width:100px; height:100px;" /></td>
  							<td colspan="2">'.ucfirst($listener->qualification).'</td>
      					  </tr>
               			  <tr>
  							<td colspan="2"><b>Status: </b>'.$theme_status.'</td>
+     					  </tr>
+              			  <tr>
+ 							<td colspan="2"><b>Priority: </b>'.$listener->priority.'</td>
      					  </tr>
               		      <tr>
  							<td width="20%"> <b>Linked Categories: </b></td>

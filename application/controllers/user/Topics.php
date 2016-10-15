@@ -18,7 +18,7 @@ class Topics extends CI_Controller{
 	   	$id = (int)$id;
 	   	if($id > 0){
 	   		$data['category'] = $this->category_model->getCategoryDetails($id);
-	   		$data['topics'] = $this->category_model->getAllThemes($id);
+	   		$data['topics'] = $this->category_model->getAllThemes($id);echo '<pre>';var_dump($data['topics']);exit;
 	   		$this->session->set_userdata(array('theme'=>'cssth0'));
 	   		$this->load->view('user/subtopics_view', $data);
 	   	}

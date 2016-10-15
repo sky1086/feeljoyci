@@ -1520,6 +1520,7 @@ footer.page-footer .footer-copyright i {
 .chat .message p {
     margin-bottom: 0;
     font-size: 14px;
+    word-wrap: break-word;
 }
 .chat span {
     font-size: 12px;
@@ -2013,6 +2014,7 @@ footer.page-footer .footer-copyright i {
 .chat .message p {
     margin-bottom: 0;
     font-size: 14px;
+    word-wrap: break-word;
 }
 .chat span {
     font-size: 12px;
