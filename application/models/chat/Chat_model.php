@@ -91,8 +91,8 @@ class Chat_model extends CI_Model{
     		}
    
     		$this->db->where('status = 0');
-    		$this->db->or_where('from = '.$where['to'].' and to = '.$where['from']);
-    		$this->db->where('from = '.$where['from'].' and to = '.$where['to']);
+    		//$this->db->or_where('from = '.$where['to'].' and to = '.$where['from']);
+    		$this->db->where('(from = '.$where['from'].' and to = '.$where['to'].') or (from = '.$where['to'].' and to = '.$where['from'].')');
     		
     		$query = $this->db->get('msg');
     		$result = $query->result_array();
@@ -212,6 +212,83 @@ class Chat_model extends CI_Model{
     	}else{
     		return false;
     	}
+    }
+    
+    public function getContactedUsers($uid) {
+    	//select distinct(msg.from) from msg where msg.to = 9 group by msg.from order by max(id) desc limit 20;
+    	$this->db->select('msg.from');
+    	$this->db->from('msg');
+    	$this->db->where('msg.to', $uid);
+    	$this->db->group_by('msg.from');
+    	$this->db->order_by('max(id)', 'desc');
+    	$this->db->limit(20);
+    	 
+    	$query = $this->db->get();
+    
+    	if(count($query->result()))
+    	{
+    		$userdata = array();
+    		$row = $query->result_array();
+    		$this->db->select('userid');
+    		$qry_spamUsers = $this->db->get('spam_users');
+    		
+    		if(count($qry_spamUsers->result_array())){
+    			$spamUsersList = $qry_spamUsers->result_array();
+    			foreach ($spamUsersList as $spamUser){
+    				$spamUsers[] = $spamUser['userid'];
+    			}
+    		}
+    		
+    		foreach ($row as $user){
+    			$this->db->where('userid', $user['from']);
+    			$this->db->where('user_type', 'User');
+    			$this->db->where_not_in('userid', $spamUsers);
+    			$this->db->from('user_detail');
+    			$query1 = $this->db->get();
+    			
+    			if(count($query1->result()))
+    			{
+    				$userdata[] = $query1->result_array();
+    			}
+    		}
+    		return $userdata;
+    	}else{
+    		return false;
+    	}
+    }
+    
+    /**
+     *
+     * @param array $where
+     */
+    public function getLastMsgFromUsr($uid, $to = 0)
+    {
+    	$this->db->where('from', $uid);
+    	if($to){
+    		$this->db->where('to', $to);
+    	}
+    	$this->db->order_by('id', 'desc');
+    	$this->db->limit(1);
+    	$query = $this->db->get_where('msg');
+    		 
+    	if(count($query->result()))
+    	{
+    		$row = $query->result_array()[0];
+    		return $row;
+    	}
+    	return false;
+    }
+    
+    public function isSpamUser($userid)
+    {
+    	$this->db->where('userid', $userid);
+    	$query = $this->db->get('spam_users');
+    
+    	if(count($query->result()))
+    	{
+    		return true;
+    	}
+    	return false;
     }
 
 }

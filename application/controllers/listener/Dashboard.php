@@ -9,7 +9,9 @@ class Dashboard extends CI_Controller{
     }
 
     public function index(){ 
-    	$this->load->view('listener/dashboard_view');	
+    	$contactedUsers = $this->chat_model->getContactedUsers($this->session->userdata('userid'));
+    	$data['contactedUsers'] = $contactedUsers;
+    	$this->load->view('listener/dashboard_view', $data);	
 	   }
 
 //build advertiser form

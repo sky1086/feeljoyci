@@ -14,8 +14,12 @@ class Listeners_model extends CI_Model{
     	if ($count > 0){
     		return $resutls;
     	}
-    	return array();
+    	return array(); 
+    }
     
+    public function addSpamUser($data)
+    {
+    	$this->db->insert('spam_users', $data);
     }
     
 }

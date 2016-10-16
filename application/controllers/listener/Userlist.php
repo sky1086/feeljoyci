@@ -9,7 +9,9 @@ class Userlist extends CI_Controller{
     }
 
     public function index(){ 
-    	$this->load->view('listener/userlist_view');	
+    	$contactedUsers = $this->chat_model->getContactedUsers($this->session->userdata('userid'));
+    	$data['contactedUsers'] = $contactedUsers;
+    	$this->load->view('listener/userlist_view', $data);	
 	   }
 
 //build advertiser form

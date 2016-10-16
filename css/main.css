@@ -2394,6 +2394,17 @@ span.data-color {
 	padding:0 30px;
 	color:#505050;
 }
+.spam-reason i .ion-checkmark-round{
+	display:none;
+}
+.spam-reason-red, .spam-reason-red i .ion-checkmark-round{
+	color:red;
+	display:block;
+}
+.tick{
+	display: inline;
+}
+
 .tellus{
 	border-bottom:1px solid #D0D3D3;
 	line-height:3em;

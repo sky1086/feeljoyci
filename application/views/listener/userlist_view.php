@@ -7,56 +7,42 @@
 }
 </style>
 <div class="page animated">
+<?php 
+if(!empty($contactedUsers)){
+foreach ($contactedUsers as $user){
+	$user = $user[0];
+	$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
+	if(empty($user['profile_img']) && ($user['gender'] == 'Male' || empty($user['gender']))){
+		$user['profile_img'] = 'man.png';
+	}elseif(empty($user['profile_img']) && $user['gender'] == 'Female'){
+		$user['profile_img'] = 'woman.png';
+	}
+	
+	?>
 <div class="userlist">
 	<div class="user-left">
-		<img src="http://chatweb.dev/pics_listener/pranav.jpg" class="img-thumb">
+		<img src="<?php echo base_url().'img/'.$user['profile_img'];?>" class="img-thumb">
 	</div>
 	<div class="user-middle"> 
-		<b style="font-size: 3.5vw;">Wang hu</b><br />
-		<span class="chat-time">Okey</span>
+		<b style="font-size: 3.5vw;"><a onclick="window.location = '<?php echo base_url().'listener/chat/index/'.$user['userid'];?>'"><?php echo $user['contact_name'];?></a></b><br />
+		<span class="chat-time"><?php echo $userMsgDetails['msg'];?></span>
 	</div>
 	<div class="user-right" align="center"> 
-		<span class="chat-time">12:42 pm</span>
+		<span class="chat-time" title="<?php echo date('Y-m-d H:i A', strtotime($userMsgDetails['time']));?>"><?php echo date('H:i A', strtotime($userMsgDetails['time']));?></span>
 		<div class="chat-time" style="background-color: #53C6DA;color:white;width:20px;">
-			2
+			1
 		</div>
 	</div>
 </div>
 <div class="sepa-line"></div>
-
-<div class="userlist">
-	<div class="user-left">
-		<img src="http://chatweb.dev/pics_listener/pranav.jpg" class="img-thumb">
-	</div>
-	<div class="user-middle"> 
-		<b style="font-size: 3.5vw;">Mike Branson</b><br />
-		<span class="chat-time">Thank you</span>
-	</div>
-	<div class="user-right" align="center"> 
-		<span class="chat-time">12:42 pm</span>
-		<div class="chat-time" style="background-color: #53C6DA;color:white;width:20px;">
-			2
-		</div>
-	</div>
-</div>
-<div class="sepa-line"></div>
-
-<div class="userlist">
-	<div class="user-left">
-		<img src="http://chatweb.dev/pics_listener/pranav.jpg" class="img-thumb">
-	</div>
-	<div class="user-middle"> 
-		<b style="font-size: 3.5vw;">Wang hu</b><br />
-		<span class="chat-time">Okey</span>
-	</div>
-	<div class="user-right" align="center"> 
-		<span class="chat-time">12:42 pm</span>
-		<div class="chat-time" style="background-color: #53C6DA;color:white;width:20px;">
-			2
-		</div>
-	</div>
-</div>
-<div class="sepa-line"></div>
+<?php 
+unset($user);
+}
+}else{
+	echo 'No User contacted';
+}
+?>
 
 </div>
 <?php $this->load->view('admin/footer');?>

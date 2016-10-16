@@ -158,10 +158,14 @@
 				
 					</div>
 					<div class="profile-div-chat">
+					<?php if($isSpamUser){?>
+					<div style="font-size: 0.5em;text-align:center;color:red;">You are blocked, Please contact administrators.</div>
+					<?php }else{?>
 					<a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id'];?>">
 					<div style="font-size: 0.5em;text-align:center;">Talk to <?php echo explode(' ', $listener['name'])[0];?></div>
 					<img src="<?php echo base_url();?>img/chat2.png" class="img-responsive" style="max-width: 40px;">
 					</a>
+					<?php }?>
 					</div>
 			
 			</div>

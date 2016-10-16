@@ -271,11 +271,11 @@ $(document).ready(function() {
     <form method="post" id="msenger" action="" onsubmit="return submitMsg();">
         <div class="chat-text-holder">
             <div class="left">
-            	<input type="hidden" name="fid" id="fid" value="10">
+            	<input type="hidden" name="fid" id="fid" value="<?php echo $toid;?>">
                 <textarea class="chat-text-box" placeholder="Type a message" name="msg" id="msg-min"></textarea>
             </div>
             <div class="right">
-                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:0px;height:50px;">
+                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:0px;height:50px;" onclick="return submitMsg()">
                 <i class="ion-android-send" style="font-size:2.4em;color:white;"></i>
                 </button>
             </div>
@@ -286,19 +286,13 @@ $(document).ready(function() {
 
     <!-- Scripts -->
     
-    <script src="<?php echo base_url();?>js/helper.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/HeadsUp.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
-    <!--  script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script-->
-    <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
-    <!--  script src="<?php echo base_url();?>js/main.js"></script-->
+   
     <script src="<?php echo base_url();?>js/chat/moment.min.js"></script>
 	<script src="<?php echo base_url();?>js/chat/livestamp.js"></script>
 	<script src="<?php echo base_url();?>js/chat/jquery.cssemoticons.min.js" type="text/javascript"></script>
+   
     <script>
-		getOldChat(10);
+		getOldChat(<?php echo $toid;?>);
 	</script>
 	
 <?php $this->load->view('admin/footer');?>

@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
     <style>
         .primary-color {
@@ -125,9 +126,11 @@
         <!-- Toolbar -->
         <div id="toolbar" class="primary-color z-depth-1 theme">
             <h1 class="title">FeelJoy</h1>
+            <?php if($this->session->userdata('usertype') == 'Listener' && $this->router->class == 'chat'){?>
             <div class="open-right" onclick="toggleSpam();">
                 <i class="ion-android-alert"></i>
             </div>
+            <?php }?>
             <div class="open-right" id="open-right" data-activates="slide-out">
                 <i class="ion-android-menu"></i>
             </div>
@@ -144,7 +147,7 @@
             <li id="sidebar1" class="p-20">
                 <!-- Twitter -->
                 <div class="twitter">
-                    <h6 class="follow-us"><a href="javascript:void(0);" >Menu-space</a></h6>
+                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url();?>listener/dashboard';">Home</a></h6>
                     
                 </div>
 
@@ -153,8 +156,10 @@
             <?php 
             if(!empty($this->session->userdata('userid'))){
             	//list of contacted listener
-            	$contactedListeners = $this->chat_model->getContactedListeners($this->session->userdata('userid'));
-            	foreach ($contactedListeners as $listener){
+            	$contactedUsers = $this->chat_model->getContactedUsers($this->session->userdata('userid'));
+            	if(!empty($contactedUsers)){
+            	foreach ($contactedUsers as $user){
+            		$user = $user[0];
             ?>
                 <!-- Chat -->
                 <div class="chat-sidebar">
@@ -163,47 +168,13 @@
                         <span class="dot green"></span>
                     </div>
                     <div class="chat-message">
-                        <p><?php echo $listener['contact_name'];?></p>
-                        <span>Sent you a message</span>
+                        <p style="cursor: pointer;" onclick="window.location = '<?php echo base_url().'listener/chat/index/'.$user['userid'];?>'">
+                        <?php echo $user['contact_name'];?></p>
+                        <!-- span>Sent you a message</span-->
                         <span class="small">online</span>
                     </div>
                 </div>
-				<?php }?>
-                <!--  div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Lora Bell</p>
-                        <span>6 New messages</span>
-                        <span class="small">online</span>
-                    </div>
-                </div>
-
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                        <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot orange"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Tony Lee</p>
-                        <span>Away from keyboard.</span>
-                        <span class="small">Away</span>
-                    </div>
-                </div>
-
-                <div class="chat-sidebar">
-                    <div class="chat-img">
-                         <img src="<?php echo base_url();?>img/man.png" alt="" class="cricle">
-                        <span class="dot grey"></span>
-                    </div>
-                    <div class="chat-message">
-                        <p>Jim Connor</p>
-                        <span>Is offline.</span>
-                        <span class="small">offline</span>
-                    </div>
-                </div-->
+				<?php }}?>
 
                 <a href="/logout" class="btn login-btn theme" style="color:#fff !important;"> <i class="large input"></i> Logout</a>
             
@@ -218,11 +189,60 @@
         <div id="spam-div">
         <h2>Are you sure?</h2>
         <div class="tellus">Tell us why...</div>
-        <div class="spam-reason"> <i class="ion-android-mail" style="font-size:1.6rem"></i> Inappropriate Messages</div>
-        <div class="spam-reason"><i class="ion-social-snapchat-outline" style="font-size:1.6rem"></i> Feels like Spam</div>
-        <div class="spam-reason"><i class="ion-android-sad" style="font-size:1.6rem"></i> Bad behaviour</div>
+        <div class="spam-reason" onclick="toggleReason(this);"> 
+        	<i class="ion-android-mail" style="font-size:1.6rem"></i> 
+        	<span>Inappropriate Messages </span>
+        	<i class="ion-checkmark-round" style="font-size:1.6rem;display:none;"></i>
+        </div>
+        <div class="spam-reason" onclick="toggleReason(this);">
+        	<i class="ion-social-snapchat-outline" style="font-size:1.6rem"></i> 
+        	<span>Feels like Spam</span>
+        	<i class="ion-checkmark-round" style="font-size:1.6rem;display:none;"></i>
+        </div>
+        <div class="spam-reason" onclick="toggleReason(this);">
+        	<i class="ion-android-sad" style="font-size:1.6rem"></i> 
+        	<span>Bad behaviour</span>
+        	<i class="ion-checkmark-round" style="font-size:1.6rem;display:none;"></i>
+        </div>
         <div style="line-height:3em;padding-top:10px;">
-        <a href="#" class="btn login-btn theme" style="color:#fff !important;border-radius:6px;width:80%;">Report User</a>
+        <a href="javascript:void(0);" onclick="reportUserSpam();" class="btn login-btn theme" style="color:#fff !important;border-radius:6px;width:80%;">Report User</a>
         </div>
         </div>
-        
+        <script type="text/javascript">
+			function toggleReason(ele){
+				$(ele).toggleClass('spam-reason-red');
+				var tick = $(ele).find('i')[1];
+				$(tick).toggle();
+				}
+
+			function reportUserSpam(){
+				$sure = confirm('Are you sure to block this user?');
+				if($sure){
+				$id = $('#fid').val();
+				$comments = document.querySelectorAll('.spam-reason-red span');
+				$cSize = $comments.length;
+				for($i = 0; $i < $cSize; $i++){
+					if($i == 0){
+						$comment = $comments[$i].innerHTML.trim();
+					}else{
+						$comment += ', ' + $comments[$i].innerHTML.trim();
+					}
+				}
+
+				$.ajax({
+					type: 'post',
+					url: '<?php echo base_url();?>user/listeners/reportSpamUser',
+					data:  {uid: $id, comments: $comment},
+					success: function(rsp){
+							if(rsp == 0){
+								//alert(rsp.msg);
+							}else if(rsp == 1){
+								window.location = '<?php echo base_url();?>listener/dashboard';
+							}
+						}
+				});
+				}else{
+					toggleSpam();
+					}
+				}
+        </script>

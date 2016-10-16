@@ -17,6 +17,12 @@ class Chat extends CI_Controller
 		if(!$id){
 			redirect('user/listeners');
 		}
+		
+		$isSpamUser = $this->chat_model->isSpamUser($this->session->userdata('userid'));//var_dump($isSpamUser);exit;
+		if ($isSpamUser){
+			redirect(base_url().'user/listeners');exit;
+		}
+		
 		$data['list_id'] = $id;
 		$this->load->view('user/chat_view1', $data);
 	}
