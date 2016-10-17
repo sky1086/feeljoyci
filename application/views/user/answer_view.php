@@ -145,7 +145,7 @@ $this->load->view('user/main-nav', $datas);?>
                         <div class="wrapper-content4-in4"> 
                                             <div class="content4">
                                             <h6 class="theme-txt"><?php echo ucfirst($questions[0]->question);?></h6>
-                                                 <p>"<?php echo ucfirst($questions[0]->answer);?>"</p>
+                                                 <p><?php echo ucfirst($questions[0]->answer);?></p>
                                      
                                           </div>     
                                     

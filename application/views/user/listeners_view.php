@@ -158,7 +158,7 @@
 				
 					</div>
 					<div class="profile-div-chat">
-					<?php if($isSpamUser){?>
+					<?php if(isset($isSpamUser) && $isSpamUser){?>
 					<div style="font-size: 0.5em;text-align:center;color:red;">You are blocked, Please contact administrators.</div>
 					<?php }else{?>
 					<a href="<?php echo base_url();?>user/chat/index/<?php echo $listener['id'];?>">

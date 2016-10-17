@@ -32,7 +32,7 @@
               	<td></td>
               	<td>Answer</td>
               	<td>
-              		<textarea name="answer" required rows="50" cols="20"><?php echo set_value('answer', $question->answer); ?></textarea>
+              		<textarea name="answer" required rows="50" cols="20" class="note-codable"><?php echo set_value('answer', $question->answer); ?></textarea>
               	</td>
               </tr>
               <tr>

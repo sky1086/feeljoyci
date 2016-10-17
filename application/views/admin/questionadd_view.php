@@ -32,7 +32,7 @@
               	<td></td>
               	<td>Answer</td>
               	<td>
-              	<textarea name="answer" required rows="50" cols="20"></textarea>
+              	<textarea name="answer" required rows="50" cols="20" class="note-codable"></textarea>
               	</td>
               </tr>
               <tr>
