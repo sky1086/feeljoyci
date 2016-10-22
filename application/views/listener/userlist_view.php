@@ -24,7 +24,7 @@ foreach ($contactedUsers as $user){
 	}else {
 		$user['profile_img'] = base_url().'img/'.$user['profile_img'];
 	}
-	
+	$time = strtotime($userMsgDetails['time']) + (330*60);
 	?>
 <div class="userlist">
 	<div class="user-left">
@@ -35,7 +35,7 @@ foreach ($contactedUsers as $user){
 		<span class="chat-time"><?php echo $userMsgDetails['msg'];?></span>
 	</div>
 	<div class="user-right" align="center"> 
-		<span class="chat-time" title="<?php echo date('Y-m-d H:i A', strtotime($userMsgDetails['time']));?>"><?php echo date('H:i A', strtotime($userMsgDetails['time']));?></span>
+		<span class="chat-time" title="<?php echo date('Y-m-d h:i A', $time);?>"><?php echo date('h:i A', $time);?></span>
 		<div class="chat-time" style="background-color: #53C6DA;color:white;width:20px;">
 			<?php echo ($userUnreadMsgCount?$userUnreadMsgCount:'');?>
 		</div>
