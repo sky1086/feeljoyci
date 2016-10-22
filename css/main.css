@@ -770,8 +770,8 @@ footer.page-footer .footer-copyright i {
   justify-content: space-between;
 }
 .heads-up {
-  transform: translateY(-212px);
-  transform: translate3d(0,-212px,0);
+  /*transform: translateY(-212px);
+  transform: translate3d(0,-212px,0);*/
 }
 
 /*  7. Drawer

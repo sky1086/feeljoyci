@@ -4,7 +4,7 @@ class Chat extends CI_Controller{
    
     function __construct(){
         parent::__construct();
-    	$this->load->model(array('authentication', 'chat/chat_model'));
+    	$this->load->model(array('authentication', 'chat/chat_model', 'user_model'));
     	$this->authentication->isLoggedIn(array(ACCOUNT_LISTENER));
     }
 
@@ -15,6 +15,11 @@ class Chat extends CI_Controller{
     		if ($isSpamUser){
     			redirect(base_url().'listener/dashboard');exit;
     		}
+    		
+    		$userdata = $this->user_model->getUserDetails($id);
+    		$data['heading'] = ucfirst($userdata['contact_name']);
+    		
+    		
     		$this->load->view('user/chat_view', $data);
     	}
 	   }

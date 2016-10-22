@@ -1,3 +1,10 @@
+<?php 
+if(isset($heading) && $heading != ''){
+	$heading = $heading;
+}else{
+	$heading = 'FeelJoy';
+}
+?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -125,7 +132,7 @@
 <div id="spam-overlay" onclick="toggleSpam();"></div>
         <!-- Toolbar -->
         <div id="toolbar" class="primary-color z-depth-1 theme">
-            <h1 class="title">FeelJoy</h1>
+            <h1 class="title"><?php echo $heading;?></h1>
             <?php if($this->session->userdata('usertype') == 'Listener' && $this->router->class == 'chat'){?>
             <div class="open-right" onclick="toggleSpam();">
                 <i class="ion-android-alert"></i>

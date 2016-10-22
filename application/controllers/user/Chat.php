@@ -10,7 +10,7 @@ class Chat extends CI_Controller
 		if($frndid)
 			$this->session->set_userdata('listenerid', $frndid);
 		$this->authentication->isLoggedIn(array(ACCOUNT_USER));
-		//$this->load->model(array('chat/chat_model'));
+		$this->load->model(array('user_model'));
 	}
 	
 	public function index($id){
@@ -23,8 +23,11 @@ class Chat extends CI_Controller
 			//redirect(base_url().'user/listeners');exit;
 		}
 		
+		$userdata = $this->user_model->getUserDetails($id);
+		
 		$data['list_id'] = $id;
 		$data['isSpamUser'] = $isSpamUser;
+		$data['heading'] = ucfirst($userdata['contact_name']);
 		$this->load->view('user/chat_view1', $data);
 	}
 }
