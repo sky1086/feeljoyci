@@ -51,6 +51,10 @@ class Chat_model extends CI_Model{
     public function getMsgsWhere(array $where, $limit = '')
     {
     	if(!empty($where)){
+    		if(!empty($where['lid'])){
+    			$this->db->where('id > '.$where['lid']);
+    			unset($where['lid']);
+    		}
 	    	$query = $this->db->get_where('msg', $where, $limit);
 	    
 	    	if(count($query->result()))
@@ -66,9 +70,12 @@ class Chat_model extends CI_Model{
 	 * 
 	 * @param array $where
 	 */
-    public function getUsrLastMsgWhere(array $where)
+    public function getUsrLastMsgWhere(array $where, $lid = 0)
     {
     	if(!empty($where)){
+    		if($lid){
+    			$this->db->where('id > '.$lid);
+    		}
     		$this->db->order_by('id', 'asc');
     		$query = $this->db->get_where('msg', $where);
     	  
@@ -120,6 +127,11 @@ class Chat_model extends CI_Model{
     					$msgs[$i][] = $row;
     				}
     				$lastid = $row['from'];
+    				if($row['status'] == 1){
+    					//mark chat as read
+    					$this->db->where('id', $row['id']);
+    					$this->db->update('msg', array('status' => 0));
+    				}
     			}
     			//krsort($msgs);
     			//var_dump($msgs);
@@ -275,6 +287,26 @@ class Chat_model extends CI_Model{
     	{
     		$row = $query->result_array()[0];
     		return $row;
+    	}
+    	return false;
+    }
+    
+    public function getUnreadMsgFromUsr($uid, $to = 0)
+    {
+    	$this->db->select('count(*) as unread_count');
+    	$this->db->where('from', $uid);
+    	if($to){
+    		$this->db->where('to', $to);
+    	}
+    	$this->db->where('status', 1);
+    	$this->db->order_by('id', 'desc');
+    	$this->db->limit(100);
+    	$query = $this->db->get('msg');
+    	 
+    	if(count($query->result()))
+    	{
+    		$row = $query->result_array()[0];
+    		return $row['unread_count'];
     	}
     	return false;
     }

@@ -28,6 +28,11 @@ class ChatM extends CI_Controller
 		}else{
 			$fid = $_POST['fid'];
 		}
+		if (!isset($_POST['lid'])) {
+			$lid = 0;
+		}else{
+			$lid = $_POST['lid'];
+		}
 		
 		include_once BASEPATH.'../lib-emoji/Emoji.class.php';
 			switch($_GET['rq']):
@@ -60,10 +65,12 @@ class ChatM extends CI_Controller
 						$msgArr = array('to' => $myid, 'status' => 1);
 						if($fid)
 							$msgArr['from'] = $fid;
+						if($lid)
+							$msgArr['lid'] = $lid;
 						
 						$qurGet = $this->chat_model->getMsgsWhere($msgArr);
 						//$qur = mysql_query("select * from msg where `to`='$myid' && `from`='$fid' && `status`=1");
-						if(count($qurGet) > 0){
+						if($qurGet != false && count($qurGet) > 0){
 							$json = array('status' => 1);
 						}else{
 							$json = array('status' => 0);
@@ -75,7 +82,7 @@ class ChatM extends CI_Controller
 					if($fid)
 						$msgArr['from'] = $fid;
 					
-					$qurGet = $this->chat_model->getUsrLastMsgWhere($msgArr);
+					$qurGet = $this->chat_model->getUsrLastMsgWhere($msgArr, $lid);
 					//$qur = mysql_query("select * from msg where `to`='$myid' && `from`='$fid' && `status`=1 order by id desc limit 1");
 					//while($rw = mysql_fetch_array($qur)){
 					$ids = array();

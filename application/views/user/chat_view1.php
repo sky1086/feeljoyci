@@ -331,7 +331,7 @@ function getMsg(){
 	$.ajax({
 		type: 'post',
 		url: '<?php echo base_url();?>chat/chatM/index/?rq=NewMsg',
-		data:  {fid: $fid},
+		data:  {fid: $fid, lid: $('#dataHelper').attr('last-id')},
 		dataType: 'json',
 		success: function(rsp){
 				if(parseInt(rsp.status) == 0){
@@ -394,6 +394,10 @@ $(document).ready(function() {
         <!-- End of Page Contents -->
     <!-- End of Main Container -->
     <div class="meta_holder theme">
+    <?php
+    if(isset($isSpamUser) && $isSpamUser){?>
+    	<div style="background-color:white;height:50px;padding-top:10px;" align="center">Please contact admin to resume your services.</div>
+    <?php }else{?>
     <form method="post" id="msenger" action="" onsubmit="return submitMsg();">
         <div class="chat-text-holder theme">
             <div class="left">
@@ -402,13 +406,14 @@ $(document).ready(function() {
             </div>
             <div class="right">
                 <!-- input type="submit" class="send-button theme ion-android-send" value="" id="sb-mt" /-->
-                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:-2px;height:50px;" onclick="return submitMsg();">
+                <button class="theme" id="sb-mt" style="border:0px;padding:0 0 0 10px;margin:-2px;height:0px;" onclick="return submitMsg();">
                 <i class="ion-android-send" style="font-size:2.4em;color:white;"></i>
                 </button>
             </div>
             <div id="dataHelper" last-id=""></div>
         </div>
         </form>
+        <?php }?>
     </div>
 
     <!-- Scripts -->

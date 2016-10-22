@@ -206,7 +206,7 @@ function getMsg(){
 	$.ajax({
 		type: 'post',
 		url: '<?php echo base_url();?>chat/chatM/index/?rq=NewMsg',
-		data:  {fid: $fid},
+		data:  {fid: $fid, lid: $('#dataHelper').attr('last-id')},
 		dataType: 'json',
 		success: function(rsp){
 				if(parseInt(rsp.status) == 0){

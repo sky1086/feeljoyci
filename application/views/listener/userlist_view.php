@@ -12,6 +12,7 @@ if(!empty($contactedUsers)){
 foreach ($contactedUsers as $user){
 	$user = $user[0];
 	$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	$userUnreadMsgCount = $this->chat_model->getUnreadMsgFromUsr($user['userid'], $this->session->userdata('userid'));
 	$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
 	if(empty($user['profile_img']) && ($user['gender'] == 'Male' || empty($user['gender']))){
 		$user['profile_img'] = 'man.png';
@@ -31,7 +32,7 @@ foreach ($contactedUsers as $user){
 	<div class="user-right" align="center"> 
 		<span class="chat-time" title="<?php echo date('Y-m-d H:i A', strtotime($userMsgDetails['time']));?>"><?php echo date('H:i A', strtotime($userMsgDetails['time']));?></span>
 		<div class="chat-time" style="background-color: #53C6DA;color:white;width:20px;">
-			1
+			<?php echo ($userUnreadMsgCount?$userUnreadMsgCount:'');?>
 		</div>
 	</div>
 </div>
