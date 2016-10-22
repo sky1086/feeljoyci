@@ -324,7 +324,7 @@ function checkStatus(){
 }
 
 // Check for latest message
-setInterval(function(){checkStatus();}, 5000);
+setInterval(function(){checkStatus();}, 2000);
 
 function getMsg(){
 	$fid = $('#fid').val();

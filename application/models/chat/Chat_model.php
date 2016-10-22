@@ -97,7 +97,7 @@ class Chat_model extends CI_Model{
     			$this->db->limit($limit);
     		}
    
-    		$this->db->where('status = 0');
+    		//$this->db->where('status = 0');
     		//$this->db->or_where('from = '.$where['to'].' and to = '.$where['from']);
     		$this->db->where('(from = '.$where['from'].' and to = '.$where['to'].') or (from = '.$where['to'].' and to = '.$where['from'].')');
     		
