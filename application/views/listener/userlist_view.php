@@ -19,11 +19,16 @@ foreach ($contactedUsers as $user){
 	}elseif(empty($user['profile_img']) && $user['gender'] == 'Female'){
 		$user['profile_img'] = 'woman.png';
 	}
+	if(strpos($user['profile_img'], 'http') !== false){
+		$user['profile_img'] = $user['profile_img'];
+	}else {
+		$user['profile_img'] = base_url().'img/'.$user['profile_img'];
+	}
 	
 	?>
 <div class="userlist">
 	<div class="user-left">
-		<img src="<?php echo base_url().'img/'.$user['profile_img'];?>" class="img-thumb">
+		<img src="<?php echo $user['profile_img'];?>" class="img-thumb">
 	</div>
 	<div class="user-middle"> 
 		<b style="font-size: 3.5vw;"><a onclick="window.location = '<?php echo base_url().'listener/chat/index/'.$user['userid'];?>'"><?php echo $user['contact_name'];?></a></b><br />
