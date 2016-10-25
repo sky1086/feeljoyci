@@ -21,6 +21,19 @@ if(strlen($heading) > 15){
 		}
 	document.getElementById('main').appendChild(themeLink);
     </script>
+    <script type="text/javascript">
+    (function(p,u,s,h){
+        p._pcq=p._pcq||[];
+        p._pcq.push(['noTrigger',true]);
+        p._pcq.push(['_currentTime',Date.now()]);
+        s=u.createElement('script');
+        s.type='text/javascript';
+        s.async=true;
+        s.src='https://cdn.pushcrew.com/js/2af3528e08af3f47d8eedf0b5be2ac28.js';
+        h=u.getElementsByTagName('script')[0];
+        h.parentNode.insertBefore(s,h);
+    })(window,document);
+</script>
         <!-- Toolbar -->
         <!-- div id="toolbar" class="theme z-depth-1"-->
         <div id="toolbar" class="theme">
@@ -44,7 +57,8 @@ if(strlen($heading) > 15){
                 <div class="twitter">
                     <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/topics';">Quality-space</a></h6>
                     <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/listeners';">Talk to a buddy</a></h6>
-                    
+                    <h6 class="follow-us"><a onclick="_pcq.push(['triggerOptIn',{httpWindowOnly: true}]);">
+GET NOTIFICATIONS</a></h6>
                 </div>
 
             </li>
