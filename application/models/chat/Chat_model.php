@@ -322,6 +322,17 @@ class Chat_model extends CI_Model{
     	}
     	return false;
     }
+    
+    public function getUnreadMsgForNotification()
+    {	
+    	$query = $this->db->query('SELECT m.to, MAX(id), m.* FROM msg as m where status = 1 GROUP BY m.to ORDER BY MAX(id) DESC limit 5000');
+    
+    	if(count($query->result()))
+    	{
+    		return $query->result_array();
+    	}
+    	return false;
+    }
 
 }
 ?>

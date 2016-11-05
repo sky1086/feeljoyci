@@ -293,6 +293,31 @@ $(document).ready(function() {
    
     <script>
 		getOldChat(<?php echo $toid;?>);
+
+		_pcq.push(['APIReady', saveSubscriberID]);
+		if(isMobile.any){
+			var isMobile = 1;
+		}else{
+			var isMobile = 0;
+		}
+		
+		function saveSubscriberID() {
+			if(pushcrew.subscriberId && pushcrew.subscriberId != -1){
+				$.ajax({
+					type: 'post',
+					url: '<?php echo base_url();?>crons/pushnotification/upsertNotificationUser',
+					data:  {subid: pushcrew.subscriberId, d_type: isMobile},
+					//dataType: 'json',
+					success: function(rsp){
+							if(rsp == 1){
+								console.log('saved');
+							}else {
+								console.log('err');
+							}
+						}
+				});
+				}  
+		}
 	</script>
 	
 <?php $this->load->view('admin/footer');?>

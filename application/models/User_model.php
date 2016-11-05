@@ -94,6 +94,19 @@ public function getUserDetails($userid)
         }
         return false;
     }
+    
+    public function getUserSubscriberDetails($userid)
+    {
+    	$this->db->where('userid', $userid);
+    	$query = $this->db->get('notification_users');
+    
+    	if(count($query->result()))
+    	{
+    		$row = $query->result_array();
+    		return $row[0];
+    	}
+    	return false;
+    }
 
 }
 ?>
