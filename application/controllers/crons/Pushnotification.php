@@ -76,6 +76,7 @@ class Pushnotification extends CI_Controller{
     			//notification code ends here
     		}
     	}
+    	echo 'Done';
     }
     
     public function upsertNotificationUser() {
