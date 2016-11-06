@@ -22,8 +22,13 @@ class Pushnotification extends CI_Controller{
     			
     			//notification code start here
     			$title = $senderData['contact_name']. ' has sent you message -';
-    			$message = $this->chat_model->decodeMsg($notif_data['msg'], $notif_data['int_vec']);;
-    			$url = 'https://pushcrew.com';
+    			$message = $this->chat_model->decodeMsg($notif_data['msg'], $notif_data['int_vec']);
+    			if($senderData['user_type'] == 'Listener'){
+    				$url = base_url().'user/chat/index/'.$notif_data['from'];
+    			}else{
+    				$url = base_url().'listener/chat/index/'.$notif_data['from'];
+    			}
+    			
     			$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];
     			 
     			if($subscriberId){
