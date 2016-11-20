@@ -14,6 +14,9 @@ class Pushnotification extends CI_Controller{
     	
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
+    		if($notif_data['notified']){
+    			continue;
+    		}
     		//Get subscriber details
     		$subscriberData = $this->notification_model->getSubscriberDetails($notif_data['to']);
     		if(!empty($subscriberData)){
@@ -63,8 +66,8 @@ class Pushnotification extends CI_Controller{
 	    			$resultArray = json_decode($result, true);
 	    			 
 	    			if($resultArray['status'] == 'success') {
-	    				//success
-	    				//echo $resultArray['request_id']; //ID of Notification Request
+	    				//update notified status on success
+	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
 	    			}
 	    			else if($resultArray['status'] == 'failure') {
 	    				//failure

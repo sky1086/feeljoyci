@@ -333,6 +333,16 @@ class Chat_model extends CI_Model{
     	}
     	return false;
     }
+    
+    public function updateNotifiedStatus($id)
+    {
+    	if($id){
+    		$this->db->where('id', $id);
+    		$this->db->update('msg', array('notified' => 1));
+    	}else{
+    		return 0;
+    	}
+    }
 
 }
 ?>

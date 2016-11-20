@@ -138,7 +138,7 @@
        <div class="container-fluid">
        <ul class="nav nav-tabs" role="tablist">
        <div class="row">
-       <div style="overflow:scroll;max-height: 500px;">
+       <div style="overflow:hidden;max-height: 500px;">
        <?php 
        $numTopics = count($topics);
        $cal_h = (100/($numTopics+1));
