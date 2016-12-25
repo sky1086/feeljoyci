@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>FeelJoy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-<link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url();?>css/jqueryeditable/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url();?>css/style.css" rel="stylesheet" type="text/css">
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.tabledit.js"></script>
     <style>
         .primary-color {
             background-color: #56B68B !important;
@@ -102,6 +103,9 @@
         text-decoration:none; 
         color:blue;
         }
+        .tabledit-input{
+			width:200px;
+		}
     </style>
 </head>
 
