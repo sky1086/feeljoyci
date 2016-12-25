@@ -58,6 +58,7 @@ var svgIconConfig = {
   svgicon = new svgIcon(menuButton, svgIconConfig, {
     easing: mina.easeOutExpo
   }),
+  redirect = false,
   isIconMenuOpen = false,
   isMenuOpen = false,
   ifNoAnimation = false,
@@ -83,6 +84,7 @@ var svgIconConfig = {
   page_topHeight = 0,
   page_menuAdded = false,
   page_colors = ['cyan', 'darkcyan', 'darkgreen', 'green', 'white', 'inverted'],
+  true_colors = ['cyan', 'darkcyan', 'darkgreen', 'green'],
   // to determine the type of swipe / scroll to implement
   // 0 : scroll
   // 1 : card swiper
@@ -98,7 +100,10 @@ var svgIconConfig = {
   pageHash = [],
   timeouts = {
     menuClose: '',
+    menuClose1: '',
     menuOpen: '',
+    menuOpen1: '',
+    menuOpen2: '',
     showFjLoader: '',
     loadSwipeableCards: '',
   },
@@ -221,6 +226,7 @@ function menuClose() {
   }
   // clear any previous timeouts
   window.clearTimeout(timeouts.menuClose);
+  window.clearTimeout(timeouts.menuClose1);
   // remove transition values in the end
   timeouts.menuClose = window.setTimeout(function () {
     setTransition(main, '');
@@ -238,6 +244,14 @@ function menuClose() {
     fjHeaderTitle.classList.remove('fj-fade-down');
     fjHeaderLogo.classList.add('fj-fade-down');
   }, transitionTime);
+  
+  // after a delay do fab out animation
+  timeouts.menuClose1 = window.setTimeout(function () {
+    fjFloatContainer.classList.remove('is-invisible');
+    doClasses(fjDiversionButton, ['zoomIn', 'zoomOut'], true);
+    doClasses(fjDiversionButton, ['zoomIn']);
+  }, transitionTime + 300);
+  
   dummyToggle();
 }
 
@@ -277,6 +291,8 @@ function menuOpen() {
   }
   // clear any previous timeouts
   window.clearTimeout(timeouts.menuOpen);
+  window.clearTimeout(timeouts.menuOpen1);
+  window.clearTimeout(timeouts.menuOpen2);
   // remove transition values in the end
 
   function callFunc() {
@@ -302,6 +318,16 @@ function menuOpen() {
   } else {
     timeouts.menuOpen = window.setTimeout(callFunc.bind(callFunc), transitionTime);
   }
+  
+  // after a delay do fab out animation
+  timeouts.menuOpen1 = window.setTimeout(function () {
+    doClasses(fjDiversionButton, ['zoomIn', 'zoomOut'], true);
+    doClasses(fjDiversionButton, ['zoomOut']);
+  }, transitionTime + 300);
+  
+  timeouts.menuOpen2 = window.setTimeout(function () {
+    fjFloatContainer.classList.add('is-invisible');
+  }, transitionTime + 600);
 }
 
 function dummyToggle() {
@@ -364,7 +390,6 @@ window.requestAnimFrame = (function () {
     };
 })();
 
-
 // helper call via raf
 function rafCall(func) {
   for(var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -401,7 +426,7 @@ function nameToUrl(name) {
   return url;
 }
 
-function loadFirstClick(redirect) {
+function loadFirstClick() {
   makeRequest(base_url + 'firstclick')
     .then(function (data) {
       var passHash = [];
@@ -532,7 +557,7 @@ function initCardPage(hash, isBasePage, data, ifClose, openMenu) {
   for(i = 0; i < data.length; i++) {
     // anchor tag button
     var button = document.createElement('div'),
-      text = document.createElement('h5');
+      text = document.createElement('h6');
     if(isBasePage) {
       colorClass = page_colors[i % 4];
     } else {
@@ -548,14 +573,6 @@ function initCardPage(hash, isBasePage, data, ifClose, openMenu) {
     button.setAttribute('data-link', hash + '/' + data[i]._url);
     button.appendChild(text);
     frag.appendChild(button);
-  }
-  // add a dummy card if card count is less than 4
-  if(i < 4) {
-    for(j = 4; j > i; j--) {
-      var button = document.createElement('div');
-      doClasses(button, ['fj-card-figure', 'mdl-shadow--2dp', colorClass]);
-      frag.appendChild(button);
-    }
   }
   // add frag to doc
   fjInnerContent.appendChild(frag);
@@ -707,6 +724,7 @@ function animateFromBase(from, title, cardArr, thirdclick, to, isFresh) {
     cardHeight = main.offsetHeight / 4,
     scaleSize = window.innerHeight / cardHeight,
     page_level = to.length,
+    colorCopy,
     cardTop = header.offsetHeight + (cardHeight * (from - page_scroll)),
     cardNegativeTop = -cardTop / scaleSize;
   // if input has questions or not
@@ -736,13 +754,19 @@ function animateFromBase(from, title, cardArr, thirdclick, to, isFresh) {
   }
   // load the toolbar also set the fab and background-color
   window.setTimeout(function () {
+    // reset class then add
+    doClasses(fjFloatContainer, page_colors, true);
     // if not card change the fab color
     if(cards) {
       fjFloatContainer.classList.add('inverted');
       setDestToolbarProps(false, title, colorClass);
     } else {
-      fjFloatContainer.classList.add(colorClass);
+      // set a random color other then the colorClass
+      colorCopy = true_colors.slice(0);
+      colorCopy.splice(colorCopy.indexOf(colorClass), 1);
       setDestToolbarProps(true, title, colorClass);
+      colorClass = colorCopy[Math.floor(Math.random() * colorCopy.length)];
+      fjFloatContainer.classList.add(colorClass);
     }
     // slowly fadeout the overlay
     setTransition(fjAnimationContainer, .2 + stdEasing);
@@ -832,7 +856,8 @@ function parseHash(newHash, oldHash) {
   // on menu main target history changed
   if(!pageHash[0]) {
     // to redirect to valid url
-    loadFirstClick(true);
+    redirect = true;
+    loadFirstClick();
   } else if(oldHash) {
     // if both are base pages
     if(oldHash.indexOf('/') === -1 && pageHash.length === 1) {
@@ -850,10 +875,14 @@ function parseHash(newHash, oldHash) {
     }
   } else {
     // if first page then do the default loadout
-    if(pageHash.length === 1 && !pages.firstclick) {
-      loadFirstClick();
+    if(!redirect) {
+      if(pageHash.length === 1) {
+        loadFirstClick();
+      } else {
+        loadThirdClick();
+      }
     } else {
-      loadThirdClick();
+      redirect = false;
     }
   }
 }
@@ -971,29 +1000,6 @@ function makeRequest(url) {
     };
     xhr.send();
   });
-}
-
-// load page JSON
-function loadPageData(page) {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'partials/' + page + '.html', true);
-
-  request.onload = function () {
-    if(request.status >= 200 && request.status < 400) {
-      // store the resp object
-      pages[page] = request.responseText;
-    } else {
-      // We reached our target server, but it returned an error
-      showErrorButton(page);
-    }
-  };
-
-  request.onerror = function () {
-    // There was a connection error of some sort
-    showErrorButton(page);
-  };
-
-  request.send();
 }
 
 // show error button
@@ -1222,7 +1228,12 @@ function calculateCardValues() {
     }
     page_lastChild = page_cards[page_cardCount - 1];
     // number of cards on the viewport
-    page_viewPortCards = Math.round(fjInnerContent.offsetHeight / page_cardHeight);
+    // TODO improve page viewport calc
+    if(page_cardCount <= 4) {
+      page_viewPortCards = page_cardCount;
+    } else {
+      page_viewPortCards = 4;
+    }
     page_topHeight = window.innerHeight - header.offsetHeight - 50;
     // the cards peek because of this value
     page_cardPeek = 50 / page_viewPortCards;
@@ -1623,7 +1634,7 @@ function doSwiperCard(ev, force) {
   });
   // check if the deltaX exceeds the threshold
   // if so move the card out
-  if(Math.abs(ev.deltaX / page_firstChild.offsetWidth) > scrollThreshold || force) {
+  if((Math.abs(ev.deltaX / page_firstChild.offsetWidth) > scrollThreshold || force) && ((Math.abs((relationship_cardLast - 2) / relationship_cardCount) * 100) < 100)) {
     // add a transition to the card
     rafCall(setTransform, page_firstChild, 'translate3d(' + (Math.sign(ev.deltaX) * ((window.innerWidth / 2) + page_firstChild.offsetWidth)) + 'px,' + y + 'px,0) rotate(' + (Math.sign(ev.deltaX) * 75) + 'deg)');
     setTransition(page_firstChild, .2 + outEasing);
@@ -1679,13 +1690,20 @@ function doSwiperCard(ev, force) {
         enable: true
       });
       isSwiping = false;
+      // renable pan after swipe wait
+      if(force) {
+        fjLayout_Hammer.get('pan')
+          .set({
+            enable: true
+          });
+      }
     }, 200);
   }
 }
 
 // update swiper progress
 function updateCoverProgress() {
-  fjCoverProgress.MaterialProgress.setProgress(Math.abs((relationship_cardLast - 3) / relationship_cardCount) * 100);
+  fjCoverProgress.MaterialProgress.setProgress(Math.abs((relationship_cardLast - 3) / (relationship_cardCount - 1)) * 100);
 }
 
 // add swiper card

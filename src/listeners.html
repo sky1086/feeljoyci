@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Feeljoy</title>
+    <title>Feeljoy - Listners</title>
     <meta name="author" content="Puranjay Jain"/>
     <meta name="theme-color" content="#455A64">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,8 +34,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="css/material.css">
     <link rel="stylesheet" href="css/fonticon.css">
-    <link rel="stylesheet" href="css/fj.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/listeners.css">
     <script src="js/modernizr.js"></script>
   </head>
   <body>
@@ -46,7 +45,7 @@
             Login
           </button> -->
           <div class="mdl-layout-spacer"></div>
-          <div id="fj-header-title" class="mdl-layout-title fj-header-title">FeelJoy</div>
+          <div id="fj-header-title" class="mdl-layout-title fj-header-title">Listeners</div>
           <div id="fj-header-logo" class="fj-header-logo fj-fade-down">
             <img src="svg/feeljoy.svg" alt="logo"/>
           </div>
@@ -54,15 +53,6 @@
           <button id="fj-icon-hamburger" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon-hamburger" data-icon-name="hamburger"></button>
         </div>
       </header>
-      <div id="fj-cover-header" class="fj-cover-header">
-        <button id="fj-home-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon">
-          <i class="icon-home"></i>
-        </button>
-        <div id="fj-cover-progress" class="mdl-progress mdl-js-progress fj-cover-progress"></div>
-        <button id="fj-share-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon">
-          <i class="icon-share"></i>
-        </button>
-      </div>
       <nav id="fj-float-menu" class="fj-float-menu"></nav>
       <main id="fj-main-content" class="mdl-layout__content fj-main-content">
         <div id="fj-content-loading" class="fj-content-loading visible">
@@ -74,8 +64,7 @@
         <div id="fj-inner-content" class="page-content fj-inner-content is-hidden"></div>
       </main>
     </div>
-    <div id="fj-animation-container" class="fj-animation-container"></div>
-    <div id="fj-float-container" class="fj-float-container is-hidden">
+    <!-- <div id="fj-float-container" class="fj-float-container is-hidden">
       <a href="//feeljoy.in/user/topics" id="fj-qs-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-qs-button"><i class="icon-mat"></i></a>
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-qs-button">
         Quality Space
@@ -84,24 +73,15 @@
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-ttab-button">
         Talk to a buddy
       </div>
-      <button id="fj-diversion-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-diversion-button animate"><i class="icon-diverse"></i></button>
+      <button id="fj-diversion-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-diversion-button"><i class="icon-diverse"></i></button>
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-diversion-button">
         Diversion
       </div>
-    </div>
-    <script src="js/signals.min.js"></script>
-    <script src="js/crossroads.min.js"></script>
-    <script src="js/hasher.min.js"></script>
+    </div> -->
     <script src="js/hammer.min.js"></script>
     <script src="js/material.min.js"></script>
     <script src="js/snap.svg-min.js"></script>
     <script src="js/svgicons.js"></script>
-    <script src="js/shave.js"></script>
-    <script src="js/fj.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("service-worker.js").then(function (reg) {}).catch(function (err) {});
-      }
-    </script>
+    <script src="js/listeners.js"></script>
   </body>
 </html>

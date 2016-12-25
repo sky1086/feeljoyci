@@ -2,23 +2,23 @@
   "name": "Feeljoy",
   "short_name": "Feeljoy",
   "icons": [{
-    "src": "favicon-128.png",
+    "src": "favicon-128-white.png",
       "sizes": "128x128",
       "type": "image/png"
     }, {
-      "src": "apple-touch-icon-144x144.png",
+      "src": "apple-touch-icon-144x144-white.png",
       "sizes": "144x144",
       "type": "image/png"
     }, {
-      "src": "apple-touch-icon-152x152.png",
+      "src": "apple-touch-icon-152x152-white.png",
       "sizes": "152x152",
       "type": "image/png"
     }, {
-      "src": "favicon-192x192.png",
+      "src": "favicon-192x192-white.png",
       "sizes": "192x192",
       "type": "image/png"
     }, {
-      "src": "favicon-256x256.png",
+      "src": "favicon-256x256-white.png",
       "sizes": "256x256",
       "type": "image/png"
     }],

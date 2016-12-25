@@ -203,10 +203,6 @@ body {
   z-index: 15;
 }
 
-.fj-float-container.is-invisible {
-  display: none;
-}
-
 /*card theme colors*/
 .white {
   background-color: #fff;
@@ -338,7 +334,7 @@ body {
   flex: 1 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 25%;
   min-height: 90px;
   text-decoration: none;
@@ -346,6 +342,20 @@ body {
   padding: 16px;
   box-sizing: border-box;
   will-change: transform;
+}
+
+.fj-card-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fj-card-icon {
+  font-size: 24px;
 }
 
 /*loader hidden*/
@@ -422,32 +432,6 @@ body {
     transform: translate3d(0, 100%, 0);
   }
 }
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-@keyframes zoomOut {
-  from {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3);
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 .animate {
   -webkit-animation-duration: .3s;
@@ -466,14 +450,4 @@ body {
 .slideOutDown {
   -webkit-animation-name: slideOutDown;
   animation-name: slideOutDown;
-}
-
-.zoomIn {
-  -webkit-animation-name: zoomIn;
-  animation-name: zoomIn;
-}
-
-.zoomOut {
-  -webkit-animation-name: zoomOut;
-  animation-name: zoomOut;
 }
