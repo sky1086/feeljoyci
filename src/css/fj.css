@@ -348,6 +348,10 @@ body {
   will-change: transform;
 }
 
+.fj-card-figure.white {
+    justify-content: flex-start;
+}
+
 /*loader hidden*/
 .fj-content-loading {
   will-change: display;

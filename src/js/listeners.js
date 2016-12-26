@@ -358,15 +358,21 @@ function initCardPage(data) {
     var avatar = document.createElement('div'),
       icon = document.createElement('i'),
       cont = document.createElement('div'),
-      text = document.createElement('h6');
+      textCont = document.createElement('div'),
+      text = document.createElement('h5'),
+      subText = document.createElement('h6');
     avatar.innerHTML = data[i].name.charAt(0);
     doClasses(avatar, ['fj-card-avatar', true_colors[Math.floor(Math.random() * true_colors.length)]]);
-    doClasses(icon, ['icon-chat_bubble', 'fj-card-icon']);
+    doClasses(icon, ['icon-chat', 'fj-card-icon']);
     doClasses(cont, ['fj-card-figure', 'mdl-shadow--2dp', 'white']);
+    textCont.classList.add('fj-card-text');
     text.innerHTML = data[i].name;
+    subText.innerHTML = '1st Year NYU';
+    textCont.appendChild(text);
+    textCont.appendChild(subText);
     // cont.setAttribute('data-link', hash + '/' + data[i]._url);
     cont.appendChild(avatar);
-    cont.appendChild(text);
+    cont.appendChild(textCont);
     cont.appendChild(icon);
     frag.appendChild(cont);
   }

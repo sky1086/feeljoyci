@@ -334,13 +334,14 @@ body {
   flex: 1 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 25%;
   min-height: 90px;
   text-decoration: none;
   text-transform: uppercase;
   padding: 16px;
   box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
   will-change: transform;
 }
 
@@ -352,9 +353,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 16px;
+}
+
+.fj-card-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.fj-card-text h5, 
+.fj-card-text h6 {
+  margin: 2px 0;
+  text-transform: capitalize;
 }
 
 .fj-card-icon {
+  margin-left: auto;
+  color: #607d8b;
   font-size: 24px;
 }
 

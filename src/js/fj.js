@@ -244,14 +244,14 @@ function menuClose() {
     fjHeaderTitle.classList.remove('fj-fade-down');
     fjHeaderLogo.classList.add('fj-fade-down');
   }, transitionTime);
-  
+
   // after a delay do fab out animation
   timeouts.menuClose1 = window.setTimeout(function () {
     fjFloatContainer.classList.remove('is-invisible');
     doClasses(fjDiversionButton, ['zoomIn', 'zoomOut'], true);
     doClasses(fjDiversionButton, ['zoomIn']);
   }, transitionTime + 300);
-  
+
   dummyToggle();
 }
 
@@ -318,13 +318,13 @@ function menuOpen() {
   } else {
     timeouts.menuOpen = window.setTimeout(callFunc.bind(callFunc), transitionTime);
   }
-  
+
   // after a delay do fab out animation
   timeouts.menuOpen1 = window.setTimeout(function () {
     doClasses(fjDiversionButton, ['zoomIn', 'zoomOut'], true);
     doClasses(fjDiversionButton, ['zoomOut']);
   }, transitionTime + 300);
-  
+
   timeouts.menuOpen2 = window.setTimeout(function () {
     fjFloatContainer.classList.add('is-invisible');
   }, transitionTime + 600);
@@ -758,15 +758,15 @@ function animateFromBase(from, title, cardArr, thirdclick, to, isFresh) {
     doClasses(fjFloatContainer, page_colors, true);
     // if not card change the fab color
     if(cards) {
-      fjFloatContainer.classList.add('inverted');
-      setDestToolbarProps(false, title, colorClass);
-    } else {
       // set a random color other then the colorClass
       colorCopy = true_colors.slice(0);
       colorCopy.splice(colorCopy.indexOf(colorClass), 1);
-      setDestToolbarProps(true, title, colorClass);
+      setDestToolbarProps(false, title, colorClass);
       colorClass = colorCopy[Math.floor(Math.random() * colorCopy.length)];
       fjFloatContainer.classList.add(colorClass);
+    } else {
+      fjFloatContainer.classList.add(colorClass);
+      setDestToolbarProps(true, title, colorClass);
     }
     // slowly fadeout the overlay
     setTransition(fjAnimationContainer, .2 + stdEasing);
