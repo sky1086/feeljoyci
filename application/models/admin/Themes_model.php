@@ -5,7 +5,10 @@ class Themes_model extends CI_Model{
         parent::__construct();
     }
     
-    public function getAllCategories(){
+    public function getAllCategories($id = 0){
+    	if($id > 0){
+    		$this->db->where('parentid', $id);
+    	}
     	$this->db->order_by('priority', 'asc');
     	$query = $this->db->get('categories');
     	if ($query->num_rows() > 0) {
