@@ -43,6 +43,7 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
     <!-- Stylesheets -->
+    <script async src="<?php echo base_url();?>js/custom.js"></script>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>css/style1.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
@@ -51,8 +52,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
-    <script async src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
-    <script async src="<?php echo base_url();?>js/custom.js"></script>
+    <script async src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>    
     <script async src="<?php echo base_url();?>js/jquery-1.9.1.js"></script>
     <script type="text/javascript">setCookie('ThemeColor', '', -1);</script>
     <style>
@@ -201,7 +201,6 @@
     <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.swipebox.min.js"></script>
-    <script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/swiper.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
     <script src="<?php echo base_url();?>js/main.js"></script>

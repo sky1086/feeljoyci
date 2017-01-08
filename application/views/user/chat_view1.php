@@ -423,7 +423,6 @@ $(document).ready(function() {
     <script src="<?php echo base_url();?>js/vendor/jquery.smoothState.js"></script>
     <script src="<?php echo base_url();?>js/vendor/chart.min.js"></script>
     <script src="<?php echo base_url();?>js/vendor/jquery.mixitup.min.js"></script>
-    <!--  script src="<?php echo base_url();?>js/vendor/masonry.min.js"></script-->
     <script src="<?php echo base_url();?>js/vendor/materialize.min.js"></script>
     <script src="<?php echo base_url();?>js/main.js"></script>
     <script src="<?php echo base_url();?>js/chat/moment.min.js"></script>
