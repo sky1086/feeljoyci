@@ -116,6 +116,30 @@ body {
   color: #000;
 }
 
+.fj-swipe-card > h5 {
+  margin: 12px 0;
+}
+
+.fj-swipe-card > h5.cyan {
+  background-color: transparent;
+  color: #25c6da;
+}
+
+.fj-swipe-card > h5.darkcyan {
+  background-color: transparent;
+  color: #4db6ac;
+}
+
+.fj-swipe-card > h5.darkgreen {
+  background-color: transparent;
+  color: #81c783;
+}
+
+.fj-swipe-card > h5.green {
+  background-color: transparent;
+  color: #aed581;
+}
+
 .fj-icon {
   color: #fff;
 }
@@ -320,6 +344,23 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: .3s cubic-bezier(.4, 0, .6, 1);
+}
+
+.fj-main-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 25%;
+  min-width: 250px;
+  background-color: #fff;
+  z-index: 20;
+  transition: .3s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+
+.fj-main-menu.is-hidden {
+  transform: translate3d(100%, 0, 0);
 }
 
 /*page card inner classes*/

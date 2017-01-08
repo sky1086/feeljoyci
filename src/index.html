@@ -76,19 +76,51 @@
     </div>
     <div id="fj-animation-container" class="fj-animation-container"></div>
     <div id="fj-float-container" class="fj-float-container is-hidden">
-      <a href="//feeljoy.in/user/topics" id="fj-qs-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-qs-button"><i class="icon-mat"></i></a>
+      <a href="//feeljoy.in/user/topics" id="fj-qs-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-qs-button">
+        <i class="icon-mat"></i>
+      </a>
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-qs-button">
         Quality Space
       </div>
-      <a href="//feeljoy.in/user/listeners" id="fj-ttab-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-ttab-button"><i class="icon-chat"></i></a>
+      <a href="//feeljoy.in/user/listeners" id="fj-ttab-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-ttab-button">
+        <i class="icon-chat"></i>
+      </a>
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-ttab-button">
         Talk to a buddy
       </div>
-      <button id="fj-diversion-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-diversion-button animate"><i class="icon-diverse"></i></button>
+      <button id="fj-diversion-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-diversion-button animate">
+        <i class="icon-diverse"></i>
+      </button>
       <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="fj-diversion-button">
         Diversion
       </div>
     </div>
+    <main id="fj-main-menu" class="fj-main-menu is-hidden">
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+          <a href="#menu-panel" class="mdl-tabs__tab is-active">Menu</a>
+          <a href="#chat-panel" class="mdl-tabs__tab">Chat</a>
+        </div>
+        <div class="mdl-tabs__panel is-active" id="menu-panel">
+          <nav>
+            <ul>
+              <li>Menu</li>
+              <li>Items</li>
+              <li>Are</li>
+              <li>Here</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="mdl-tabs__panel" id="chat-panel">
+          <ul>
+            <li>Pranav</li>
+            <li>Lalit</li>
+            <li>Sanjeev</li>
+            <li>Puranjay</li>
+          </ul>
+        </div>
+      </div>
+    </main>
     <script src="js/signals.min.js"></script>
     <script src="js/crossroads.min.js"></script>
     <script src="js/hasher.min.js"></script>

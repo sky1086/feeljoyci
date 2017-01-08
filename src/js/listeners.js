@@ -61,7 +61,7 @@ var svgIconConfig = {
   ifNoAnimation = false,
   // base api url
   // TODO replace it with https for better results
-  base_url = 'partials/listeners.json',
+  base_url = '//feeljoy.in/apis/user/listeners',
   // base_url = 'partials/api/',
   // id is also the base route
   fjLayout_Hammer = new Hammer.Manager(fjLayout, {}),
@@ -367,10 +367,10 @@ function initCardPage(data) {
     doClasses(cont, ['fj-card-figure', 'mdl-shadow--2dp', 'white']);
     textCont.classList.add('fj-card-text');
     text.innerHTML = data[i].name;
-    subText.innerHTML = '1st Year NYU';
+    subText.innerHTML = data[i].qualification;
     textCont.appendChild(text);
     textCont.appendChild(subText);
-    // cont.setAttribute('data-link', hash + '/' + data[i]._url);
+    cont.setAttribute('data-link', data[i].link);
     cont.appendChild(avatar);
     cont.appendChild(textCont);
     cont.appendChild(icon);

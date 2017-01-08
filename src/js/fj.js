@@ -49,6 +49,7 @@ var svgIconConfig = {
   fjLoaderCircular = document.getElementById('fj-loader-circular'),
   fjRetryLoader = document.getElementById('fj-retry-loader'),
   fjFloatContainer = document.getElementById('fj-float-container'),
+  fjMainMenu = document.getElementById('fj-main-menu'),
   fjAnimationContainer = document.getElementById('fj-animation-container'),
   header = document.getElementById('fj-main-header'),
   fjHeaderTitle = document.getElementById('fj-header-title'),
@@ -60,6 +61,7 @@ var svgIconConfig = {
   }),
   redirect = false,
   isIconMenuOpen = false,
+  isSideMenuOpen = false,
   isMenuOpen = false,
   ifNoAnimation = false,
   // base api url
@@ -92,6 +94,7 @@ var svgIconConfig = {
   relationship_cardLast = 0,
   relationship_cardCount = 0,
   relationship_cards = [],
+  relationship_title,
   isSwiping = false,
   scrollThreshold = 0.5,
   stdEasing = 's cubic-bezier(.4, 0, .2, 1)',
@@ -127,13 +130,39 @@ var svgIconConfig = {
 fjLayout_Hammer.add([fjLayoutSwipe, fjLayoutPan, fjLayoutTap]);
 fjLayoutSwipe.recognizeWith(fjLayoutPan);
 
-// open close menu function
-function menuToggle() {
-  if(isMenuOpen) {
-    menuClose();
-  } else {
-    menuOpen();
+// delete self node
+// http://stackoverflow.com/questions/8830839/javascript-dom-remove-element
+function deleteNode(node) {
+  node.parentNode.removeChild(node);
+}
+
+function LightenDarkenColor(col, amt) {
+  var usePound = false;
+
+  if(col[0] == "#") {
+    col = col.slice(1);
+    usePound = true;
   }
+
+  var num = parseInt(col, 16);
+
+  var r = (num >> 16) + amt;
+
+  if(r > 255) r = 255;
+  else if(r < 0) r = 0;
+
+  var b = ((num >> 8) & 0x00FF) + amt;
+
+  if(b > 255) b = 255;
+  else if(b < 0) b = 0;
+
+  var g = (num & 0x0000FF) + amt;
+
+  if(g > 255) g = 255;
+  else if(g < 0) g = 0;
+
+  return(usePound ? "#" : "") + (g | (b << 8) | (r << 16))
+    .toString(16);
 }
 
 // helper extract values into an array from an array with objects
@@ -193,6 +222,15 @@ function multiCall(func, arr) {
 
   while(i--) {
     func.apply(this, [arr[i]].concat(arg));
+  }
+}
+
+// open close menu function
+function menuToggle() {
+  if(isMenuOpen) {
+    menuClose();
+  } else {
+    menuOpen();
   }
 }
 
@@ -339,6 +377,29 @@ function dummyToggle() {
   isMenuOpen = !isMenuOpen;
 }
 
+// open or close the side menu
+function sidemenuToggle() {
+  if(isSideMenuOpen) {
+    sidemenuOpen();
+  } else {
+    sidemenuClose();
+  }
+}
+
+function sidemenuOpen() {
+  fjMainMenu.classList.remove('is-hidden');
+  fjLayout.classList.add('is-overlay');
+  // toggle it's state
+  isSideMenuOpen = !isSideMenuOpen;
+}
+
+function sidemenuClose() {
+  fjMainMenu.classList.add('is-hidden');
+  fjLayout.classList.remove('is-overlay');
+  // toggle it's state
+  isSideMenuOpen = !isSideMenuOpen;
+}
+
 // clear inner elements
 function clearInner(el) {
   while(el.firstChild) el.removeChild(el.firstChild);
@@ -397,6 +458,20 @@ function rafCall(func) {
   }
 
   requestAnimFrame(func.bind.apply(func, [this].concat(args)));
+}
+
+// update theme color
+// http://stackoverflow.com/questions/32330305/update-theme-color-meta-without-page-refresh
+function updateThemeColor(color) {
+  // create a new meta
+  var meta = document.createElement('meta');
+  meta.name = 'theme-color';
+  meta.content = color;
+  //remove the current meta
+  deleteNode(document.querySelector('meta[name=theme-color]'));
+  //add the new one
+  document.querySelector('head')
+    .appendChild(meta);
 }
 
 // highlight menu button
@@ -574,6 +649,12 @@ function initCardPage(hash, isBasePage, data, ifClose, openMenu) {
     button.appendChild(text);
     frag.appendChild(button);
   }
+  // add a dummy card if card count is less than 4
+  if(i < 4 && colorClass === 'white') {
+    var button = document.createElement('div');
+    doClasses(button, ['fj-card-figure', 'mdl-shadow--2dp', colorClass]);
+    frag.appendChild(button);
+  }
   // add frag to doc
   fjInnerContent.appendChild(frag);
   // remove hidden class after 600ms
@@ -674,6 +755,7 @@ function animateToBase(from, to) {
       fjAnimationContainer.style.width = main.offsetWidth + 'px';
       doClasses(fjAnimationContainer, page_colors, true);
       fjAnimationContainer.classList.add(colorClass);
+      updateThemeColor('#455A64');
       fjAnimationContainer.style.top = cardTop + 'px';
       setTransform(fjAnimationContainer, 'scale(1, ' + scaleSize + ') translate3d(0,' + cardNegativeTop + 'px, 0)');
       window.setTimeout(function () {
@@ -784,7 +866,7 @@ function animateFromBase(from, title, cardArr, thirdclick, to, isFresh) {
   window.setTimeout(function () {
     if(cards) {
       // call card loading from here
-      initCardSwiper(cardArr);
+      initCardSwiper(cardArr, title);
     } else {
       // force animation from bottom
       ifNoAnimation = false;
@@ -903,9 +985,11 @@ function setDestToolbarProps(close, title, colorClass) {
   }
   // to add a color class or not
   if(colorClass) {
+    updateThemeColor(LightenDarkenColor(colorClass, 20));
     document.body.classList.add(colorClass);
     header.classList.add(colorClass);
   } else {
+    updateThemeColor('#455A64');
     doClasses(document.body, page_colors, true);
     doClasses(header, page_colors, true);
   }
@@ -932,7 +1016,7 @@ function setTransition(el, transition) {
   el.style.mozTransition = transition;
 }
 
-function initCardSwiper(cardArr) {
+function initCardSwiper(cardArr, title) {
   // turn off the loader icon
   hideFjLoader(true);
   // reset card swiper data
@@ -947,6 +1031,8 @@ function initCardSwiper(cardArr) {
       // add transform and transition if they are lower cards
       if(i > 0) {
         addSwiperCard(cardFrag, i, i, true);
+      } else if(i == 0) {
+        addSwiperCard(cardFrag, i, i, false, title);
       } else {
         addSwiperCard(cardFrag, i, i);
       }
@@ -1016,7 +1102,12 @@ fjLayout_Hammer.on('tap', function (ev) {
   var innerCards, i;
   // if inside hamburger button toggle the menu
   if(menuButton.contains(ev.target) && page_type === 0) {
-    menuToggle();
+    // if arrow is present then close it to form the hamburger
+    if(isMenuOpen) {
+      menuClose();
+    } else {
+      sidemenuOpen();
+    }
     return;
   }
 
@@ -1060,6 +1151,11 @@ fjLayout_Hammer.on('tap', function (ev) {
   }
 
   // click anywhere to close
+  if(isSideMenuOpen) {
+    sidemenuClose();
+    return;
+  }
+
   if(isIconMenuOpen) {
     fjFloatContainer.classList.add('is-hidden');
     fjLayout.classList.remove('is-overlay');
@@ -1111,6 +1207,7 @@ function addPrevSwiperCard() {
   // check if loading a new card is possible or not
   if(relationship_cardLast > 3) {
     var div = document.createElement('div'),
+      innerTitle = document.createElement('h5'),
       innerDiv = document.createElement('div'),
       calculatedWidth = window.innerWidth - 25,
       htmlCard = relationship_cardLast - 4;
@@ -1133,6 +1230,12 @@ function addPrevSwiperCard() {
     innerDiv.innerHTML = relationship_cards[htmlCard];
     setTransform(div, 'translate3d(0, -100%, 0)');
     setTransition(div, .2 + inEasing);
+    // also add title if necessary
+    if(relationship_cardLast === 3) {
+      innerTitle.classList.add(document.body.className);
+      innerTitle.innerHTML = relationship_title;
+      div.appendChild(innerTitle);
+    }
     // set div styles
     div.style.height = (window.innerHeight - fjCoverHeader.offsetHeight - fjDiversionButton.offsetWidth - 21) + 'px';
     div.style.width = calculatedWidth + 'px';
@@ -1707,14 +1810,22 @@ function updateCoverProgress() {
 }
 
 // add swiper card
-function addSwiperCard(el, cur, anime, setTrans) {
+function addSwiperCard(el, cur, anime, setTrans, firstText) {
   // check if loading a new card is possible or not
   if(relationship_cardLast < relationship_cardCount + 1) {
     var div = document.createElement('div'),
+      innerTitle = document.createElement('h5'),
       innerDiv = document.createElement('div'),
       calculatedWidth = window.innerWidth - 25;
     if(calculatedWidth > 560) {
       calculatedWidth = 560;
+    }
+    // if first text is present
+    if(firstText) {
+      innerTitle.classList.add(document.body.className);
+      innerTitle.innerHTML = firstText;
+      relationship_title = firstText;
+      div.appendChild(innerTitle);
     }
     doClasses(div, ['mdl-card', 'mdl-shadow--2dp', 'fj-swipe-card']);
     innerDiv.innerHTML = relationship_cards[cur];
