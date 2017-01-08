@@ -6,6 +6,7 @@ class User extends CI_Controller{
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
 		$this->load->model(array('admin/question_model', 'admin/category_model', 'user/listeners_model'));
+		header('Access-Control-Allow-Origin: *'); //need to remove after developement done
 	    }
 
 	    public function listeners(){
