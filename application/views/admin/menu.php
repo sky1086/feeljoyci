@@ -138,6 +138,9 @@
                     <a href="<?php echo base_url();?>admin/secondclick"><i class="ion-android-person"></i>2nd Click</a>
             </li>
             <li>
+                    <a href="<?php echo base_url();?>admin/thirdclick"><i class="ion-android-person"></i>3rd Click</a>
+            </li>
+            <li>
                 <div class="collapsible-header waves-effect">
                     <i class="ion-android-camera"></i>Theme/Categories<span class="more"><i class="ion-ios-arrow-right"></i></span>
                 </div>

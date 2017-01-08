@@ -52,7 +52,7 @@ if(isset($heading) && $heading != ''){
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swipebox.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">

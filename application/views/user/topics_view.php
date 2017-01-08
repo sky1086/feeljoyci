@@ -43,10 +43,10 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
 
     <!-- Stylesheets -->
-    <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>css/style1.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/materialize.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swipebox.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">

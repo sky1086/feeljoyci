@@ -31,7 +31,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
