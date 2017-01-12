@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Feeljoy - Listeners</title>
+    <title>Feeljoy - Scheduler</title>
     <meta name="author" content="Puranjay Jain"/>
     <meta name="theme-color" content="#455A64">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
 <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png"/>
 <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link rel="stylesheet" href="css/listeners.css">
+    <link rel="stylesheet" href="css/scheduler.css">
     <script src="js/modernizr.js"></script>
   </head>
   <body>
@@ -48,18 +48,71 @@
     <button id="fj-icon-hamburger" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon-hamburger" data-icon-name="hamburger"></button>
   </div>
 </header>
-      <nav id="fj-float-menu" class="fj-float-menu"></nav>
       <main id="fj-main-content" class="mdl-layout__content fj-main-content">
-        <div id="fj-content-loading" class="fj-content-loading visible">
-          <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular is-active"></div>
+        <div id="fj-content-loading" class="fj-content-loading">
+          <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular">
+            </div>
           <button id="fj-retry-loader" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent fj-retry-loader is-hidden">
             Retry
           </button>
         </div>
-        <div id="fj-inner-content" class="page-content fj-inner-content is-hidden"></div>
+        <div id="fj-inner-content" class="page-content fj-inner-content">
+          <h5>Select your Dates</h5>
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div id="fj-date-tab" class="mdl-tabs__tab-bar fj-date-tab--container">
+              <a href="#day-1" class="mdl-tabs__tab fj-date-tab is-active">
+                <span>Today</span>
+                <span>31 Dec</span>
+              </a>
+              <a href="#day-2" class="mdl-tabs__tab fj-date-tab">
+                <span>Tomorrow</span>
+                <span>31 Dec</span>
+              </a>
+              <a href="#day-3" class="mdl-tabs__tab fj-date-tab">
+                <span>Wed</span>
+                <span>31 Dec</span>
+              </a>
+              <a href="#day-4" class="mdl-tabs__tab fj-date-tab">
+                <span>Thu</span>
+                <span>31 Dec</span>
+              </a>
+              <a href="#day-5" class="mdl-tabs__tab fj-date-tab">
+                <span>Fri</span>
+                <span>31 Dec</span>
+              </a>
+              <a href="#day-6" class="mdl-tabs__tab fj-date-tab">
+                <span>Sat</span>
+                <span>31 Dec</span>
+              </a>
+              </div>
+            <div class="mdl-tabs__panel fj-date-panel is-active" id="day-1">
+              <h5>Choose your preference</h5>
+              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                <input type="checkbox" id="switch-2" class="mdl-switch__input" checked>
+                <span class="mdl-switch__label">Availability</span>
+              </label>
+              <h5>Select your slot</h5>
+              <h6>You will be marked online during this period</h6>
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-2">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-3">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-4">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-5">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-6">
+              loading
+            </div>
+            </div>
+        </div>
       </main>
     </div>
-    <div id="fj-animation-container" class="fj-animation-container"></div>
     <div id="fj-main-menu" class="fj-main-menu is-hidden">
   <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
     <div class="mdl-tabs__tab-bar">
@@ -86,6 +139,6 @@
     </div>
   </div>
 </div>
-    <script src="js/listeners.js"></script>
+    <script src="js/scheduler.js"></script>
   </body>
 </html>
