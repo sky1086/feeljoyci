@@ -81,9 +81,8 @@
 							<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12 col-md-offset-4" style="height: 100%;">
 								<div class="mobile-bg">
 									<div class="mobile-bg-in">
-										<div class="wrapper-content4-in4">
 											<div class="content4">
-											<iframe id="feelIframe" src="https://feeljoy.in/user/topics" style="width:230px;height:395px;border:0;mrgin:0px;"></iframe>
+											<iframe id="feelIframe" src="https://feeljoy.in/user/topics" style="width:264px;height:423px;border:0;mrgin:0px;"></iframe>
 												<!-- h6>POST MARRIAGE CONCERN</h6>
 												<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 													sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -93,10 +92,7 @@
 													esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
 													occaecat cupidatat non proident, sunt in culpa qui officia
 													deserunt mollit anim id est laborum."</p-->
-
 											</div>
-
-										</div>
 									</div>
 								</div>
 							</div>

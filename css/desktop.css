@@ -2,7 +2,8 @@
     background: transparent;
     margin: 0 auto;
     position: absolute;
-    top: 80px;
+    top: 65px;
+    left: 19px;
 }
 .mobile-bg
 {
@@ -38,6 +39,7 @@
     position: relative;
     top: 0px;
     z-index: 1;
+    left: 19px;
 }
 
 .mobile-bg-in  .content4 {
