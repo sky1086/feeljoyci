@@ -67,9 +67,9 @@
 	<div id="panel" style="height:100%;">
 		<div id="main" class="main" style="height:100%;">
 
-			<div id="toolbar" class="primary-color z-depth-1">
+			<!-- div id="toolbar" class="primary-color z-depth-1">
 				<h1 class="title posthead" style="padding-left: 0px;">FeelJoy</h1>
-			</div>
+			</div-->
 			<!-- Page Contents -->
 
 			<div class="container-fluid" style="height:100%;">
@@ -82,7 +82,7 @@
 								<div class="mobile-bg">
 									<div class="mobile-bg-in">
 											<div class="content4">
-											<iframe id="feelIframe" src="https://feeljoy.in/user/topics" style="width:264px;height:423px;border:0;mrgin:0px;"></iframe>
+											<iframe id="feelIframe" src="https://feeljoy.in/src" style="width:264px;height:423px;border:0;mrgin:0px;"></iframe>
 												<!-- h6>POST MARRIAGE CONCERN</h6>
 												<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 													sed do eiusmod tempor incididunt ut labore et dolore magna
