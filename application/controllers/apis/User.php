@@ -24,7 +24,8 @@ class User extends CI_Controller{
 	    		$resultRow['name'] = $row['name'];
 	    		$resultRow['qualification'] = $row['qualification'];
 	    		$resultRow['profile_img'] = base_url().'pics_listener/'.$row['profile_img'];
-	    		$resultRow['link'] = base_url().'user/chat/index/'.$row['id'];	    		
+	    		$resultRow['link'] = base_url().'user/chat/index/'.$row['id'];	
+	    		$resultRow['profile_link'] = base_url().'listener/details/index/'.$row['id'];
 	    		$resultRow['priority'] = $row['priority'];
 	    		$result[] = $resultRow;
 	    	}
