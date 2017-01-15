@@ -82,7 +82,7 @@
 								<div class="mobile-bg">
 									<div class="mobile-bg-in">
 											<div class="content4">
-											<iframe id="feelIframe" src="https://feeljoy.in/src" style="width:264px;height:423px;border:0;mrgin:0px;"></iframe>
+											<iframe id="feelIframe" src="https://feeljoy.in/src/" style="width:264px;height:423px;border:0;mrgin:0px;"></iframe>
 												<!-- h6>POST MARRIAGE CONCERN</h6>
 												<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 													sed do eiusmod tempor incididunt ut labore et dolore magna
