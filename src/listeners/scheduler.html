@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Scheduler</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<meta name="apple-mobile-web-app-title" content="Feeljoy">
+<link rel="apple-touch-icon" href="img/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57x57.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/apple-touch-icon-60x60.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/apple-touch-icon-120x120.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/apple-touch-icon-76x76.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/apple-touch-icon-152x152.png"/>
+<link rel="icon" type="image/png" href="img/favicon-196x196.png" sizes="196x196"/>
+<link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96"/>
+<link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="img/favicon-128.png" sizes="128x128"/>
+<meta name="application-name" content="Feeljoy"/>
+<meta name="msapplication-TileColor" content="#fff"/>
+<meta name="msapplication-TileImage" content="img/mstile-144x144.png"/>
+<meta name="msapplication-square70x70logo" content="img/mstile-70x70.png"/>
+<meta name="msapplication-square150x150logo" content="img/mstile-150x150.png"/>
+<meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png"/>
+<meta name="msapplication-square310x310logo" content="img/mstile-310x310.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="css/material-cyan.css">
+    <link rel="stylesheet" href="css/scheduler.css">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <div id="fj-layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-header fj-layout">
+      
+      
+  <header id="fj-main-header" class="mdl-layout__header mdl-layout__header--seamed fj-main-header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div id="fj-header-title" class="mdl-layout-title fj-header-title">FeelJoy</div>
+      <div id="fj-header-logo" class="fj-header-logo fj-fade-down">
+        <img src="svg/feeljoy.svg" alt="logo"/>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+      <button id="fj-icon-hamburger" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon-hamburger fj-toolbar-button" data-icon-name="hamburger"></button>
+    </div>
+  </header>
+
+      <main id="fj-main-content" class="mdl-layout__content fj-main-content">
+        <div id="fj-content-loading" class="fj-content-loading">
+          <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular">
+            </div>
+          <button id="fj-retry-loader" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent fj-retry-loader is-hidden">
+            Retry
+          </button>
+        </div>
+        <div id="fj-inner-content" class="page-content fj-inner-content">
+          <h6 class="fj-slot-title">Select your Dates</h6>
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div id="fj-date-tab" class="mdl-tabs__tab-bar mdl-shadow--2dp fj-date-tab--container">
+              <a href="#day-1" class="mdl-tabs__tab fj-date-tab is-active">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Today</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              <a href="#day-2" class="mdl-tabs__tab fj-date-tab">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Tomorrow</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              <a href="#day-3" class="mdl-tabs__tab fj-date-tab">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Wed</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              <a href="#day-4" class="mdl-tabs__tab fj-date-tab">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Thu</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              <a href="#day-5" class="mdl-tabs__tab fj-date-tab">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Fri</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              <a href="#day-6" class="mdl-tabs__tab fj-date-tab">
+                <i class="icon-lens fj-date-change"></i>
+                <span class="fj-date-title">Sat</span>
+                <span class="fj-date-subtitle">31 Dec</span>
+              </a>
+              </div>
+            <h6 class="fj-slot-title">Choose your preference</h6>
+            <div class="mdl-tabs__panel mdl-shadow--2dp fj-date-panel is-active" id="day-1">
+              <div class="fj-checkbox-container">
+                <span class="fj-checkbox-text">Availability</span>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect fj-checkbox-label" id="fj-switch-1">
+                  <input type="checkbox" class="mdl-switch__input" for="fj-switch-1" checked>
+                  <span class="mdl-switch__label"></span>
+                </label>
+              </div>
+              <h6 class="fj-slot-captitle">Select your slot</h6>
+              <p class="fj-slot-subtitle">You will be marked online during this period</p>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect fj-add-slot">
+                <i class="icon-add_circle"></i>
+                Add another slot
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect fj-save-button">
+                Save
+              </button>
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-2">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-3">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-4">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-5">
+              loading
+            </div>
+            <div class="mdl-tabs__panel fj-date-panel" id="day-6">
+              loading
+            </div>
+            </div>
+        </div>
+      </main>
+      
+      
+  <div id="fj-main-menu" class="fj-main-menu mdl-shadow--3dp">
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#menu-panel" class="mdl-tabs__tab fj-main-tab is-active">Menu</a>
+        
+      </div>
+      <div class="mdl-tabs__panel is-active" id="menu-panel">
+        <nav>
+          <ul>
+            <li>Menu</li>
+            <li>Items</li>
+            <li>Are</li>
+            <li>Here</li>
+          </ul>
+        </nav>
+        
+          <div class="fj-palette-changer">
+            <i class="icon-palette"></i>
+            <i class="icon-lens cyan fj-color-swatch" data-color="cyan"></i>
+            <i class="icon-lens darkcyan fj-color-swatch" data-color="darkcyan"></i>
+            <i class="icon-lens darkgreen fj-color-swatch" data-color="darkgreen"></i>
+            <i class="icon-lens green fj-color-swatch" data-color="green"></i>
+          </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+    </div>
+    <div id="fj-snackbar" class="mdl-js-snackbar mdl-snackbar fj-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+    <script src="js/scheduler.js"></script>
+  </body>
+</html>
