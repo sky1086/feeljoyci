@@ -62,5 +62,41 @@ class Authentication extends CI_Model{
     		}
     	}
     }
+    
+    public function checkLogin($allowed){
+    	//valid users who can login into system interface
+    	$allowedUser = array(ACCOUNT_USER, ACCOUNT_ADMIN, ACCOUNT_LISTENER);
+    
+    	if(!empty($allowed))
+    		$allowedUser = $allowed;
+    
+    		$validusers = in_array($this->session->userdata('usertype'),$allowedUser);
+    		//var_dump($validusers, $this->session->userdata());exit;
+    		if(!$this->session->userdata('validated') || empty($this->session->userdata('userid')) || !$validusers){
+    			//store url to redirect in case of not logged in
+    			$redirecturl = $_SERVER['REQUEST_URI'];
+    			if($this->session->userdata('usertype') && !$validusers)
+    			{
+    				$this->session->sess_destroy();
+    			}
+    			if(!empty($redirecturl) && stripos($redirecturl, 'login') === FALSE)
+    			{//exclude login and datatable page requests
+    				//$this->session->set_userdata(array('redirecturl'=>base_url().substr($redirecturl,1)));
+    			}
+    			//redirect('login');
+    			return false;
+    		}else {
+    			//$this->setUseridSession();
+    			$userData['userid'] = $this->session->userdata('userid');
+    			$userData['username'] = $this->session->userdata('username');
+    			$userData['contactname'] = $this->session->userdata('contact_name');
+    			$userData['email'] = $this->session->userdata('email');
+    			$userData['profileimage'] = base_url().'pics_listener/'.$this->session->userdata('profile_img');
+    			$userData['usertype'] = $this->session->userdata('usertype');
+    			
+    			return $userData;
+    			//echo 'loggedin';exit;
+    		}
+    }
 }
 ?>
