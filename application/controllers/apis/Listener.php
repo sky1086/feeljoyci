@@ -5,6 +5,7 @@ class Listener extends CI_Controller{
     function __construct(){
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
+    	error_reporting(0);
         $this->load->model(array('authentication', 'chat/chat_model'));        
 		header('Access-Control-Allow-Origin: *'); //need to remove after developement done
 	    }
@@ -26,7 +27,7 @@ class Listener extends CI_Controller{
 	    	}
 	    	
 	    	$contactedUsers = $this->chat_model->getContactedUsers($this->session->userdata('userid'));	    	
-	    	echo json_encode($contactedUsers[0]);
+	    	echo json_encode($contactedUsers);
 	    	
 	    	//echo json_encode($result);	
 	    }
