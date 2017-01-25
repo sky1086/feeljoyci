@@ -9,7 +9,7 @@ class Index extends CI_Controller{
 
     public function index(){
     	$this -> load -> library('Mobile_Detect');
-    	$detect = new Mobile_Detect();echo '<pre>';
+    	$detect = new Mobile_Detect();
     	if (!$detect->isMobile()  && !$detect->isTablet() && !$detect->isAndroidOS()) {
     		header("Location: ".$this->config->item('base_url')."desktop"); exit;
     	}
