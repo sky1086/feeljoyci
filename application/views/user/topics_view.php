@@ -127,7 +127,7 @@ $assetPath = base_url().'assets/clicks/';
     <div class="fj-tooltext">
       Quality Space
     </div>
-    <a href="//feeljoy.in/user/topics" id="fj-qs-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-qs-button">
+    <a href="<?php echo base_url()?>user/topics" id="fj-qs-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-qs-button">
       <i class="icon-mat"></i>
     </a>
   </div>
@@ -135,7 +135,7 @@ $assetPath = base_url().'assets/clicks/';
     <div class="fj-tooltext">
       Talk to a buddy
     </div>
-    <a href="listeners.html" id="fj-ttab-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-ttab-button">
+    <a href="<?php echo base_url()?>user/listeners" id="fj-ttab-button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect fj-ttab-button">
       <i class="icon-chat"></i>
     </a>
   </div>
