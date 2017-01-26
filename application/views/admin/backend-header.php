@@ -31,12 +31,16 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/admin/materialize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
-    <script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>jQuery-edit/jquery-te-1.4.0.css">
+    
+    <!-- script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <!-- script src="https://code.jquery.com/jquery.min.js"></script-->    
     <script src="<?php echo base_url();?>js/jquery.tabledit.js"></script>
+    <script src="<?php echo base_url();?>jQuery-edit/uncompressed/jquery-te-1.4.0.js"></script>
     <style>
         .primary-color {
             background-color: #56B68B !important;

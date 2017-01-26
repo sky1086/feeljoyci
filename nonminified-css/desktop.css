@@ -1,0 +1,66 @@
+.mobile-bg-in {
+    background: transparent;
+    margin: 0 auto;
+    position: absolute;
+    top: 65px;
+    left: 19px;
+}
+.mobile-bg
+{
+	background-image:url(../img/Desktop-bg.png);
+	background-size: contain;
+    /* padding: 123px 43px; */
+    position: relative;
+    top:20px;
+    height: 580px;
+    overflow: hidden;
+    width: 315px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.desktop-wrapper {
+    height: 100%;
+    background: #D8D8D8;
+}
+.heading-txt
+{
+	color: #fff;
+    font-size: 35px;
+    line-height: 5;
+}
+
+.mobile-bg-in  .wrapper-content4-in4 {
+    background: #fff;
+    height: auto;
+    width: 76%;
+    margin: 0px auto;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px 1px #222;
+    position: relative;
+    top: 0px;
+    z-index: 1;
+    left: 19px;
+}
+
+.mobile-bg-in  .content4 {
+    width: 315px;
+    height: 405px;
+    padding: 5px;
+}
+
+.desktop-wrapper .wrapper-content4 {
+    /* background: #25c6da; */
+    height: auto;
+}
+
+.mobile-bg-in h6 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.mobile-bg-in p {
+    font-size: 11px;
+    text-align: justify !important;
+    padding-left: 0px;
+    word-spacing: -2px;
+}
+	

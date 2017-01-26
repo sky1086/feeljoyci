@@ -29,7 +29,7 @@ Primary use: App & Mobile Website
 // SmoothState
 var duration_CONSTANT = 250;
 var options = {
-    prefetch: true,
+    prefetch: false,
     cacheLength: 0,
     blacklist: '.no-smoothState',
     onStart: {
@@ -95,7 +95,7 @@ function initiate_plugins() {
     });
 
     // Swipebox
-    $('.swipebox').swipebox();
+    //$('.swipebox').swipebox();
 
     // Masonry
    /* $('.grid').masonry({
@@ -144,7 +144,7 @@ function initiate_plugins() {
     });
 
     // Sliders
-    var swiper = new Swiper('.swiper-slider', { // Default
+    /*var swiper = new Swiper('.swiper-slider', { // Default
         pagination: '.swiper-pagination',
         paginationClickable: true,
         nextButton: '.swiper-button-next',
@@ -193,7 +193,7 @@ function initiate_plugins() {
         centeredSlides: true,
         paginationClickable: true,
         spaceBetween: 0,
-    });
+    });*/
 
     // MixItUP
     $(function () {
@@ -268,7 +268,7 @@ $('#open-left').sideNav({ // Trigger id
 });
 
 // Swipebox
-$('.swipebox').swipebox();
+//$('.swipebox').swipebox();
 
 // Masonry
 /*$('.grid').masonry({
@@ -316,6 +316,7 @@ $(function() {
     });
 });
 
+/*
 // Sliders
 var swiper = new Swiper('.swiper-slider', { // Default
     pagination: '.swiper-pagination',
@@ -367,7 +368,7 @@ var swiper = new Swiper('.steps', { // Walkthrough
     paginationClickable: true,
     spaceBetween: 0,
 });
-
+*/
 // MixItUp
 $(function () {
     var layout = 'grid', // Store the current layout as a variable

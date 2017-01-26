@@ -239,7 +239,7 @@ hr {
     background: url(../img/9.jpg) no-repeat center / cover !important;
 }
 .bg-material {
-    background: url(../img/material.jpg) no-repeat center / cover !important;
+    /*background: url(../img/material.jpg) no-repeat center / cover !important;*/
 }
 .bg-blur {
     background: url(../img/blur.jpg) no-repeat center / cover !important;
