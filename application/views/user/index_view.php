@@ -76,7 +76,7 @@ $assetPath = base_url().'assets/home/';
             <h5 class="fj-inner-h5">Deal with your problems, Judgment-Free</h5>
             <p class="fj-inner-p is-padded">Struggling with something specific or just looking for a boost, FeelJoy will help you approach life with strength, clarity and calm.</p>
             <div class="fj-pointer-item">
-              <img src="<?php echo $assetPath;?>img/about-icon.png" alt="about">
+              <i class="icon-about-icon fj-icon-color"></i>
               <div class="fj-pointer-text">
                 <h5 class="fj-pointer-title">
                   Tell us about yourself
@@ -87,7 +87,7 @@ $assetPath = base_url().'assets/home/';
               </div>
             </div>
             <div class="fj-pointer-item">
-              <img src="<?php echo $assetPath;?>img/emoticon-square-smiling-face-with-closed-eyes.png" alt="buddy">
+              <i class="icon-emoticon-square-smiling-face-with-closed-eyes fj-icon-color"></i>
               <div class="fj-pointer-text">
                 <h5 class="fj-pointer-title">
                   Meet your buddy
@@ -98,7 +98,7 @@ $assetPath = base_url().'assets/home/';
               </div>
             </div>
             <div class="fj-pointer-item">
-              <img src="<?php echo $assetPath;?>img/content.png" alt="content">
+              <i class="icon-Blog-icon fj-icon-color"></i>
               <div class="fj-pointer-text">
                 <h5 class="fj-pointer-title">
                   Tailored content engine
@@ -109,7 +109,7 @@ $assetPath = base_url().'assets/home/';
               </div>
             </div>
             <div class="fj-pointer-item">
-              <img src="<?php echo $assetPath;?>img/Blog-icon.png" alt="Blog-icon">
+              <i class="icon-content fj-icon-color"></i>
               <div class="fj-pointer-text">
                 <h5 class="fj-pointer-title">
                   Read our self help blog
@@ -158,7 +158,7 @@ $assetPath = base_url().'assets/home/';
           </section>
           <section class="fj-customer-section">
             <div class="fj-icon-header">
-              <img src="<?php echo $assetPath;?>img/mail-black-envelope-symbol.png" alt="mail">
+              <i class="icon-close-envelope fj-icon-color"></i>
               <h5>Sign up for our newsletter</h5>
             </div>
             <p class="fj-inner-p side-padded left-aligned">
@@ -223,6 +223,10 @@ $assetPath = base_url().'assets/home/';
   </div>
 
     </div>
+    <div id="fj-snackbar" class="mdl-js-snackbar mdl-snackbar fj-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-snackbar__action" type="button"></button>
+</div>
     <script src=""></script>
     <script src="<?php echo $assetPath;?>js/customer.js"></script>
   </body>
