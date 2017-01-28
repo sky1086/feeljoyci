@@ -9,14 +9,19 @@
      <div class="row">
      	<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10" style="background-color: white; color:#000;">
               <div class="user-desc">
+              <?php if($id > 0){?>
+                <h5>Edit Third click</h5>
+                <?php }else{?>
                 <h5>Add Third click</h5>
+                <?php }?>
               </div>
               <div class="user-desc">
               <span>Theme &nbsp;</span>
+              <input type="hidden" value="<?php echo $id;?>" name="questionid" id="questionid"/>
                 <select name="theme" id="theme" style="width: 200px;" onchange="getSecondClicks(this.value);">
                 <option value="">Select Theme</option>
 	                <?php foreach ($categories['themes'] as $theme){
-	                	echo '<option '.($id == $theme['id']?'selected':'').' value="'.$theme['id'].'">'.ucfirst($theme['name']).'</option>';
+	                	echo '<option '.($questiondata['parentid'] == $theme['id']?'selected':'').' value="'.$theme['id'].'">'.ucfirst($theme['name']).'</option>';
 	                }?>
               	</select>
               </div>
@@ -24,22 +29,23 @@
               <span>Second click &nbsp;</span>
                 <select name="secondclick" id="secondclick" style="width: 200px;">
                 <option value="">Select 2nd Click</option>
+                <option value="<?php echo $questiondata['categoryid'];?>" selected><?php echo $questiondata['categoryname'];?></option>
               	</select>
               </div>
               <div class="user-desc">
               <span>Third click &nbsp;</span>
-                <input type="radio" name="thirdClickFlag" id="tcFlagTrue" checked value='1' onclick="toggelThirdClick(1);"> <label for="tcFlagTrue"> Yes</label>
-                <input type="radio" name="thirdClickFlag" id="tcFlagFalse" value='0' onclick="toggelThirdClick(0);"> <label for="tcFlagFalse"> No</label>
+                <input type="radio" name="thirdClickFlag" id="tcFlagTrue" <?php echo ($thirdclick == 1?'checked':'');?> value='1' onclick="toggelThirdClick(1);"> <label for="tcFlagTrue"> Yes</label>
+                <input type="radio" name="thirdClickFlag" id="tcFlagFalse" <?php echo ($thirdclick == 0?'checked':'');?> value='0' onclick="toggelThirdClick(0);"> <label for="tcFlagFalse"> No</label>
               </div>
               
               <table>
               <tr id="questionRow">
-              	<td><input type="text" style="width: 200px;" name="question" id="question" placeholder="Title" required />&nbsp;&nbsp;&nbsp;&nbsp;</td>
-              	<td><input type="text" style="width: 200px;" name="priority" id="priority" placeholder="Priority in number" required />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              	<td><input type="text" style="width: 200px;" name="question" id="question" placeholder="Title" value="<?php echo $questiondata['question'];?>" required />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              	<td><input type="text" style="width: 200px;" name="priority" id="priority" placeholder="Priority in number" required value="<?php echo $questiondata['priority'];?>" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
               	<td>
               		<select name="status" id="status" style="width: 200px;">
-              			<option value="1">Active</option>
-              			<option value="0">Inactive</option>
+              			<option value="1" <?php echo ($questiondata['status'] == 1?'selected':'');?>>Active</option>
+              			<option value="0" <?php echo ($questiondata['status'] == 0?'selected':'');?>>Inactive</option>
               		</select>&nbsp;&nbsp;&nbsp;&nbsp;
               	</td>
               	<td>
@@ -53,7 +59,7 @@
               </tr>
               <tr>
               <td colspan="3" style="text-align: left;">
-              <textarea name="answer" class="jqt-editor" id="answer" rows=50 id="category" style="width: 50%;height:100px;"></textarea>
+              <textarea name="answer" class="jqt-editor" id="answer" rows=50 id="category" style="width: 50%;height:100px;"><?php echo $questiondata['answer'];?></textarea>
               </td>
               </tr>
               <tr>
@@ -63,39 +69,6 @@
               </table>
 		</div>
 	</div>
-              
-       <div class="row">
-          <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10" style="background-color: white; color:#000;">
-          	<div id="tablejson"></div>
-              <div class="user-desc">
-                <h5>Third clicks</h5>
-              </div>
-              <table id="themeedit">
-              <tr>
-              	<th style="padding:10px;">Id</th>
-              	<th style="padding:10px;">Theme</th>
-              	<th style="padding:10px;">Priority</th>
-              	<th style="padding:10px;">Status</th>
-              </tr>
-              	<?php 
-              	$err = '';
-              	if(!empty($categories) && isset($categories[$id])){
-              	foreach ($categories[$id] as $theme){
-              		$theme_status = ($theme["status"] == 1?'<font color="green">Active</font>':'<font color="red">Inactive</font>');
-              		echo '<tr>
-     						<td style="padding:10px;">'.$theme['id'].'</td>
- 							<td style="padding:10px;">'.ucfirst($theme['name']).'</td>
-       						<td style="padding:10px;">'.$theme['priority'].'</td>
-        					<td style="padding:10px;">'.$theme_status.'</td>
-        				</tr>';
-              	}
-              	}else{
-              		$err = 'No Record Found';
-              	}?>
-              </table>
-              <?php echo $err;?>
-          </div>
-          </div>
        </div>
       </div>
 	
@@ -118,6 +91,7 @@
     <!-- End of Main Container -->
   <script type="text/javascript">
 <!--
+$(document).ready(function(){
 $('#themeedit').Tabledit({
 	url: '<?php echo base_url();?>admin/thirdclick/edit',
     deleteButton: false,
@@ -136,12 +110,15 @@ $('#themeedit').Tabledit({
 	
 });
 
+$('.jqt-editor').jqte();
+});
 function addTheme(){
 	var theme = $('#theme').val();
 	if(theme == ''){
 		alert('Please select theme first');
 		return false;
 	}
+	var questionid = $('#questionid').val();
 	var secondclick = $('#secondclick').val();
 	var hasThirdClick = $("input[name=thirdClickFlag]:checked").val();
 	var quest = $('#question').val();
@@ -151,7 +128,7 @@ function addTheme(){
 	$.ajax({
 		type: 'post',
 		url: '<?php echo base_url();?>admin/thirdclick/add',
-		data:  {pid: theme, cid: secondclick, thirdclick:hasThirdClick, question:quest, priority: priority, status: status, answer:answer},
+		data:  {pid: theme, cid: secondclick, thirdclick:hasThirdClick, question:quest, priority: priority, status: status, answer:answer, questionid: questionid},
 		success: function(rsp){
 				if(rsp == 0){
 					//alert(rsp.msg);
@@ -198,9 +175,7 @@ function getSecondClicks(id){
 		});
 	}
 }
-
 $('.jqt-editor').jqte();
-
 //-->
 </script>
   

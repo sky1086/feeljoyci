@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" style="height: 100%;">
 
 <head>
     <meta charset="utf-8">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
     <link rel="stylesheet" href="<?php echo base_url();?>jQuery-edit/jquery-te-1.4.0.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/jquery.dataTables.min.css">    
     
     <!-- script src="<?php echo base_url();?>js/vendor/modernizr-2.7.1.min.js"></script-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -113,7 +114,7 @@
     </style>
 </head>
 
-<body>
+<body style="height: 100%;">
 
     <!-- Main Container -->
     <div id="main" class="main">

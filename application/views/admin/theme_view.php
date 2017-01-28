@@ -78,7 +78,11 @@
     
     <!-- End of Main Container -->
   <script type="text/javascript">
-<!--
+$(document).ready(function(){
+	$( "a" ).click(function( event ) {
+		  event.preventDefault();
+		});
+	
 $('#themeedit').Tabledit({
 	url: '<?php echo base_url();?>admin/themes/edit',
     deleteButton: false,
@@ -95,6 +99,7 @@ $('#themeedit').Tabledit({
 	  editable: [[1, 'category'], [2, 'priority'], [3, 'status','{"1":"Active", "0":"Inactive"}']],	  
 	}
 	
+});
 });
 
 function addTheme(){
@@ -114,7 +119,7 @@ function addTheme(){
 			}
 	});
 	}
-//-->
+
 </script>
   
 <?php $this->load->view('admin/backend-footer');?>

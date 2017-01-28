@@ -41,5 +41,38 @@ class Question_model extends CI_Model{
     	}
     	return array();
     }
+    
+    public function getAssocCatDetails($queid){
+    	$query = $this->db->query('select c.* from categories c, cat_question_assoc cqa where cqa.questid = '.$queid.' and cqa.catid = c.id');
+    	if ($query->num_rows() > 0) {
+    		return $query->result();
+    	}
+    	return array();
+    }
+    
+    public function getQuestionCompleteDetails($id){
+    	$question = $this->getQuestionDetails($id);
+    	$category = $this->getAssocCatDetails($id);
+    	
+    	$question = $question[0];
+    	$category = $category[0];
+    	if($question->id && $category->id){
+    		$result = [
+    				'questionid'=>$question->id,
+    				'question'=>$question->question,
+    				'answer'=>$question->answer,
+    				'priority'=>$question->priority,
+    				'status'=>$question->status,
+    				'categoryid'=>$category->id,
+    				'parentid'=>$category->parentid,
+    				'categoryname'=>$category->name,
+    				'thirdclick'=>$category->thirdclick,    				
+    		];
+    		return $result;
+    	}else{
+    		return array();
+    	}
+    	
+    }
 }
 ?>
