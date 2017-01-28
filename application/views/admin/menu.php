@@ -45,6 +45,28 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                    <a href="<?php echo base_url();?>admin/listener/themes" onclick="window.location=this.href;" ><i class="ion-android-person"></i>Listener 1st Click</a>
+            </li>
+            <li>
+                    <a href="<?php echo base_url();?>admin/listener/secondclick" ><i class="ion-android-person"></i>Listener 2nd Click</a>
+            </li>
+            <!--li>
+                    <a href="<?php echo base_url();?>admin/listener/thirdclick"><i class="ion-android-person"></i>3rd Click</a>
+            </li-->
+            <li>
+                <div class="collapsible-header waves-effect">
+                    <i class="ion-android-camera"></i>Listener Third Click<span class="more"><i class="ion-ios-arrow-right"></i></span>
+                </div>
+                <div class="collapsible-body">
+                    <ul class="collapsible">
+                        <li>
+                            <a href="<?php echo base_url();?>admin/listener/thirdclick" onclick="window.location=this.href;">Add</a>
+                            <a href="<?php echo base_url();?>admin/listener/thirdclick/listing" onclick="window.location=this.href;">List Thirdclicks</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <!-- li>
                 <div class="collapsible-header waves-effect">
                     <i class="ion-android-camera"></i>Theme/Categories<span class="more"><i class="ion-ios-arrow-right"></i></span>
