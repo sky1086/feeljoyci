@@ -146,7 +146,7 @@ function getThirdclicksAnswers(cid){
 					$('#themeedit').DataTable({
 						data: data.data,
 						"bPaginate": false,
-				        "order": [ 0, "desc" ],
+						"order": [ 3, "asc" ],
 				        "aaSorting": []
 				    });
 					applyPopup();
