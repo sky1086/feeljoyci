@@ -115,6 +115,7 @@ function addTheme(){
 					//alert(rsp.msg);
 				}else if(rsp == 1){
 					alert('Added succuessfully');
+					location.reload();
 				}
 			}
 	});

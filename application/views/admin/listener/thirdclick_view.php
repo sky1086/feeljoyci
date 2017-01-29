@@ -1,5 +1,5 @@
 <?php $this->load->view('admin/backend-header');?>
-
+<script src="<?php echo base_url();?>js/ckeditor/ckeditor.js"></script>
  <!-------------------------------------------------------------------------->
         
         <section>
@@ -124,7 +124,7 @@ function addTheme(){
 	var quest = $('#question').val();
 	var priority = $('#priority').val();
 	var status = $('#status').val();
-	var answer = $('#answer').val();
+	var answer = CKEDITOR.instances.answer.getData();
 	$.ajax({
 		type: 'post',
 		url: '<?php echo base_url();?>admin/listener/thirdclick/add',
@@ -175,7 +175,8 @@ function getSecondClicks(id){
 		});
 	}
 }
-$('.jqt-editor').jqte();
+//$('.jqt-editor').jqte();
+CKEDITOR.replace('answer');
 //-->
 </script>
   
