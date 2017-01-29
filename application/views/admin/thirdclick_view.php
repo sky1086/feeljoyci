@@ -177,6 +177,7 @@ function getSecondClicks(id){
 }
 //$('.jqt-editor').jqte();
 CKEDITOR.replace('answer');
+CKEDITOR.instances['answer'].setData($('#answer').val());
 //-->
 </script>
   
