@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Feeljoy</title>
+    <title>Feeljoy - Guide</title>
     <meta name="author" content="Puranjay Jain"/>
     <meta name="theme-color" content="#455A64">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,14 +31,8 @@
 <meta name="msapplication-square150x150logo" content="img/mstile-150x150.png"/>
 <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png"/>
 <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png"/>
-    <meta
-      http-equiv="origin-trial"
-      data-feature="Web Share"
-      data-expires="2017-03-13"
-      content="AmGKuYx5vS3EMDuT0kmBZ1MvNndR6T266nj7HwcmfMG9JyWmAYZJ2QbqWBOSot9kTE2DsR6V9OHf3cPduIgpEQ4AAABfeyJvcmlnaW4iOiJodHRwczovL2ZlZWxqb3kuaW46NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDg5NDE3NTY5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
-    <link rel="stylesheet" href="css/fj.css">
-    <link rel="manifest" href="manifest.json">
-  </head>
+    <link rel="stylesheet" href="css/guide.css">
+    </head>
   <body>
     <div id="fj-layout" class="fj-layout">
       
@@ -53,28 +47,7 @@
     <button id="fj-icon-hamburger" data-activates="fj-main-menu" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon-hamburger fj-toolbar-button" data-icon-name="hamburger"></button>
   </nav>
 
-      <div id="fj-cover-header" class="fj-cover-header">
-  <button id="fj-home-button" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon fj-toolbar-button">
-    <i class="icon-home"></i>
-  </button>
-  <div class="progress fj-cover-progress">
-    <div id="fj-cover-progress" class="determinate"></div>
-  </div>
-  <button id="fj-info-button" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon fj-toolbar-button">
-    <i class="icon-info_outline"></i>
-  </button>
-  <button id="fj-share-button" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon fj-toolbar-button">
-    <i class="icon-share"></i>
-  </button>
-</div>
       <div id="fj-float-menu" class="fj-float-menu"></div>
-      <div id="fj-nav-info" class="fj-nav-info z-depth-1 is-hidden">
-  <button id="fj-navback-button" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon fj-toolbar-button">
-    <i class="icon-arrow_back"></i>
-  </button>
-  <div id="fj-nav-breadcrumbs" class="fj-nav-breadcrumbs">
-  </div>
-</div>
       <main id="fj-main-content" class="fj-main-content">
         
         
@@ -111,36 +84,6 @@
         <div id="fj-inner-content" class="page-content fj-inner-content is-hidden"></div>
       </main>
       <div id="fj-animation-container" class="fj-animation-container"></div>
-      <div id="fj-overlay-elt" class="fj-overlay-elt is-hidden"></div>
-      
-      
-  <div id="fj-float-container" class="fj-float-container is-hidden is-nodisplay">
-    
-      <div class="fj-fab-container">
-        <div class="fj-tooltext">
-          Blog
-        </div>
-        <a href="/public/login/blog.html" id="fj-qs-button" class="btn-floating waves-effect waves-dark fj-qs-button">
-          <i class="icon-mode_edit"></i>
-        </a>
-      </div>
-    
-    
-      <div class="fj-fab-container">
-        <div class="fj-tooltext">
-          Talk to a buddy
-        </div>
-        <a href="/public/chat_engine/listeners.html" id="fj-ttab-button" class="btn-floating waves-effect waves-dark fj-ttab-button">
-          <i class="icon-chat_icon"></i>
-        </a>
-      </div>
-    
-    
-    <button id="fj-diversion-button" class="waves-effect waves-dark btn-floating btn-large fj-diversion-button">
-      <i class="icon-diverse"></i>
-    </button>
-  </div>
-
       
       
 <div id="fj-main-menu" class="side-nav fj-main-menu">
@@ -155,11 +98,6 @@
 </div>
 
     </div>
-    <script src="js/fj.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("service-worker.js").then(function (reg) {}).catch(function (err) {});
-      }
-    </script>
-  </body>
+    <script src="js/guide.js"></script>
+    </body>
 </html>
