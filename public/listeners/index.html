@@ -32,23 +32,20 @@
 <meta name="msapplication-wide310x150logo" content="img/mstile-310x150.png"/>
 <meta name="msapplication-square310x310logo" content="img/mstile-310x310.png"/>
     <link rel="stylesheet" href="css/listenerIndex.css">
-    <script src="js/modernizr.js"></script>
-  </head>
+    </head>
   <body>
     <div id="fj-layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-header fj-layout">
       
       
-  <header id="fj-main-header" class="mdl-layout__header mdl-layout__header--seamed fj-main-header mdl-shadow--2dp">
-    <div class="mdl-layout__header-row">
-      
-      <div id="fj-header-title" class="mdl-layout-title fj-header-title">FeelJoy</div>
+  <nav id="fj-main-header" class="fj-main-header">
+    <a href="https://feeljoy.in" id="fj-header-title" class="fj-header-title">FeelJoy</a>
+    
       <div id="fj-header-logo" class="fj-header-logo fj-fade-down">
         <img src="svg/feeljoy.svg" alt="logo"/>
       </div>
-      <div class="mdl-layout-spacer"></div>
-      <button id="fj-icon-hamburger" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon-hamburger fj-toolbar-button" data-icon-name="hamburger"></button>
-    </div>
-  </header>
+    
+    <button id="fj-icon-hamburger" data-activates="fj-main-menu" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon-hamburger fj-toolbar-button" data-icon-name="hamburger"></button>
+  </nav>
 
       <main id="fj-main-content" class="mdl-layout__content fj-main-content">
         <div id="fj-content-loading" class="fj-content-loading">
@@ -114,34 +111,23 @@
       </main>
       
       
-  <div id="fj-main-menu" class="fj-main-menu mdl-shadow--3dp">
-    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-      <div class="mdl-tabs__tab-bar">
-        <a href="#menu-panel" class="mdl-tabs__tab fj-main-tab is-active">Menu</a>
-        
-      </div>
-      <div class="mdl-tabs__panel is-active" id="menu-panel">
-        <nav>
-          <ul>
-            <li>Menu</li>
-            <li>Items</li>
-            <li>Are</li>
-            <li>Here</li>
-          </ul>
-        </nav>
-        
-          <div class="fj-palette-changer">
-            <i class="icon-palette"></i>
-            <i class="icon-lens cyan fj-color-swatch" data-color="cyan"></i>
-            <i class="icon-lens darkcyan fj-color-swatch" data-color="darkcyan"></i>
-            <i class="icon-lens darkgreen fj-color-swatch" data-color="darkgreen"></i>
-            <i class="icon-lens green fj-color-swatch" data-color="green"></i>
-          </div>
-        
-      </div>
-      
+<div id="fj-main-menu" class="side-nav fj-main-menu">
+  <h4>Menu</h4>
+  <ul>
+    <li>some</li>
+    <li>items</li>
+    <li>are</li>
+    <li>dummy</li>
+  </ul>
+  
+    <div class="fj-palette-changer">
+      <i class="icon-lens cyan fj-color-swatch" data-color="cyan"></i>
+      <i class="icon-lens darkcyan fj-color-swatch" data-color="darkcyan"></i>
+      <i class="icon-lens darkgreen fj-color-swatch" data-color="darkgreen"></i>
+      <i class="icon-lens green fj-color-swatch" data-color="green"></i>
     </div>
-  </div>
+  
+</div>
 
     </div>
     <div id="fj-snackbar" class="mdl-js-snackbar mdl-snackbar fj-snackbar">
