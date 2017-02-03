@@ -1,0 +1,9 @@
+.fj-snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  
+  .fj-undo-theme {
+    color: unquote("rgb(#{nth($palette-orange, 5)})");
+  }  
+}

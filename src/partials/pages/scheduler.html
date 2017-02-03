@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Scheduler</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#0097A7">
+    {% include "meta/meta.html" %}
+    <link rel="stylesheet" href="css/fontmain.css">
+    <link rel="stylesheet" href="css/fonticon.css">
+    <link rel="stylesheet" href="css/scheduler.css">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    {% import "components/header.html" as header %}
+    {{ header.header('FeelJoy', false) }}
+    <main id="fj-main-content" class="mdl-layout__content fj-main-content">
+      <div id="fj-content-loading" class="fj-content-loading">
+        <!-- visible -->
+        <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular">
+          <!-- is-active-->
+        </div>
+        <button id="fj-retry-loader" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent fj-retry-loader is-hidden">
+          Retry
+        </button>
+      </div>
+      <div id="fj-inner-content" class="page-content fj-inner-content">
+        <h6 class="fj-slot-title">Select your Dates</h6>
+        <div id="fj-date-holder" class="fj-date-holder">
+          <ul id="fj-date-tab" class="tabs tabs-fixed-width z-depth-1 fj-date-tab-ul">
+            {% for i in[1,
+              2,
+              3,
+              4,
+              5,
+              6] %}
+              <li class="tab">
+                <a href="#day-{{ i }}" class="">
+                  <span class="fj-date-tab">
+                    <i class="icon-lens fj-date-change"></i>
+                    <span class="fj-date-title">Tomorrow</span>
+                    <span class="fj-date-subtitle">31 Dec</span>
+                  </span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          <h6 class="fj-slot-title">Choose your preference</h6>
+          {% for i in[1,
+            2,
+            3,
+            4,
+            5,
+            6] %}
+            <div class="col s12 fj-date-panel{% if i == 1 %} is-active{% endif %}" id="day-{{ i }}" data-tab="{{ i }}">
+              <div id="fj-slot-container-{{ i }}1" class="mdl-shadow--2dp fj-slot-container is-open">
+                <div class="fj-checkbox-container">
+                  <div class="switch" id="fj-switch-{{ i }}1">
+                    <label>
+                      <span class="fj-checkbox-text">Availability</span>
+                      <input type="checkbox" for="fj-switch-{{ i }}1">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                  <button class="waves-effect waves-circle waves-dark btn-floating btn-large fj-toolbar-button fj-slot-hide">
+                    <i class="icon-expand_less"></i>
+                  </button>
+                </div>
+                <h6 class="fj-slot-captitle">Select your slot</h6>
+                <p class="fj-slot-subtitle">You will be marked online during this period</p>
+                <div class="fj-time-slot">
+                  <div class="fj-dropdown-container">
+                    <p>Start Time</p>
+                    <ul data-cur="start" class="fj-dropdown-button">
+                      <li>-:- --</li>
+                      <li class="is-active">-:- --</li>
+                      <li>-:- --</li>
+                    </ul>
+                  </div>
+                  <p>to</p>
+                  <div class="fj-dropdown-container">
+                    <p>End Time</p>
+                    <ul data-cur="end" class="fj-dropdown-button">
+                      <li>-:- --</li>
+                      <li class="is-active">-:- --</li>
+                      <li>-:- --</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          <div id="fj-button-container" class="fj-button-container">
+            <button id="fj-slot-button" class="waves-effect waves-light btn fj-add-slot">
+              <i class="left icon-add_circle"></i>
+              Add another slot
+            </button>
+            <button id="fj-save-button" class="waves-effect waves-light btn fj-save-button">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="fj-dropdown-element" class="mdl-shadow--4dp fj-dropdown-element is-hidden">
+      <div class="fj-left-roller"></div>
+      <ul id="fj-dropdown-content" class="fj-dropdown-content"></ul>
+      <div class="fj-right-roller"></div>
+    </div>
+    {% include "placeholder/overlay.html" %}
+    {% import "components/menu.html" as menu %}
+    {{ menu.menu(true) }}
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+    <script src="js/svgicons.js"></script>
+    <script src="js/page.js"></script>
+    <script src="../node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="../node_modules/zenscroll/zenscroll.js"></script>
+    <script src="js/helpers/multicall.js"></script>
+    <script src="js/helpers/rafcall.js"></script>
+    <script src="js/helpers/domutils.js"></script>
+    <script src="js/helpers/overlay.js"></script>
+    <script src="js/helpers/themes.js"></script>
+    <script src="js/scheduler.js"></script>
+  </body>
+</html>

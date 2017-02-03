@@ -1,0 +1,768 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+body,
+html {
+  overflow: hidden;
+  font-family: "quicksand", Helvetica, Arial, Sans-Serif; }
+
+body {
+  background-color: #607d8b; }
+
+.btn,
+.btn-large {
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+
+.fj-layout:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.74);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.2s 0.3s cubic-bezier(0.4, 0, 1, 1);
+  z-index: 10; }
+
+.fj-layout.is-overlay:after {
+  pointer-events: all;
+  opacity: 1; }
+
+.fj-toolbar-button {
+  margin: 0;
+  cursor: pointer;
+  box-shadow: none;
+  background: none; }
+
+.fj-toolbar-button:active,
+.fj-toolbar-button:focus:not(:active),
+.fj-toolbar-button:hover {
+  box-shadow: none;
+  background: none; }
+
+.fj-icon {
+  color: #fff; }
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+/*card theme colors*/
+.white {
+  background-color: #fff;
+  color: #000; }
+
+.fj-animation-container.cyan,
+.fj-card-figure.cyan,
+body.cyan {
+  background-color: rgb(77,208,225);
+  color: #fff; }
+
+.fj-animation-container.darkcyan,
+.fj-card-figure.darkcyan,
+body.darkcyan {
+  background-color: rgb(77,182,172);
+  color: #fff; }
+
+.fj-animation-container.darkgreen,
+.fj-card-figure.darkgreen,
+body.darkgreen {
+  background-color: rgb(129,199,132);
+  color: #fff; }
+
+.fj-animation-container.green,
+.fj-card-figure.green,
+body.green {
+  background-color: rgb(174,213,129);
+  color: #fff; }
+
+/*main header which is hidden after the transition to the subroute page*/
+.fj-main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  will-change: opacity;
+  transition: 0.3s cubic-bezier(0.4, 0, 1, 1);
+  z-index: 4; }
+  .fj-main-header .fj-header-title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+  .fj-main-header .fj-header-logo {
+    position: absolute;
+    left: calc(50% - 36px);
+    top: 5px;
+    pointer-events: none;
+    padding: 5px;
+    border-radius: 50%; }
+    .fj-main-header .fj-header-logo img {
+      width: 72px;
+      height: 72px; }
+  .fj-main-header .fj-header-logo,
+  .fj-main-header .fj-header-title {
+    transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
+    will-change: transform, opacity; }
+  .fj-main-header .fj-icon-hamburger {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .fj-main-header.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s cubic-bezier(0, 0, 0.2, 1); }
+
+.fj-fade-down {
+  transform: translate3d(0, 100%, 0);
+  transition: 0.3s cubic-bezier(0.4, 0, 1, 1);
+  opacity: 0; }
+
+.fj-header-title.is-hidden {
+  display: none; }
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+.fj-swipe-card {
+  position: absolute;
+  max-width: 560px;
+  padding: 35px;
+  cursor: pointer;
+  font-size: 34px;
+  line-height: 40px;
+  color: #000;
+  overflow: hidden; }
+  .fj-swipe-card > h5 {
+    margin: 12px 0; }
+  .fj-swipe-card > h5.cyan {
+    background-color: transparent !important;
+    color: rgb(77,208,225); }
+  .fj-swipe-card > h5.darkcyan {
+    background-color: transparent !important;
+    color: rgb(77,182,172); }
+  .fj-swipe-card > h5.darkgreen {
+    background-color: transparent !important;
+    color: rgb(129,199,132); }
+  .fj-swipe-card > h5.green {
+    background-color: transparent !important;
+    color: rgb(174,213,129); }
+
+.fj-main-content {
+  top: 56px;
+  z-index: 3;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 56px);
+  overflow: visible;
+  will-change: transform, opacity; }
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+.fj-main-menu {
+  padding: 16px;
+  color: #000; }
+
+.fj-main-tab {
+  flex: 1 0 auto;
+  font-weight: 600;
+  color: rgb(0,172,193); }
+
+.fj-palette-changer {
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 61px;
+  width: 100%;
+  left: 0; }
+  .fj-palette-changer .icon-lens {
+    font-size: 34px;
+    margin: 0 4px; }
+    .fj-palette-changer .icon-lens.cyan {
+      background-color: transparent !important;
+      color: rgb(0,188,212); }
+    .fj-palette-changer .icon-lens.darkcyan {
+      background-color: transparent !important;
+      color: rgb(0,150,136); }
+    .fj-palette-changer .icon-lens.darkgreen {
+      background-color: transparent !important;
+      color: rgb(76,175,80); }
+    .fj-palette-changer .icon-lens.green {
+      background-color: transparent !important;
+      color: rgb(139,195,74); }
+
+.fj-chat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; }
+  .fj-chat-placeholder img {
+    width: 100%;
+    max-width: 300px;
+    margin: 16px; }
+  .fj-chat-placeholder h6 {
+    margin: 0;
+    font-weight: 700;
+    color: #424242;
+    text-align: center; }
+  .fj-chat-placeholder a {
+    color: #00bcd4;
+    text-decoration: none; }
+
+/*page card inner classes*/
+.fj-inner-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  will-change: transform; }
+  .fj-inner-content.is-hidden {
+    display: none; }
+
+.fj-card-figure {
+  flex: 1 0 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25%;
+  min-height: 90px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  will-change: transform; }
+  .fj-card-figure.two {
+    flex: 1 0 50%; }
+  .fj-card-figure.three {
+    flex: 1 0 75%; }
+  .fj-card-figure.white {
+    justify-content: flex-start; }
+
+.fj-snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+  .fj-snackbar .fj-undo-theme {
+    color: rgb(255,167,38); }
+
+.fj-inner-content {
+  background-color: #fff; }
+
+.fj-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px; }
+
+.fj-card-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 4px; }
+  .fj-card-text h5,
+  .fj-card-text h6 {
+    margin: 2px 0;
+    text-transform: capitalize; }
+
+.fj-card-right {
+  margin-left: auto;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8px 0 8px 8px; }
+
+.fj-card-talk {
+  text-transform: none;
+  margin-bottom: 6px; }
+
+.fj-card-badge {
+  background-color: rgb(77,208,225);
+  border-radius: 50%;
+  min-width: 22px;
+  height: 22px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.fj-card-icon {
+  color: #607d8b;
+  font-size: 28px; }
+
+.fj-snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+  .fj-snackbar .fj-undo-theme {
+    color: rgb(255,167,38); }
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+.cyan .fj-card-badge,
+.cyan .fj-main-header {
+  background-color: rgb(77,208,225); }
+
+.cyan .fj-listener-section.color {
+  background-color: rgb(77,208,225); }
+
+.cyan .fj-chat-placeholder a {
+  color: rgb(0,188,212); }
+
+.cyan .fj-date-tab.is-active > .fj-date-subtitle,
+.cyan .fj-date-tab.is-active > .fj-date-title,
+.cyan .fj-slot-title {
+  color: rgb(77,208,225); }
+
+.cyan .fj-main-tab {
+  color: rgb(38,198,218); }
+
+.cyan .tabs a {
+  color: rgb(117,117,117); }
+
+.cyan .tab-line a {
+  color: rgb(245,245,245); }
+
+.cyan .tabs a.active,
+.cyan .tabs a:hover {
+  color: rgb(77,208,225); }
+
+.cyan .tab-line a.active,
+.cyan .tab-line a:hover {
+  color: #fff; }
+
+.cyan .fj-date-tab-ul .indicator {
+  background-color: rgb(77,208,225); }
+
+.cyan .switch label input[type=checkbox]:checked + .lever {
+  background-color: rgb(128,222,234); }
+
+.cyan .switch label input[type=checkbox]:checked + .lever:after {
+  background-color: rgb(0,188,212); }
+
+.cyan .fj-time-display {
+  background: rgb(77,208,225); }
+
+.cyan .fj-add-slot .icon-add_circle,
+.cyan .fj-checkbox-text {
+  color: rgb(77,208,225); }
+
+.cyan .fj-save-button,
+.cyan .fj-save-button:focus:not(:active),
+.cyan .fj-save-button:hover {
+  background-color: rgb(77,208,225); }
+
+.cyan .fj-save-button:active {
+  background-color: rgb(0,188,212); }
+
+.darkcyan .fj-card-badge,
+.darkcyan .fj-main-header {
+  background-color: rgb(77,182,172); }
+
+.darkcyan .fj-listener-section.color {
+  background-color: rgb(77,182,172); }
+
+.darkcyan .fj-chat-placeholder a {
+  color: rgb(0,150,136); }
+
+.darkcyan .fj-date-tab.is-active > .fj-date-subtitle,
+.darkcyan .fj-date-tab.is-active > .fj-date-title,
+.darkcyan .fj-slot-title {
+  color: rgb(77,182,172); }
+
+.darkcyan .fj-main-tab {
+  color: rgb(38,166,154); }
+
+.darkcyan .tabs a {
+  color: rgb(117,117,117); }
+
+.darkcyan .tab-line a {
+  color: rgb(245,245,245); }
+
+.darkcyan .tabs a.active,
+.darkcyan .tabs a:hover {
+  color: rgb(77,182,172); }
+
+.darkcyan .tab-line a.active,
+.darkcyan .tab-line a:hover {
+  color: #fff; }
+
+.darkcyan .fj-date-tab-ul .indicator {
+  background-color: rgb(77,182,172); }
+
+.darkcyan .switch label input[type=checkbox]:checked + .lever {
+  background-color: rgb(128,203,196); }
+
+.darkcyan .switch label input[type=checkbox]:checked + .lever:after {
+  background-color: rgb(0,150,136); }
+
+.darkcyan .fj-time-display {
+  background: rgb(77,182,172); }
+
+.darkcyan .fj-add-slot .icon-add_circle,
+.darkcyan .fj-checkbox-text {
+  color: rgb(77,182,172); }
+
+.darkcyan .fj-save-button,
+.darkcyan .fj-save-button:focus:not(:active),
+.darkcyan .fj-save-button:hover {
+  background-color: rgb(77,182,172); }
+
+.darkcyan .fj-save-button:active {
+  background-color: rgb(0,150,136); }
+
+.darkgreen .fj-card-badge,
+.darkgreen .fj-main-header {
+  background-color: rgb(129,199,132); }
+
+.darkgreen .fj-listener-section.color {
+  background-color: rgb(129,199,132); }
+
+.darkgreen .fj-chat-placeholder a {
+  color: rgb(76,175,80); }
+
+.darkgreen .fj-date-tab.is-active > .fj-date-subtitle,
+.darkgreen .fj-date-tab.is-active > .fj-date-title,
+.darkgreen .fj-slot-title {
+  color: rgb(129,199,132); }
+
+.darkgreen .fj-main-tab {
+  color: rgb(102,187,106); }
+
+.darkgreen .tabs a {
+  color: rgb(117,117,117); }
+
+.darkgreen .tab-line a {
+  color: rgb(245,245,245); }
+
+.darkgreen .tabs a.active,
+.darkgreen .tabs a:hover {
+  color: rgb(129,199,132); }
+
+.darkgreen .tab-line a.active,
+.darkgreen .tab-line a:hover {
+  color: #fff; }
+
+.darkgreen .fj-date-tab-ul .indicator {
+  background-color: rgb(129,199,132); }
+
+.darkgreen .switch label input[type=checkbox]:checked + .lever {
+  background-color: rgb(165,214,167); }
+
+.darkgreen .switch label input[type=checkbox]:checked + .lever:after {
+  background-color: rgb(76,175,80); }
+
+.darkgreen .fj-time-display {
+  background: rgb(129,199,132); }
+
+.darkgreen .fj-add-slot .icon-add_circle,
+.darkgreen .fj-checkbox-text {
+  color: rgb(129,199,132); }
+
+.darkgreen .fj-save-button,
+.darkgreen .fj-save-button:focus:not(:active),
+.darkgreen .fj-save-button:hover {
+  background-color: rgb(129,199,132); }
+
+.darkgreen .fj-save-button:active {
+  background-color: rgb(76,175,80); }
+
+.green .fj-card-badge,
+.green .fj-main-header {
+  background-color: rgb(174,213,129); }
+
+.green .fj-listener-section.color {
+  background-color: rgb(174,213,129); }
+
+.green .fj-chat-placeholder a {
+  color: rgb(139,195,74); }
+
+.green .fj-date-tab.is-active > .fj-date-subtitle,
+.green .fj-date-tab.is-active > .fj-date-title,
+.green .fj-slot-title {
+  color: rgb(174,213,129); }
+
+.green .fj-main-tab {
+  color: rgb(156,204,101); }
+
+.green .tabs a {
+  color: rgb(117,117,117); }
+
+.green .tab-line a {
+  color: rgb(245,245,245); }
+
+.green .tabs a.active,
+.green .tabs a:hover {
+  color: rgb(174,213,129); }
+
+.green .tab-line a.active,
+.green .tab-line a:hover {
+  color: #fff; }
+
+.green .fj-date-tab-ul .indicator {
+  background-color: rgb(174,213,129); }
+
+.green .switch label input[type=checkbox]:checked + .lever {
+  background-color: rgb(197,225,165); }
+
+.green .switch label input[type=checkbox]:checked + .lever:after {
+  background-color: rgb(139,195,74); }
+
+.green .fj-time-display {
+  background: rgb(174,213,129); }
+
+.green .fj-add-slot .icon-add_circle,
+.green .fj-checkbox-text {
+  color: rgb(174,213,129); }
+
+.green .fj-save-button,
+.green .fj-save-button:focus:not(:active),
+.green .fj-save-button:hover {
+  background-color: rgb(174,213,129); }
+
+.green .fj-save-button:active {
+  background-color: rgb(139,195,74); }
+
+/*small screen fixes*/
+.is-small-screen .fj-main-content {
+  top: 56px;
+  height: calc(100% - 56px); }
+
+.is-small-screen .fj-swipe-card {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*animations*/
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0); } }
+
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0); } }
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%); }
+  50% {
+    -webkit-transform: translateY(40%);
+    transform: translateY(40%); }
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%); } }
+
+@keyframes zoomOut {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  to {
+    opacity: 0; } }
+
+.animate {
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+.fadeIn {
+  animation-name: fadeIn; }
+
+.fadeOut {
+  animation-name: fadeOut; }
+
+.zoomIn {
+  animation-name: zoomIn; }
+
+.zoomOut {
+  animation-name: zoomOut; }
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp; }
+
+.slideOutDown {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown; }
+
+.slideInRight {
+  animation-name: slideInRight; }
+
+.slideInLeft {
+  animation-name: slideInLeft; }
+
+.slideInDown {
+  animation-name: slideInDown; }
+
+.slideOutUp {
+  animation-name: slideOutUp; }

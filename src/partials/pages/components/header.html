@@ -1,0 +1,11 @@
+{% macro header(title, logo) %}
+  <nav id="fj-main-header" class="fj-main-header">
+    <a href="https://feeljoy.in" id="fj-header-title" class="fj-header-title">{{ title }}</a>
+    {% if logo %}
+      <div id="fj-header-logo" class="fj-header-logo fj-fade-down">
+        <img src="svg/feeljoy.svg" alt="logo"/>
+      </div>
+    {% endif %}
+    <button id="fj-icon-hamburger" data-activates="fj-main-menu" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon-hamburger fj-toolbar-button" data-icon-name="hamburger"></button>
+  </nav>
+{% endmacro %}

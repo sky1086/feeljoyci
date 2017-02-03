@@ -1,0 +1,31 @@
+{% macro loader(visible, active, hidden) %}
+  <div id="fj-content-loading" class="fj-content-loading
+  {% if visible %}
+  visible
+  {% endif %}
+  ">
+    <div id="fj-loader-circular" class="preloader-wrapper small
+  {% if active %}
+  active
+  {% endif %}">
+      <div class="spinner-layer fj-loader-circular">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <button id="fj-retry-loader" class="waves-effect waves-light btn-large fj-retry-loader
+    {% if active %}
+    is-hidden
+    {% endif %}
+    ">
+      Retry
+    </button>
+  </div>
+{% endmacro %}

@@ -1,0 +1,19 @@
+{% macro menu(isListener) %}
+<div id="fj-main-menu" class="side-nav fj-main-menu">
+  <h4>Menu</h4>
+  <ul>
+    <li>some</li>
+    <li>items</li>
+    <li>are</li>
+    <li>dummy</li>
+  </ul>
+  {% if isListener %}
+    <div class="fj-palette-changer">
+      <i class="waves-effect waves-dark icon-lens cyan fj-color-swatch" data-color="cyan"></i>
+      <i class="waves-effect waves-dark icon-lens darkcyan fj-color-swatch" data-color="darkcyan"></i>
+      <i class="waves-effect waves-dark icon-lens darkgreen fj-color-swatch" data-color="darkgreen"></i>
+      <i class="waves-effect waves-dark icon-lens green fj-color-swatch" data-color="green"></i>
+    </div>
+  {% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,24 @@
+@import '../color-definitions';
+
+/*card theme colors*/
+.white {
+  background-color: #fff;
+  color: #000;
+}
+
+// theme for a listener page
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+@each $current-color in $colors-list {
+  $i: index($colors-list, $current-color);
+  $palette-color: nth($palette-list, $i);
+
+  .fj-animation-container,
+  .fj-card-figure,
+  body {
+    &.#{$current-color} {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+      color: #fff;
+    }
+  }
+}

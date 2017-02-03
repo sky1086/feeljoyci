@@ -1,0 +1,42 @@
+/*page card inner classes*/
+.fj-inner-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  @if $inner-content-scroll {
+    background-color: #f5f5f5;
+    overflow-y: auto;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.fj-card-figure {
+  flex: 1 0 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25%;
+  min-height: 90px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  will-change: transform;
+
+  &.two {
+    flex: 1 0 50%;
+  }
+
+  &.three {
+    flex: 1 0 75%;
+  }
+
+  &.white {
+    justify-content: flex-start;
+  }
+}

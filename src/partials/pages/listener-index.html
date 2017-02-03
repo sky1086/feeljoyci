@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Welcome Listeners</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#0097A7">
+    {% include "meta/meta.html" %}
+    <link rel="stylesheet" href="css/materialCyan.css">
+    <link rel="stylesheet" href="css/fontmain.css">
+    <link rel="stylesheet" href="css/fonticon.css">
+    <link rel="stylesheet" href="css/listenerIndex.css">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <div id="fj-layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-header fj-layout">
+      {% import "components/header.html" as header %}
+      {{ header.header('FeelJoy', 'mdl-shadow--2dp', true) }}
+      <main id="fj-main-content" class="mdl-layout__content fj-main-content">
+        <div id="fj-content-loading" class="fj-content-loading">
+          <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular"></div>
+          <button id="fj-retry-loader" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent fj-retry-loader is-hidden">
+            Retry
+          </button>
+        </div>
+        <div id="fj-inner-content" class="page-content fj-inner-content">
+          <section class="fj-listener-section color">
+            <img class="fj-listener-logo" src="svg/feeljoy.svg" alt="logo"/>
+            <h5>With FeelJoy, you could learn to</h5>
+            <em>lead a joyful life</em>
+            <h6>See if we can help you overcome your problems</h6>
+            <button id="fj-listener-login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect fj-listener-login">
+              LOGIN
+            </button>
+            <button id="fj-down-button" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect fj-icon fj-toolbar-button fj-down-button">
+              <i class="icon-expand_more"></i>
+            </button>
+          </section>
+          <section class="fj-listener-section fj-section-2">
+            <h5>Hi guest, welcome to FeelJoy</h5>
+            <div class="fj-listener-grid">
+              <figure data-link="scheduler.html">
+                <div class="cyan">
+                  <img src="img/calendar.png" alt="calendar">
+                </div>
+                <figcaption>plan my week</figcaption>
+              </figure>
+              <figure data-link="chat.html">
+                <div class="darkcyan">
+                  <img src="img/chat.png" alt="chat">
+                </div>
+                <figcaption>buddy chat</figcaption>
+              </figure>
+            </div>
+            <div class="fj-listener-grid">
+              <figure data-link="guide.html">
+                <div class="darkgreen">
+                  <img src="img/notebook.png" alt="notebook">
+                </div>
+                <figcaption>self help guide</figcaption>
+              </figure>
+              <figure data-link="support.html">
+                <div class="green">
+                  <img src="img/help.png" alt="help">
+                </div>
+                <figcaption>support</figcaption>
+              </figure>
+            </div>
+          </section>
+          <footer class="fj-inner-footer">
+            <div class="fj-footer-icons">
+              <i class="icon-quora"></i>
+              <i class="icon-facebook"></i>
+              <i class="icon-instagram"></i>
+            </div>
+            <h4>FeelJoy</h4>
+            <p>&copy; 2017 Feeljoy Pvt Ltd.</p>
+          </footer>
+        </div>
+      </main>
+      {% import "components/menu.html" as menu %}
+      {{ menu.menu(true) }}
+    </div>
+    {% include "components/snackbar.html" %}
+    <script src="js/hammer.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+    <script src="js/svgicons.js"></script>
+    <script src="js/page.js"></script>
+    <script src="../node_modules/zenscroll/zenscroll.js"></script>
+    <script src="js/helpers/multicall.js"></script>
+    <script src="js/helpers/rafcall.js"></script>
+    <script src="js/helpers/domutils.js"></script>
+    <script src="js/helpers/themes.js"></script>
+    <script src="js/listener.js"></script>
+  </body>
+</html>

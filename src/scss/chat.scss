@@ -1,0 +1,78 @@
+@import 'variables';
+
+$listener-page: true;
+@import 'color-definitions';
+@import 'base';
+@import 'components/colors';
+@import 'components/header';
+@import 'components/swipe-card';
+@import 'components/main-content';
+@import 'components/menu';
+@import 'components/chat-list';
+@import 'components/inner-content';
+@import 'components/snackbar';
+
+.fj-inner-content {
+  background-color: #fff;
+}
+
+.fj-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.fj-card-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 4px;
+
+  h5,
+  h6 {
+    margin: 2px 0;
+    text-transform: capitalize;
+  }
+}
+
+.fj-card-right {
+  margin-left: auto;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8px 0 8px 8px;
+}
+
+.fj-card-talk {
+  text-transform: none;
+  margin-bottom: 6px;
+}
+
+.fj-card-badge {
+  background-color: unquote("rgb(#{nth($palette-cyan, 4)})");
+  border-radius: 50%;
+  min-width: 22px;
+  height: 22px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fj-card-icon {
+  color: #607d8b;
+  font-size: 28px;
+}
+@import 'components/snackbar';
+@import 'themes/listeners';
+@import 'components/small-screen';
+@import 'components/animations';

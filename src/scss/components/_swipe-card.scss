@@ -1,0 +1,28 @@
+@import '../color-definitions';
+
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+
+.fj-swipe-card {
+  position: absolute;
+  max-width: 560px;
+  padding: 35px;
+  cursor: pointer;
+  font-size: 34px;
+  line-height: 40px;
+  color: #000;
+  overflow: hidden;
+
+  > h5 {
+    margin: 12px 0;
+  }
+  @each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    $palette-color: nth($palette-list, $i);
+
+    > h5.#{$current-color} {
+      background-color: transparent !important;
+      color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+  }
+}

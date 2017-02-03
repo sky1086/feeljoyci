@@ -1,0 +1,156 @@
+@import 'material/materialize';
+@import 'variables';
+
+$listener-page: true;
+@import 'color-definitions';
+@import 'base';
+@import 'components/colors';
+@import 'components/header-tabs';
+@import 'components/main-content';
+@import 'components/fab';
+@import 'components/menu';
+@import 'components/chat-list';
+@import 'components/loader';
+@import 'components/inner-content';
+@import 'placeholder/overlay';
+
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+
+body {
+  background-color: #fff !important;
+}
+
+.fj-main-content {
+  top: 104px;
+  height: calc(100% - 104px);
+}
+
+.fj-card-figure {
+  padding: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, .1);
+}
+
+.fj-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  color: #fff;
+
+  // theme for a listener page
+  @each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    $palette-color: nth($palette-list, $i);
+
+    &.#{$current-color} {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+  }
+}
+
+.fj-card-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 4px;
+
+  h5 {
+    font-family: $font-bold;
+  }
+
+  h6 {
+    font-size: 11px;
+  }
+
+  h5,
+  h6 {
+    margin: 2px 0;
+    text-transform: capitalize;
+  }
+}
+
+.fj-card-left {
+  display: flex;
+  padding: 4px 2px 4px 16px;
+  height: 100%;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.fj-card-right {
+  position: relative;
+  display: flex;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 4px 2px 4px 8px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 10px;
+    height: calc(100% - 20px);
+    width: 2px;
+    background-color: rgba(0, 0, 0, .1);
+  }
+}
+
+.fj-card-talk {
+  text-transform: none;
+  font-weight: 900;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.fj-card-icon {
+  color: #607d8b;
+  font-size: 28px;
+}
+
+// CHANGED the default fab color
+.fj-float-container .btn-floating {
+  background-color: unquote("rgb(#{nth($palette-cyan, 4)})");
+
+  i {
+    color: #fff;
+  }
+}
+
+// HACK tabs issue
+// https://github.com/Dogfalo/materialize/issues/4148
+.tabs-content.carousel,
+.tabs-content.carousel .carousel-item {
+  width: 100%;
+}
+
+.tabs-content.carousel .carousel-item {
+  height: 100%;
+}
+@each $current-color in $colors-list {
+  $i: index($colors-list, $current-color);
+  $palette-color: nth($palette-list, $i);
+
+  .#{$current-color} {
+    .fj-float-container .btn-floating {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
+@import 'components/snackbar';
+@import 'themes/listeners';
+@import 'components/small-screen';
+@import 'components/animations';

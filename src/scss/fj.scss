@@ -1,0 +1,26 @@
+@import 'material/materialize';
+@import 'variables';
+
+$page-header-noshadow: true;
+@import 'base';
+@import 'color-definitions';
+@import 'components/colors';
+@import 'components/header';
+@import 'components/cover-header';
+@import 'components/info-bar';
+@import 'components/main-content';
+@import 'components/float-menu';
+@import 'components/swipe-card';
+@import 'components/animations-container';
+@import 'components/fab';
+@import 'components/menu';
+@import 'components/loader';
+@import 'components/inner-content';
+@import 'placeholder/overlay';
+
+.fj-main-content {
+  z-index: 5;
+}
+@import 'components/snackbar';
+@import 'components/small-screen';
+@import 'components/animations';

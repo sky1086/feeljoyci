@@ -1,0 +1,20 @@
+.fj-overlay-elt {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .86);
+  animation-fill-mode: forwards;
+  opacity: 0;
+  z-index: 5;
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+/*put something below overlay*/
+.below-overlay {
+  z-index: 4;
+}

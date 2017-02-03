@@ -1,0 +1,63 @@
+<!-- the welcome page where login and signup buttons exist -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Welcome</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#0097A7">
+    {% include "meta/meta.html" %}
+    <link rel="stylesheet" href="css/fontmain.css">
+    <link rel="stylesheet" href="css/fonticon.css">
+    <link rel="stylesheet" href="css/welcome.css">
+    <link rel="manifest" href="manifest.json">
+  </head>
+  <body>
+    <!-- cards are in reverse order -->
+    <!-- Add a fcking eye to right of password -->
+    <div class="green fj-welcome-card fj-password">
+      <div class="input-field">
+        <input id="password" type="password">
+        <label for="password">Password</label>
+      </div>
+      <p>Your password for FeelJoy</p>
+      <a class="waves-effect waves-dark btn">Done</a>
+    </div>
+    <div class="darkgreen fj-welcome-card fj-email">
+      <h4>Set Password</h4>
+      <h4>or</h4>
+      <h4>Ask for a magic link</h4>
+      <h6>You'll receive an email that'll help you login</h6>
+      <div class="fj-bottom-buttons">
+        <a class="waves-effect waves-dark btn">Type Password</a>
+        <a class="waves-effect waves-dark btn">Send Magic Link</a>
+      </div>
+    </div>
+    <div class="darkcyan fj-welcome-card fj-email">
+      <div class="input-field">
+        <input id="email" type="email">
+        <label for="email">Email Address</label>
+      </div>
+      <div class="fj-bottom-buttons">
+        <a class="waves-effect waves-dark btn">Google account</a>
+        <a class="waves-effect waves-dark btn">Next</a>
+      </div>
+    </div>
+    <div class="cyan fj-welcome-card fj-email">
+      <h4 class="no-break">Hey, welcome to FeelJoy</h4>
+      <h6 class="no-space">Start your buddy program</h6>
+      <div class="fj-bottom-buttons">
+        <a class="waves-effect waves-dark btn">Create Account</a>
+        <a class="waves-effect waves-dark btn">Login</a>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/helpers/domutils.js"></script>
+    <script src="js/welcome.js"></script>
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.fj-float-menu {
+  position: fixed;
+  top: 50%;
+  transform: translate3d(0, -20%, 0);
+  transition: .3s cubic-bezier(0, 0, .2, 1) .2s;
+  opacity: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &.visible {
+    transform: translate3d(0, -50%, 0);
+    opacity: 1;
+  }
+}
+
+.fj-menu-button {
+  padding: 12px;
+  height: auto;
+  font-size: 18px;
+  color: rgba(255, 255, 255, .7);
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  &.is-highlighted {
+    color: #fff;
+    background-color: rgba(158,158,158,.2);
+  }
+}

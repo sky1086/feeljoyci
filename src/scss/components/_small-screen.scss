@@ -1,0 +1,14 @@
+/*small screen fixes*/
+.is-small-screen {
+  .fj-main-content {
+    top: 56px;
+    height: calc(100% - 56px);
+  }
+
+  .fj-swipe-card {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

@@ -1,0 +1,56 @@
+@import '../color-definitions';
+@import 'placeholder-base';
+
+.fj-placeholder-info {
+  &.is-new {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+
+    // arc
+    .fj-placeholder-background {
+      position: absolute;
+      background-color: rgb(77,208,225);
+      left: -5vh;
+      top: 28vh;
+      width: 160vh;
+      height: 120vh;
+      border-radius: 50%;
+      opacity: 0;
+      animation-delay: .5s;
+      animation-fill-mode: forwards;
+      animation-duration: .5s;
+      animation-timing-function: ease-out;
+      z-index: -1;
+    }
+
+    .fj-placeholder-text {
+      position: absolute;
+      padding-left: 16px;
+      bottom: 92px;
+      color: #fff;
+      opacity: 0;
+      animation-delay: .8s;
+      animation-fill-mode: forwards;
+      animation-duration: .5s;
+      animation-timing-function: ease-out;
+    }
+
+    .fj-focus-elt {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 56px;
+      width: 56px;
+      padding: 16px;
+      border-radius: 50%;
+      box-sizing: content-box;
+      background-color: #fff;
+      opacity: 0;
+      animation-delay: .3s;
+      animation-fill-mode: forwards;
+      animation-duration: .5s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

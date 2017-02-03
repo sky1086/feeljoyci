@@ -1,0 +1,125 @@
+@import '../color-definitions';
+
+.fj-float-container {
+  position: fixed;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  bottom: 16px;
+  right: 16px;
+  z-index: 15;
+  background-color: transparent !important;
+
+  .btn-floating {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      color: #607d8b;
+    }
+  }
+
+  $palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+  $colors-list: "cyan" "darkcyan" "darkgreen" "green";
+  @each $current-color in $colors-list {
+
+    $i: index($colors-list, $current-color);
+    $palette-color: nth($palette-list, $i);
+
+    &.#{$current-color} {
+      background-color: transparent;
+
+      .btn-floating,
+      .btn-floating:focus,
+      .btn-floating:hover {
+        background-color: unquote("rgb(#{nth($palette-color, 4)})");
+        
+        i {
+          color: #fff;
+        }
+      }
+
+      .btn-floating:active {
+        background-color: unquote("rgb(#{nth($palette-color, 6)})");
+      }
+    }
+  }
+
+  &.inverted {
+    .btn-floating,
+    .btn-floating:focus,
+    .btn-floating:hover {
+      background-color: #455A64;
+    }
+
+    .btn-floating:active {
+      background-color: #E0E0E0;
+    }
+  }
+
+  .fj-diversion-button {
+    margin: 16px 0 0;
+  }
+
+  .fj-fab-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    margin-right: 8px;
+    transition: .3s cubic-bezier(.4, 0, 1, 1);
+    will-change: transform, opacity;
+  }
+
+  .fj-tooltext {
+    line-height: 14px;
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    background: rgba(97, 97, 97, 0.9);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .fj-ttab-button {
+    i {
+      font-size: 16px;
+    }
+  }
+
+  &.is-hidden {
+    .fj-fab-container {
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s cubic-bezier(.4, 0, .6, 1);
+    }
+
+    .fj-fab-container:first-of-type {
+      transform: translate3d(0, 300%, 0);
+    }
+
+    .fj-fab-container:nth-of-type(2) {
+      transform: translate3d(0, 200%, 0);
+    }
+
+    .fj-fab-container:nth-of-type(3) {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  &.is-nodisplay {
+    .fj-fab-container {
+      display: none;
+    }
+  }
+
+  &.is-not-opacity {
+    opacity: 0;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+}

@@ -1,0 +1,41 @@
+@import '../color-definitions';
+
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+
+.fj-main-menu {
+  padding: 16px;
+  color: #000;
+}
+
+.fj-main-tab {
+  flex: 1 0 auto;
+  font-weight: 600;
+  color: unquote("rgb(#{nth($palette-cyan, 7)})");
+}
+@if $listener-page {
+  .fj-palette-changer {
+    padding: 16px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 61px;
+    width: 100%;
+    left: 0;
+
+    .icon-lens {
+      font-size: 34px;
+      margin: 0 4px;
+      @each $current-color in $colors-list {
+        $i: index($colors-list, $current-color);
+        $palette-color: nth($palette-list, $i);
+
+        &.#{$current-color} {
+          background-color: transparent !important;
+          color: unquote("rgb(#{nth($palette-color, 6)})");
+        }
+      }
+    }
+  }
+}

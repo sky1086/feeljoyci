@@ -1,0 +1,75 @@
+/*main header which is hidden after the transition to the subroute page*/
+.fj-main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  will-change: opacity;
+  transition: .3s cubic-bezier(.4, 0, 1, 1);
+  z-index: 4;
+
+  .tabs {
+    background-color: transparent;
+
+    .indicator {
+      background-color: #fff;
+    }
+  }
+
+  .tab {
+    a {
+      color: unquote("rgb(#{nth($palette-grey, 2)})");
+      font-weight: 900;
+
+      &.active,
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .tab-line {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .fj-header-title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .fj-icon-hamburger {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @if $listener-page == false {
+    background-color: #607d8b;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s cubic-bezier(0, 0, .2, 1);
+  }
+}
+
+.fj-fade-down {
+  transform: translate3d(0, 100%, 0);
+  transition: .3s cubic-bezier(0.4, 0.0, 1, 1);
+  opacity: 0;
+}

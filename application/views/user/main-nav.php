@@ -55,8 +55,8 @@ if(strlen($heading) > 15){
             <li id="sidebar1" class="p-20">
                 <!-- Twitter -->
                 <div class="twitter">
-                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/topics';">Quality-space</a></h6>
-                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>user/listeners';">Talk to a buddy</a></h6>
+                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>guide.html';">Dedicated Responses</a></h6>
+                    <h6 class="follow-us"><a href="javascript:void(0);" onclick="window.location='<?php echo base_url()?>listeners.html';">Talk to a buddy</a></h6>
                     <h6 class="follow-us"><a onclick="_pcq.push(['triggerOptIn',{httpWindowOnly: true}]);">
 GET NOTIFICATIONS
 </a></h6>

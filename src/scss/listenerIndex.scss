@@ -1,0 +1,148 @@
+@import 'material/materialize';
+@import 'variables';
+
+$inner-content-scroll: true;
+$listener-page: true;
+@import 'color-definitions';
+@import 'base';
+@import 'components/colors';
+@import 'components/header';
+@import 'components/main-content';
+@import 'components/menu';
+@import 'components/chat-list';
+@import 'components/loader';
+@import 'components/inner-content';
+
+.fj-inner-content {
+  text-align: center;
+}
+
+.fj-listener-section {
+  padding: 16px 8px;
+  color: unquote("rgb(#{nth($palette-grey, 10)})");
+
+  em {
+    font-size: 20px;
+  }
+
+  h5 {
+    font-weight: 600;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: unquote("rgb(#{nth($palette-grey, 9)})");
+    white-space: nowrap;
+  }
+
+  .fj-down-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px auto 0;
+    font-size: 44px;
+
+    i {
+      -webkit-animation: floating 1.5s 2.7s linear infinite;
+      animation: floating 1.5s 2.7s linear infinite;
+    }
+  }
+
+  $palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+  $colors-list: "cyan" "darkcyan" "darkgreen" "green";
+
+  .fj-listener-login,
+  .fj-listener-login:focus:not(:active),
+  .fj-listener-login:hover {
+    background-color: unquote("rgb(#{nth($palette-light-green, 6)})");
+    color: #fff;
+    width: 125px;
+    @each $current-color in $colors-list {
+      $i: index($colors-list, $current-color);
+      $palette-color: nth($palette-list, $i);
+
+      &.#{$current-color} {
+        background-color: unquote("rgb(#{nth($palette-color, 6)})");
+      }
+    }
+  }
+
+  .fj-listener-login:active {
+    background-color: unquote("rgb(#{nth($palette-light-green, 8)})");
+  }
+
+  &.color {
+    color: #fff;
+    background-color: unquote("rgb(#{nth($palette-cyan, 4)})");
+
+    h5 {
+      font-weight: 500;
+    }
+  }
+}
+
+.fj-listener-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 32px 0;
+
+  figure {
+    flex: 1 0 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 16px 0;
+
+    div {
+      padding: 24px;
+      border-radius: 50%;
+      max-width: 44px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+}
+
+.fj-listener-logo {
+  width: 72px;
+  height: 72px;
+}
+
+.fj-inner-footer {
+  background-color: unquote("rgb(#{nth($palette-grey, 3)})");
+  padding-top: 24px;
+
+  div,
+  h4,
+  p {
+    color: unquote("rgb(#{nth($palette-grey, 6)})");
+  }
+
+  p {
+    font-weight: 600;
+  }
+}
+
+.fj-footer-icons {
+  i {
+    font-size: 24px;
+  }
+}
+@import 'components/snackbar';
+@import 'themes/listeners';
+@import 'components/small-screen';
+@import 'components/animations';

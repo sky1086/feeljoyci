@@ -1,0 +1,60 @@
+@import '../color-definitions';
+
+// theme for a customer page
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+@each $current-color in $colors-list {
+  $i: index($colors-list, $current-color);
+  $palette-color: nth($palette-list, $i);
+
+  body.#{$current-color} {
+    .fj-main-header {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-customer-section {
+      .fj-highlight-span,
+      .fj-icon-color,
+      .fj-start-journey,
+      .fj-start-journey:focus:not(:active),
+      .fj-start-journey:hover,
+      a {
+        color: unquote("rgb(#{nth($palette-color, 4)})");
+      }
+
+      &.color {
+        background-color: unquote("rgb(#{nth($palette-color, 4)})");
+      }
+    }
+
+    .fj-main-tab {
+      color: unquote("rgb(#{nth($palette-color, 5)})");
+    }
+
+    .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
+      background: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-subscribe-container {
+      .input-field {
+        input {
+          border-bottom-color: unquote("rgb(#{nth($palette-color, 5)})");
+        }
+
+        label {
+          color: unquote("rgb(#{nth($palette-color, 5)})") !important;
+        }
+      }
+
+      .fj-subscribe-button {
+        background-color: unquote("rgb(#{nth($palette-color, 4)})");
+      }
+    }
+
+    .fj-palette-changer {
+      .icon-palette {
+        color: unquote("rgb(#{nth($palette-color, 5)})");
+      }
+    }
+  }
+}

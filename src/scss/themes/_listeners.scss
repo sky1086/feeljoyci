@@ -1,0 +1,87 @@
+@import '../color-definitions';
+
+// theme for a listener page
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+@each $current-color in $colors-list {
+  $i: index($colors-list, $current-color);
+  $palette-color: nth($palette-list, $i);
+
+  .#{$current-color} {
+    .fj-card-badge,
+    .fj-main-header {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-listener-section {
+      &.color {
+        background-color: unquote("rgb(#{nth($palette-color, 4)})");
+      }
+    }
+
+    .fj-chat-placeholder {
+      a {
+        color: unquote("rgb(#{nth($palette-color, 6)})");
+      }
+    }
+
+    .fj-date-tab.is-active > .fj-date-subtitle,
+    .fj-date-tab.is-active > .fj-date-title,
+    .fj-slot-title {
+      color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-main-tab {
+      color: unquote("rgb(#{nth($palette-color, 5)})");
+    }
+
+    .tabs a {
+      color: unquote("rgb(#{nth($palette-grey, 7)})");
+    }
+    
+    .tab-line a {
+      color: unquote("rgb(#{nth($palette-grey, 2)})");
+    }
+
+    .tabs a.active,
+    .tabs a:hover {
+      color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+    
+    .tab-line a.active,
+    .tab-line a:hover {
+      color: #fff;
+    }
+
+    .fj-date-tab-ul .indicator {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .switch label input[type=checkbox]:checked + .lever {
+      background-color: unquote("rgb(#{nth($palette-color, 3)})");
+    }
+
+    .switch label input[type=checkbox]:checked + .lever:after {
+      background-color: unquote("rgb(#{nth($palette-color, 6)})");
+    }
+
+    .fj-time-display {
+      background: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-add-slot .icon-add_circle,
+    .fj-checkbox-text {
+      color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-save-button,
+    .fj-save-button:focus:not(:active),
+    .fj-save-button:hover {
+      background-color: unquote("rgb(#{nth($palette-color, 4)})");
+    }
+
+    .fj-save-button:active {
+      background-color: unquote("rgb(#{nth($palette-color, 6)})");
+    }
+  }
+}

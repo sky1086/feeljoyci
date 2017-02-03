@@ -1,0 +1,10 @@
+.fj-main-content {
+  top: 56px;
+  z-index: 3;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 56px);
+  overflow: visible;
+  will-change: transform, opacity;
+}

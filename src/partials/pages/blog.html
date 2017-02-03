@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Listeners</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#455A64">
+    {% include "meta/meta.html" %}
+    <link rel="stylesheet" href="css/fontmain.css">
+    <link rel="stylesheet" href="css/fonticon.css">
+    <link rel="stylesheet" href="css/blog.css">
+  </head>
+  <body>
+    <div id="fj-layout" class="fj-layout">
+      {% import "components/header-autohide.html" as header %}
+      {{ header.header('FeelJoy') }}
+      <main id="fj-main-content" class="fj-main-content">
+        <div id="fj-inner-content" class="page-content fj-inner-content">
+          <h3>
+            What is Mindfulness?
+          </h3>
+
+          <p>
+            It teaches oneself to be aware of our feelings and accept them. When you practice mindfulness, you live in the moment. You focus on your breathing, things around you, how your body feels, and being aware of all that is going on in your immediate
+            environment.
+          </p>
+          <p>It helps you understand your emotions and accept your feelings without thinking of them as “right” or “wrong” – as emotions co me and go. These unhealthy thought patterns can be changed by YOU- as they don’t define you.</p>
+
+          <p>
+            Practicing mindfulness – especially meditation can make your attention span grow over time and also helps you process emotions better in a healthier way. Meditation and self awareness have been shown to help children as young as 7 to have more self
+            control and can concentrate better.</p>
+
+          <p>
+            The relaxation you feel while meditation might also play a part in which genes are active in your body. Specifically, it can make the ones linked to inflammation less active which not only improves your health, but may also help you live longer. Some
+            studies also show that it boosts your immune system and also help with effects of ageing.
+          </p>
+
+          <p>
+            Buddhists have used the basics of mindful meditation for thousands of years.</p>
+
+          <p>
+            Mindfulness helps with stress by changing how you react to it. Over time, it gives you more control over your emotions and helps you process them differently. In turn, it helps alleviate stress and anxiety. Early studies have also shown that
+            mindfulness is beneficial for individuals with bipolar disorder, anxiety disorders and even depression.</p>
+
+          <p>
+            Mindfulness may not be able to take pain away or cure it, but it can help you feel all the emotions linked with it including the positive ones. It helps you take control of the pain and feelings and help you handle your condition better.</p>
+        </div>
+      </main>
+      {% include "placeholder/overlay.html" %}
+      {% import "components/diversion.html" as diversion %}
+      {{ diversion.diversion(false, 1) }}
+      {% import "components/menu.html" as menu %}
+      {{ menu.menu(false) }}
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/helpers/multicall.js"></script>
+    <script src="js/helpers/rafcall.js"></script>
+    <script src="js/helpers/domutils.js"></script>
+    <script src="js/helpers/themes.js"></script>
+    <script src="js/helpers/overlay.js"></script>
+    <script src="js/blog.js"></script>
+  </body>
+</html>

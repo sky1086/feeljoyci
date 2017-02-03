@@ -1,7 +1,8 @@
 <?php 
 $assetPath = base_url().'assets/home/';
+include_once 'index.html';
 ?>
-<!DOCTYPE html>
+<!-- DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
@@ -230,4 +231,4 @@ $assetPath = base_url().'assets/home/';
     <script src=""></script>
     <script src="<?php echo $assetPath;?>js/customer.js"></script>
   </body>
-</html>
+</html-->

@@ -1,0 +1,74 @@
+/*main header which is hidden after the transition to the subroute page*/
+.fj-main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  @if $page-header-noshadow {
+    @extend .z-depth-0;
+  }
+
+  .fj-header-title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1;
+    @if $page-header-centered {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @else {
+      margin-left: 16px;
+    }
+  }
+
+  .fj-header-logo {
+    position: absolute;
+    left: calc(50% - 36px);
+    top: 5px;
+    pointer-events: none;
+    padding: 5px;
+    border-radius: 50%;
+
+    img {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
+  .fj-header-logo,
+  .fj-header-title {
+    transition: .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .fj-icon-hamburger {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @if $listener-page == false {
+    background-color: #607d8b;
+  }
+  will-change: opacity;
+  transition: .3s cubic-bezier(.4, 0, 1, 1);
+  z-index: 4;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s cubic-bezier(0, 0, .2, 1);
+  }
+}
+
+.fj-fade-down {
+  transform: translate3d(0, 100%, 0);
+  transition: .3s cubic-bezier(0.4, 0.0, 1, 1);
+  opacity: 0;
+}
+
+.fj-header-title.is-hidden {
+  display: none;
+}

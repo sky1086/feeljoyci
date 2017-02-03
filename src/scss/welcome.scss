@@ -1,0 +1,188 @@
+@import 'material/materialize';
+@import 'variables';
+@import 'color-definitions';
+@import 'base';
+
+.animate-slow {
+  -webkit-animation-duration: .6s;
+  animation-duration: .6s;
+}
+
+.fj-welcome-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  z-index: 1;
+
+  &.fj-email,
+  &.fj-password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    h4,
+    h6 {
+      color: #fff;
+    }
+
+    h4 {
+      margin: 0;
+
+      &:first-of-type {
+        margin-top: auto;
+      }
+
+      &.no-break {
+        white-space: nowrap;
+        overflow: hidden;
+
+      }
+    }
+
+    h6 {
+      margin-top: 24px;
+
+      &.no-space {
+        margin-top: 16px;
+      }
+    }
+
+    .input-field {
+      width: 100%;
+      margin-top: auto;
+    }
+  }
+
+  &.fj-password {
+    align-items: flex-start;
+
+    > p {
+      margin: -12px 0 auto;
+      color: #fff;
+    }
+
+    .btn {
+      margin-left: auto;
+      width: 50%;
+    }
+  }
+
+  .fj-bottom-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+
+    .btn {
+      flex: 1 0 auto;
+      text-transform: capitalize;
+      padding: 0 1rem;
+      max-width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &:first-of-type {
+        margin-right: 6px;
+      }
+
+      &:last-of-type {
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+.input-field label {
+  color: unquote("rgb(#{nth($palette-grey, 4)})");
+}
+
+input:not([type]),
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+textarea.materialize-textarea {
+  color: #fff;
+  border-bottom-color: unquote("rgb(#{nth($palette-grey, 4)})");
+}
+
+// focus
+input:not([type]):focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom-color: #fff;
+  box-shadow: 0 1px 0 0 unquote("rgb(#{nth($palette-grey, 1)})");
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=datetime]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: unquote("rgb(#{nth($palette-grey, 1)})");
+}
+
+// theme for a listener page
+$palette-list: $palette-cyan $palette-teal $palette-green $palette-light-green;
+$colors-list: "cyan" "darkcyan" "darkgreen" "green";
+@each $current-color in $colors-list {
+  $i: index($colors-list, $current-color);
+  $palette-color: nth($palette-list, $i);
+
+  .fj-welcome-card {
+    &.#{$current-color} {
+      background-color: unquote("rgb(#{nth($palette-color, 6)})");
+
+      &.fj-password {
+        .btn {
+          background-color: unquote("rgb(#{nth($palette-grey, 3)})");
+          color: unquote("rgb(#{nth($palette-color, 6)})");
+        }
+      }
+
+      .fj-bottom-buttons {
+        .btn {
+          &:first-of-type {
+            background-color: unquote("rgb(#{nth($palette-color, 10)})");
+          }
+
+          &:last-of-type {
+            background-color: unquote("rgb(#{nth($palette-grey, 3)})");
+            color: unquote("rgb(#{nth($palette-color, 6)})");
+          }
+        }
+      }
+    }
+  }
+}
+@import 'components/animations';

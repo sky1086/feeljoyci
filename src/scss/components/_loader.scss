@@ -1,0 +1,28 @@
+/*loader hidden*/
+.fj-content-loading {
+  will-change: display;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  padding-right: 6px;
+
+  &.visible {
+    display: flex;
+  }
+}
+
+.fj-loader-circular {
+  border-color: #fff;
+}
+
+/*error button*/
+.fj-retry-loader {
+  color: #fff;
+  margin-top: 8px;
+
+  &.is-hidden {
+    display: none;
+  }
+}

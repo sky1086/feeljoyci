@@ -1,0 +1,8 @@
+.fj-animation-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: center top;
+  z-index: 10;
+  will-change: background-color, transform, opacity;
+}

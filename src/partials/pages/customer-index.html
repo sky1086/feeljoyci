@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Feeljoy - Welcome customers</title>
+    <meta name="author" content="Puranjay Jain"/>
+    <meta name="theme-color" content="#0097A7">
+    {% include "meta/meta.html" %}
+    <link rel="stylesheet" href="css/fontmain.css">
+    <link rel="stylesheet" href="css/fonticon.css">
+    <link rel="stylesheet" href="css/customer.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    {% import "components/header.html" as header %}
+    {{ header.header('FeelJoy', false) }}
+    <main id="fj-main-content" class="mdl-layout__content fj-main-content">
+      <div id="fj-content-loading" class="fj-content-loading">
+        <div id="fj-loader-circular" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner fj-loader-circular"></div>
+        <button id="fj-retry-loader" class="waves-effect waves-light btn-large mdl-button--accent fj-retry-loader is-hidden">
+          Retry
+        </button>
+      </div>
+      <div id="fj-inner-content" class="page-content fj-inner-content">
+        <section class="fj-customer-section color">
+          <img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo"/>
+          <h2>Lead the life you deserve</h2>
+          <h6 class="fj-customer-sub">Online support that provides effective solutions for emotional well-being</h6>
+          <button id="fj-customer-login" class="waves-effect waves-light btn-large fj-customer-login">
+            GET STARTED
+          </button>
+          <button id="fj-down-button" class="waves-effect waves-circle waves-light btn-floating btn-large fj-icon fj-toolbar-button fj-down-button">
+            <i class="icon-expand_more"></i>
+          </button>
+        </section>
+        <section class="fj-customer-section fj-section-2">
+          <h5 class="fj-inner-h5">Deal with your problems, Judgment-Free</h5>
+          <p class="fj-inner-p is-padded">Struggling with something specific or just looking for a boost, FeelJoy will help you approach life with strength, clarity and calm.</p>
+          <div class="fj-pointer-item">
+            <i class="icon-about-icon fj-icon-color"></i>
+            <div class="fj-pointer-text">
+              <h5 class="fj-pointer-title">
+                Tell us about yourself
+              </h5>
+              <p class="fj-pointer-subtitle">
+                Let us know about yourself and get personalized guidance from us without revealing your identity.
+              </p>
+            </div>
+          </div>
+          <div class="fj-pointer-item">
+            <i class="icon-emoticon-square-smiling-face-with-closed-eyes fj-icon-color"></i>
+            <div class="fj-pointer-text">
+              <h5 class="fj-pointer-title">
+                Meet your buddy
+              </h5>
+              <p class="fj-pointer-subtitle">
+                Receive support from your buddy to keep you motivated to the finish
+              </p>
+            </div>
+          </div>
+          <div class="fj-pointer-item">
+            <i class="icon-content fj-icon-color"></i>
+            <div class="fj-pointer-text">
+              <h5 class="fj-pointer-title">
+                Tailored content engine
+              </h5>
+              <p class="fj-pointer-subtitle">
+                Get quick access to responses that help resolve your specific areas of concern
+              </p>
+            </div>
+          </div>
+          <div class="fj-pointer-item">
+            <i class="icon-Blog-icon fj-icon-color"></i>
+            <div class="fj-pointer-text">
+              <h5 class="fj-pointer-title">
+                Read our self help blog
+              </h5>
+              <p class="fj-pointer-subtitle">
+                Get positive tips and information that work in real life through our blog published by experts
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="fj-customer-section color">
+          <h5>Access FeelJoy</h5>
+          <h4>anytime, anywhere</h4>
+        </section>
+        <section class="fj-customer-section no-top">
+          <h4>Why FeelJoy Works</h4>
+          <h5>Simple and
+            <span class="fj-highlight-span">
+              Effective</span>
+          </h5>
+          <p class="fj-inner-p side-padded">
+            We offer you friendly responses to your emotional concerns through our well researched and neatly structured content
+          </p>
+          <h5>
+            We're in this
+            <span class="fj-highlight-span">Together</span>
+          </h5>
+          <p class="fj-inner-p side-padded">
+            We help you find a listening buddy that you can talk to and speak your heart out securely. Receive support and motivation from your
+          </p>
+          <h5>Just for
+            <span class="fj-highlight-span">
+              You
+            </span>
+          </h5>
+          <p class="fj-inner-p side-padded">
+            FeelJoy gives you the tools to help you in situations that matter to you. Through our structured content and self help blog, unlock skills to lead the life you want
+          </p>
+        </section>
+        <section class="fj-customer-section color">
+          <h5>We want to help you</h5>
+          <h6 class="fj-start-h6">Start your journey with FeelJoy free of cost to live a happy, stress-free life.</h6>
+          <a id="fj-start-journey" class="waves-effect waves-dark btn fj-start-journey">
+            START MY JOURNEY
+          </a>
+        </section>
+        <section class="fj-customer-section">
+          <div class="fj-icon-header">
+            <i class="icon-close-envelope fj-icon-color"></i>
+            <h5>Sign up for our newsletter</h5>
+          </div>
+          <p class="fj-inner-p side-padded left-aligned">
+            Get the latest news and information about FeelJoy and our programs.
+          </p>
+          <form action="#">
+            <div class="fj-subscribe-container">
+              <div class="input-field">
+                <input type="text" id="fj-subscribe" placeholder="e.g me@feeljoy.in">
+                <label for="fj-subscribe">Your Email Address</label>
+              </div>
+              <button class="waves-effect waves-dark btn fj-subscribe-button">
+                Subscribe
+              </button>
+            </div>
+          </form>
+          <p class="fj-inner-p side-padded left-aligned fj-drop-line">
+            or drop us a line
+            <a href="mailto:hello@feeljoy.in">hello@feeljoy.in</a>
+          </p>
+        </section>
+        <footer class="fj-inner-footer">
+          <div class="fj-footer-icons">
+            <i class="icon-quora"></i>
+            <i class="icon-facebook"></i>
+            <i class="icon-instagram"></i>
+          </div>
+          <h4>FeelJoy</h4>
+          <p>&copy; 2017 Feeljoy Pvt Ltd.</p>
+        </footer>
+      </div>
+    </main>
+    {% include "placeholder/overlay.html" %}
+    {% include "placeholder/first-step.html" %}
+    {% import "components/diversion.html" as diversion %}
+    {{ diversion.diversion(true, 0) }}
+    {% import "components/menu.html" as menu %}
+    {{ menu.menu(true) }}
+    <script src="js/jquery.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+    <script src="js/svgicons.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/zenscroll.js"></script>
+    <script src="js/helpers/multicall.js"></script>
+    <script src="js/helpers/rafcall.js"></script>
+    <script src="js/helpers/domutils.js"></script>
+    <script src="js/helpers/overlay.js"></script>
+    <script src="js/helpers/themes.js"></script>
+    <script src="js/customer.js"></script>
+  </body>
+</html>

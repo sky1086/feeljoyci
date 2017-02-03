@@ -1,0 +1,37 @@
+{% macro diversion(isNotopacity, dontShow) %}
+  <div id="fj-float-container" class="fj-float-container is-hidden is-nodisplay{% if isNotopacity %} is-not-opacity{% endif %}">
+    {% if dontShow !== 1 %}
+      <div class="fj-fab-container">
+        <div class="fj-tooltext">
+          Blog
+        </div>
+        <a href="//feeljoy.in/user/topics" id="fj-qs-button" class="btn-floating waves-effect waves-dark fj-qs-button">
+          <i class="icon-mode_edit"></i>
+        </a>
+      </div>
+    {% endif %}
+    {% if dontShow !== 2 %}
+      <div class="fj-fab-container">
+        <div class="fj-tooltext">
+          Talk to a buddy
+        </div>
+        <a href="https://" id="fj-ttab-button" class="btn-floating waves-effect waves-dark fj-ttab-button">
+          <i class="icon-chat_icon"></i>
+        </a>
+      </div>
+    {% endif %}
+    {% if dontShow !== 3 %}
+      <div class="fj-fab-container">
+        <div class="fj-tooltext">
+          Dedicated Responses
+        </div>
+        <a href="/" id="fj-ttab-button" class="btn-floating waves-effect waves-dark fj-ttab-button">
+          <i class="icon-content_no_circle"></i>
+        </a>
+      </div>
+    {% endif %}
+    <button id="fj-diversion-button" class="waves-effect waves-dark btn-floating btn-large fj-diversion-button">
+      <i class="icon-diverse"></i>
+    </button>
+  </div>
+{% endmacro %}
