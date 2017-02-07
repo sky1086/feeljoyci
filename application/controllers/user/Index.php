@@ -11,7 +11,7 @@ class Index extends CI_Controller{
     	$this -> load -> library('Mobile_Detect');
     	$detect = new Mobile_Detect();
     	if (!$detect->isMobile()  && !$detect->isTablet() && !$detect->isAndroidOS()) {
-    		header("Location: ".$this->config->item('base_url')."desktop"); exit;
+    		//header("Location: ".$this->config->item('base_url')."desktop"); exit;
     	}
 		$this->load->view('user/index_view');
 	   }
