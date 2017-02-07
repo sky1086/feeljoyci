@@ -7,8 +7,8 @@ if (!defined('BASEPATH'))
 		function __construct()
 		{
 			parent::__construct();
-			$this->session->set_userdata(array('redirecturl'=>null));
-			$this->authentication->redirect2Dash();
+			//$this->session->set_userdata(array('redirecturl'=>null));
+			//$this->authentication->redirect2Dash();
 			$this->load->model(array('signup_model','login_model'));
 		}
 
