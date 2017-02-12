@@ -344,5 +344,17 @@ class Chat_model extends CI_Model{
     	}
     }
 
+    public function updateLikedStatus($msgid, $from, $to, $linkedStatus)
+    {
+    	if($msgid){
+    		$this->db->where('id', $msgid);
+    		$this->db->where('from', $from);
+    		$this->db->where('to', $to);
+    		$this->db->update('msg', array('liked' => $linkedStatus));
+    		return 1;
+    	}else{
+    		return 0;
+    	}
+    }
 }
 ?>

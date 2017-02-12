@@ -162,4 +162,40 @@ if (!defined('BASEPATH'))
 					//header('Content-type: application/json');
 					echo json_encode($json);
 		}
+		
+		public function like(){
+			$json = '';
+			$myid = isset($_POST['myid'])?(int)$_POST['myid']:0;
+			if(!$myid){
+				$myid = $this->session->userdata('userid');
+			}
+				
+			if (!isset($_POST['fid'])) {
+				$fid = 0;
+			}else{
+				$fid = $_POST['fid'];
+			}
+			if (!isset($_POST['msgid'])) {
+				$lid = 0;
+			}else{
+				$lid = $_POST['msgid'];
+			}
+			$likeStatus = isset($_POST['status'])?(int)$_POST['status']:0;
+			
+			if(!$lid || !$fid || !$myid){
+				$json = array('error' => true, 'msg'=> 'Invalid parameters');
+				echo json_encode($json);
+				exit;
+			}
+			
+			$qur = $this->chat_model->updateLikedStatus($lid, $myid, $fid, $likeStatus);
+			
+			if($qur){
+				$json = array('error' => false, 'msg'=> 'Updated successfully');
+			}else{
+				$json = array('error' => true, 'msg'=> 'Something went wrong');
+			}
+			
+			echo json_encode($json);
+		}
 	}
