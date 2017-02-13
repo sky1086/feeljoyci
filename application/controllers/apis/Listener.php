@@ -6,7 +6,7 @@ class Listener extends CI_Controller{
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
     	error_reporting(0);
-        $this->load->model(array('authentication', 'chat/chat_model'));        
+        $this->load->model(array('authentication', 'chat/chat_model', 'listener/listener_model'));        
 		header('Access-Control-Allow-Origin: *'); //need to remove after developement done
 	    }
 	    
@@ -48,6 +48,19 @@ class Listener extends CI_Controller{
 	    	echo json_encode(['error'=> false, 'result'=>$result]);
 	    	
 	    	//echo json_encode($result);	
+	    }
+	    
+	    public function details($id){
+	    	$id = (int)$id;
+	    	if(empty($id)){
+	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
+	    	}
+	    	
+	    	$data = $this->listener_model->getDetailByID($id);
+	    	if(isset($data['id'])){
+	    		$data['profile_img'] = base_url().'pics_listener/'.$data['profile_img'];	    		
+	    	}
+	    	echo json_encode(array('error'=> false, 'data'=>$data));	    	
 	    }
 }
 ?>
