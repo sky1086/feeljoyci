@@ -5,8 +5,16 @@ class User extends CI_Controller{
     function __construct(){
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
-		$this->load->model(array('admin/question_model', 'admin/category_model', 'user/listeners_model'));
+		$this->load->model(array('authentication', 'admin/question_model', 'admin/category_model', 'user/listeners_model'));
 		header('Access-Control-Allow-Origin: *'); //need to remove after developement done
+	    }
+	    
+	    public function isLoggedIn(){
+	    	$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER));
+	    	if(!$loginData){
+	    		$loginData = ['error'=> true, 'login'=>'required'];
+	    	}
+	    	echo json_encode($loginData);
 	    }
 
 	    public function listeners(){
