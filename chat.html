@@ -2739,18 +2739,27 @@ paper-fab {
   height: calc(100vh - 136px);
   overflow-x: hidden; }
 
+.message {
+  margin: 0 0 8px;
+  padding: 4px 8px;
+  background-color: var(--paper-grey-100);
+  border-radius: 4px;
+  color: var(--paper-grey-800);
+  max-width: 20vh;
+  word-wrap: break-word;
+  overflow-wrap: break-word; }
+
 .card-figure {
   margin: 8px; }
+  .card-figure.left {
+    @apply (--layout-start-justified); }
+  .card-figure.right {
+    @apply (--layout-end-justified);
+    margin-right: 12px; }
+    .card-figure.right .message {
+      background-color: var(--paper-grey-200); }
   .card-figure h6 {
     margin: 0; }
-    .card-figure h6.message {
-      margin-bottom: 8px; }
-
-.message {
-  padding: 4px 8px;
-  background-color: var(--paper-grey-200);
-  border-radius: 4px;
-  color: var(--paper-grey-800); }
 
 .like-button {
   margin-left: 8px; }
@@ -2758,7 +2767,8 @@ paper-fab {
 .timestamp {
   color: var(--paper-grey-800);
   font-weight: 600;
-  font-size: 12px; }
+  font-size: 12px;
+  float: right; }
 
 .card-avatar {
   width: 44px;
@@ -3036,7 +3046,7 @@ paper-fab {
   background-color: rgb(174,213,129); }
 
 .green .fj-save-button:active {
-  background-color: rgb(139,195,74); }</style><iron-ajax id="aChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatrequest}}" debounce-duration="300"></iron-ajax><user-login loggedin="{{loggedin}}" userdata="{{userdata}}"></user-login><app-drawer-layout fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><iron-list class="chat-container" items="[[chatdata]]" as="item"><template><div><div class="layout horizontal start start-justified card-figure"><div class="card-avatar green">[[_firstLetter(this.listener.name)]]</div><div class="layout vertical start card-text"><template is="dom-repeat" items="[[item.msg]]" as="mitem"><h6 class="layout vertical center-center message">[[_sanitize(mitem.msg)]] <span class="self-end timestamp">[[item.time]]</span></h6></template></div><paper-icon-button class="like-button" icon="fj:heart-outline"></paper-icon-button></div></div></template></iron-list><div class="layout horizontal center-center text-container"><paper-input autofocus="" class="flex-2" placeholder="Write a message"></paper-input><paper-fab icon="send"></paper-fab></div></app-header-layout></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(139,195,74); }</style><iron-ajax id="oldChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatrequest}}" debounce-duration="300"></iron-ajax><iron-ajax id="newChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatnewresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatnewrequest}}"></iron-ajax><iron-ajax id="sendChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatsendresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatsendrequest}}"></iron-ajax><user-login loggedin="{{loggedin}}" userdata="{{userdata}}"></user-login><app-drawer-layout fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><iron-list class="chat-container" items="[[chatdata]]" as="item"><template><div><div class$="layout horizontal start card-figure {{item.addclass}}"><template is="dom-if" if="[[item.received]]"><div class="card-avatar green">[[_firstLetter(this.listener.name)]]</div></template><div class="layout vertical start card-text"><template is="dom-repeat" items="[[item.msg]]" as="mitem"><div class="layout horizontal start"><p class="message">[[_sanitize(mitem.msg)]] <span class="timestamp">[[_processTime(mitem.time)]]</span></p><template is="dom-if" if="[[item.received]]"><paper-icon-button class$="like-button {{_getLikeClass(mitem.liked)}}" on-tap="{{_onLikeButton(mitem.id)}}" icon="{{_getLikeIcon(mitem.liked)}}"></paper-icon-button></template></div></template></div></div></div></template></iron-list><div class="layout horizontal center-center text-container"><paper-input autofocus="" class="flex-2" placeholder="Write a message"></paper-input><paper-fab icon="send"></paper-fab></div></app-header-layout></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
