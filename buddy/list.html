@@ -2830,7 +2830,7 @@ paper-progress {
   background-color: rgb(174,213,129); }
 
 .green .fj-save-button:active {
-  background-color: rgb(139,195,74); }</style><iron-ajax id="aBuddy" auto="" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300"></iron-ajax><buddy-login loggedin="{{loggedin}}"></buddy-login><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><iron-list items="[[baseresponse.result]]" as="item"><template><div><div class="card-figure" on-tap="onChatTap"><div class="card-left" on-tap="_onLeftTap"><div class$="card-avatar [[_randomClass()]]">[[_firstLetter(item.contact_name)]]</div><div class="card-text"><h5>[[item.contact_name]]</h5></div></div></div></div></template></iron-list></app-header-layout></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(139,195,74); }</style><iron-ajax id="aBuddy" auto="" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300"></iron-ajax><buddy-login authchecked="{{authchecked}}" loggedin="{{loggedin}}"></buddy-login><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><iron-list items="[[baseresponse.result]]" as="item"><template><div><div class="card-figure" on-tap="onChatTap"><div class="card-left" on-tap="_onLeftTap"><div class$="card-avatar [[_randomClass()]]">[[_firstLetter(item.contact_name)]]</div><div class="card-text"><h5>[[item.contact_name]]</h5></div></div></div></div></template></iron-list></app-header-layout></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -2840,4 +2840,4 @@ paper-progress {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-list></buddy-list><script src="js/list-c03092c32f.js"></script></body></html>
+      }</style></div><buddy-list></buddy-list><script src="js/list-3c3048c9eb.js"></script></body></html>
