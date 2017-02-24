@@ -2020,6 +2020,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   color: #fff;
   cursor: pointer; }
 
+.circle {
+  position: fixed;
+  display: block;
+  top: 20%;
+  left: -5%;
+  background-color: var(--paper-green-400);
+  width: 200vh;
+  height: 150vh;
+  border-radius: 50%;
+  color: #fff; }
+  .circle .circle-message {
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    right: 100px; }
+  .circle .circle-below {
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; }
+
 .container {
   position: fixed;
   display: -webkit-box;
@@ -2104,7 +2128,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); }</style><div id="overlay" class="overlay"></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}"></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
+  background-color: rgba(0, 0, 0, 0.8); }
+  .overlay.light {
+    background-color: rgba(255, 255, 255, 0.6); }</style><div id="overlay" class="overlay"></div><div id="circle" class="circle" style="display: none"><div class="circle-message">Tap me to explore the amazing journey feeljoy has to offer</div><div class="circle-below"></div></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2126,6 +2152,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 paper-material {
   height: 100%; }
+
+app-toolbar {
+  padding: 0;
+  height: 80px;
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  app-toolbar img {
+    width: 100%;
+    height: 100%; }
+  app-toolbar .tooltext {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
 
 paper-item {
   --paper-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; } }
@@ -2158,7 +2199,7 @@ paper-item {
       color: rgb(76,175,80); }
     .fj-palette-changer paper-icon-button.green {
       background-color: transparent;
-      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}"></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar>Menu</app-toolbar><paper-menu><paper-item role="menuitem">Home</paper-item><paper-item role="menuitem">About</paper-item><paper-item role="menuitem">Program</paper-item><paper-item role="menuitem">Blog</paper-item></paper-menu><template is="dom-if" if="{{loggedin}}" restamp=""><paper-button id="logout">Log out</paper-button></template><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-index" assetpath="./"><template><style is="custom-style">/**
+      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}" with-credentials=""></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar><img src="elements/components/img/ombre.png" alt="ombre"><div class="tooltext">Welcome</div></app-toolbar><paper-menu><paper-item role="menuitem" on-tap="onMenuItemTap" href="/">Home</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/blog">Blog</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/guide">Program</paper-item><paper-item role="menuitem">Add to home screen</paper-item><template is="dom-if" if="{{loggedin}}" restamp=""><paper-item role="menuitem" id="logout">Log out</paper-item></template></paper-menu><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-index" assetpath="./"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2617,7 +2658,7 @@ body.green .fj-subscribe-container .input-field label {
   color: rgb(156,204,101) !important; }
 
 body.green .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(174,213,129); }</style><app-drawer-layout force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div id="fj-main-content" class="fj-main-content"><section class="fj-customer-section color"><img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo"><h3>Lead the life you deserve</h3><h6 class="fj-customer-sub">Online support that provides effective solutions for emotional well-being</h6><paper-button id="fj-customer-login" class="fj-button-bold fj-customer-login" raised="">GET STARTED</paper-button><paper-icon-button id="downButton" icon="expand-more" class="fj-icon fj-toolbar-button fj-down-button"></paper-icon-button></section><section id="section2"><h5 class="fj-inner-h5">Deal with your problems, Judgment-Free</h5><p class="fj-inner-p is-padded">Struggling with something specific or just looking for a boost, FeelJoy will help you approach life with strength, clarity and calm.</p><div class="fj-pointer-item from-left"><iron-icon icon="fj:about-icon" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Tell us about yourself</h5><p class="fj-pointer-subtitle">Let us know about yourself and get personalized guidance from us without revealing your identity.</p></div></div><div class="fj-pointer-item from-right"><iron-icon icon="fj:smiling-face" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Meet your buddy</h5><p class="fj-pointer-subtitle">Receive support from your buddy to keep you motivated to the finish</p></div></div><div class="fj-pointer-item from-left"><iron-icon icon="fj:content" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Tailored content engine</h5><p class="fj-pointer-subtitle">Get quick access to responses that help resolve your specific areas of concern</p></div></div><div class="fj-pointer-item from-right"><iron-icon icon="fj:Blog-icon" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Read our self help blog</h5><p class="fj-pointer-subtitle">Get positive tips and information that work in real life through our blog published by experts</p></div></div></section><section class="fj-customer-section color"><h5>Access FeelJoy</h5><h4>anytime, anywhere</h4></section><section class="fj-customer-section no-top"><h4>Why FeelJoy Works</h4><h5>Simple and <span class="fj-highlight-span">Effective</span></h5><p class="fj-inner-p side-padded">We offer you friendly responses to your emotional concerns through our well researched and neatly structured content</p><h5>We're in this <span class="fj-highlight-span">Together</span></h5><p class="fj-inner-p side-padded">We help you find a listening buddy that you can talk to and speak your heart out securely. Receive support and motivation from your</p><h5>Just for <span class="fj-highlight-span">You</span></h5><p class="fj-inner-p side-padded">FeelJoy gives you the tools to help you in situations that matter to you. Through our structured content and self help blog, unlock skills to lead the life you want</p></section><section class="fj-customer-section color"><h5>We want to help you</h5><h6 class="fj-start-h6">Start your journey with FeelJoy free of cost to live a happy, stress-free life.</h6><paper-button id="fj-start-journey" class="fj-start-journey" raised="">START MY JOURNEY</paper-button></section><section><div class="fj-icon-header"><iron-icon icon="fj:close-envelope" class="fj-icon-color"></iron-icon><h5>Sign up for our newsletter</h5></div><p class="fj-inner-p side-padded left-aligned">Get the latest news and information about FeelJoy and our programs.</p><form action="#"><div class="fj-subscribe-container"><paper-input label="Your Email Address" placeholder="e.g me@feeljoy.in"></paper-input><paper-button class="fj-subscribe-button" raised="">Subscribe</paper-button></div></form><p class="fj-inner-p side-padded left-aligned fj-drop-line">or drop us a line <a href="mailto:hello@feeljoy.in">hello@feeljoy.in</a></p></section><footer><div class="footer-icons"><iron-icon icon="fj:quora"></iron-icon><iron-icon icon="fj:facebook"></iron-icon><iron-icon icon="fj:instagram"></iron-icon></div><h4>FeelJoy</h4><p>© 2017 Feeljoy Pvt Ltd.</p></footer></div></app-header-layout><diversion-container></diversion-container></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(174,213,129); }</style><app-drawer-layout force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div id="fj-main-content" class="fj-main-content"><section class="fj-customer-section color"><img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo"><h3>Lead the life you deserve</h3><h6 class="fj-customer-sub">Online support that provides effective solutions for emotional well-being</h6><paper-button id="started" class="fj-button-bold fj-customer-login" raised="">GET STARTED</paper-button><paper-icon-button id="downButton" icon="expand-more" class="fj-icon fj-toolbar-button fj-down-button"></paper-icon-button></section><section id="section2"><h5 class="fj-inner-h5">Deal with your problems, Judgment-Free</h5><p class="fj-inner-p is-padded">Struggling with something specific or just looking for a boost, FeelJoy will help you approach life with strength, clarity and calm.</p><div class="fj-pointer-item from-left"><iron-icon icon="fj:about-icon" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Tell us about yourself</h5><p class="fj-pointer-subtitle">Let us know about yourself and get personalized guidance from us without revealing your identity.</p></div></div><div class="fj-pointer-item from-right"><iron-icon icon="fj:smiling-face" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Meet your buddy</h5><p class="fj-pointer-subtitle">Receive support from your buddy to keep you motivated to the finish</p></div></div><div class="fj-pointer-item from-left"><iron-icon icon="fj:content" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Tailored content engine</h5><p class="fj-pointer-subtitle">Get quick access to responses that help resolve your specific areas of concern</p></div></div><div class="fj-pointer-item from-right"><iron-icon icon="fj:Blog-icon" class="fj-icon-color"></iron-icon><div class="fj-pointer-text"><h5 class="fj-pointer-title">Read our self help blog</h5><p class="fj-pointer-subtitle">Get positive tips and information that work in real life through our blog published by experts</p></div></div></section><section class="fj-customer-section color"><h5>Access FeelJoy</h5><h4>anytime, anywhere</h4></section><section class="fj-customer-section no-top"><h4>Why FeelJoy Works</h4><h5>Simple and <span class="fj-highlight-span">Effective</span></h5><p class="fj-inner-p side-padded">We offer you friendly responses to your emotional concerns through our well researched and neatly structured content</p><h5>We're in this <span class="fj-highlight-span">Together</span></h5><p class="fj-inner-p side-padded">We help you find a listening buddy that you can talk to and speak your heart out securely. Receive support and motivation from your</p><h5>Just for <span class="fj-highlight-span">You</span></h5><p class="fj-inner-p side-padded">FeelJoy gives you the tools to help you in situations that matter to you. Through our structured content and self help blog, unlock skills to lead the life you want</p></section><section class="fj-customer-section color"><h5>We want to help you</h5><h6 class="fj-start-h6">Start your journey with FeelJoy free of cost to live a happy, stress-free life.</h6><paper-button id="journey" class="fj-start-journey" raised="">START MY JOURNEY</paper-button></section><section><div class="fj-icon-header"><iron-icon icon="fj:close-envelope" class="fj-icon-color"></iron-icon><h5>Sign up for our newsletter</h5></div><p class="fj-inner-p side-padded left-aligned">Get the latest news and information about FeelJoy and our programs.</p><form action="#"><div class="fj-subscribe-container"><paper-input label="Your Email Address" placeholder="e.g me@feeljoy.in"></paper-input><paper-button class="fj-subscribe-button" raised="">Subscribe</paper-button></div></form><p class="fj-inner-p side-padded left-aligned fj-drop-line">or drop us a line <a href="mailto:hello@feeljoy.in">hello@feeljoy.in</a></p></section><footer><div class="footer-icons"><iron-icon icon="fj:quora"></iron-icon><iron-icon icon="fj:facebook"></iron-icon><iron-icon icon="fj:instagram"></iron-icon></div><h4>FeelJoy</h4><p>© 2017 Feeljoy Pvt Ltd.</p></footer></div></app-header-layout><diversion-container opened="{{opened}}" visible="[[visible]]" isanimated="{{isanimated}}" hideanimate="[[hideanimate]]"></diversion-container></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -2627,4 +2668,4 @@ body.green .fj-subscribe-container .fj-subscribe-button {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-index></customer-index><script src="js/index-4890c3f425.js"></script></body></html>
+      }</style></div><customer-index></customer-index><script src="js/index-5f1bd38de1.js"></script></body></html>

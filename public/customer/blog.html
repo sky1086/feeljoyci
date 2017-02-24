@@ -2020,6 +2020,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   color: #fff;
   cursor: pointer; }
 
+.circle {
+  position: fixed;
+  display: block;
+  top: 20%;
+  left: -5%;
+  background-color: var(--paper-green-400);
+  width: 200vh;
+  height: 150vh;
+  border-radius: 50%;
+  color: #fff; }
+  .circle .circle-message {
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    right: 100px; }
+  .circle .circle-below {
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; }
+
 .container {
   position: fixed;
   display: -webkit-box;
@@ -2104,7 +2128,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); }</style><div id="overlay" class="overlay"></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}"></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
+  background-color: rgba(0, 0, 0, 0.8); }
+  .overlay.light {
+    background-color: rgba(255, 255, 255, 0.6); }</style><div id="overlay" class="overlay"></div><div id="circle" class="circle" style="display: none"><div class="circle-message">Tap me to explore the amazing journey feeljoy has to offer</div><div class="circle-below"></div></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2126,6 +2152,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 paper-material {
   height: 100%; }
+
+app-toolbar {
+  padding: 0;
+  height: 80px;
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  app-toolbar img {
+    width: 100%;
+    height: 100%; }
+  app-toolbar .tooltext {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
 
 paper-item {
   --paper-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; } }
@@ -2158,7 +2199,7 @@ paper-item {
       color: rgb(76,175,80); }
     .fj-palette-changer paper-icon-button.green {
       background-color: transparent;
-      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}"></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar>Menu</app-toolbar><paper-menu><paper-item role="menuitem">Home</paper-item><paper-item role="menuitem">About</paper-item><paper-item role="menuitem">Program</paper-item><paper-item role="menuitem">Blog</paper-item></paper-menu><template is="dom-if" if="{{loggedin}}" restamp=""><paper-button id="logout">Log out</paper-button></template><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-blog" assetpath="./"><template><style is="custom-style">/**
+      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}" with-credentials=""></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar><img src="elements/components/img/ombre.png" alt="ombre"><div class="tooltext">Welcome</div></app-toolbar><paper-menu><paper-item role="menuitem" on-tap="onMenuItemTap" href="/">Home</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/blog">Blog</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/guide">Program</paper-item><paper-item role="menuitem">Add to home screen</paper-item><template is="dom-if" if="{{loggedin}}" restamp=""><paper-item role="menuitem" id="logout">Log out</paper-item></template></paper-menu><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-blog" assetpath="./"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2542,4 +2583,4 @@ p {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-blog></customer-blog><script src="js/blog-8ae696e601.js"></script></body></html>
+      }</style></div><customer-blog></customer-blog><script src="js/blog-1a40946483.js"></script></body></html>

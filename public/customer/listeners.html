@@ -2457,6 +2457,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   color: #fff;
   cursor: pointer; }
 
+.circle {
+  position: fixed;
+  display: block;
+  top: 20%;
+  left: -5%;
+  background-color: var(--paper-green-400);
+  width: 200vh;
+  height: 150vh;
+  border-radius: 50%;
+  color: #fff; }
+  .circle .circle-message {
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    right: 100px; }
+  .circle .circle-below {
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; }
+
 .container {
   position: fixed;
   display: -webkit-box;
@@ -2541,7 +2565,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); }</style><div id="overlay" class="overlay"></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}"></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
+  background-color: rgba(0, 0, 0, 0.8); }
+  .overlay.light {
+    background-color: rgba(255, 255, 255, 0.6); }</style><div id="overlay" class="overlay"></div><div id="circle" class="circle" style="display: none"><div class="circle-message">Tap me to explore the amazing journey feeljoy has to offer</div><div class="circle-below"></div></div><div id="container" class="container"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="user-login" assetpath="elements/components/"><template><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-element" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2563,6 +2589,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 paper-material {
   height: 100%; }
+
+app-toolbar {
+  padding: 0;
+  height: 80px;
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  app-toolbar img {
+    width: 100%;
+    height: 100%; }
+  app-toolbar .tooltext {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
 
 paper-item {
   --paper-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; } }
@@ -2595,7 +2636,7 @@ paper-item {
       color: rgb(76,175,80); }
     .fj-palette-changer paper-icon-button.green {
       background-color: transparent;
-      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}"></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar>Menu</app-toolbar><paper-menu><paper-item role="menuitem">Home</paper-item><paper-item role="menuitem">About</paper-item><paper-item role="menuitem">Program</paper-item><paper-item role="menuitem">Blog</paper-item></paper-menu><template is="dom-if" if="{{loggedin}}" restamp=""><paper-button id="logout">Log out</paper-button></template><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-listeners" assetpath="./"><template><style is="custom-style" include="iron-flex iron-flex-alignment">/**
+      color: rgb(139,195,74); }</style><iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}" with-credentials=""></iron-ajax><user-login loggedin="{{loggedin}}"></user-login><paper-material elevation="3"><app-toolbar><img src="elements/components/img/ombre.png" alt="ombre"><div class="tooltext">Welcome</div></app-toolbar><paper-menu><paper-item role="menuitem" on-tap="onMenuItemTap" href="/">Home</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/blog">Blog</paper-item><paper-item role="menuitem" on-tap="onMenuItemTap" href="/guide">Program</paper-item><paper-item role="menuitem">Add to home screen</paper-item><template is="dom-if" if="{{loggedin}}" restamp=""><paper-item role="menuitem" id="logout">Log out</paper-item></template></paper-menu><template is="dom-if" if="[[showlistener]]"><div class="fj-palette-changer"><paper-icon-button icon="image:lens" class="fj-color-swatch cyan" data-color="cyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkcyan" data-color="darkcyan"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch darkgreen" data-color="darkgreen"></paper-icon-button><paper-icon-button icon="image:lens" class="fj-color-swatch green" data-color="green"></paper-icon-button></div></template></paper-material></template></dom-module><dom-module id="customer-listeners" assetpath="./"><template><style is="custom-style" include="iron-flex iron-flex-alignment">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -3156,7 +3197,7 @@ paper-progress {
   background-color: rgb(174,213,129); }
 
 .green .fj-save-button:active {
-  background-color: rgb(139,195,74); }</style><iron-ajax id="aBuddy" auto="" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300"></iron-ajax><iron-ajax id="aChat" auto="" url="{{chaturl}}" handle-as="json" last-response="{{chatresponse}}" debounce-duration="300"></iron-ajax><user-login authchecked="{{authchecked}}" loggedin="{{loggedin}}"></user-login><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar><paper-tabs selected="{{selected}}" sticky=""><paper-tab>BUDDY</paper-tab><paper-tab>CHAT</paper-tab></paper-tabs></app-header><iron-pages selected="{{selected}}"><div><iron-list items="[[baseresponse]]" as="item"><template><div><div class="card-figure"><div class="card-left" on-tap="_onLeftTap"><div class$="card-avatar [[_randomClass()]]">[[_firstLetter(item.name)]]</div><div class="card-text"><h5>[[item.name]]</h5><h6>[[item.qualification]]</h6></div></div><div class="card-right" on-tap="_onRightTap"><div class="card-talk">Talk to [[item.name]]?</div><iron-icon class="card-icon" icon="fj:chat_icon"></iron-icon></div></div></div></template></iron-list><div id="retryBuddy" style="display: none" class="layout horizontal center-center full-page"><paper-button id="retryButton" class="retry-button" raised="">Retry</paper-button></div></div><div><div class="chat-placeholder"><img src="img/chat-placeholder.png" alt="chat-placeholder"><h6>Hold on, we'll soon have a buddy for you to help</h6><h6>Meanwhile, you can view our <a href="https://buddy.feeljoy.in/guide.html">self help guide</a> to help you prepare</h6></div></div></iron-pages></app-header-layout><diversion-container hidetwo="[[hidetwo]]"></diversion-container><paper-toast id="toast" text="[[message]]"></paper-toast></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(139,195,74); }</style><iron-ajax id="aBuddy" auto="" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300" with-credentials=""></iron-ajax><iron-ajax id="aChat" auto="" url="{{chaturl}}" handle-as="json" last-response="{{chatresponse}}" debounce-duration="300" with-credentials=""></iron-ajax><user-login authchecked="{{authchecked}}" loggedin="{{loggedin}}"></user-login><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header fixed=""><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar><paper-tabs selected="{{selected}}" sticky=""><paper-tab>BUDDY</paper-tab><paper-tab>CHAT</paper-tab></paper-tabs></app-header><iron-pages selected="{{selected}}"><div><iron-list items="[[baseresponse]]" as="item"><template><div><div class="card-figure"><div class="card-left" on-tap="_onLeftTap"><div class$="card-avatar [[_randomClass()]]">[[_firstLetter(item.name)]]</div><div class="card-text"><h5>[[item.name]]</h5><h6>[[item.qualification]]</h6></div></div><div class="card-right" on-tap="_onRightTap"><div class="card-talk">Talk to [[item.name]]?</div><iron-icon class="card-icon" icon="fj:chat_icon"></iron-icon></div></div></div></template></iron-list><div id="retryBuddy" style="display: none" class="layout horizontal center-center full-page"><paper-button id="retryButton" class="retry-button" raised="">Retry</paper-button></div></div><div><div class="chat-placeholder"><img src="img/chat-placeholder.png" alt="chat-placeholder"><h6>Hold on, we'll soon have a buddy for you to help</h6><h6>Meanwhile, you can view our <a href="https://buddy.feeljoy.in/guide.html">self help guide</a> to help you prepare</h6></div></div></iron-pages></app-header-layout><diversion-container hidetwo="[[hidetwo]]"></diversion-container><paper-toast id="toast" text="[[message]]"></paper-toast></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3166,4 +3207,4 @@ paper-progress {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-listeners></customer-listeners><script src="js/listeners-1aefb4dd43.js"></script></body></html>
+      }</style></div><customer-listeners></customer-listeners><script src="js/listeners-9c48dffa9a.js"></script></body></html>
