@@ -382,7 +382,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 |
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= '.feeljoy.in';
+$config['cookie_domain']	= 'feeljoy.in';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;

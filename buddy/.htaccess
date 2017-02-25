@@ -38,4 +38,4 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 <IfModule mod_env.c>
     SetEnv CI_ENV development
 </IfModule>
-php_value session.cookie_domain .feeljoy.in
+php_value session.cookie_domain feeljoy.in
