@@ -2245,13 +2245,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pointer-events: none;
 
         @apply(--paper-item-focused-before);
-      }</style></template></dom-module><dom-module id="paper-item" assetpath="js/paper-item/"><template><style include="paper-item-shared-styles"></style><style>:host {
+      }</style></template></dom-module><dom-module id="paper-icon-item" assetpath="js/paper-item/"><template><style include="paper-item-shared-styles"></style><style>:host {
         @apply(--layout-horizontal);
         @apply(--layout-center);
         @apply(--paper-font-subhead);
 
         @apply(--paper-item);
-      }</style><content></content></template></dom-module><dom-module id="iron-overlay-backdrop" assetpath="js/iron-overlay-behavior/"><template><style>:host {
+        @apply(--paper-icon-item);
+      }
+
+      .content-icon {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        width: var(--paper-item-icon-width, 56px);
+        @apply(--paper-item-icon);
+      }</style><div id="contentIcon" class="content-icon"><content select="[item-icon]"></content></div><content></content></template></dom-module><dom-module id="iron-overlay-backdrop" assetpath="js/iron-overlay-behavior/"><template><style>:host {
         position: fixed;
         top: 0;
         left: 0;
@@ -2891,4 +2900,4 @@ paper-fab {
       }
       body.green {
         background-color: rgb(174,213,129);
-      }</style></div><customer-profile></customer-profile><script src="js/profile-61e6b705b2.js"></script></body></html>
+      }</style></div><customer-profile></customer-profile><script src="js/profile-b22beb0f07.js"></script></body></html>
