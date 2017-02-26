@@ -20,12 +20,41 @@ class Login extends CI_Controller{
 	public function index(){
 		$username = $this->security->xss_clean($this->input->post('username'));//$_POST['username'];
 		$password = $this->security->xss_clean($this->input->post('password'));//$_POST['password'];
+		$ref_url = $this->input->post('ref_url');
+		$cur_page = $this->input->post('cur_page');
+		$redirect_url = 'https://feeljoy.in';
 		
+		if(!empty($ref_url) && !filter_var($ref_url, FILTER_VALIDATE_URL) === false){
+			$ref_url_pieces = parse_url($ref_url);
+			if(!strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
+			$ref_url = $redirect_url;
+		}}
+		else{
+			$ref_url = $redirect_url;
+		}
+		
+		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
+			$cur_page_pieces = parse_url($cur_page);
+			if(!strpos($cur_page_pieces['host'], 'feeljoy.in') >= 0){
+				$cur_page = $redirect_url;
+			}}
+			else{
+				$cur_page = $redirect_url;
+			}
+		
+			if(!strpos($ref_url, '?') >= 0){
+				$ref_url = $ref_url.'?';
+			}
+			if(!strpos($cur_page, '?') >= 0){
+				$cur_page = $cur_page.'?';
+			}
+			
 		$response = [];
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
 			$response['message'] = 'Username or Password can not be empty.';
-			echo json_encode($response);exit;
+			redirect($cur_page.'&error='.$response['message']);
+			exit;
 		}
 		// Validate the user can login
 		$password = md5($password);
@@ -34,7 +63,8 @@ class Login extends CI_Controller{
 			// If user did not validate, then show them login page again
 			$response['error'] = true;
 			$response['message'] = 'Invalid username or password';
-			echo json_encode($response);exit;
+			redirect($cur_page.'&error='.$response['message']);
+			exit;
 		}else{			
 			if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
 				$userData['userid'] = $this->session->userdata('userid');
@@ -46,11 +76,13 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
-				echo json_encode($response);exit;
+				redirect($ref_url);
+				exit;
 			}else{
 				$response['error'] = true;
 				$response['message'] = 'Something went wrong.';
-				echo json_encode($response);exit;
+				redirect($cur_page.'&error='.$response['message']);
+				exit;
 			}
 		}
 	}
