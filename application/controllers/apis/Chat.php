@@ -47,10 +47,10 @@ if (!defined('BASEPATH'))
 				$lid = $_POST['lastid'];
 			}
 
-			include_once BASEPATH.'../lib-emoji/Emoji.class.php';
+			//include_once BASEPATH.'../lib-emoji/Emoji.class.php';
 			switch($_POST['rq']):
 			case 'new':
-				$msg = Emoji::emoji_to_html(trim($_POST['msg']));
+				$msg = trim($_POST['msg']);
 				if(empty($msg)){
 					$json = array('status' => 0, 'msg'=> 'Enter your message!.');
 				}else{
@@ -94,7 +94,7 @@ if (!defined('BASEPATH'))
 									foreach ($qurGetMsg as $msr=>$msv){
 										$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
 										$decoded_msg = trim($decoded_msg);
-										$msg .= Emoji::html_to_emoji($decoded_msg)."<br>";
+										$msg .= $decoded_msg."<br>";
 										$ids[] = $msv['id'];
 									}
 									$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
@@ -125,7 +125,7 @@ if (!defined('BASEPATH'))
 						foreach ($qurGet as $msr=>$msv){
 							$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
 							$decoded_msg = trim($decoded_msg);
-							$msg .= Emoji::html_to_emoji($decoded_msg)."<br>";
+							$msg .= $decoded_msg."<br>";
 							$ids[] = $msv['id'];
 						}
 						$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
