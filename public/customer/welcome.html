@@ -1288,162 +1288,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-icon {
         --iron-icon-width: 100%;
         --iron-icon-height: 100%;
-      }</style><iron-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></iron-icon></template></dom-module><dom-module id="paper-progress" assetpath="js/paper-progress/"><template><style>:host {
-        display: block;
-        width: 200px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      :host([hidden]) {
-        display: none !important;
-      }
-
-      #progressContainer {
-        @apply(--paper-progress-container);
-        position: relative;
-      }
-
-      #progressContainer,
-      /* the stripe for the indeterminate animation*/
-      .indeterminate::after {
-        height: var(--paper-progress-height, 4px);
-      }
-
-      #primaryProgress,
-      #secondaryProgress,
-      .indeterminate::after {
-        @apply(--layout-fit);
-      }
-
-      #progressContainer,
-      .indeterminate::after {
-        background: var(--paper-progress-container-color, --google-grey-300);
-      }
-
-      :host(.transiting) #primaryProgress,
-      :host(.transiting) #secondaryProgress {
-        -webkit-transition-property: -webkit-transform;
-        transition-property: transform;
-
-        /* Duration */
-        -webkit-transition-duration: var(--paper-progress-transition-duration, 0.08s);
-        transition-duration: var(--paper-progress-transition-duration, 0.08s);
-
-        /* Timing function */
-        -webkit-transition-timing-function: var(--paper-progress-transition-timing-function, ease);
-        transition-timing-function: var(--paper-progress-transition-timing-function, ease);
-
-        /* Delay */
-        -webkit-transition-delay: var(--paper-progress-transition-delay, 0s);
-        transition-delay: var(--paper-progress-transition-delay, 0s);
-      }
-
-      #primaryProgress,
-      #secondaryProgress {
-        @apply(--layout-fit);
-        -webkit-transform-origin: left center;
-        transform-origin: left center;
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        will-change: transform;
-      }
-
-      #primaryProgress {
-        background: var(--paper-progress-active-color, --google-green-500);
-      }
-
-      #secondaryProgress {
-        background: var(--paper-progress-secondary-color, --google-green-100);
-      }
-
-      :host([disabled]) #primaryProgress {
-        background: var(--paper-progress-disabled-active-color, --google-grey-500);
-      }
-
-      :host([disabled]) #secondaryProgress {
-        background: var(--paper-progress-disabled-secondary-color, --google-grey-300);
-      }
-
-      :host(:not([disabled])) #primaryProgress.indeterminate {
-        -webkit-transform-origin: right center;
-        transform-origin: right center;
-        -webkit-animation: indeterminate-bar var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
-        animation: indeterminate-bar var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
-      }
-
-      :host(:not([disabled])) #primaryProgress.indeterminate::after {
-        content: "";
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-
-        -webkit-animation: indeterminate-splitter var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
-        animation: indeterminate-splitter var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
-      }
-
-      @-webkit-keyframes indeterminate-bar {
-        0% {
-          -webkit-transform: scaleX(1) translateX(-100%);
-        }
-        50% {
-          -webkit-transform: scaleX(1) translateX(0%);
-        }
-        75% {
-          -webkit-transform: scaleX(1) translateX(0%);
-          -webkit-animation-timing-function: cubic-bezier(.28,.62,.37,.91);
-        }
-        100% {
-          -webkit-transform: scaleX(0) translateX(0%);
-        }
-      }
-
-      @-webkit-keyframes indeterminate-splitter {
-        0% {
-          -webkit-transform: scaleX(.75) translateX(-125%);
-        }
-        30% {
-          -webkit-transform: scaleX(.75) translateX(-125%);
-          -webkit-animation-timing-function: cubic-bezier(.42,0,.6,.8);
-        }
-        90% {
-          -webkit-transform: scaleX(.75) translateX(125%);
-        }
-        100% {
-          -webkit-transform: scaleX(.75) translateX(125%);
-        }
-      }
-
-      @keyframes indeterminate-bar {
-        0% {
-          transform: scaleX(1) translateX(-100%);
-        }
-        50% {
-          transform: scaleX(1) translateX(0%);
-        }
-        75% {
-          transform: scaleX(1) translateX(0%);
-          animation-timing-function: cubic-bezier(.28,.62,.37,.91);
-        }
-        100% {
-          transform: scaleX(0) translateX(0%);
-        }
-      }
-
-      @keyframes indeterminate-splitter {
-        0% {
-          transform: scaleX(.75) translateX(-125%);
-        }
-        30% {
-          transform: scaleX(.75) translateX(-125%);
-          animation-timing-function: cubic-bezier(.42,0,.6,.8);
-        }
-        90% {
-          transform: scaleX(.75) translateX(125%);
-        }
-        100% {
-          transform: scaleX(.75) translateX(125%);
-        }
-      }</style><div id="progressContainer"><div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div><div id="primaryProgress"></div></div></template></dom-module><dom-module id="paper-material-shared-styles" assetpath="js/paper-material/"><template><style>:host {
+      }</style><iron-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></iron-icon></template></dom-module><dom-module id="paper-material-shared-styles" assetpath="js/paper-material/"><template><style>:host {
         display: block;
         position: relative;
       }
@@ -2127,6 +1972,10 @@ paper-progress {
   --paper-progress-active-color: var(--paper-cyan-600);
   --paper-progress-secondary-color: var(--paper-cyan-200); }
 
+.nodisp {
+  display: none;
+  overflow: hidden; }
+
 neon-animated-pages {
   color: #fff; }
 
@@ -2270,7 +2119,7 @@ h4 {
 h6 {
   margin-top: 24px; }
   h6.no-space {
-    margin-top: 16px; }</style><app-location route="{{route}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:subpage" data="{{routeData}}" tail="{{subroute}}"></app-route><iron-ajax id="aLogin" url="{{loginurl}}" method="POST" handle-as="json" content-type="application/x-www-form-urlencoded" last-response="{{loginresponse}}" loading="{{loadinglogin}}" body="[[sendLogin]]" with-credentials=""></iron-ajax><iron-ajax id="aSignup" url="{{signupurl}}" method="POST" handle-as="json" content-type="application/x-www-form-urlencoded" last-response="{{signupresponse}}" loading="{{loadinglogin}}" body="[[sendSignup]]" with-credentials=""></iron-ajax><neon-animated-pages id="pages" class="fit" selected="{{subpage}}" attr-for-selected="name" role="main" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation"><neon-animatable name="welcome" class="card cyan"><div class="fit layout vertical start center-justified top-padded"><h4 class="no-break">Hey, welcome to FeelJoy</h4><h6 class="no-space">Your buddy program starts here</h6></div><div class="pos-bottom layout horizontal center justified bottom-padded"><paper-button id="create" class="filled" raised="">Create Account</paper-button><paper-button id="login" raised="">Login</paper-button></div></neon-animatable><neon-animatable name="email" class="card darkcyan"><div class="fit layout vertical center-center top-padded"><paper-input id="email" class="self-stretch" label="Email Address" value="{{email}}"></paper-input><paper-input id="password" class="self-stretch" label="Password" type="password" value="{{password}}"></paper-input></div><div class="pos-bottom layout horizontal center justified bottom-padded"><paper-button id="google" class="filled" raised="">Google Account</paper-button><paper-button id="done" raised="">{{lastButton}}</paper-button></div><paper-icon-button on-tap="onBackButton" class="back-button" icon="arrow-back"></paper-icon-button></neon-animatable></neon-animated-pages><paper-progress class="pos-top" id="progress" style="opacity: 0" indeterminate=""></paper-progress><paper-toast id="toast" text="[[message]]"></paper-toast></template><script async="" defer="" src="https://apis.google.com/js/platform.js"></script></dom-module><style>body,
+    margin-top: 16px; }</style><app-location route="{{route}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:subpage" data="{{routeData}}" query-params="{{queryParams}}" tail="{{subroute}}"></app-route><div class="nodisp"><form id="fLogin" is="iron-form" method="post" action="{{loginurl}}"><paper-input name="username" value="{{email}}"></paper-input><paper-input name="password" value="{{password}}"></paper-input><paper-input name="cur_page" value="{{cur_page}}"></paper-input><paper-input name="ref_url" value="{{ref_url}}"></paper-input></form><form id="fSignup" is="iron-form" method="post" action="{{signupurl}}"><paper-input name="email" value="{{email}}"></paper-input><paper-input name="password" value="{{password}}"></paper-input><paper-input name="cur_page" value="{{cur_page}}"></paper-input><paper-input name="ref_url" value="{{ref_url}}"></paper-input></form></div><neon-animated-pages id="pages" class="fit" selected="{{subpage}}" attr-for-selected="name" role="main" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation"><neon-animatable name="welcome" class="card cyan"><div class="fit layout vertical start center-justified top-padded"><h4 class="no-break">Hey, welcome to FeelJoy</h4><h6 class="no-space">Your buddy program starts here</h6></div><div class="pos-bottom layout horizontal center justified bottom-padded"><paper-button id="create" class="filled" raised="">Create Account</paper-button><paper-button id="login" raised="">Login</paper-button></div></neon-animatable><neon-animatable name="email" class="card darkcyan"><div class="fit layout vertical center-center top-padded"><paper-input id="email" class="self-stretch" label="Email Address" value="{{email}}"></paper-input><paper-input id="password" class="self-stretch" label="Password" type="password" value="{{password}}"></paper-input></div><div class="pos-bottom layout horizontal center justified bottom-padded"><paper-button id="google" class="filled" raised="">Google Account</paper-button><paper-button id="done" raised="">{{lastButton}}</paper-button></div><paper-icon-button on-tap="onBackButton" class="back-button" icon="arrow-back"></paper-icon-button></neon-animatable></neon-animated-pages><paper-toast id="toast" text="[[message]]"></paper-toast></template><script async="" defer="" src="https://apis.google.com/js/platform.js"></script></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -2280,4 +2129,4 @@ h6 {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-welcome></customer-welcome><script src="js/welcome-43be1e8b76.js"></script></body></html>
+      }</style></div><customer-welcome></customer-welcome><script src="js/welcome-39df4533ec.js"></script></body></html>
