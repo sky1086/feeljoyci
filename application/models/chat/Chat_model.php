@@ -116,7 +116,8 @@ class Chat_model extends CI_Model{
     				}
     				
     				$decoded_msg = $this->chat_model->decodeMsg($row['msg'], $row['int_vec']);
-    				$msg = Emoji::html_to_emoji($decoded_msg);
+    				//$msg = Emoji::html_to_emoji($decoded_msg);
+    				$msg = $decoded_msg;
     				$row['msg'] = trim($msg);
     				unset($row['int_vec']);
     				if($myid == $row['from']){
