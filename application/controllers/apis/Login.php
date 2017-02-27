@@ -26,7 +26,7 @@ class Login extends CI_Controller{
 		
 		if(!empty($ref_url) && !filter_var($ref_url, FILTER_VALIDATE_URL) === false){
 			$ref_url_pieces = parse_url($ref_url);
-			if(!strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
+			if(strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
 			$ref_url = $ref_url;
 		}}
 		else{
@@ -35,7 +35,7 @@ class Login extends CI_Controller{
 		
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
 			$cur_page_pieces = parse_url($cur_page);
-			if(!strpos($cur_page_pieces['host'], 'feeljoy.in') >= 0){
+			if(strpos($cur_page_pieces['host'], 'feeljoy.in') >= 0){
 				$cur_page = $cur_page;
 			}}
 			else{
