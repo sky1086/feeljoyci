@@ -23,7 +23,8 @@ class Login extends CI_Controller{
 		$ref_url = $this->input->post('ref_url');
 		$cur_page = $this->input->post('cur_page');
 		$redirect_url = 'https://feeljoy.in';
-		var_dump($username, $password, $ref_url, $cur_page);
+		echo $ref_url;
+		
 		if(!empty($ref_url) && !filter_var($ref_url, FILTER_VALIDATE_URL) === false){
 			$ref_url_pieces = parse_url($ref_url);
 			if(!strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
@@ -32,7 +33,7 @@ class Login extends CI_Controller{
 		else{
 			$ref_url = $redirect_url;
 		}
-		
+		echo $ref_url;
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
 			$cur_page_pieces = parse_url($cur_page);
 			if(!strpos($cur_page_pieces['host'], 'feeljoy.in') >= 0){
@@ -48,13 +49,12 @@ class Login extends CI_Controller{
 			if(!strpos($cur_page, '?') >= 0){
 				$cur_page = $cur_page.'?';
 			}
-			
+			echo $ref_url;
+			exit;
 		$response = [];
-		var_dump($username, $password, $ref_url, $cur_page);
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
-			echo $response['message'] = 'Username or Password can not be empty.';
-			exit;
+			$response['message'] = 'Username or Password can not be empty.';
 			redirect($cur_page.'&error='.$response['message']);
 			exit;
 		}
@@ -65,7 +65,6 @@ class Login extends CI_Controller{
 			// If user did not validate, then show them login page again
 			$response['error'] = true;
 			$response['message'] = 'Invalid username or password';
-			echo 'No result found';exit;
 			redirect($cur_page.'&error='.$response['message']);
 			exit;
 		}else{			
@@ -79,13 +78,11 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
-				var_dump($username, $password, $ref_url, $cur_page, 'login successful');
-				exit;
 				redirect($ref_url);
 				exit;
 			}else{
 				$response['error'] = true;
-				echo $response['message'] = 'Something went wrong.';exit;
+				$response['message'] = 'Something went wrong.';
 				redirect($cur_page.'&error='.$response['message']);
 				exit;
 			}
