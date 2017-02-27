@@ -53,7 +53,8 @@ class Login extends CI_Controller{
 		var_dump($username, $password, $ref_url, $cur_page);
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
-			$response['message'] = 'Username or Password can not be empty.';
+			echo $response['message'] = 'Username or Password can not be empty.';
+			exit;
 			redirect($cur_page.'&error='.$response['message']);
 			exit;
 		}
