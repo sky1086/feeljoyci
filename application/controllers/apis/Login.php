@@ -23,7 +23,6 @@ class Login extends CI_Controller{
 		$ref_url = $this->input->post('ref_url');
 		$cur_page = $this->input->post('cur_page');
 		$redirect_url = 'https://feeljoy.in';
-		echo $ref_url;
 		
 		if(!empty($ref_url) && !filter_var($ref_url, FILTER_VALIDATE_URL) === false){
 			$ref_url_pieces = parse_url($ref_url);
@@ -33,7 +32,7 @@ class Login extends CI_Controller{
 		else{
 			$ref_url = $redirect_url;
 		}
-		echo $ref_url;
+		
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
 			$cur_page_pieces = parse_url($cur_page);
 			if(!strpos($cur_page_pieces['host'], 'feeljoy.in') >= 0){
@@ -42,15 +41,14 @@ class Login extends CI_Controller{
 			else{
 				$cur_page = $redirect_url;
 			}
-		echo strpos($ref_url, '?');
-			if(!strpos($ref_url, '?') >= 0){
+		
+			if(strpos($ref_url, '?') === false){
 				$ref_url = $ref_url.'?';
 			}
-			if(!strpos($cur_page, '?') >= 0){
+			if(strpos($cur_page, '?') === false){
 				$cur_page = $cur_page.'?';
 			}
-			echo $ref_url;
-			exit;
+			
 		$response = [];
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
