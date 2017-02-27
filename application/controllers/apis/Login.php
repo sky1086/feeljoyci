@@ -32,7 +32,7 @@ class Login extends CI_Controller{
 		else{
 			$ref_url = $redirect_url;
 		}
-		echo $ref_url = 'https://buddy.feeljoy.in/list?';
+		$ref_url = 'https://buddy.feeljoy.in/list?';
 		
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
 			$cur_page_pieces = parse_url($cur_page);
@@ -49,7 +49,7 @@ class Login extends CI_Controller{
 			if(strpos($cur_page, '?') === false){
 				$cur_page = $cur_page.'?';
 			}
-			echo $ref_url;
+			
 		$response = [];
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
@@ -77,8 +77,7 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
-				var_dump($userData);
-				echo $ref_url;exit;
+				
 				redirect($ref_url);
 				exit;
 			}else{
