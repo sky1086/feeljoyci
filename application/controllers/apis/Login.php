@@ -79,6 +79,7 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
+				echo $ref_url;exit;
 				redirect($ref_url);
 				exit;
 			}else{
