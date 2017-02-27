@@ -42,7 +42,7 @@ class Login extends CI_Controller{
 			else{
 				$cur_page = $redirect_url;
 			}
-		
+		echo strpos($ref_url, '?');
 			if(!strpos($ref_url, '?') >= 0){
 				$ref_url = $ref_url.'?';
 			}
