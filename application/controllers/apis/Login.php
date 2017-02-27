@@ -80,11 +80,12 @@ class Login extends CI_Controller{
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
 				var_dump($username, $password, $ref_url, $cur_page, 'login successful');
+				exit;
 				redirect($ref_url);
 				exit;
 			}else{
 				$response['error'] = true;
-				$response['message'] = 'Something went wrong.';
+				echo $response['message'] = 'Something went wrong.';exit;
 				redirect($cur_page.'&error='.$response['message']);
 				exit;
 			}
