@@ -25,15 +25,15 @@ class Login extends CI_Controller{
 		$redirect_url = 'https://feeljoy.in';
 		
 		if(!empty($ref_url) && !filter_var($ref_url, FILTER_VALIDATE_URL) === false){
-			$ref_url_pieces = parse_url($ref_url);echo $ref_url_pieces['host'];exit;
+			$ref_url_pieces = parse_url($ref_url);
 			if(strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
-			$ref_url = $ref_url;
-			if($ref_url_pieces['host'] === 'buddy.feeljoy.in'){
-				$ref_url = 'https://buddy.feeljoy.in/list?';
-			}
+			$ref_url = $ref_url;			
 		}}
 		else{
 			$ref_url = $redirect_url;
+			if($ref_url_pieces['host'] === 'buddy.feeljoy.in'){
+				$ref_url = 'https://buddy.feeljoy.in/list?';
+			}
 		}
 		
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
@@ -79,7 +79,6 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
-				echo $ref_url;exit;
 				redirect($ref_url);
 				exit;
 			}else{
