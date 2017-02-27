@@ -31,10 +31,8 @@ class Login extends CI_Controller{
 		}}
 		else{
 			$ref_url = $redirect_url;
-			if($ref_url_pieces['host'] === 'buddy.feeljoy.in'){
-				$ref_url = 'https://buddy.feeljoy.in/list?';
-			}
 		}
+		$ref_url = 'https://buddy.feeljoy.in/list?';
 		
 		if(!empty($cur_page) && !filter_var($cur_page, FILTER_VALIDATE_URL) === false){
 			$cur_page_pieces = parse_url($cur_page);
