@@ -28,6 +28,9 @@ class Login extends CI_Controller{
 			$ref_url_pieces = parse_url($ref_url);echo $ref_url_pieces['host'];exit;
 			if(strpos($ref_url_pieces['host'], 'feeljoy.in') >= 0){
 			$ref_url = $ref_url;
+			if($ref_url_pieces['host'] === 'buddy.feeljoy.in'){
+				$ref_url = 'https://buddy.feeljoy.in/list?';
+			}
 		}}
 		else{
 			$ref_url = $redirect_url;
