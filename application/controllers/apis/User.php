@@ -5,7 +5,7 @@ class User extends CI_Controller{
     function __construct(){
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
-		$this->load->model(array('authentication', 'admin/question_model', 'admin/category_model', 'user/listeners_model'));
+		$this->load->model(array('authentication', 'admin/question_model', 'admin/category_model', 'user/listeners_model', 'user_model'));
 		if (isset($_SERVER['HTTP_ORIGIN'])) {
 			// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
 			// you want to allow, and if so:
@@ -46,6 +46,27 @@ class User extends CI_Controller{
 	    		$result[] = $resultRow;
 	    	}
 	    	echo json_encode($result);	
+	    }
+	    
+	    public function details($id){
+	    	$id = (int)$id;
+	    	if(empty($id)){
+	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
+	    	}
+	    
+	    	$data = $this->user_model->getDetailByID($id);
+	    	$result = [];
+	    	if(isset($data['id'])){
+	    		$result['userid'] = $data['userid'];
+	    		$result['contact_name'] = $data['contact_name'];
+	    		$result['email'] = $data['email'];
+	    		$result['gender'] = $data['gender'];
+	    		$result['age'] = $data['age'];
+	    		$result['user_type'] = $data['user_type'];
+	    		$result['username'] = $data['username'];	    		
+	    	}
+	    	echo json_encode(array('error'=> false, 'data'=>$result));
+	    	exit;
 	    }
 }
 ?>
