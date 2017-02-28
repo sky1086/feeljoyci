@@ -54,9 +54,9 @@ class User extends CI_Controller{
 	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
 	    	}
 	    
-	    	$data = $this->user_model->getDetailByID($id);
+	    	$data = $this->user_model->getUserDetails($id);
 	    	$result = [];
-	    	if(isset($data['id'])){
+	    	if(isset($data['userid'])){
 	    		$result['userid'] = $data['userid'];
 	    		$result['contact_name'] = $data['contact_name'];
 	    		$result['email'] = $data['email'];
