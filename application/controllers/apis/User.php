@@ -52,7 +52,15 @@ class User extends CI_Controller{
 	    	$id = (int)$id;
 	    	if(empty($id)){
 	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
+				exit;
 	    	}
+
+			$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER));
+	    	if(!$loginData){
+	    		$loginData = ['error'=> true, 'login'=>'required'];
+	    	}
+	    	echo json_encode($loginData);
+			exit;
 	    
 	    	$data = $this->user_model->getUserDetails($id);
 	    	$result = [];

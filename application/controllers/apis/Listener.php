@@ -62,6 +62,7 @@ class Listener extends CI_Controller{
 	    	$id = (int)$id;
 	    	if(empty($id)){
 	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
+				exit;
 	    	}
 	    	
 	    	$data = $this->listener_model->getDetailByID($id);
