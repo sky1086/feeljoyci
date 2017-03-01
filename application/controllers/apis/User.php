@@ -55,7 +55,7 @@ class User extends CI_Controller{
 				exit;
 	    	}
 
-			$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER));
+			$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER, ACCOUNT_LISTENER));
 	    	if(!$loginData){
 	    		$loginData = ['error'=> true, 'login'=>'required'];
 	    	}
