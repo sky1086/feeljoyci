@@ -94,7 +94,7 @@ if (!defined('BASEPATH'))
 									foreach ($qurGetMsg as $msr=>$msv){
 										$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
 										$decoded_msg = trim($decoded_msg);
-										$msg .= $decoded_msg."<br>";
+										$msg .= $decoded_msg;
 										$ids[] = $msv['id'];
 									}
 									$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
@@ -125,7 +125,7 @@ if (!defined('BASEPATH'))
 						foreach ($qurGet as $msr=>$msv){
 							$decoded_msg = $this->chat_model->decodeMsg($msv['msg'], $msv['int_vec']);
 							$decoded_msg = trim($decoded_msg);
-							$msg .= $decoded_msg."<br>";
+							$msg .= $decoded_msg;
 							$ids[] = $msv['id'];
 						}
 						$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
