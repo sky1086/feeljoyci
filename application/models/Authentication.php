@@ -63,6 +63,24 @@ class Authentication extends CI_Model{
     	}
     }
     
+    public function redirect2ApiDash() {
+    	$redirecturl = $this->session->userdata('redirecturl');
+    	if(!empty($redirecturl))
+    	{
+    		$this->session->set_userdata(array('redirecturl'=>null));
+    		redirect($redirecturl);
+    	}
+    	if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
+    		if($this->session->userdata('usertype') == ACCOUNT_USER){
+    			redirect('listeners?');
+    		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){
+    			header('location: https://buddy.feeljoy.in');
+    		}elseif($this->session->userdata('usertype') == ACCOUNT_ADMIN){
+    			redirect('admin/dashboard');
+    		}
+    	}
+    }
+    
     public function checkLogin($allowed){
     	//valid users who can login into system interface
     	$allowedUser = array(ACCOUNT_USER, ACCOUNT_ADMIN, ACCOUNT_LISTENER);
