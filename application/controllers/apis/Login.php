@@ -68,6 +68,10 @@ class Login extends CI_Controller{
 			exit;
 		}else{			
 			if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
+				if($this->input->post('remember') == 1){
+					setcookie("sp_u", base64_encode($this->session->userdata('userid')), time()+60*60*24*100, "/");
+					setcookie("sp_p", base64_encode($password), time()+60*60*24*100, "/");
+				}
 				$userData['userid'] = $this->session->userdata('userid');
 				$userData['username'] = $this->session->userdata('username');
 				$userData['contactname'] = $this->session->userdata('contact_name');
