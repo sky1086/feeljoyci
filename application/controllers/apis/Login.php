@@ -46,7 +46,12 @@ class Login extends CI_Controller{
 			if(strpos($ref_url, '?') === false){
 				$ref_url = $ref_url.'?';
 			}
-			if(strpos($cur_page, '?') === false){
+			
+			$hashPosition = 0;
+			if(strpos($cur_page, '#/') !== false){
+				$hashPosition = strpos($cur_page, '#/');
+			}
+			elseif(strpos($cur_page, '?') === false){
 				$cur_page = $cur_page.'?';
 			}
 			
@@ -54,8 +59,7 @@ class Login extends CI_Controller{
 		if(empty($username) || empty($password) || !$username || !$password){
 			$response['error'] = true;
 			$response['message'] = 'Username or Password can not be empty.';
-			redirect($cur_page.'&error='.$response['message']);
-			exit;
+			$this->showMsgAndRedirect($cur_page, $response['message'], $hashPosition);
 		}
 		// Validate the user can login
 		$password = md5($password);
@@ -64,8 +68,7 @@ class Login extends CI_Controller{
 			// If user did not validate, then show them login page again
 			$response['error'] = true;
 			$response['message'] = 'Invalid username or password';
-			redirect($cur_page.'&error='.$response['message']);
-			exit;
+			$this->showMsgAndRedirect($cur_page, $response['message'], $hashPosition);
 		}else{			
 			if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
 				if($this->input->post('remember') == 1){
@@ -87,9 +90,19 @@ class Login extends CI_Controller{
 			}else{
 				$response['error'] = true;
 				$response['message'] = 'Something went wrong.';
-				redirect($cur_page.'&error='.$response['message']);
-				exit;
+				$this->showMsgAndRedirect($cur_page, $response['message'], $hashPosition);
 			}
 		}
+	}
+	
+	public function showMsgAndRedirect($cur_page, $msg, $hashPosition = 0){
+		$msgString = '&error='.$msg;
+		if($hashPosition){
+			$url = substr_replace($cur_page, $msgString, $hashPosition, 0);
+		}else{
+			$url = $cur_page.$msgString;
+		}
+		redirect($url);
+		exit;
 	}
 }

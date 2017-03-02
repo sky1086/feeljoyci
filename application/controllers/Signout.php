@@ -4,6 +4,15 @@ class Signout extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('authentication');
+		if (isset($_SERVER['HTTP_ORIGIN'])) {
+			// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+			// you want to allow, and if so:
+			header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+			header('Access-Control-Allow-Credentials: true');
+			header('Access-Control-Max-Age: 86400');    // cache for 1 day
+		}else{
+			header('Access-Control-Allow-Origin: *'); //need to remove after developement done
+		}
 		//$this->authentication->isLoggedIn();
 	}
 
