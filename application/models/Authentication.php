@@ -73,7 +73,7 @@ class Authentication extends CI_Model{
     		$validusers = in_array($this->session->userdata('usertype'),$allowedUser);
     		//var_dump($validusers, $this->session->userdata());exit;
     		if(isset($_COOKIE['sp_u']) && isset($_COOKIE['sp_p']) && !isset($_SESSION['user_type'])){
-    			$this->login_model->validate(base64_decode($_COOKIE['sp_u']), base64_decode($_COOKIE['sp_p']));
+    			//$this->login_model->validate(base64_decode($_COOKIE['sp_u']), base64_decode($_COOKIE['sp_p']));
     		}
     		
     		if(!$this->session->userdata('validated') || empty($this->session->userdata('userid')) || !$validusers){

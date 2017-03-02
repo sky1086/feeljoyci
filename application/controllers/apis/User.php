@@ -58,9 +58,9 @@ class User extends CI_Controller{
 			$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER, ACCOUNT_LISTENER));
 	    	if(!$loginData){
 	    		$loginData = ['error'=> true, 'login'=>'required'];
-	    	}
-	    	echo json_encode($loginData);
-			exit;
+	    		echo json_encode($loginData);
+	    		exit;
+	    	}	    	
 	    
 	    	$data = $this->user_model->getUserDetails($id);
 	    	$result = [];
