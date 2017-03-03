@@ -51,5 +51,7 @@
     "background_color": "#455a64",
     "start_url": "https://feeljoy.in/?homescreen=1",
     "display": "standalone",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "gcm_sender_id": "1097819606131",
+    "gcm_user_visible_only": true
 }
