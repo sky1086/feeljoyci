@@ -26,7 +26,7 @@
             
             <li>
                 <div class="collapsible-header waves-effect">
-                    <i class="ion-android-person"></i>Customer Clicks<span class="more"><i class="ion-ios-arrow-right"></i></span>
+                    <i class="ion-android-person"></i>Customer Click Engine<span class="more"><i class="ion-ios-arrow-right"></i></span>
                 </div>
                 <div class="collapsible-body">
                     <ul class="collapsible">
@@ -42,7 +42,7 @@
             
             <li>
                 <div class="collapsible-header waves-effect">
-                    <i class="ion-android-person"></i>Buddy Clicks<span class="more"><i class="ion-ios-arrow-right"></i></span>
+                    <i class="ion-android-person"></i>Buddy Click Engine<span class="more"><i class="ion-ios-arrow-right"></i></span>
                 </div>
                 <div class="collapsible-body">
                     <ul class="collapsible">
