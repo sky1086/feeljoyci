@@ -6,7 +6,7 @@ class Listener extends CI_Controller{
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
     	error_reporting(0);
-        $this->load->model(array('authentication', 'chat/chat_model', 'listener/listener_model'));
+        $this->load->model(array('authentication', 'chat/chat_model', 'listener/listener_model', 'user/listeners_model'));
         if (isset($_SERVER['HTTP_ORIGIN'])) {
         	// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
         	// you want to allow, and if so:
@@ -70,6 +70,20 @@ class Listener extends CI_Controller{
 	    		$data['profile_img'] = base_url().'pics_listener/'.$data['profile_img'];	    		
 	    	}
 	    	echo json_encode(array('error'=> false, 'data'=>$data));	    	
+	    }
+	    
+	    public function markSpamUser(){
+	    	$data = array();
+	    	$id = (int)$_POST['uid'];
+	    	$data['userid'] = $id;
+	    	if($id > 0 && $this->session->userdata('userid') > 0){
+	    		$data['Listenerid'] = $this->session->userdata('userid');
+	    		$data['comment'] = $_POST['comments'];
+	    		$this->listeners_model->addSpamUser($data);
+	    		echo json_encode(array('error'=> false, 'msg'=>'User spamed.'));
+	    	}else{
+	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid Parameters.'));
+	    	}
 	    }
 }
 ?>

@@ -11,7 +11,7 @@ class Notification_model extends CI_Model{
 		
 		$myid = $this->session->userdata('userid');
 		$email = $this->session->userdata('email');
-		$data = array();echo $myid, $email;
+		$data = array();
 		if($d_type == 1){//mobile
 			$data['subscriberid_mob'] =  $subid;
 		}else{
