@@ -56,11 +56,13 @@ class User_Authentication extends CI_Controller
                 $this->login_model->forceUserLogin($userData['email']);
                 $this->authentication->redirect2ApiDash();
             } else {
+            	echo 'Something went wrong';
                $data['userData'] = array();
             }
         } else {
             $data['authUrl'] = $gClient->createAuthUrl();
         }
+        exit('end');
 		//$this->load->view('user_authentication/index',$data);
     }
 	
