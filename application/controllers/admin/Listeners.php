@@ -32,6 +32,8 @@ class Listeners extends CI_Controller{
    			if ($this->form_validation->run() == TRUE) {
    				$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
    				$listData['name']       = $this->security->xss_clean($this->input->post('name'));
+   				$listData['interests']       = $this->security->xss_clean($this->input->post('interests'));
+   				$listData['tagline']       = $this->security->xss_clean($this->input->post('tagline'));
    				$listData['priority']       = $this->security->xss_clean($this->input->post('priority'));
    				$listData['status']	= $this->security->xss_clean($this->input->post('status'));
    				$listData['age']	= $this->security->xss_clean($this->input->post('age'));
@@ -81,6 +83,8 @@ class Listeners extends CI_Controller{
 	   			if ($this->form_validation->run() == TRUE) {
 	   				$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
 	   				$listData['name']       = $this->security->xss_clean($this->input->post('name'));
+	   				$listData['interests']       = $this->security->xss_clean($this->input->post('interests'));
+	   				$listData['tagline']       = $this->security->xss_clean($this->input->post('tagline'));
 	   				$listData['priority']       = $this->security->xss_clean($this->input->post('priority'));
 	   				$listData['status']	= $this->security->xss_clean($this->input->post('status'));
 	   				$listData['age']	= $this->security->xss_clean($this->input->post('age'));

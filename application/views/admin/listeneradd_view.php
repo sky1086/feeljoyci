@@ -30,6 +30,20 @@
               </tr>
               <tr>
               	<td></td>
+              	<td>Interests</td>
+              	<td>
+              	<input type="text" name="interests" value="<?php echo set_value('interests'); ?>" />
+              	</td>
+              </tr>
+              <tr>
+              	<td></td>
+              	<td>Tagline</td>
+              	<td>
+              	<input type="text" name="tagline" value="<?php echo set_value('tagline'); ?>" />
+              	</td>
+              </tr>
+              <tr>
+              	<td></td>
               	<td>Qualification</td>
               	<td>
               	<input type="text" name="qualification" value="<?php echo set_value('qualification'); ?>" required />
