@@ -41,6 +41,7 @@ class Listeners extends CI_Controller{
    				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
    				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
    				$user['email']	= $this->security->xss_clean($this->input->post('email'));
+   				$user['contact_name']	= $listData['name'];
    				$user['password']	= $this->security->xss_clean($this->input->post('password'));
    				
    				if(!$user['password']){
@@ -92,6 +93,7 @@ class Listeners extends CI_Controller{
 	   				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
 	   				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
 	   				$user['email']	= $this->security->xss_clean($this->input->post('email'));
+	   				$user['contact_name']	= $listData['name'];
 	   				$user['password']	= $this->security->xss_clean($this->input->post('password'));
 	   				
 	   				if(!$user['password']){

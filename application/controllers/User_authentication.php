@@ -26,19 +26,19 @@ class User_Authentication extends CI_Controller
         $google_oauthV2 = new Google_Oauth2Service($gClient);
 		
         $pos = strpos($_SERVER['REQUEST_URI'], 'code=');
-        var_dump($pos);
+        
         if ($pos !== false) {
             $gClient->authenticate();
             $this->session->set_userdata('token', $gClient->getAccessToken());
             //redirect($redirectUrl);
         }
-        var_dump('step 1');
+
         $token = $this->session->userdata('token');
         if (!empty($token)) {
             $gClient->setAccessToken($token);
         }
-        var_dump('step 1');
-        if ($gClient->getAccessToken()) {var_dump('received access token');
+
+        if ($gClient->getAccessToken()) {
             $userProfile = $google_oauthV2->userinfo->get();
             // Preparing data for database insertion
 			$userData['oauth_provider'] = 'google';
@@ -51,16 +51,14 @@ class User_Authentication extends CI_Controller
             $userData['profile_url'] = $userProfile['link'];
             $userData['picture_url'] = $userProfile['picture'];
 			// Insert or update user data
-            $userID = $this->user->checkUser($userData);var_dump($userID);exit;
+            $userID = $this->user->checkUser($userData);
             if(!empty($userID)){
                 $this->login_model->forceUserLogin($userData['email']);
                 $this->authentication->redirect2ApiDash();
             } else {
-            	var_dump('userid is empty');exit;
                $data['userData'] = array();
             }
         } else {
-        	var_dump('access token not received');
             $data['authUrl'] = $gClient->createAuthUrl();
         }
 		//$this->load->view('user_authentication/index',$data);

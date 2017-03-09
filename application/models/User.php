@@ -12,20 +12,20 @@ class User extends CI_Model{
 		$prevQuery = $this->db->get();
 		$prevCheck = $prevQuery->num_rows();
 		
-		if($prevCheck > 0){echo 'exists';
+		if($prevCheck > 0){
 			$prevResult = $prevQuery->row_array();
 			$data['modified'] = date("Y-m-d H:i:s");
 			$update = $this->db->update($this->tableName,$data,array('id'=>$prevResult['id']));
 			$userID = $prevResult['id'];
 			$this->updateMainUsrTable($data);
-		}else{echo 'new';
+		}else{
 			$data['created'] = date("Y-m-d H:i:s");
-			$data['modified'] = date("Y-m-d H:i:s");var_dump($data);
-			$insert = $this->db->insert($this->tableName, $data);
+			$data['modified'] = date("Y-m-d H:i:s");
+			$insert = $this->db->insert($this->tableName,$data);
 			$userID = $this->db->insert_id();
 			$this->updateMainUsrTable($data);
 		}
-		echo $userID, 'from model';
+
 		return $userID?$userID:FALSE;
     }
     
