@@ -20,7 +20,7 @@ class User extends CI_Model{
 			$this->updateMainUsrTable($data);
 		}else{
 			$data['created'] = date("Y-m-d H:i:s");
-			$data['modified'] = date("Y-m-d H:i:s");
+			$data['modified'] = date("Y-m-d H:i:s");var_dump($data, $this->tableName);
 			$insert = $this->db->insert($this->tableName,$data);
 			$userID = $this->db->insert_id();
 			$this->updateMainUsrTable($data);
