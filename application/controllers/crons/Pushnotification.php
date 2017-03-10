@@ -12,13 +12,15 @@ class Pushnotification extends CI_Controller{
 
     public function index(){
     	
-    	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();
+    	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();var_dump($dataToBeNotified);
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified']){
     			continue;
     		}
+    		var_dump($notif_data);
     		//Get subscriber details
     		$subscriberData = $this->notification_model->getSubscriberDetails($notif_data['to']);
+    		var_dump($subscriberData);
     		if(!empty($subscriberData)){
     			$senderData = $this->user_model->getUserDetails($notif_data['from']);
     			//$receiverData = $this->user_model->getUserDetails($notif_data['to']);
@@ -33,7 +35,7 @@ class Pushnotification extends CI_Controller{
     			}
     			
     			$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];
-    			 
+    			 var_dump($subscriberId);
     			if($subscriberId){
 	    			$apiToken = $this->config->item('push_notification_api_token');
 	    			 
@@ -64,7 +66,7 @@ class Pushnotification extends CI_Controller{
 	    			$result = curl_exec($ch);
 	    			 
 	    			$resultArray = json_decode($result, true);
-	    			 
+	    			 var_dump($resultArray);
 	    			if($resultArray['status'] == 'success') {
 	    				//update notified status on success
 	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
