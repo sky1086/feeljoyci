@@ -11,7 +11,7 @@ class Pushnotification extends CI_Controller{
     }
 
     public function index(){
-    	
+    	error_reporting(1);
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();echo '<pre>'; var_dump('$dataToBeNotified  ', $dataToBeNotified);
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified']){
