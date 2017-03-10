@@ -30,7 +30,7 @@ class Pushnotification extends CI_Controller{
     			$title = $senderData['contact_name']. ' has sent you message -';
     			$message = $this->chat_model->decodeMsg($notif_data['msg'], $notif_data['int_vec']);
     			if($senderData['user_type'] == 'Listener'){
-    				$url = base_url().'chat/?id='.$notif_data['from'];
+    				$url = base_url().'chat?id='.$notif_data['from'];
     			}else{
     				$url = 'https://buddy.feeljoy.in/chat?id='.$notif_data['from'];
     			}
