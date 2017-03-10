@@ -290,4 +290,7 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+	if ( function_exists( 'date_default_timezone_set' ) ) {
+		date_default_timezone_set('Asia/Kolkata');
+	}
 require_once BASEPATH.'core/CodeIgniter.php';
