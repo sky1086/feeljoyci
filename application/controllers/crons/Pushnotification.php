@@ -15,14 +15,14 @@ class Pushnotification extends CI_Controller{
 		error_reporting(E_ALL);
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();echo '<pre>'; var_dump('$dataToBeNotified  ', $dataToBeNotified);
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
-    		if($notif_data['notified']){
+    		if($notif_data['notified'] || !$notif_data['to']){
     			continue;
     		}
     		var_dump('$notif_data   ', $notif_data);
     		//Get subscriber details
     		$subscriberData = $this->notification_model->getSubscriberDetails($notif_data['to']);
     		var_dump('subscriberData    ', $subscriberData);
-    		if(!empty($subscriberData)){
+    		if(is_array($subscriberData) && sizeof($subscriberData) > 0){
     			$senderData = $this->user_model->getUserDetails($notif_data['from']);
     			//$receiverData = $this->user_model->getUserDetails($notif_data['to']);
     			
