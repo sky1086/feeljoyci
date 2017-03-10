@@ -67,6 +67,7 @@ class Pushnotification extends CI_Controller{
 	    			 
 	    			$resultArray = json_decode($result, true);
 	    			 var_dump('resultArray', $resultArray);
+					 echo $resultArray['message'];
 	    			if($resultArray['status'] == 'success') {
 	    				//update notified status on success
 	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);

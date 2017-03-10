@@ -505,4 +505,4 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 //api token for push notifications
-$config['push_notification_api_token'] = 'bd01c35601cc2df525af24ba86eaab14';
+$config['push_notification_api_token'] = '85efb27b092fc7ab11bfc3b120f39b4d';
