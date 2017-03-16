@@ -39,3 +39,4 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     SetEnv CI_ENV development
 </IfModule>
 php_value session.cookie_domain .feeljoy.in
+ErrorDocument 404 /404.html
