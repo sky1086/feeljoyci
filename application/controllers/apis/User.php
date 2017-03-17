@@ -76,5 +76,11 @@ class User extends CI_Controller{
 	    	echo json_encode(array('error'=> false, 'data'=>$result));
 	    	exit;
 	    }
+	    
+	    public function isSpamUser($id){
+	    	$isSpamUser = $this->chat_model->isSpamUser($this->session->userdata('userid'));
+	    	echo json_encode(array('error'=> false, 'spamed'=>$isSpamUser));
+	    	exit;
+	    }
 }
 ?>
