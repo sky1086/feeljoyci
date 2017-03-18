@@ -357,5 +357,21 @@ class Chat_model extends CI_Model{
     		return 0;
     	}
     }
+    
+    public function unreadMsgCount($uid){
+    	$this->db->select('count(*) as unread_count');
+    	$this->db->where('to', $uid);
+    	
+    	$this->db->where('status', 1);
+    	$this->db->order_by('id', 'desc');    	
+    	$query = $this->db->get('msg');
+    	
+    	if(count($query->result()))
+    	{
+    		$row = $query->result_array()[0];
+    		return $row['unread_count'];
+    	}
+    	return 0;
+    }
 }
 ?>

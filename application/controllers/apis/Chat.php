@@ -209,4 +209,19 @@ if (!defined('BASEPATH'))
 			
 			echo json_encode($json);
 		}
+		
+		public function unreadMsgCount($uid){
+			$json = '';
+			$uid = (int)$uid;
+			if(!$uid){
+				$json = array('error' => true, 'msg'=> 'Invalid user id');
+				echo json_encode($json);
+				exit;
+			}
+				
+			$msgCount = $this->chat_model->unreadMsgCount($uid);
+
+			$json = array('error' => false, '$msgCount'=> $msgCount);	
+			echo json_encode($json);
+		}
 	}

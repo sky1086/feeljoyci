@@ -11,8 +11,8 @@ class Pushnotification extends CI_Controller{
     }
 
     public function index(){
-    	ini_set('display_errors', 'On');
-		error_reporting(E_ALL);
+    	//ini_set('display_errors', 'On');
+		//error_reporting(E_ALL);
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification();
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified'] || !$notif_data['to']){
