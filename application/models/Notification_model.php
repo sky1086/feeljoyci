@@ -4,7 +4,7 @@ class Notification_model extends CI_Model{
 		$this->load->model('user_model');
 	}
 	
-	public function addSubscriber($subid, $d_type){
+	public function addSubscriber($subid, $d_type, $status){
 		
 		if(!$subid)
 			return 0;
@@ -20,12 +20,14 @@ class Notification_model extends CI_Model{
 		//If user exists
 		if($this->subscriberExists($myid)){
 			$data['updated_time'] =  date('Y-m-d H:i:s');
+			$data['status'] =  $status;
 			$this->db->where('userid', $myid);
 			$this->db->update('notification_users', $data);
 			return 1;
 		}else {
 			$data['userid'] =  $myid;
 			$data['email'] =  $email;
+			$data['status'] =  $status;
 			$data['updated_time'] =  date('Y-m-d H:i:s');
 			$this->db->insert('notification_users', $data);
 			return 1;

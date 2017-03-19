@@ -224,4 +224,20 @@ if (!defined('BASEPATH'))
 			$json = array('error' => false, '$msgCount'=> $msgCount);	
 			echo json_encode($json);
 		}
+		
+		public function recentLikedMsg($myid, $fid){
+			$json = '';
+			$myid = (int)$myid;
+			$fid = (int)$fid;
+			if(!$fid || !$myid){
+				$json = array('error' => true, 'msg'=> 'Invalid parameters');
+				echo json_encode($json);
+				exit;
+			}
+		
+			$msgDetails = $this->chat_model->getRecentlyLikedMsg($myid, $fid);
+		
+			$json = array('error' => false, 'result'=> $msgDetails);
+			echo json_encode($json);
+		}
 	}

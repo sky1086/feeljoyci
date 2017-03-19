@@ -227,7 +227,7 @@ class Chat_model extends CI_Model{
     	}
     }
     
-    public function getContactedUsers($uid) {
+    public function getContactedUsers($uid, $user_type = 'User') {
     	//select distinct(msg.from) from msg where msg.to = 9 group by msg.from order by max(id) desc limit 20;
     	$this->db->select('msg.from');
     	$this->db->from('msg');
@@ -254,7 +254,7 @@ class Chat_model extends CI_Model{
     		
     		foreach ($row as $user){
     			$this->db->where('userid', $user['from']);
-    			$this->db->where('user_type', 'User');
+    			$this->db->where('user_type', $user_type);
     			$this->db->where_not_in('userid', $spamUsers);
     			$this->db->from('user_detail');
     			$query1 = $this->db->get();
@@ -370,6 +370,23 @@ class Chat_model extends CI_Model{
     	{
     		$row = $query->result_array()[0];
     		return $row['unread_count'];
+    	}
+    	return 0;
+    }
+        
+    public function getRecentlyLikedMsg($myid, $fid){
+    	$this->db->select('id, msg.from as myid');
+    	$this->db->where('to', $fid);
+    	$this->db->where('from', $myid);
+    	$this->db->where('liked', 1);
+    	$this->db->order_by('id', 'desc');
+    	$this->db->limit(10);
+    	$query = $this->db->get('msg');
+    	 
+    	if(count($query->result()))
+    	{
+    		$row = $query->result_array();
+    		return $row;
     	}
     	return 0;
     }
