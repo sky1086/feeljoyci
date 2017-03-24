@@ -210,9 +210,9 @@ if (!defined('BASEPATH'))
 			echo json_encode($json);
 		}
 		
-		public function unreadMsgCount($uid){
+		public function unreadMsgCount(){
 			$json = '';
-			$uid = (int)$uid;
+			$uid = $this->session->userdata('userid');
 			if(!$uid){
 				$json = array('error' => true, 'msg'=> 'Invalid user id');
 				echo json_encode($json);
