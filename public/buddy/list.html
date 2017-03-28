@@ -76,6 +76,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
     };
+    
+    --layout-no-wrap: {
+      -ms-flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+    };
 
     --layout-wrap-reverse: {
       -ms-flex-wrap: wrap-reverse;
@@ -488,7 +494,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #contentContainer:not(.narrow) > ::content [drawer-toggle] {
         display: none;
-      }</style><div id="contentContainer"><content select=":not(app-drawer)"></content></div><content id="drawerContent" select="app-drawer"></content><iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query></template></dom-module><dom-module id="app-grid-style" assetpath="js/app-layout/app-grid/"><template><style>:host {
+      }</style><div id="contentContainer"><content select=":not(app-drawer)"></content></div><content id="drawerContent" select="app-drawer"></content><iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query></template></dom-module><dom-module id="app-grid-style" assetpath="js/app-layout/app-grid/"><template><style>:host,
+      :host ::content {
         /**
          * The width for the expandible item is:
          * ((100% - subPixelAdjustment) / columns * itemColumns - gutter
@@ -505,7 +512,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         };
       }
 
-      .app-grid {
+      .app-grid,
+      :host ::content .app-grid {
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -523,7 +531,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-sizing: border-box;
       }
 
-      .app-grid > * {
+      .app-grid > *,
+      :host ::content .app-grid > * {
         /* Required for IE 10 */
         -ms-flex: 1 1 100%;
         -webkit-flex: 1;
@@ -540,17 +549,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-sizing: border-box;
       }
 
-      .app-grid[has-aspect-ratio] > * {
+      .app-grid[has-aspect-ratio] > *,
+      :host ::content .app-grid[has-aspect-ratio] > * {
         position: relative;
       }
 
-      .app-grid[has-aspect-ratio] > *::before {
+      .app-grid[has-aspect-ratio] > *::before,
+      :host ::content .app-grid[has-aspect-ratio] > *::before {
         display: block;
         content: "";
         padding-top: var(--app-grid-item-height, 100%);
       }
 
-      .app-grid[has-aspect-ratio] > * > * {
+      .app-grid[has-aspect-ratio] > * > *,
+      :host ::content .app-grid[has-aspect-ratio] > * > * {
         position: absolute;
         top: 0;
         right: 0;
@@ -564,7 +576,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition-property: transform;
       }
 
-      :host::after {
+      :host::before {
         position: absolute;
         right: 0px;
         bottom: -5px;
@@ -580,7 +592,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--app-header-shadow);
       }
 
-      :host([shadow])::after {
+      :host([shadow])::before {
         opacity: 1;
       }
 
@@ -781,6 +793,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-wrap: wrap;
       }
 
+      .layout.no-wrap {
+        -ms-flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+      }
+
       .layout.center,
       .layout.center-center {
         -ms-flex-align: center;
@@ -929,7 +947,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         -ms-align-self: baseline;
         -webkit-align-self: baseline;
         align-self: baseline;
-      };
+      }
 
       /**
        * multi-line alignment in main axis.
@@ -2352,7 +2370,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       :host([invalid]) .toggle-ink {
         color: var(--paper-toggle-button-invalid-ink-color, --error-color);
-      }</style><div class="toggle-container"><div id="toggleBar" class="toggle-bar"></div><div id="toggleButton" class="toggle-button"></div></div><div class="toggle-label"><content></content></div></template></dom-module><dom-module id="buddy-login" assetpath="elements/components/"><template><iron-ajax auto="" method="POST" id="ajaxbaba" url="{{url}}" handle-as="json" last-error="{{ajaxerror}}" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="push-crew" assetpath="elements/components/"><template><iron-ajax method="POST" id="ajaxbaba" url="{{url}}" handle-as="text" body="{{ajaxsendrequest}}" content-type="application/x-www-form-urlencoded" last-error="{{ajaxerror}}" last-response="{{rsp}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-buddyelement" assetpath="elements/components/"><template><style is="custom-style">/**
+      }</style><div class="toggle-container"><div id="toggleBar" class="toggle-bar"></div><div id="toggleButton" class="toggle-button"></div></div><div class="toggle-label"><content></content></div></template></dom-module><dom-module id="buddy-login" assetpath="elements/components/"><template><iron-ajax auto="" method="POST" id="ajaxbaba" url="{{url}}" handle-as="json" last-error="{{ajaxerror}}" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="push-crew" assetpath="elements/components/"><template><iron-ajax auto="" id="isSubscribed" url="{{suburl}}" handle-as="json" last-response="{{subresp}}" with-credentials=""></iron-ajax><iron-ajax method="POST" id="ajaxbaba" url="{{url}}" handle-as="text" body="{{ajaxsendrequest}}" content-type="application/x-www-form-urlencoded" last-error="{{ajaxerror}}" last-response="{{rsp}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-buddyelement" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -3012,4 +3030,4 @@ paper-progress {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-list></buddy-list><script src="js/list-29e1f8a709.js"></script></body></html>
+      }</style></div><buddy-list></buddy-list><script src="js/list-d718f872a4.js"></script></body></html>

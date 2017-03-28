@@ -84,6 +84,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
     };
+    
+    --layout-no-wrap: {
+      -ms-flex-wrap: nowrap;
+      -webkit-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+    };
 
     --layout-wrap-reverse: {
       -ms-flex-wrap: wrap-reverse;
@@ -496,7 +502,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #contentContainer:not(.narrow) > ::content [drawer-toggle] {
         display: none;
-      }</style><div id="contentContainer"><content select=":not(app-drawer)"></content></div><content id="drawerContent" select="app-drawer"></content><iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query></template></dom-module><dom-module id="app-grid-style" assetpath="js/app-layout/app-grid/"><template><style>:host {
+      }</style><div id="contentContainer"><content select=":not(app-drawer)"></content></div><content id="drawerContent" select="app-drawer"></content><iron-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></iron-media-query></template></dom-module><dom-module id="app-grid-style" assetpath="js/app-layout/app-grid/"><template><style>:host,
+      :host ::content {
         /**
          * The width for the expandible item is:
          * ((100% - subPixelAdjustment) / columns * itemColumns - gutter
@@ -513,7 +520,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         };
       }
 
-      .app-grid {
+      .app-grid,
+      :host ::content .app-grid {
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -531,7 +539,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-sizing: border-box;
       }
 
-      .app-grid > * {
+      .app-grid > *,
+      :host ::content .app-grid > * {
         /* Required for IE 10 */
         -ms-flex: 1 1 100%;
         -webkit-flex: 1;
@@ -548,17 +557,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-sizing: border-box;
       }
 
-      .app-grid[has-aspect-ratio] > * {
+      .app-grid[has-aspect-ratio] > *,
+      :host ::content .app-grid[has-aspect-ratio] > * {
         position: relative;
       }
 
-      .app-grid[has-aspect-ratio] > *::before {
+      .app-grid[has-aspect-ratio] > *::before,
+      :host ::content .app-grid[has-aspect-ratio] > *::before {
         display: block;
         content: "";
         padding-top: var(--app-grid-item-height, 100%);
       }
 
-      .app-grid[has-aspect-ratio] > * > * {
+      .app-grid[has-aspect-ratio] > * > *,
+      :host ::content .app-grid[has-aspect-ratio] > * > * {
         position: absolute;
         top: 0;
         right: 0;
@@ -572,7 +584,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition-property: transform;
       }
 
-      :host::after {
+      :host::before {
         position: absolute;
         right: 0px;
         bottom: -5px;
@@ -588,7 +600,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--app-header-shadow);
       }
 
-      :host([shadow])::after {
+      :host([shadow])::before {
         opacity: 1;
       }
 
@@ -789,6 +801,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-wrap: wrap;
       }
 
+      .layout.no-wrap {
+        -ms-flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+      }
+
       .layout.center,
       .layout.center-center {
         -ms-flex-align: center;
@@ -937,7 +955,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         -ms-align-self: baseline;
         -webkit-align-self: baseline;
         align-self: baseline;
-      };
+      }
 
       /**
        * multi-line alignment in main axis.
@@ -3096,7 +3114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       :host([invalid]) .toggle-ink {
         color: var(--paper-toggle-button-invalid-ink-color, --error-color);
-      }</style><div class="toggle-container"><div id="toggleBar" class="toggle-bar"></div><div id="toggleButton" class="toggle-button"></div></div><div class="toggle-label"><content></content></div></template></dom-module><dom-module id="buddy-login" assetpath="elements/components/"><template><iron-ajax auto="" method="POST" id="ajaxbaba" url="{{url}}" handle-as="json" last-error="{{ajaxerror}}" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="push-crew" assetpath="elements/components/"><template><iron-ajax method="POST" id="ajaxbaba" url="{{url}}" handle-as="text" body="{{ajaxsendrequest}}" content-type="application/x-www-form-urlencoded" last-error="{{ajaxerror}}" last-response="{{rsp}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-buddyelement" assetpath="elements/components/"><template><style is="custom-style">/**
+      }</style><div class="toggle-container"><div id="toggleBar" class="toggle-bar"></div><div id="toggleButton" class="toggle-button"></div></div><div class="toggle-label"><content></content></div></template></dom-module><dom-module id="buddy-login" assetpath="elements/components/"><template><iron-ajax auto="" method="POST" id="ajaxbaba" url="{{url}}" handle-as="json" last-error="{{ajaxerror}}" last-response="{{userdata}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="push-crew" assetpath="elements/components/"><template><iron-ajax auto="" id="isSubscribed" url="{{suburl}}" handle-as="json" last-response="{{subresp}}" with-credentials=""></iron-ajax><iron-ajax method="POST" id="ajaxbaba" url="{{url}}" handle-as="text" body="{{ajaxsendrequest}}" content-type="application/x-www-form-urlencoded" last-error="{{ajaxerror}}" last-response="{{rsp}}" with-credentials=""></iron-ajax></template></dom-module><dom-module id="menu-buddyelement" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -3675,7 +3693,7 @@ paper-dialog h5 {
   background-color: rgb(174,213,129); }
 
 .green .fj-save-button:active {
-  background-color: rgb(139,195,74); }</style><iron-ajax id="aCustomer" url="{{userurl}}" handle-as="json" last-response="{{customerresponse}}" loading="{{loadingchat}}" with-credentials=""></iron-ajax><iron-ajax id="oldChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatrequest}}" debounce-duration="300" with-credentials=""></iron-ajax><iron-ajax id="newChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatnewresponse}}" content-type="application/x-www-form-urlencoded" body="{{chatnewrequest}}" with-credentials=""></iron-ajax><iron-ajax id="sendChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatsendresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatsendrequest}}" with-credentials=""></iron-ajax><iron-ajax id="likeChat" url="{{chatlikeurl}}" method="POST" handle-as="json" last-response="{{chatlikeresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatlikerequest}}" with-credentials=""></iron-ajax><iron-ajax id="aSpam" url="{{spamurl}}" method="POST" handle-as="json" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{spamrequest}}" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}" userdata="{{userdata}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button id="reportButton" icon="error"></paper-icon-button><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><iron-list id="chatlist" class="chat-container" scroll-offset="{{chatlistoffset}}" items="[[chatdata]]" as="item"><template><div><div class$="layout horizontal start card-figure {{item.addclass}}"><template is="dom-if" if="[[item.received]]"><div class$="card-avatar {{avatarClass}}">{{listener.firstletter}}</div></template><div class$="layout vertical {{item.layclass}} card-text"><template is="dom-repeat" items="[[item.msg]]" as="mitem"><p class$="message [[computeIfLastMessage(item.index, index)]]">[[_sanitize(mitem.msg)]]<template is="dom-if" if="[[item.received]]"><paper-icon-button class$="like-button {{_getLikeClass(mitem.liked)}}" data-index$="{{index}}" data-item$="[[item.index]]" on-tap="_onLikeButton" icon="{{_getLikeIcon(mitem.liked)}}"></paper-icon-button></template><template is="dom-if" if="[[showLike(item.received, mitem.liked)]]"><iron-icon class$="like-show {{_getLikeClass(mitem.liked)}}" icon="{{_getLikeIcon(mitem.liked)}}"></iron-icon></template><template is="dom-if" if="[[computeIfTime(item.index, index)]]"><div class="timestamp">[[item.time]]</div></template></p></template></div></div></div></template></iron-list><div class="fixed-bottom layout horizontal center-center text-container"><paper-input id="chatText" autofocus="" class="flex-2" placeholder="Write a message"><emoji-selector prefix=""></emoji-selector></paper-input><paper-fab id="chatButton" icon="send"></paper-fab></div></app-header-layout></app-drawer-layout><paper-dialog id="reportDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop=""><h4>Are you sure?</h4><h5>Tell us why ...</h5><paper-listbox attr-for-selected="name" selected="{{spamreason}}"><paper-icon-item name="inappropriate_messages"><iron-icon icon="fj:chat_icon" item-icon=""></iron-icon>Inappropriate messages</paper-icon-item><paper-icon-item name="feels_like_spam"><iron-icon icon="editor:short-text" item-icon=""></iron-icon>Feels like spam</paper-icon-item><paper-icon-item name="bad_behavior"><iron-icon icon="face" item-icon=""></iron-icon>Bad Behavior</paper-icon-item></paper-listbox><div class="buttons"><paper-button id="spamButton" dialog-confirm="" autofocus="" raised="">Report User</paper-button></div></paper-dialog></template></dom-module><style>body,
+  background-color: rgb(139,195,74); }</style><iron-ajax id="aCustomer" url="{{userurl}}" handle-as="json" last-response="{{customerresponse}}" loading="{{loadingchat}}" with-credentials=""></iron-ajax><iron-ajax id="oldChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatrequest}}" debounce-duration="300" with-credentials=""></iron-ajax><iron-ajax id="newChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatnewresponse}}" content-type="application/x-www-form-urlencoded" body="{{chatnewrequest}}" with-credentials=""></iron-ajax><iron-ajax id="sendChat" url="{{chaturl}}" method="POST" handle-as="json" last-response="{{chatsendresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatsendrequest}}" with-credentials=""></iron-ajax><iron-ajax id="likeChat" url="{{chatlikeurl}}" method="POST" handle-as="json" last-response="{{chatlikeresponse}}" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{chatlikerequest}}" with-credentials=""></iron-ajax><iron-ajax id="aSpam" url="{{spamurl}}" method="POST" handle-as="json" loading="{{loadingchat}}" content-type="application/x-www-form-urlencoded" body="{{spamrequest}}" with-credentials=""></iron-ajax><iron-ajax id="likeUpdate" url="{{chatlikeupdateurl}}" handle-as="json" last-response="{{chatlikeupdateresponse}}" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}" userdata="{{userdata}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button id="reportButton" icon="error"></paper-icon-button><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><iron-list id="chatlist" class="chat-container" scroll-offset="{{chatlistoffset}}" items="[[chatdata]]" as="item"><template><div><div class$="layout horizontal start card-figure {{item.addclass}}"><template is="dom-if" if="[[item.received]]"><div class$="card-avatar {{avatarClass}}">{{listener.firstletter}}</div></template><div class$="layout vertical {{item.layclass}} card-text"><template is="dom-repeat" items="[[item.msg]]" as="mitem"><p class$="message [[computeIfLastMessage(item.index, index)]]">[[_sanitize(mitem.msg)]]<template is="dom-if" if="[[item.received]]"><paper-icon-button class$="like-button {{_getLikeClass(mitem.liked)}}" data-index$="{{index}}" data-item$="[[item.index]]" on-tap="_onLikeButton" icon="{{_getLikeIcon(mitem.liked)}}"></paper-icon-button></template><template is="dom-if" if="[[showLike(item.received, mitem.liked)]]"><iron-icon class$="like-show {{_getLikeClass(mitem.liked)}}" icon="{{_getLikeIcon(mitem.liked)}}"></iron-icon></template><template is="dom-if" if="[[computeIfTime(item.index, index)]]"><div class="timestamp">[[item.time]]</div></template></p></template></div></div></div></template></iron-list><div class="fixed-bottom layout horizontal center-center text-container"><paper-input id="chatText" autofocus="" class="flex-2" placeholder="Write a message"><emoji-selector prefix=""></emoji-selector></paper-input><paper-fab id="chatButton" icon="send"></paper-fab></div></app-header-layout></app-drawer-layout><paper-dialog id="reportDialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop=""><h4>Are you sure?</h4><h5>Tell us why ...</h5><paper-listbox attr-for-selected="name" selected="{{spamreason}}"><paper-icon-item name="inappropriate_messages"><iron-icon icon="fj:chat_icon" item-icon=""></iron-icon>Inappropriate messages</paper-icon-item><paper-icon-item name="feels_like_spam"><iron-icon icon="editor:short-text" item-icon=""></iron-icon>Feels like spam</paper-icon-item><paper-icon-item name="bad_behavior"><iron-icon icon="face" item-icon=""></iron-icon>Bad Behavior</paper-icon-item></paper-listbox><div class="buttons"><paper-button id="spamButton" dialog-confirm="" autofocus="" raised="">Report User</paper-button></div></paper-dialog></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3685,4 +3703,4 @@ paper-dialog h5 {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-chat></buddy-chat><script src="js/chat-b0ac589888.js"></script></body></html>
+      }</style></div><buddy-chat></buddy-chat><script src="js/chat-a68e9f09da.js"></script></body></html>
