@@ -119,6 +119,7 @@ class Chat_model extends CI_Model{
     				//$msg = Emoji::html_to_emoji($decoded_msg);
     				$msg = $decoded_msg;
     				$row['msg'] = trim($msg);
+    				$row['time'] = date('c', strtotime($row['time']));
     				unset($row['int_vec']);
     				if($myid == $row['from']){
     					$row['clsname'] = 'm-rply';

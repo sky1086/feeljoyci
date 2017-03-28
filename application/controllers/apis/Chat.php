@@ -61,7 +61,7 @@ if (!defined('BASEPATH'))
 					if($qur){
 						//$qurGet = mysql_query("select * from msg where id='".mysql_insert_id()."'");
 						$qurGet = $this->chat_model->getMsgById($qur);
-						$json = array('status' => 1, 'msg' => trim($this->chat_model->decodeMsg($qurGet['msg'], $qurGet['int_vec'])), 'lid' => $qur, 'time' => $qurGet['time']);
+						$json = array('status' => 1, 'msg' => trim($this->chat_model->decodeMsg($qurGet['msg'], $qurGet['int_vec'])), 'lid' => $qur, 'time' => date('c', strtotime($qurGet['time'])));
 						//while($row = mysql_fetch_array($qurGet)){
 						//$json = array('status' => 1, 'msg' => $row['msg'], 'lid' => mysql_insert_id(), 'time' => $row['time']);
 						//}
@@ -97,7 +97,7 @@ if (!defined('BASEPATH'))
 										$msg .= $decoded_msg;
 										$ids[] = $msv['id'];
 									}
-									$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
+									$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> date('c', strtotime($msv['time'])), 'from' => $msv['from']);
 								}else{
 									$json = array('status' => 0);
 								}
@@ -128,7 +128,7 @@ if (!defined('BASEPATH'))
 							$msg .= $decoded_msg;
 							$ids[] = $msv['id'];
 						}
-						$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> $msv['time'], 'from' => $msv['from']);
+						$json = array('status' => 1, 'msg' => $msg, 'lid' => end($ids), 'time'=> date('c', strtotime($msv['time'])), 'from' => $msv['from']);
 					}else{
 						$json = array('status' => 0);
 					}
