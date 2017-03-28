@@ -2668,6 +2668,12 @@ paper-progress {
 .ath .ath-inner {
   text-align: center; }
 
+.ath .fj-customer-logo {
+  width: 96px;
+  height: 96px;
+  padding: 16px 0 2px;
+  box-sizing: content-box; }
+
 .ath paper-button {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
@@ -2971,7 +2977,7 @@ body.green .fj-subscribe-container .input-field label {
   color: rgb(156,204,101) !important; }
 
 body.green .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(174,213,129); }</style><iron-ajax auto="" id="ajax" url="{{url}}" handle-as="json" last-response="{{response}}"></iron-ajax><app-drawer-layout force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement authchecked="{{authchecked}}" loggedin="{{loggedin}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div id="fj-main-content" class="fj-main-content"><section class="color"><img class="logo" src="svg/feeljoy.svg" alt="logo"><h4 class="top-title">Hey Buddy, welcome to FeelJoy – Let’s help spread the joy</h4><paper-icon-button id="downButton" icon="expand-more" class="fj-icon fj-toolbar-button fj-down-button"></paper-icon-button></section><section id="section2"><h4>My Dashboard</h4><div class="layout horizontal listener-grid"><figure id="schedulerButton" class="layout vertical center-center"><div class="cyan"><img src="img/calendar.png" alt="calendar"></div><figcaption>plan my week</figcaption><paper-ripple></paper-ripple></figure><figure id="chatButton" class="layout vertical center-center"><div class="darkcyan"><img src="img/chat.png" alt="chat"><template is="dom-if" if="[[showmessage]]"><span class="badge">[[response.$msgCount]]</span></template></div><figcaption>buddy chat</figcaption><paper-ripple></paper-ripple></figure></div><div class="layout horizontal listener-grid"><figure id="guideButton" class="layout vertical center-center"><div class="darkgreen"><img src="img/notebook.png" alt="notebook"></div><figcaption>self help guide</figcaption><paper-ripple></paper-ripple></figure><figure id="supportButton" class="layout vertical center-center"><div class="green"><img class="fj-support-img" src="img/help.png" alt="help"></div><figcaption>support</figcaption><paper-ripple></paper-ripple></figure></div></section><footer><div class="footer-icons"><iron-icon icon="fj:quora"></iron-icon><iron-icon icon="fj:facebook"></iron-icon><iron-icon icon="fj:instagram"></iron-icon></div><h4>FeelJoy</h4><p>© 2017 Feeljoy Pvt Ltd.</p></footer></div></app-header-layout></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(174,213,129); }</style><iron-ajax id="ajax" url="{{url}}" handle-as="json" last-response="{{response}}" with-credentials=""></iron-ajax><app-drawer-layout force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement userdata="{{userdata}}" authchecked="{{authchecked}}" loggedin="{{loggedin}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div id="fj-main-content" class="fj-main-content"><section class="color"><img class="logo" src="svg/feeljoy.svg" alt="logo"><h4 class="top-title">Hey Buddy, welcome to FeelJoy – Let’s help spread the joy</h4><paper-icon-button id="downButton" icon="expand-more" class="fj-icon fj-toolbar-button fj-down-button"></paper-icon-button></section><section id="section2"><h4>My Dashboard</h4><div class="layout horizontal listener-grid"><figure id="schedulerButton" class="layout vertical center-center"><div class="cyan"><img src="img/calendar.png" alt="calendar"></div><figcaption>plan my week</figcaption><paper-ripple></paper-ripple></figure><figure id="chatButton" class="layout vertical center-center"><div class="darkcyan"><img src="img/chat.png" alt="chat"><template is="dom-if" if="[[showmessage]]"><span class="badge">[[response.$msgCount]]</span></template></div><figcaption>buddy chat</figcaption><paper-ripple></paper-ripple></figure></div><div class="layout horizontal listener-grid"><figure id="guideButton" class="layout vertical center-center"><div class="darkgreen"><img src="img/notebook.png" alt="notebook"></div><figcaption>self help guide</figcaption><paper-ripple></paper-ripple></figure><figure id="supportButton" class="layout vertical center-center"><div class="green"><img class="fj-support-img" src="img/help.png" alt="help"></div><figcaption>support</figcaption><paper-ripple></paper-ripple></figure></div></section><footer><div class="footer-icons"><iron-icon icon="fj:quora"></iron-icon><iron-icon icon="fj:facebook"></iron-icon><iron-icon icon="fj:instagram"></iron-icon></div><h4>FeelJoy</h4><p>© 2017 Feeljoy Pvt Ltd.</p></footer></div></app-header-layout></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -2981,4 +2987,4 @@ body.green .fj-subscribe-container .fj-subscribe-button {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-index></buddy-index><script src="js/index-d00bf75a61.js"></script></body></html>
+      }</style></div><buddy-index></buddy-index><script src="js/index-2d2a8f6944.js"></script></body></html>

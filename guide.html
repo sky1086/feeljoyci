@@ -2573,22 +2573,201 @@ paper-toggle-button {
         position:relative;
 
         @apply(--paper-card-actions);
-      }</style><div class="header"><iron-image hidden$="[[!image]]" aria-hidden$="[[_isHidden(image)]]" src="[[image]]" alt="[[alt]]" placeholder="[[placeholderImage]]" preload="[[preloadImage]]" fade="[[fadeImage]]"></iron-image><div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div></div><content></content></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">:host {
+      }</style><div class="header"><iron-image hidden$="[[!image]]" aria-hidden$="[[_isHidden(image)]]" src="[[image]]" alt="[[alt]]" placeholder="[[placeholderImage]]" preload="[[preloadImage]]" fade="[[fadeImage]]"></iron-image><div hidden$="[[!heading]]" class$="title-text [[_computeHeadingClass(image)]]">[[heading]]</div></div><content></content></template></dom-module><dom-module id="paper-progress" assetpath="js/paper-progress/"><template><style>:host {
+        display: block;
+        width: 200px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      #progressContainer {
+        @apply(--paper-progress-container);
+        position: relative;
+      }
+
+      #progressContainer,
+      /* the stripe for the indeterminate animation*/
+      .indeterminate::after {
+        height: var(--paper-progress-height, 4px);
+      }
+
+      #primaryProgress,
+      #secondaryProgress,
+      .indeterminate::after {
+        @apply(--layout-fit);
+      }
+
+      #progressContainer,
+      .indeterminate::after {
+        background: var(--paper-progress-container-color, --google-grey-300);
+      }
+
+      :host(.transiting) #primaryProgress,
+      :host(.transiting) #secondaryProgress {
+        -webkit-transition-property: -webkit-transform;
+        transition-property: transform;
+
+        /* Duration */
+        -webkit-transition-duration: var(--paper-progress-transition-duration, 0.08s);
+        transition-duration: var(--paper-progress-transition-duration, 0.08s);
+
+        /* Timing function */
+        -webkit-transition-timing-function: var(--paper-progress-transition-timing-function, ease);
+        transition-timing-function: var(--paper-progress-transition-timing-function, ease);
+
+        /* Delay */
+        -webkit-transition-delay: var(--paper-progress-transition-delay, 0s);
+        transition-delay: var(--paper-progress-transition-delay, 0s);
+      }
+
+      #primaryProgress,
+      #secondaryProgress {
+        @apply(--layout-fit);
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        will-change: transform;
+      }
+
+      #primaryProgress {
+        background: var(--paper-progress-active-color, --google-green-500);
+      }
+
+      #secondaryProgress {
+        background: var(--paper-progress-secondary-color, --google-green-100);
+      }
+
+      :host([disabled]) #primaryProgress {
+        background: var(--paper-progress-disabled-active-color, --google-grey-500);
+      }
+
+      :host([disabled]) #secondaryProgress {
+        background: var(--paper-progress-disabled-secondary-color, --google-grey-300);
+      }
+
+      :host(:not([disabled])) #primaryProgress.indeterminate {
+        -webkit-transform-origin: right center;
+        transform-origin: right center;
+        -webkit-animation: indeterminate-bar var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
+        animation: indeterminate-bar var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
+      }
+
+      :host(:not([disabled])) #primaryProgress.indeterminate::after {
+        content: "";
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+
+        -webkit-animation: indeterminate-splitter var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
+        animation: indeterminate-splitter var(--paper-progress-indeterminate-cycle-duration, 2s) linear infinite;
+      }
+
+      @-webkit-keyframes indeterminate-bar {
+        0% {
+          -webkit-transform: scaleX(1) translateX(-100%);
+        }
+        50% {
+          -webkit-transform: scaleX(1) translateX(0%);
+        }
+        75% {
+          -webkit-transform: scaleX(1) translateX(0%);
+          -webkit-animation-timing-function: cubic-bezier(.28,.62,.37,.91);
+        }
+        100% {
+          -webkit-transform: scaleX(0) translateX(0%);
+        }
+      }
+
+      @-webkit-keyframes indeterminate-splitter {
+        0% {
+          -webkit-transform: scaleX(.75) translateX(-125%);
+        }
+        30% {
+          -webkit-transform: scaleX(.75) translateX(-125%);
+          -webkit-animation-timing-function: cubic-bezier(.42,0,.6,.8);
+        }
+        90% {
+          -webkit-transform: scaleX(.75) translateX(125%);
+        }
+        100% {
+          -webkit-transform: scaleX(.75) translateX(125%);
+        }
+      }
+
+      @keyframes indeterminate-bar {
+        0% {
+          transform: scaleX(1) translateX(-100%);
+        }
+        50% {
+          transform: scaleX(1) translateX(0%);
+        }
+        75% {
+          transform: scaleX(1) translateX(0%);
+          animation-timing-function: cubic-bezier(.28,.62,.37,.91);
+        }
+        100% {
+          transform: scaleX(0) translateX(0%);
+        }
+      }
+
+      @keyframes indeterminate-splitter {
+        0% {
+          transform: scaleX(.75) translateX(-125%);
+        }
+        30% {
+          transform: scaleX(.75) translateX(-125%);
+          animation-timing-function: cubic-bezier(.42,0,.6,.8);
+        }
+        90% {
+          transform: scaleX(.75) translateX(125%);
+        }
+        100% {
+          transform: scaleX(.75) translateX(125%);
+        }
+      }</style><div id="progressContainer"><div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div><div id="primaryProgress"></div></div></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">:host {
   @apply (--layout-fit);
-  background: red;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  background-color: var(--paper-cyan-300); }
 
 paper-card {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: default;
-  padding: 24px;
-  position: absolute; }</style><iron-swipeable-container swipe-style="curve"><template is="dom-repeat" items="[[cards]]" as="item"><paper-card>[[item]]</paper-card></template></iron-swipeable-container></template></dom-module><dom-module id="customer-guide" assetpath="./"><template><style is="custom-style">/**
+  position: absolute;
+  left: calc(50% - 40vw);
+  top: calc(50% - 35vh);
+  width: 80vw;
+  height: 70vh;
+  max-width: 560px;
+  cursor: pointer;
+  font-size: 26px;
+  padding: 24px 16px;
+  line-height: 40px;
+  color: #000;
+  --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; } }
+  paper-card:active {
+    cursor: grabbing; }
+
+paper-progress {
+  @apply (--layout-flex);
+  --paper-progress-container-color: rgba(255, 255, 255, 0.6);
+  --paper-progress-active-color: #fff;
+  margin-right: 8px; }
+
+paper-icon-button {
+  margin-right: 8px;
+  --paper-icon-button-ink-color: #fff;
+  --paper-icon-button:  { color: #fff; } ; }
+  paper-icon-button:last-of-type {
+    margin-right: 0; }</style><app-toolbar><paper-icon-button icon="home"></paper-icon-button><paper-progress value="40"></paper-progress><paper-icon-button icon="info-outline"></paper-icon-button><paper-icon-button icon="social:share"></paper-icon-button></app-toolbar><iron-swipeable-container swipe-style="curve" opacity-rate="[[ratio]]"><template is="dom-repeat" items="[[cards]]" as="item"><paper-card heading="[[item.title]]" class$="[[item.class]]">[[item.text]]</paper-card></template></iron-swipeable-container></template></dom-module><dom-module id="customer-guide" assetpath="./"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2718,6 +2897,12 @@ paper-progress {
 .ath .ath-inner {
   text-align: center; }
 
+.ath .fj-customer-logo {
+  width: 96px;
+  height: 96px;
+  padding: 16px 0 2px;
+  box-sizing: content-box; }
+
 .ath paper-button {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
@@ -2740,7 +2925,10 @@ app-toolbar .logo {
   left: calc(50% - 36px); }
 
 .menu-button {
-  --paper-button:  { width: 48px; height: 48px; min-width: 0; border-radius: 50%; padding: 0; margin: 0; } ; }</style><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header><highlight-menu opened="{{isSideMenuOpen}}" firstclick="[[firstclick]]"></highlight-menu></app-header-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[themeclass]]" hidethree="[[hidethree]]"></diversion-container></app-drawer-layout><neon-animated-pages id="pages" selected="1" fullbleed=""><scroll-page></scroll-page><swipe-page cards="[[cards]]"></swipe-page></neon-animated-pages><paper-dialog class="ath" id="ath" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop=""><h2>Just tap<iron-icon icon="more-vert"></iron-icon>then</h2><h2>'Add to Home Screen'</h2><div class="ath-inner"><img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo"><h5>Add this website !</h5><p>You can add this website on your homescreen to make it look and feel like a real app.</p></div><div class="buttons"><paper-button dialog-confirm="" autofocus="">Got it !</paper-button></div></paper-dialog></template></dom-module><style>body,
+  --paper-button:  { width: 48px; height: 48px; min-width: 0; border-radius: 50%; padding: 0; margin: 0; } ; }
+
+neon-animated-pages {
+  @apply (--layout-fit); }</style><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]"></menu-element></app-drawer><app-header-layout><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header><highlight-menu opened="{{isSideMenuOpen}}" firstclick="[[firstclick]]"></highlight-menu></app-header-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[themeclass]]" hidethree="[[hidethree]]"></diversion-container></app-drawer-layout><neon-animated-pages id="pages" selected="1" fullbleed=""><scroll-page cards="[[scroll]]"></scroll-page><swipe-page cards="[[cards]]"></swipe-page></neon-animated-pages><paper-dialog class="ath" id="ath" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop=""><h2>Just tap<iron-icon icon="more-vert"></iron-icon>then</h2><h2>'Add to Home Screen'</h2><div class="ath-inner"><img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo"><h5>Add this website !</h5><p>You can add this website on your homescreen to make it look and feel like a real app.</p></div><div class="buttons"><paper-button dialog-confirm="" autofocus="">Got it !</paper-button></div></paper-dialog></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -2750,4 +2938,4 @@ app-toolbar .logo {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-d8e486f6af.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-5f3da0d8e7.js"></script></body></html>
