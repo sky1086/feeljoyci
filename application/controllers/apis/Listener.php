@@ -115,7 +115,7 @@ class Listener extends CI_Controller{
 	    	$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
 	    	$userUnreadMsgCount = $this->chat_model->getUnreadMsgFromUsr($user['userid'], $this->session->userdata('userid'));
 	    	$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
-	    	var_dump($userMsgDetails);
+	    	//var_dump($userMsgDetails);
 	    	if($userMsgDetails){
 	    		$row['time'] = date('c', strtotime($userMsgDetails['time']));
 	    		$row['lastMsg'] = $userMsgDetails['msg'];
@@ -125,7 +125,7 @@ class Listener extends CI_Controller{
 	    	}
 	    	
 	    	
-	    	$row['messageCount'] = $userUnreadMsgCount;
+	    	$row['unreadMsgCount'] = $userUnreadMsgCount;
 	    	
 	    	$result[] = $row;	    	
 	    }
