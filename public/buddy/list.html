@@ -762,368 +762,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host([disabled]),
       :host([disabled]) #backgroundFrontLayer {
         transition: none !important;
-      }</style><div id="background"><div id="backgroundFrontLayer"><content select="[background]"></content></div></div><div id="contentContainer"><content id="content"></content></div></template></dom-module><dom-module id="iron-flex" assetpath="js/iron-flex-layout/"><template><style>.layout.horizontal,
-      .layout.vertical {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-      }
-
-      .layout.inline {
-        display: -ms-inline-flexbox;
-        display: -webkit-inline-flex;
-        display: inline-flex;
-      }
-
-      .layout.horizontal {
-        -ms-flex-direction: row;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-      }
-
-      .layout.vertical {
-        -ms-flex-direction: column;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-      }
-
-      .layout.wrap {
-        -ms-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        flex-wrap: wrap;
-      }
-
-      .layout.no-wrap {
-        -ms-flex-wrap: nowrap;
-        -webkit-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-      }
-
-      .layout.center,
-      .layout.center-center {
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
-
-      .layout.center-justified,
-      .layout.center-center {
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-      }
-
-      .flex {
-        -ms-flex: 1 1 0.000000001px;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-flex-basis: 0.000000001px;
-        flex-basis: 0.000000001px;
-      }
-
-      .flex-auto {
-        -ms-flex: 1 1 auto;
-        -webkit-flex: 1 1 auto;
-        flex: 1 1 auto;
-      }
-
-      .flex-none {
-        -ms-flex: none;
-        -webkit-flex: none;
-        flex: none;
-      }</style></template></dom-module><dom-module id="iron-flex-reverse" assetpath="js/iron-flex-layout/"><template><style>.layout.horizontal-reverse,
-      .layout.vertical-reverse {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-      }
-
-      .layout.horizontal-reverse {
-        -ms-flex-direction: row-reverse;
-        -webkit-flex-direction: row-reverse;
-        flex-direction: row-reverse;
-      }
-
-      .layout.vertical-reverse {
-        -ms-flex-direction: column-reverse;
-        -webkit-flex-direction: column-reverse;
-        flex-direction: column-reverse;
-      }
-
-      .layout.wrap-reverse {
-        -ms-flex-wrap: wrap-reverse;
-        -webkit-flex-wrap: wrap-reverse;
-        flex-wrap: wrap-reverse;
-      }</style></template></dom-module><dom-module id="iron-flex-alignment" assetpath="js/iron-flex-layout/"><template><style>/**
-       * Alignment in cross axis.
-       */
-      .layout.start {
-        -ms-flex-align: start;
-        -webkit-align-items: flex-start;
-        align-items: flex-start;
-      }
-
-      .layout.center,
-      .layout.center-center {
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
-
-      .layout.end {
-        -ms-flex-align: end;
-        -webkit-align-items: flex-end;
-        align-items: flex-end;
-      }
-
-      .layout.baseline {
-        -ms-flex-align: baseline;
-        -webkit-align-items: baseline;
-        align-items: baseline;
-      }
-
-      /**
-       * Alignment in main axis.
-       */
-      .layout.start-justified {
-        -ms-flex-pack: start;
-        -webkit-justify-content: flex-start;
-        justify-content: flex-start;
-      }
-
-      .layout.center-justified,
-      .layout.center-center {
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-      }
-
-      .layout.end-justified {
-        -ms-flex-pack: end;
-        -webkit-justify-content: flex-end;
-        justify-content: flex-end;
-      }
-
-      .layout.around-justified {
-        -ms-flex-pack: distribute;
-        -webkit-justify-content: space-around;
-        justify-content: space-around;
-      }
-
-      .layout.justified {
-        -ms-flex-pack: justify;
-        -webkit-justify-content: space-between;
-        justify-content: space-between;
-      }
-
-      /**
-       * Self alignment.
-       */
-      .self-start {
-        -ms-align-self: flex-start;
-        -webkit-align-self: flex-start;
-        align-self: flex-start;
-      }
-
-      .self-center {
-        -ms-align-self: center;
-        -webkit-align-self: center;
-        align-self: center;
-      }
-
-      .self-end {
-        -ms-align-self: flex-end;
-        -webkit-align-self: flex-end;
-        align-self: flex-end;
-      }
-
-      .self-stretch {
-        -ms-align-self: stretch;
-        -webkit-align-self: stretch;
-        align-self: stretch;
-      }
-
-      .self-baseline {
-        -ms-align-self: baseline;
-        -webkit-align-self: baseline;
-        align-self: baseline;
-      }
-
-      /**
-       * multi-line alignment in main axis.
-       */
-      .layout.start-aligned {
-        -ms-flex-line-pack: start;  /* IE10 */
-        -ms-align-content: flex-start;
-        -webkit-align-content: flex-start;
-        align-content: flex-start;
-      }
-
-      .layout.end-aligned {
-        -ms-flex-line-pack: end;  /* IE10 */
-        -ms-align-content: flex-end;
-        -webkit-align-content: flex-end;
-        align-content: flex-end;
-      }
-
-      .layout.center-aligned {
-        -ms-flex-line-pack: center;  /* IE10 */
-        -ms-align-content: center;
-        -webkit-align-content: center;
-        align-content: center;
-      }
-
-      .layout.between-aligned {
-        -ms-flex-line-pack: justify;  /* IE10 */
-        -ms-align-content: space-between;
-        -webkit-align-content: space-between;
-        align-content: space-between;
-      }
-
-      .layout.around-aligned {
-        -ms-flex-line-pack: distribute;  /* IE10 */
-        -ms-align-content: space-around;
-        -webkit-align-content: space-around;
-        align-content: space-around;
-      }</style></template></dom-module><dom-module id="iron-flex-factors" assetpath="js/iron-flex-layout/"><template><style>.flex,
-      .flex-1 {
-        -ms-flex: 1 1 0.000000001px;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-flex-basis: 0.000000001px;
-        flex-basis: 0.000000001px;
-      }
-
-      .flex-2 {
-        -ms-flex: 2;
-        -webkit-flex: 2;
-        flex: 2;
-      }
-
-      .flex-3 {
-        -ms-flex: 3;
-        -webkit-flex: 3;
-        flex: 3;
-      }
-
-      .flex-4 {
-        -ms-flex: 4;
-        -webkit-flex: 4;
-        flex: 4;
-      }
-
-      .flex-5 {
-        -ms-flex: 5;
-        -webkit-flex: 5;
-        flex: 5;
-      }
-
-      .flex-6 {
-        -ms-flex: 6;
-        -webkit-flex: 6;
-        flex: 6;
-      }
-
-      .flex-7 {
-        -ms-flex: 7;
-        -webkit-flex: 7;
-        flex: 7;
-      }
-
-      .flex-8 {
-        -ms-flex: 8;
-        -webkit-flex: 8;
-        flex: 8;
-      }
-
-      .flex-9 {
-        -ms-flex: 9;
-        -webkit-flex: 9;
-        flex: 9;
-      }
-
-      .flex-10 {
-        -ms-flex: 10;
-        -webkit-flex: 10;
-        flex: 10;
-      }
-
-      .flex-11 {
-        -ms-flex: 11;
-        -webkit-flex: 11;
-        flex: 11;
-      }
-
-      .flex-12 {
-        -ms-flex: 12;
-        -webkit-flex: 12;
-        flex: 12;
-      }</style></template></dom-module><dom-module id="iron-positioning" assetpath="js/iron-flex-layout/"><template><style>.block {
-        display: block;
-      }
-
-      /* IE 10 support for HTML5 hidden attr */
-      [hidden] {
-        display: none !important;
-      }
-
-      .invisible {
-        visibility: hidden !important;
-      }
-
-      .relative {
-        position: relative;
-      }
-
-      .fit {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-
-      body.fullbleed {
-        margin: 0;
-        height: 100vh;
-      }
-
-      .scroll {
-        -webkit-overflow-scrolling: touch;
-        overflow: auto;
-      }
-
-      /* fixed position */
-      .fixed-bottom,
-      .fixed-left,
-      .fixed-right,
-      .fixed-top {
-        position: fixed;
-      }
-
-      .fixed-top {
-        top: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .fixed-right {
-        top: 0;
-        right: 0;
-        bottom: 0;
-      }
-
-      .fixed-bottom {
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-
-      .fixed-left {
-        top: 0;
-        bottom: 0;
-        left: 0;
-      }</style></template></dom-module><dom-module id="iron-icon" assetpath="js/iron-icon/"><template><style>:host {
+      }</style><div id="background"><div id="backgroundFrontLayer"><content select="[background]"></content></div></div><div id="contentContainer"><content id="content"></content></div></template></dom-module><dom-module id="iron-icon" assetpath="js/iron-icon/"><template><style>:host {
         @apply(--layout-inline);
         @apply(--layout-center-center);
         position: relative;
@@ -2029,7 +1668,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         width: var(--paper-item-icon-width, 56px);
         @apply(--paper-item-icon);
-      }</style><div id="contentIcon" class="content-icon"><content select="[item-icon]"></content></div><content></content></template></dom-module><dom-module id="iron-a11y-announcer" assetpath="js/iron-a11y-announcer/"><template><style>:host {
+      }</style><div id="contentIcon" class="content-icon"><content select="[item-icon]"></content></div><content></content></template></dom-module><dom-module id="paper-item-body" assetpath="js/paper-item/"><template><style>:host {
+        overflow: hidden; /* needed for text-overflow: ellipsis to work on ff */
+        @apply(--layout-vertical);
+        @apply(--layout-center-justified);
+        @apply(--layout-flex);
+      }
+
+      :host([two-line]) {
+        min-height: var(--paper-item-body-two-line-min-height, 72px);
+      }
+
+      :host([three-line]) {
+        min-height: var(--paper-item-body-three-line-min-height, 88px);
+      }
+
+      :host > ::content > * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      :host > ::content [secondary] {
+        @apply(--paper-font-body1);
+
+        color: var(--paper-item-body-secondary-color, --secondary-text-color);
+
+        @apply(--paper-item-body-secondary);
+      }</style><content></content></template></dom-module><dom-module id="iron-a11y-announcer" assetpath="js/iron-a11y-announcer/"><template><style>:host {
         display: inline-block;
         position: fixed;
         clip: rect(0px,0px,0px,0px);
@@ -2593,7 +2259,7 @@ h6 {
 
 a {
   color: var(--paper-cyan-500);
-  text-decoration: none; }</style><img src="elements/components/img/chat-placeholder.png" alt="chat-placeholder"><h6>Hold on, we'll soon have a buddy for you to help</h6><h6>Meanwhile, you can view our <a href="/guide">self help guide</a> to help you prepare</h6></template></dom-module><dom-module id="buddy-list" assetpath="./"><template><style is="custom-style" include="iron-flex iron-flex-alignment">/**
+  text-decoration: none; }</style><img src="elements/components/img/chat-placeholder.png" alt="chat-placeholder"><h6>Hold on, we'll soon have a buddy for you to help</h6><h6>Meanwhile, you can view our <a href="/guide">self help guide</a> to help you prepare</h6></template></dom-module><dom-module id="buddy-list" assetpath="./"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -2749,161 +2415,51 @@ paper-progress {
   width: 100%;
   --paper-progress-container-color: transparent; }
 
-.retry-button {
-  background-color: var(--paper-cyan-300);
-  color: #fff; }
-
-.card-figure {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 25%;
-          flex: 1 0 25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 25%;
-  min-height: 90px;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-sizing: border-box;
-  padding: 0;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1); }
-
-.card-avatar {
+.avatar {
   width: 56px;
   height: 56px;
   border-radius: 50%;
   font-size: 28px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  @apply (--layout);
+  @apply (--layout-center-center);
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-right: 8px;
   color: #fff; }
-  .card-avatar.cyan {
+  .avatar.cyan {
     background-color: rgb(77,208,225); }
-  .card-avatar.darkcyan {
+  .avatar.darkcyan {
     background-color: rgb(77,182,172); }
-  .card-avatar.darkgreen {
+  .avatar.darkgreen {
     background-color: rgb(129,199,132); }
-  .card-avatar.green {
+  .avatar.green {
     background-color: rgb(174,213,129); }
 
-.card-text {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 4px; }
-  .card-text h5 {
-    font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
-  .card-text h6 {
-    font-size: 11px; }
-  .card-text h5,
-  .card-text h6 {
-    margin: 2px 0;
-    text-transform: capitalize;
-    line-height: normal; }
+.chat-bordered {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); }
 
-.card-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 4px 2px 4px 16px;
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto; }
+.chat-left {
+  margin-left: 8px; }
 
-.card-right {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  min-width: 100px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-  padding: 4px 2px 4px 8px; }
-  .card-right:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 10px;
-    height: calc(100% - 20px);
-    width: 2px;
-    background-color: rgba(0, 0, 0, 0.1); }
+div {
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif !important; }
 
-.card-talk {
-  text-transform: none;
-  font-weight: 900;
-  font-size: 11px;
-  margin-bottom: 4px; }
+.chat-center {
+  @apply (--layout-center); }
 
-.card-icon {
-  --iron-icon-fill-color: #607d8b;
-  --iron-icon-width: 28px;
-  --iron-icon-height: 28px; }
+.time {
+  color: var(--paper-grey-500); }
 
-.full-page {
-  height: calc(100vh - 112px); }
-
-.float-container .btn-floating {
-  background-color: rgb(77,208,225); }
-  .float-container .btn-floating i {
-    color: #fff; }
-
-.cyan .float-container .btn-floating {
-  background-color: rgb(77,208,225); }
-  .cyan .float-container .btn-floating i {
-    color: #fff; }
-
-.darkcyan .float-container .btn-floating {
-  background-color: rgb(77,182,172); }
-  .darkcyan .float-container .btn-floating i {
-    color: #fff; }
-
-.darkgreen .float-container .btn-floating {
-  background-color: rgb(129,199,132); }
-  .darkgreen .float-container .btn-floating i {
-    color: #fff; }
-
-.green .float-container .btn-floating {
-  background-color: rgb(174,213,129); }
-  .green .float-container .btn-floating i {
-    color: #fff; }
+.count {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  padding: 4px;
+  @apply (--layout);
+  @apply (--layout-center-center);
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  color: #fff;
+  background-color: var(--paper-cyan-500); }
 
 /**
  * Copyright 2015 Google Inc. All Rights Reserved.
@@ -3144,7 +2700,7 @@ paper-progress {
   background-color: rgb(174,213,129); }
 
 .green .fj-save-button:active {
-  background-color: rgb(139,195,74); }</style><iron-ajax auto="" id="aBuddy" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><template is="dom-if" if="[[placeholder]]"><chat-placeholder></chat-placeholder></template><template is="dom-if" if="[[!placeholder]]"><iron-list items="[[baseresponse.result]]" as="item"><template><div><div class="card-figure" on-tap="onChatTap"><div class="card-left" on-tap="_onLeftTap"><div class$="card-avatar [[_randomClass()]]">[[_firstLetter(item.contact_name)]]</div><div class="card-text"><h5>[[item.contact_name]]</h5></div></div></div></div></template></iron-list></template></app-header-layout></app-drawer-layout></template></dom-module><style>body,
+  background-color: rgb(139,195,74); }</style><iron-ajax auto="" id="aBuddy" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" loading="{{loadingbuddy}}" debounce-duration="300" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-buddyelement showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}"></menu-buddyelement></app-drawer><app-header-layout><app-header fixed=""><app-toolbar><div class="header-center" main-title="">FeelJoy</div><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><paper-progress id="progress" style="opacity: 0" indeterminate=""></paper-progress><template is="dom-if" if="[[placeholder]]"><chat-placeholder></chat-placeholder></template><template is="dom-if" if="[[!placeholder]]"><iron-list items="[[baseresponse.result]]" as="item"><template><paper-icon-item on-tap="onChatTap"><div class$="avatar [[_randomClass()]]" item-icon="">[[_firstLetter(item.contact_name)]]</div><paper-item-body class="chat-bordered chat-left" two-line=""><div>[[capitalize(item.contact_name)]]</div><div secondary="">[[item.lastMsg]]</div></paper-item-body><div class="chat-bordered"><paper-item-body class="chat-center" two-line=""><div class="time">[[_processTime(item.time)]]</div><div secondary=""><span class="count" style$="[[showcount(item.unreadMsgCount)]]">[[item.unreadMsgCount]]</span></div></paper-item-body></div></paper-icon-item></template></iron-list></template></app-header-layout></app-drawer-layout></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3154,4 +2710,4 @@ paper-progress {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-list></buddy-list><script src="js/list-6b1d053769.js"></script></body></html>
+      }</style></div><buddy-list></buddy-list><script src="js/list-c46f453068.js"></script></body></html>
