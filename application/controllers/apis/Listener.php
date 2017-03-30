@@ -85,5 +85,48 @@ class Listener extends CI_Controller{
 	    		echo json_encode(array('error'=> true, 'msg'=>'Invalid Parameters.'));
 	    	}
 	    }
+	    
+	    public function userlistUnreadMsg(){
+	    	$loginData = $this->authentication->checkLogin(array(ACCOUNT_LISTENER));
+	    	if(!$loginData){
+	    		$loginData = ['error'=> true, 'login'=>'required'];
+	    		echo json_encode($loginData);
+	    		exit();
+	    	}
+	    	
+	    	$contactedUsers = $this->chat_model->getContactedUsers($this->session->userdata('userid'));
+	    	if(!count($contactedUsers)){
+	    		echo json_encode(['error'=> true, 'result'=>null]);
+	    	}
+	    	
+	    	$result = [];
+	    	foreach ($contactedUsers as $user){
+	    		$user = $user[0];
+	    		$row = [
+	    				'userid'=> $user['userid'],
+	    				'user_type'=> $user['user_type'],
+	    				'age'=> $user['age'],
+	    				'contact_name'=> $user['contact_name'],
+	    				'profile_img'=> $user['profile_img'],
+	    				'gender'=> $user['gender'],
+	    				'chat_link'=> base_url().'listener/chat/index/'.$user['userid']
+	    		];
+	    		
+	    	
+	    	$user = $user[0];
+	    	$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	    	$userUnreadMsgCount = $this->chat_model->getUnreadMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	    	$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
+	    	
+	    	
+	    	$row['time'] = date('c', strtotime($userMsgDetails['time']));
+	    	$row['lastMsg'] = $userMsgDetails['msg'];
+	    	$row['messageCount'] = $userUnreadMsgCount;
+	    	
+	    	$result[] = $row;	    	
+	    }
+	    echo json_encode(['error'=> false, 'result'=>$result]);
+	    exit;
+	    }
 }
 ?>
