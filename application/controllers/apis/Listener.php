@@ -112,15 +112,19 @@ class Listener extends CI_Controller{
 	    				'chat_link'=> base_url().'listener/chat/index/'.$user['userid']
 	    		];
 	    		
-	    	
-	    	$user = $user[0];
 	    	$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
 	    	$userUnreadMsgCount = $this->chat_model->getUnreadMsgFromUsr($user['userid'], $this->session->userdata('userid'));
 	    	$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
+	    	var_dump($userMsgDetails);
+	    	if($userMsgDetails){
+	    		$row['time'] = date('c', strtotime($userMsgDetails['time']));
+	    		$row['lastMsg'] = $userMsgDetails['msg'];
+	    	}else{
+	    		$row['time'] = date('c', strtotime($userMsgDetails['time']));
+	    		$row['lastMsg'] = $userMsgDetails['msg'];
+	    	}
 	    	
 	    	
-	    	$row['time'] = date('c', strtotime($userMsgDetails['time']));
-	    	$row['lastMsg'] = $userMsgDetails['msg'];
 	    	$row['messageCount'] = $userUnreadMsgCount;
 	    	
 	    	$result[] = $row;	    	
