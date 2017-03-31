@@ -3089,8 +3089,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </dom-module>
 
-
-
+<dom-module id="iron-localstorage" assetpath="bower_components/iron-localstorage/"></dom-module>
 <dom-module id="user-login" assetpath="elements/components/">
   <template>
     <iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" method="POST" last-response="{{userdata}}" with-credentials=""></iron-ajax>
@@ -3184,6 +3183,8 @@ paper-toggle-button {
 
     </style>
     <iron-ajax id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{userlogout}}" with-credentials=""></iron-ajax>
+    
+    <iron-localstorage name="unsentmessage" value="{{message}}" on-iron-localstorage-load-empty="initMessage"></iron-localstorage>
     <user-login loggedin="{{loggedin}}" authchecked="{{authchecked}}" userdata="{{userdata}}"></user-login>
     <push-crew loggedin="{{loggedin}}" authchecked="{{authchecked}}" subscribed="{{subscribed}}"></push-crew>
     <paper-material elevation="3">
@@ -3199,10 +3200,16 @@ paper-toggle-button {
         </div>
       </app-toolbar>
       <paper-menu selectable="selectable">
-        <paper-icon-item role="menuitem" on-tap="onMenuItemTap" href="/" icon="home">
+        <paper-icon-item role="menuitem" on-tap="onMenuItemTap" href="/">
           <iron-icon icon="home" item-icon=""></iron-icon>
           Home
         </paper-icon-item>
+        <template is="dom-if" if="[[!loggedin]]">
+          <paper-icon-item role="menuitem" on-tap="onLoginItemTap">
+            <iron-icon icon="account-box" item-icon=""></iron-icon>
+            Log in
+          </paper-icon-item>
+        </template>
         <template is="dom-if" if="[[loggedin]]">
           <paper-icon-item role="menuitem" on-tap="onMenuItemTap" href="/editprofile">
             <iron-icon icon="settings" item-icon=""></iron-icon>
@@ -3376,23 +3383,6 @@ paper-toast {
 paper-progress {
   --paper-progress-active-color: var(--paper-cyan-600);
   --paper-progress-secondary-color: var(--paper-cyan-200); }
-
-.ath .ath-inner {
-  text-align: center; }
-
-.ath .fj-customer-logo {
-  width: 96px;
-  height: 96px;
-  padding: 16px 0 2px;
-  box-sizing: content-box; }
-
-.ath paper-button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  background-color: #fff !important;
-  --paper-button-ink-color: rgb(0,188,212) !important;
-  color: rgb(0,188,212) !important; }
 
 /**
  * Copyright 2015 Google Inc. All Rights Reserved.
