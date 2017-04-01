@@ -108,11 +108,30 @@ class User extends CI_Controller{
 	    				'gender'=> $user['gender'],
 	    				'chat_link'=> base_url().'chat?id='.$user['userid']
 	    		];
-	    		$result[] = $row;
+	    		$userMsgDetails = $this->chat_model->getLastMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	    		$userUnreadMsgCount = $this->chat_model->getUnreadMsgFromUsr($user['userid'], $this->session->userdata('userid'));
+	    		$userMsgDetails['msg'] = $this->chat_model->decodeMsg($userMsgDetails['msg'], $userMsgDetails['int_vec']);
+	    		//var_dump($userMsgDetails);
+	    		if($userMsgDetails){
+	    			$row['time'] = date('c', strtotime($userMsgDetails['time']));
+	    			$row['lastMsg'] = trim($userMsgDetails['msg']);
+	    		}else{
+	    			$row['time'] = date('c', strtotime($userMsgDetails['time']));
+	    			$row['lastMsg'] = trim($userMsgDetails['msg']);
+	    		}
+	    		
+	    		
+	    		$row['unreadMsgCount'] = $userUnreadMsgCount;
+	    		
+	    		$result[$row['time']] = $row;
 	    	}
-	    	echo json_encode(['error'=> false, 'result'=>$result]);
-	    
-	    	//echo json_encode($result);
+	    	krsort($result);
+	    	$finalresult = [];
+	    	foreach ($result as $resRow){
+	    		$finalresult[] = $resRow;
+	    	}
+	    	echo json_encode(['error'=> false, 'result'=>$finalresult]);
+	    	exit;
 	    }
 }
 ?>
