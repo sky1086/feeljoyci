@@ -28,7 +28,11 @@ class Notification extends CI_Controller{
 
 		$contactedUsers = $this->notification_model->getSubscriberDetails($this->session->userdata('userid'));
 		if($contactedUsers){
-			echo json_encode(['error'=> false, 'result'=>true]);
+			if($contactedUsers['status']){
+				echo json_encode(['error'=> false, 'result'=>true]);
+			}else{
+				echo json_encode(['error'=> false, 'result'=>false]);
+			}			
 		}else{
 			echo json_encode(['error'=> false, 'result'=>false]);
 		}

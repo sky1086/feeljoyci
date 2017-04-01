@@ -127,8 +127,9 @@ class Listener extends CI_Controller{
 	    	
 	    	$row['unreadMsgCount'] = $userUnreadMsgCount;
 	    	
-	    	$result[] = $row;	    	
+	    	$result[$row['time']] = $row;	    	
 	    }
+	    krsort($result);
 	    echo json_encode(['error'=> false, 'result'=>$result]);
 	    exit;
 	    }
