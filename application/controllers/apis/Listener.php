@@ -130,7 +130,11 @@ class Listener extends CI_Controller{
 	    	$result[$row['time']] = $row;	    	
 	    }
 	    krsort($result);
-	    echo json_encode(['error'=> false, 'result'=>$result]);
+	    $finalresult = [];
+	    foreach ($result as $resRow){
+	    	$finalresult[] = $resRow;
+	    }
+	    echo json_encode(['error'=> false, 'result'=>$finalresult]);
 	    exit;
 	    }
 }
