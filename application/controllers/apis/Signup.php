@@ -89,8 +89,8 @@ if (!defined('BASEPATH'))
 			$user['user_type']	= 'User';
 			$result = $this->signup_model->updateSystemUserByMail($emailid, $user);
 			if($result){
-				if(isset($this->session->userdata('contactname'))){
-					$this->session->set_userdata(array('contactname'=>$user['contact_name']));
+				if($this->session->userdata('contact_name')){
+					$this->session->set_userdata(array('contact_name'=>$user['contact_name']));
 				}
 				$data['message'] = 'Details saved successfully.';
 				$data['error'] = false;
