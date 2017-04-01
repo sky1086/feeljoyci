@@ -118,10 +118,10 @@ class Listener extends CI_Controller{
 	    	//var_dump($userMsgDetails);
 	    	if($userMsgDetails){
 	    		$row['time'] = date('c', strtotime($userMsgDetails['time']));
-	    		$row['lastMsg'] = $userMsgDetails['msg'];
+	    		$row['lastMsg'] = trim($userMsgDetails['msg']);
 	    	}else{
 	    		$row['time'] = date('c', strtotime($userMsgDetails['time']));
-	    		$row['lastMsg'] = $userMsgDetails['msg'];
+	    		$row['lastMsg'] = trim($userMsgDetails['msg']);
 	    	}
 	    	
 	    	
