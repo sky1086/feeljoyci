@@ -2191,11 +2191,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  */
 /* ==========  Color Palettes  ========== */
 /* colors.scss */
-.fj-button-bold {
+.button-bold {
   font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
 
-.fj-icon {
+.icon {
   color: #fff; }
+
+.home-redirect {
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  @apply (--layout-flex); }
 
 h1,
 h2,
@@ -2205,7 +2212,7 @@ h5,
 h6 {
   font-weight: 400;
   padding: 0;
-  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif !important; }
 
 h1 {
   font-size: 56px;
@@ -2254,6 +2261,14 @@ app-header {
   @apply (--shadow-elevation-2dp);
   background-color: var(--paper-cyan-300);
   color: #fff; }
+  app-header.cyan {
+    background-color: var(--paper-cyan-300); }
+  app-header.darkcyan {
+    background-color: var(--paper-teal-300); }
+  app-header.darkgreen {
+    background-color: var(--paper-green-300); }
+  app-header.green {
+    background-color: var(--paper-light-green-300); }
 
 .header-center {
   text-align: center;
@@ -2266,7 +2281,7 @@ app-drawer {
 paper-button {
   --paper-button: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; } }
 
-.fj-pointer-item .fj-icon-color {
+.pointer-item .icon-color {
   --iron-icon-width: 48px;
   --iron-icon-height: 48px;
   --iron-icon-fill-color: var(--paper-cyan-300);
@@ -2284,6 +2299,58 @@ paper-toast {
 paper-progress {
   --paper-progress-active-color: var(--paper-cyan-600);
   --paper-progress-secondary-color: var(--paper-cyan-200); }
+  paper-progress.cyan {
+    --paper-progress-active-color: var(--paper-cyan-600);
+    --paper-progress-secondary-color: var(--paper-cyan-200); }
+  paper-progress.darkcyan {
+    --paper-progress-active-color: var(--paper-teal-600);
+    --paper-progress-secondary-color: var(--paper-teal-200); }
+  paper-progress.darkgreen {
+    --paper-progress-active-color: var(--paper-green-600);
+    --paper-progress-secondary-color: var(--paper-green-200); }
+  paper-progress.green {
+    --paper-progress-active-color: var(--paper-light-green-600);
+    --paper-progress-secondary-color: var(--paper-light-green-200); }
+
+.main-content.cyan ::-moz-selection {
+  background: var(--paper-cyan-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.cyan ::selection {
+  background: var(--paper-cyan-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.darkcyan ::-moz-selection {
+  background: var(--paper-teal-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.darkcyan ::selection {
+  background: var(--paper-teal-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.darkgreen ::-moz-selection {
+  background: var(--paper-green-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.darkgreen ::selection {
+  background: var(--paper-green-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.green ::-moz-selection {
+  background: var(--paper-light-green-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
+
+.main-content.green ::selection {
+  background: var(--paper-light-green-700);
+  /* WebKit/Blink Browsers */
+  color: #fff; }
 
 :host {
   background-color: var(--paper-cyan-300); }
