@@ -2486,8 +2486,7 @@ app-header {
     background-color: var(--paper-light-green-300); }
 
 .header-center {
-  text-align: center;
-  padding-left: 24px; }
+  text-align: center; }
 
 app-drawer {
   --app-drawer-scrim-background: rgba(0, 0, 0, 0.8);
@@ -2511,21 +2510,21 @@ paper-input {
 paper-toast {
   font-family: "quicksand", Helvetica, Arial, Sans-Serif; }
 
-paper-progress {
+paper-progress.cyan {
   --paper-progress-active-color: var(--paper-cyan-600);
   --paper-progress-secondary-color: var(--paper-cyan-200); }
-  paper-progress.cyan {
-    --paper-progress-active-color: var(--paper-cyan-600);
-    --paper-progress-secondary-color: var(--paper-cyan-200); }
-  paper-progress.darkcyan {
-    --paper-progress-active-color: var(--paper-teal-600);
-    --paper-progress-secondary-color: var(--paper-teal-200); }
-  paper-progress.darkgreen {
-    --paper-progress-active-color: var(--paper-green-600);
-    --paper-progress-secondary-color: var(--paper-green-200); }
-  paper-progress.green {
-    --paper-progress-active-color: var(--paper-light-green-600);
-    --paper-progress-secondary-color: var(--paper-light-green-200); }
+
+paper-progress.darkcyan {
+  --paper-progress-active-color: var(--paper-teal-600);
+  --paper-progress-secondary-color: var(--paper-teal-200); }
+
+paper-progress.darkgreen {
+  --paper-progress-active-color: var(--paper-green-600);
+  --paper-progress-secondary-color: var(--paper-green-200); }
+
+paper-progress.green {
+  --paper-progress-active-color: var(--paper-light-green-600);
+  --paper-progress-secondary-color: var(--paper-light-green-200); }
 
 .main-content.cyan ::-moz-selection {
   background: var(--paper-cyan-700);
@@ -2566,6 +2565,11 @@ paper-progress {
   background: var(--paper-light-green-700);
   /* WebKit/Blink Browsers */
   color: #fff; }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+  tap-highlight-color: transparent; }
 
 .nodisp {
   display: none;
@@ -2737,4 +2741,4 @@ paper-radio-button {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-welcome></customer-welcome><script src="js/welcome-6a4ebb7ddf.js"></script></body></html>
+      }</style></div><customer-welcome></customer-welcome><script src="js/welcome-0839811662.js"></script></body></html>
