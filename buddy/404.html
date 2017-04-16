@@ -2777,6 +2777,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 </dom-module>
 
+<dom-module id="app-location" assetpath="bower_components/app-route/">
+  <template>
+    <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex="{{urlSpaceRegex}}">
+    </iron-location>
+    <iron-query-params params-string="{{__query}}" params-object="{{queryParams}}">
+    </iron-query-params>
+  </template>
+  </dom-module>
+
+
 <iron-iconset-svg name="fj" size="24">
   <svg>
     <defs>
@@ -3643,261 +3653,55 @@ paper-progress.green {
   -moz-tap-highlight-color: transparent;
   tap-highlight-color: transparent; }
 
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* ==========  Color Palettes  ========== */
-/* colors.scss */
-/*card theme colors*/
-.white {
-  background-color: #fff;
-  color: #000; }
-
-.fj-animation-container.cyan,
-.fj-card-figure.cyan,
-body.cyan {
-  background-color: rgb(77,208,225);
-  color: #fff; }
-
-.fj-animation-container.darkcyan,
-.fj-card-figure.darkcyan,
-body.darkcyan {
-  background-color: rgb(77,182,172);
-  color: #fff; }
-
-.fj-animation-container.darkgreen,
-.fj-card-figure.darkgreen,
-body.darkgreen {
-  background-color: rgb(129,199,132);
-  color: #fff; }
-
-.fj-animation-container.green,
-.fj-card-figure.green,
-body.green {
-  background-color: rgb(174,213,129);
-  color: #fff; }
-
-/*loader hidden*/
-.fj-content-loading {
-  will-change: display;
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  padding-right: 6px; }
-  .fj-content-loading.visible {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
-
-.fj-loader-circular {
-  border-color: #fff; }
-
-/*error button*/
-.fj-retry-loader {
-  color: #fff;
-  margin-top: 8px; }
-  .fj-retry-loader.is-hidden {
-    display: none; }
-
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* ==========  Color Palettes  ========== */
-/* colors.scss */
-.fj-placeholder-info {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  background-color: rgba(255, 255, 255, 0.86); }
-  .fj-placeholder-info.is-hidden {
-    display: none; }
-
-.fj-placeholder-info.is-new {
-  opacity: 0;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out; }
-  .fj-placeholder-info.is-new .fj-placeholder-background {
-    position: absolute;
-    background-color: #4dd0e1;
-    left: -5vh;
-    top: 28vh;
-    width: 160vh;
-    height: 120vh;
-    border-radius: 50%;
-    opacity: 0;
-    -webkit-animation-delay: .5s;
-            animation-delay: .5s;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-duration: .5s;
-            animation-duration: .5s;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    z-index: -1; }
-  .fj-placeholder-info.is-new .fj-placeholder-text {
-    position: absolute;
-    padding-left: 16px;
-    bottom: 92px;
-    color: #fff;
-    opacity: 0;
-    -webkit-animation-delay: .8s;
-            animation-delay: .8s;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-duration: .5s;
-            animation-duration: .5s;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out; }
-  .fj-placeholder-info.is-new .fj-focus-elt {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 56px;
-    width: 56px;
-    padding: 16px;
-    border-radius: 50%;
-    box-sizing: content-box;
-    background-color: #fff;
-    opacity: 0;
-    -webkit-animation-delay: .3s;
-            animation-delay: .3s;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-duration: .5s;
-            animation-duration: .5s;
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out; }
-
-.fj-overlay-elt {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.86);
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  opacity: 0;
-  z-index: 6; }
-  .fj-overlay-elt.is-hidden {
-    display: none; }
-
-/*put something below overlay*/
-.below-overlay {
-  z-index: 5; }
-
-.fj-main-content {
+.main-content {
   text-align: center; }
 
 section {
   padding: 16px 8px;
   color: rgb(33,33,33); }
-  section .fj-customer-sub {
+  section .customer-sub {
     margin: 24px 0 16px;
     font-size: 17px; }
   section h4,
   section h5 {
     font-weight: 600;
     letter-spacing: 0; }
-  section .fj-start-h6 {
+  section .start-h6 {
     padding: 8px 0; }
   section a {
     text-decoration: none; }
-  section .fj-highlight-span,
+  section .highlight-span,
   section a {
     color: rgb(77,208,225); }
-  section .fj-inner-h5,
-  section .fj-pointer-title {
+  section .inner-h5,
+  section .pointer-title {
     color: rgb(66,66,66); }
-  section .fj-pointer-subtitle {
+  section .pointer-subtitle {
     margin: 0; }
-  section .fj-inner-p,
-  section .fj-pointer-subtitle {
+  section .inner-p,
+  section .pointer-subtitle {
     color: rgb(158,158,158);
     font-weight: 600;
     line-height: 1.3; }
-    section .fj-inner-p.is-padded,
-    section .fj-pointer-subtitle.is-padded {
+    section .inner-p.is-padded,
+    section .pointer-subtitle.is-padded {
       padding: 16px 0; }
-    section .fj-inner-p.side-padded,
-    section .fj-pointer-subtitle.side-padded {
+    section .inner-p.side-padded,
+    section .pointer-subtitle.side-padded {
       padding: 0 16px; }
-    section .fj-inner-p.left-aligned,
-    section .fj-pointer-subtitle.left-aligned {
+    section .inner-p.left-aligned,
+    section .pointer-subtitle.left-aligned {
       text-align: left; }
   section h2 {
     font-weight: 900; }
-  section .fj-icon-header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+  section .subscribe-container {
+    @apply (--layout);
+    @apply (--layout-center);
     padding: 0 16px; }
-    section .fj-icon-header .fj-icon-color {
-      color: rgb(77,208,225);
-      font-size: 30px;
-      padding-right: 12px; }
-    section .fj-icon-header h5 {
-      margin: 0;
-      font-size: 16px; }
-  section .fj-subscribe-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 0 16px; }
-    section .fj-subscribe-container .input-field {
-      -webkit-box-flex: 1;
-          -ms-flex: 1 0 auto;
-              flex: 1 0 auto; }
-    section .fj-subscribe-container .fj-subscribe-button {
+    section .subscribe-container paper-input {
+      @apply (--layout-flex);
+      text-align: left; }
+    section .subscribe-container .subscribe-button {
       margin-left: 8px;
       background-color: rgb(129,199,132);
       color: #fff;
@@ -3914,7 +3718,7 @@ section {
     section.color h5 {
       margin: 4px; }
 
-.fj-customer-logo {
+.customer-logo {
   width: 96px;
   height: 96px;
   padding: 16px 0 2px;
@@ -3922,8 +3726,7 @@ section {
 
 footer {
   background-color: rgb(238,238,238);
-  padding-top: 24px;
-  padding-bottom: 24px; }
+  padding: 24px 0; }
   footer div,
   footer h4,
   footer p {
@@ -3934,142 +3737,12 @@ footer {
 .footer-icons i {
   font-size: 24px; }
 
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* ==========  Color Palettes  ========== */
-/* colors.scss */
-body.cyan .fj-main-header {
-  background-color: rgb(77,208,225); }
-
-body.cyan section .fj-highlight-span,
-body.cyan section .fj-icon-color,
-body.cyan section .fj-start-journey,
-body.cyan section .fj-start-journey:focus:not(:active),
-body.cyan section .fj-start-journey:hover,
-body.cyan section a {
-  color: rgb(77,208,225); }
-
-body.cyan section.color {
-  background-color: rgb(77,208,225); }
-
-body.cyan .fj-main-tab {
-  color: rgb(38,198,218); }
-
-body.cyan .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
-  background: rgb(77,208,225); }
-
-body.cyan .fj-subscribe-container .input-field input {
-  border-bottom-color: rgb(38,198,218); }
-
-body.cyan .fj-subscribe-container .input-field label {
-  color: rgb(38,198,218) !important; }
-
-body.cyan .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(77,208,225); }
-
-body.darkcyan .fj-main-header {
-  background-color: rgb(77,182,172); }
-
-body.darkcyan section .fj-highlight-span,
-body.darkcyan section .fj-icon-color,
-body.darkcyan section .fj-start-journey,
-body.darkcyan section .fj-start-journey:focus:not(:active),
-body.darkcyan section .fj-start-journey:hover,
-body.darkcyan section a {
-  color: rgb(77,182,172); }
-
-body.darkcyan section.color {
-  background-color: rgb(77,182,172); }
-
-body.darkcyan .fj-main-tab {
-  color: rgb(38,166,154); }
-
-body.darkcyan .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
-  background: rgb(77,182,172); }
-
-body.darkcyan .fj-subscribe-container .input-field input {
-  border-bottom-color: rgb(38,166,154); }
-
-body.darkcyan .fj-subscribe-container .input-field label {
-  color: rgb(38,166,154) !important; }
-
-body.darkcyan .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(77,182,172); }
-
-body.darkgreen .fj-main-header {
-  background-color: rgb(129,199,132); }
-
-body.darkgreen section .fj-highlight-span,
-body.darkgreen section .fj-icon-color,
-body.darkgreen section .fj-start-journey,
-body.darkgreen section .fj-start-journey:focus:not(:active),
-body.darkgreen section .fj-start-journey:hover,
-body.darkgreen section a {
-  color: rgb(129,199,132); }
-
-body.darkgreen section.color {
-  background-color: rgb(129,199,132); }
-
-body.darkgreen .fj-main-tab {
-  color: rgb(102,187,106); }
-
-body.darkgreen .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
-  background: rgb(129,199,132); }
-
-body.darkgreen .fj-subscribe-container .input-field input {
-  border-bottom-color: rgb(102,187,106); }
-
-body.darkgreen .fj-subscribe-container .input-field label {
-  color: rgb(102,187,106) !important; }
-
-body.darkgreen .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(129,199,132); }
-
-body.green .fj-main-header {
-  background-color: rgb(174,213,129); }
-
-body.green section .fj-highlight-span,
-body.green section .fj-icon-color,
-body.green section .fj-start-journey,
-body.green section .fj-start-journey:focus:not(:active),
-body.green section .fj-start-journey:hover,
-body.green section a {
-  color: rgb(174,213,129); }
-
-body.green section.color {
-  background-color: rgb(174,213,129); }
-
-body.green .fj-main-tab {
-  color: rgb(156,204,101); }
-
-body.green .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
-  background: rgb(174,213,129); }
-
-body.green .fj-subscribe-container .input-field input {
-  border-bottom-color: rgb(156,204,101); }
-
-body.green .fj-subscribe-container .input-field label {
-  color: rgb(156,204,101) !important; }
-
-body.green .fj-subscribe-container .fj-subscribe-button {
-  background-color: rgb(174,213,129); }
-
     </style>
+    
+    <app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location>
     <app-drawer-layout force-narrow="">
-      <app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open="">
+      <app-drawer id="drawer" align="right" class="main-menu" swipe-open="">
+        <menu-element showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element>
         <menu-element showlistener="[[showlistener]]"></menu-element>
       </app-drawer>
       <app-header-layout>
@@ -4079,31 +3752,31 @@ body.green .fj-subscribe-container .fj-subscribe-button {
             <paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button>
           </app-toolbar>
         </app-header>
-        <div id="fj-main-content" class="fj-main-content">
+        <div class="main-content">
           <section class="color">
-            <img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo">
+            <img class="customer-logo" src="svg/feeljoy.svg" alt="logo">
           </section>
           <section>
             <h4>Oops. Looks like you're lost.</h4>
-            <p class="fj-inner-p">
+            <p class="inner-p">
               <a id="goback">Click here</a>
               to head back to the last page you were on</p>
-            <p class="fj-inner-p">Or, since you're already here, take a moment to subscribe to our newsletter - you'll get the latest news and information about us and our programs.</p>
+            <p class="inner-p">Or, since you're already here, take a moment to subscribe to our newsletter - you'll get the latest news and information about us and our programs.</p>
             <form action="#">
-              <div class="fj-subscribe-container">
+              <div class="subscribe-container">
                 <paper-input label="Your Email Address" placeholder="e.g me@feeljoy.in"></paper-input>
-                <paper-button class="fj-subscribe-button">
+                <paper-button class="subscribe-button">
                   Subscribe
                 </paper-button>
               </div>
             </form>
-            <p class="fj-inner-p side-padded left-aligned fj-drop-line">
+            <p class="inner-p side-padded left-aligned drop-line">
               or drop us a line
               <a href="mailto:hello@feeljoy.in">hello@feeljoy.in</a>
             </p>
           </section>
           <footer>
-            <div class="fj-footer-icons">
+            <div class="footer-icons">
               <iron-icon icon="fj:quora"></iron-icon>
               <iron-icon icon="fj:facebook"></iron-icon>
               <iron-icon icon="fj:instagram"></iron-icon>
@@ -4114,23 +3787,7 @@ body.green .fj-subscribe-container .fj-subscribe-button {
         </div>
       </app-header-layout>
     </app-drawer-layout>
-    <paper-dialog class="ath" id="ath" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
-      <h2>Just tap
-        <iron-icon icon="more-vert"></iron-icon>
-        then
-      </h2>
-      <h2>
-        'Add to Home Screen'
-      </h2>
-      <div class="ath-inner">
-        <img class="fj-customer-logo" src="svg/feeljoy.svg" alt="logo">
-        <h5>Add this website !</h5>
-        <p>You can add this website on your homescreen to make it look and feel like a real app.</p>
-      </div>
-      <div class="buttons">
-        <paper-button dialog-confirm="" autofocus="">Got it !</paper-button>
-      </div>
-    </paper-dialog>
+    <add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen>
   </template>
   </dom-module><style>
       body,
