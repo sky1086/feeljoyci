@@ -25,6 +25,14 @@ if (!defined('BASEPATH'))
 			}else{
 				header('Access-Control-Allow-Origin: *'); //need to remove after developement done
 			}
+			header("X-Frame-Options: SAMEORIGIN");
+			//validate login
+			$loginData = $this->authentication->checkLogin(array(ACCOUNT_LISTENER, ACCOUNT_USER));
+			if(!$loginData){
+				$loginData = ['error'=> true, 'login'=>'required'];
+			}
+			echo json_encode($loginData);
+			exit;
 		}
 
 		public function index()

@@ -15,6 +15,7 @@ class Login extends CI_Controller{
 		}else{
 			header('Access-Control-Allow-Origin: *'); //need to remove after developement done
 		}
+		header("X-Frame-Options: SAMEORIGIN");
 	}
 	
 	public function index(){

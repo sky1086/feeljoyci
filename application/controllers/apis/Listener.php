@@ -15,7 +15,8 @@ class Listener extends CI_Controller{
         	header('Access-Control-Max-Age: 86400');    // cache for 1 day
         }else{
         	header('Access-Control-Allow-Origin: *'); //need to remove after developement done
-        }		
+        }
+        header("X-Frame-Options: SAMEORIGIN");
 	    }
 	    
 	    public function isLoggedIn(){
