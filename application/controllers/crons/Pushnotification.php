@@ -19,12 +19,12 @@ class Pushnotification extends CI_Controller{
         }
     }
 
-    public function index(){
+    public function index($time){
     	//ini_set('display_errors', 'On');
 		//error_reporting(E_ALL);
-    	$time = 0;
-    	if(isset($argv[1]) && $argv[1] == 1){
-    		$time = 1;
+    	$time = (int)$time;
+    	if($time == 1){
+    		$time = 2;
     	}
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification($time);
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
