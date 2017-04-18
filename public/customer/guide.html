@@ -2155,11 +2155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     font-weight: 500; }
 
 .overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  @apply (--layout-fit);
   background-color: rgba(0, 0, 0, 0.8); }
   .overlay.light {
     background-color: rgba(255, 255, 255, 0.6); }</style><div id="overlay" class="overlay"></div><div id="circle" class="circle" style="display: none"><div class="circle-message">Tap me to explore the amazing journey feeljoy has to offer</div><div class="circle-below"></div></div><div id="container" class$="container [[themeclass]]"><div class="fab-container"><div class="tooltext" id="blogtext">Blog</div><paper-fab mini="" icon="create" id="blog"></paper-fab></div><div class="fab-container"><div class="tooltext" id="ttabtext">Talk to a buddy</div><paper-fab mini="" icon="fj:chat_icon" id="ttab"></paper-fab></div><div class="fab-container"><div class="tooltext" id="drestext">Dedicated Responses</div><paper-fab mini="" icon="fj:content_no_circle" id="dres" class="dres"></paper-fab></div><paper-fab icon="fj:diverse" id="diversion" class="diversion"></paper-fab></div></template></dom-module><dom-module id="paper-item" assetpath="js/paper-item/"><template><style include="paper-item-shared-styles"></style><style>:host {
@@ -2442,7 +2438,8 @@ paper-toast {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  margin-top: 64px; }
 
 div {
   @apply (--layout);
@@ -2471,9 +2468,7 @@ div {
   div.darkgreen {
     background-color: var(--paper-green-300); }
   div.green {
-    background-color: var(--paper-light-green-300); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-swipeable-container" assetpath="js/iron-swipeable-container/"><template><style>:host {
-        display: block;
-      }</style><content id="content"></content></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
+    background-color: var(--paper-light-green-300); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
         display: inline-block;
         overflow: hidden;
         position: relative;
@@ -2729,13 +2724,86 @@ div {
         100% {
           transform: scaleX(.75) translateX(125%);
         }
-      }</style><div id="progressContainer"><div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div><div id="primaryProgress"></div></div></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">:host {
+      }</style><div id="progressContainer"><div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div><div id="primaryProgress"></div></div></template></dom-module><dom-module id="share-api" assetpath="elements/components/"><template><style is="custom-style">:host {
+  @apply (--layout-fit);
+  z-index: 2; }
+
+.overlay {
+  @apply (--layout-fit);
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer; }
+
+paper-material {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 24px; }
+
+.grid {
+  @apply (--layout-horizontal);
+  @apply (--layout-center);
+  @apply (--layout-justified); }
+
+paper-button {
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column; }</style><div id="overlay" class="overlay"></div><paper-material id="sheet" elevation="1"><div class="grid"><paper-button><iron-icon icon="check"></iron-icon><span>Whatsapp</span></paper-button><paper-button><iron-icon icon="check"></iron-icon><span>Facebook</span></paper-button><paper-button><iron-icon icon="check"></iron-icon><span>Twitter</span></paper-button></div><div class="grid"><paper-button><iron-icon icon="check"></iron-icon><span>Email</span></paper-button><paper-button><iron-icon icon="check"></iron-icon><span>Copy to Clipboard</span></paper-button><paper-button><iron-icon icon="check"></iron-icon><span>Sms</span></paper-button></div></paper-material></template></dom-module><dom-module id="path-breadcrumbs" assetpath="elements/components/"><template><style is="custom-style">:host {
+  @apply (--layout-fit);
+  z-index: 2; }
+
+.overlay {
+  @apply (--layout-fit);
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer; }
+
+app-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  background-color: var(--paper-blue-grey-500);
+  width: 100%; }
+
+.title {
+  padding-left: 12px; }</style><div id="overlay" class="overlay"></div><app-toolbar id="toolbar"><paper-icon-button id="back" icon="arrow-back"></paper-icon-button><div class="title">lola phone</div></app-toolbar></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+.container,
+:host {
   @apply (--layout-fit);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
+          user-select: none; }
+
+.container {
   background-color: var(--paper-cyan-300); }
+  .container.cyan {
+    background-color: var(--paper-cyan-300); }
+  .container.darkcyan {
+    background-color: var(--paper-teal-300); }
+  .container.darkgreen {
+    background-color: var(--paper-green-300); }
+  .container.green {
+    background-color: var(--paper-light-green-300); }
 
 paper-card {
   -webkit-user-select: none;
@@ -2748,14 +2816,13 @@ paper-card {
   width: 80vw;
   height: 70vh;
   max-width: 560px;
-  cursor: pointer;
+  cursor: move;
+  cursor: -webkit-grab;
   font-size: 26px;
   padding: 24px 16px;
   line-height: 40px;
   color: #000;
   --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; } }
-  paper-card:active {
-    cursor: grabbing; }
 
 paper-progress {
   @apply (--layout-flex);
@@ -2768,7 +2835,7 @@ paper-icon-button {
   --paper-icon-button-ink-color: #fff;
   --paper-icon-button:  { color: #fff; } ; }
   paper-icon-button:last-of-type {
-    margin-right: 0; }</style><app-toolbar><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="40"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><iron-swipeable-container swipe-style="curve" opacity-rate="[[ratio]]" width-ratio="[[ratio]]"><template is="dom-repeat" items="[[cards]]" as="item"><template is="dom-if" if="[[computeIfLast(index)]]"><paper-card heading="[[title]]">[[item.text]]</paper-card></template><template is="dom-if" if="[[!computeIfLast(index)]]"><paper-card class$="[[computeIfClass(index)]]">[[item.text]]</paper-card></template></template></iron-swipeable-container></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
+    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"><app-toolbar><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="40"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" route="{{route}}" query-params="{{queryParams}}"></path-breadcrumbs><template is="dom-repeat" items="[[cards]]" as="item"><template is="dom-if" if="[[computeIfLast(index)]]"><paper-card heading="[[title]]">[[item.text]]</paper-card></template><template is="dom-if" if="[[!computeIfLast(index)]]"><paper-card class$="[[computeIfClass(index)]]">[[item.text]]</paper-card></template></template></div><share-api opened="{{share}}" route="{{route}}" query-params="{{queryParams}}"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
         display: block;
         margin: 24px 40px;
 
@@ -3340,7 +3407,7 @@ neon-animated-pages {
   @apply (--layout-fit); }
 
 .elivate2 {
-  z-index: 2; }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}"></app-route><app-route route="{{thirdRoute}}" pattern="/:page" data="{{subRouteData}}" tail="{{tail}}"></app-route><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><template is="dom-repeat" items="[[firstclick]]" as="item"><iron-ajax auto="" url="{{computeSecondUrl(item.id)}}" handle-as="json" on-response="processSecondClick"></iron-ajax></template><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page force-side-menu="{{forceSideMenu}}" route-data="{{secondRouteData}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><swipe-page title="[[swipetitle]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[firstclick]]"></highlight-menu></app-drawer-layout><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  z-index: 2; }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}"></app-route><app-route route="{{thirdRoute}}" pattern="/:page" data="{{subRouteData}}" tail="{{tail}}"></app-route><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><template is="dom-repeat" items="[[firstclick]]" as="item"><iron-ajax auto="" url="{{computeSecondUrl(item.id)}}" handle-as="json" on-response="processSecondClick"></iron-ajax></template><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><swipe-page title="[[swipetitle]]" route="{{route}}" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[firstclick]]"></highlight-menu></app-drawer-layout><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3350,4 +3417,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-da185a657e.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-36a81c09dd.js"></script></body></html>
