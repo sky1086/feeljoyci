@@ -2964,7 +2964,7 @@ paper-progress.green {
 
 .overlay {
   @apply (--layout-fit);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer; }
 
 paper-material {
@@ -2979,14 +2979,14 @@ paper-item {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: var(--paper-grey-600);
-  --paper-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  --paper-item-min-height: 56px;
+  --paper-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; color: rgba(0, 0, 0, .54); }
   --paper-item-selected-weight: 400;
   --paper-item-focused-before: { display: none; } }
 
 paper-icon-item {
   cursor: pointer;
-  --paper-icon-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; }
+  --paper-icon-item: { font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif; color: rgba(0, 0, 0, 0.87); }
   --paper-item-focused-before: { display: none; } }
 
 iron-icon {
@@ -2999,8 +2999,26 @@ iron-icon {
   --iron-icon-fill-color: var(--paper-indigo-400); }
 
 .twitter {
-  --iron-icon-fill-color: var(--paper-cyan-300); }</style><div id="overlay" class="overlay"></div><paper-material id="sheet" elevation="1"><paper-listbox selectable="none"><paper-item>Share</paper-item><paper-icon-item><iron-icon class="whatsapp" icon="fj:whatsapp" item-icon=""></iron-icon>Whatsapp<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item><iron-icon class="facebook" icon="fj:facebook" item-icon=""></iron-icon>Facebook<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item><iron-icon class="twitter" icon="fj:twitter" item-icon=""></iron-icon>Twitter<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item><iron-icon icon="communication:email" item-icon=""></iron-icon>Email<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item><iron-icon icon="content-copy" item-icon=""></iron-icon>Copy to Clipboard<paper-ripple></paper-ripple></paper-icon-item></paper-listbox></paper-material></template></dom-module><dom-module id="path-breadcrumbs" assetpath="elements/components/"><template><style is="custom-style">:host {
+  --iron-icon-fill-color: var(--paper-cyan-300); }</style><div id="overlay" class="overlay"></div><paper-material id="sheet" elevation="1"><paper-listbox selectable="none"><paper-item>Share</paper-item><paper-icon-item id="whatsapp"><iron-icon class="whatsapp" icon="fj:whatsapp" item-icon=""></iron-icon>Whatsapp<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item id="facebook"><iron-icon class="facebook" icon="fj:facebook" item-icon=""></iron-icon>Facebook<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item id="twitter"><iron-icon class="twitter" icon="fj:twitter" item-icon=""></iron-icon>Twitter<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item id="email"><iron-icon icon="communication:email" item-icon=""></iron-icon>Email<paper-ripple></paper-ripple></paper-icon-item><paper-icon-item id="copy" data-clipboard-text$="[[url]]"><iron-icon icon="content-copy" item-icon=""></iron-icon>Copy to Clipboard<paper-ripple></paper-ripple></paper-icon-item></paper-listbox></paper-material></template></dom-module><dom-module id="path-breadcrumbs" assetpath="elements/components/"><template><style is="custom-style">/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+:host {
   @apply (--layout-fit);
+  font-family: "quicksand", Helvetica, Arial, Sans-Serif;
   z-index: 2; }
 
 .overlay {
@@ -3054,6 +3072,10 @@ app-toolbar {
   .container.green {
     background-color: var(--paper-light-green-300); }
 
+.inner-container {
+  @apply (--layout-fit);
+  top: 64px; }
+
 paper-card {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -3071,7 +3093,14 @@ paper-card {
   padding: 24px 16px;
   line-height: 40px;
   color: #000;
-  --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; } }
+  --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; border-radius: 2px; } }
+  paper-card.dummy {
+    visibility: hidden; }
+  paper-card:not(.dummy) {
+    display: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    will-change: transform, opacity; }
 
 paper-progress {
   @apply (--layout-flex);
@@ -3084,7 +3113,7 @@ paper-icon-button {
   --paper-icon-button-ink-color: #fff;
   --paper-icon-button:  { color: #fff; } ; }
   paper-icon-button:last-of-type {
-    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"><app-toolbar><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="40"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" route="{{route}}" query-params="{{queryParams}}"></path-breadcrumbs><template is="dom-repeat" items="[[cards]]" as="item"><template is="dom-if" if="[[computeIfLast(index)]]"><paper-card heading="[[title]]">[[item.text]]</paper-card></template><template is="dom-if" if="[[!computeIfLast(index)]]"><paper-card class$="[[computeIfClass(index)]]">[[item.text]]</paper-card></template></template></div><share-api opened="{{share}}" route="{{route}}" query-params="{{queryParams}}"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
+    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" route="{{route}}" query-params="{{queryParams}}"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class="inner-container"><template is="dom-repeat" items="[[cards]]" as="item"><template is="dom-if" if="[[computeIfLast(index)]]"><paper-card heading="[[title]]">[[item]]</paper-card></template><template is="dom-if" if="[[!computeIfLast(index)]]"><paper-card class$="[[computeIfClass(index)]]">[[item]]</paper-card></template></template></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="{{queryParams}}"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
         display: block;
         margin: 24px 40px;
 
@@ -3656,7 +3685,7 @@ neon-animated-pages {
   @apply (--layout-fit); }
 
 .elivate2 {
-  z-index: 2; }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}"></app-route><app-route route="{{thirdRoute}}" pattern="/:page" data="{{subRouteData}}" tail="{{tail}}"></app-route><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><template is="dom-repeat" items="[[firstclick]]" as="item"><iron-ajax auto="" url="{{computeSecondUrl(item.id)}}" handle-as="json" on-response="processSecondClick"></iron-ajax></template><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><swipe-page title="[[swipetitle]]" route="{{route}}" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[firstclick]]"></highlight-menu></app-drawer-layout><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  z-index: 2; }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}"></app-route><app-route route="{{thirdRoute}}" pattern="/:page" data="{{subRouteData}}" tail="{{tail}}"></app-route><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><template is="dom-repeat" items="[[firstclick]]" as="item"><iron-ajax auto="" url="{{computeSecondUrl(item.id)}}" handle-as="json" on-response="processSecondClick"></iron-ajax></template><iron-ajax auto="" id="third" url="{{thirdurl}}" handle-as="json" last-response="{{curclick}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page selected-color="{{selectedColor}}" tracking="{{tracking}}" cards="[[scrollcards]]"></scroll-page><swipe-page title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[firstclick]]"></highlight-menu></app-drawer-layout><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3666,4 +3695,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-bef0da1185.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-f5f673723d.js"></script></body></html>
