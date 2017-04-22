@@ -60,6 +60,15 @@ class Category_model extends CI_Model{
     	return array();
     }
     
+    public function getCategoryByNormalizedName($name){
+    	$this->db->where('normalized_name', $name);
+    	$query = $this->db->get('listener_categories');
+    	if ($query->num_rows() > 0) {
+    		return $query->result();
+    	}
+    	return array();
+    }
+    
     public function getAssocCategoryDetails($queid){
     	$this->db->where('id', $queid);
     	$categories = array();
