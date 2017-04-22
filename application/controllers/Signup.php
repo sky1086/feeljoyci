@@ -45,7 +45,9 @@ class Signup extends CI_Controller
 	        		$data['step'] = '1';
 	        	}
 	        	
-	            $user['password']       = md5($this->security->xss_clean($this->input->post('password')));
+	            //$user['password']       = md5($this->security->xss_clean($this->input->post('password')));
+	        	$password = $this->security->xss_clean($this->input->post('password'));
+	        	$user['password'] = password_hash($password, PASSWORD_DEFAULT);
 	            $user['user_type']	= 'User';
 	            $user['contact_name'] = 'Anonymous';
 	            

@@ -1646,7 +1646,8 @@ fjLayout_Hammer.on('tap', function (ev) {
   if(fjPasswordLogin.contains(ev.target)) {
     if(isLogin) {
       loginEmail = email.value;
-      loginPassword = md5(password.value);
+      //loginPassword = md5(password.value);
+      loginPassword = password.value;
       document.forms.login.submit();
     } else {
       signupEmail = email.value;

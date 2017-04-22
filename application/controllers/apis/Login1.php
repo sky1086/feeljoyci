@@ -28,7 +28,7 @@ class Login extends CI_Controller{
 			echo json_encode($response);exit;
 		}
 		// Validate the user can login
-		$password = md5($password);
+		//$password = md5($password);
 		$result = $this->login_model->validate($username, $password);
 		if(! $result){
 			// If user did not validate, then show them login page again

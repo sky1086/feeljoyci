@@ -69,7 +69,7 @@ $attributes = 'name="login" class="col s12" onsubmit="return processInput();" au
         	document.getElementById('password').style.border = '1px solid red'; 
         	return false;
         }else{
-        	if(document.getElementById('password').value != '')document.getElementById('password').value = hex_md5(document.getElementById('password').value);
+        	if(document.getElementById('password').value != '')document.getElementById('password').value = document.getElementById('password').value;
         	document.forms.login.submit();
         }
     }

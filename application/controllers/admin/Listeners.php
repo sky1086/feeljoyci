@@ -47,7 +47,7 @@ class Listeners extends CI_Controller{
    				if(!$user['password']){
    					unset($user['password']);
    				}else{
-   					$user['password'] = md5($user['password']);
+   					//$user['password'] = md5($user['password']);
    				}
    				
    
@@ -99,7 +99,7 @@ class Listeners extends CI_Controller{
 	   				if(!$user['password']){
 	   					unset($user['password']);
 	   				}else{
-   						$user['password'] = md5($user['password']);
+   						//$user['password'] = md5($user['password']);
    					}
 	   
 	   				if(empty($data['errmsg'])){

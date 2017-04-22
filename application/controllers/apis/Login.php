@@ -63,7 +63,7 @@ class Login extends CI_Controller{
 			$this->showMsgAndRedirect($cur_page, $response['message'], $hashPosition);
 		}
 		// Validate the user can login
-		$password = md5($password);
+		//$password = md5($password);
 		$result = $this->login_model->validate($username, $password);
 		if(! $result){
 			// If user did not validate, then show them login page again

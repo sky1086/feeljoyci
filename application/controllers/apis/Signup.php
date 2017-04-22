@@ -49,7 +49,7 @@ if (!defined('BASEPATH'))
 				echo json_encode($data);
 				exit;
 			}
-			$user['password'] = md5($password);
+			$user['password'] = password_hash($password, PASSWORD_DEFAULT);
 			$user['user_type'] = 'User';
 			$user['contact_name']	= 'Anonymous';
 			

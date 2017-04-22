@@ -38,7 +38,7 @@ $attributes = 'name="login" onsubmit="return processInput();" autocomplete="off"
         }
         else
         {
-        	if(document.getElementById('password').value != '')document.getElementById('password').value = hex_md5(document.getElementById('password').value);
+        	if(document.getElementById('password').value != '')document.getElementById('password').value = document.getElementById('password').value;
         	return true;
         }
     }
