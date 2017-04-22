@@ -7,7 +7,7 @@ class Category extends CI_Controller{
 		$this->load->model('authentication');
     	$this->authentication->isLoggedIn(array(ACCOUNT_ADMIN));  
 		$this->load->model('admin/category_model');
-		$this->load->library(array('form_validation'));
+		$this->load->library(array('form_validation', 'common'));
 	    }
 
     public function index(){
@@ -35,6 +35,7 @@ class Category extends CI_Controller{
     	if ($this->form_validation->run() == TRUE) {
     		$cat['parentid']  		= $this->security->xss_clean($this->input->post('themetype'));
     		$cat['name']       = $this->security->xss_clean($this->input->post('category'));
+    		$cat['normalized_name']   = $this->common->getNormalizedName($cat['name']);
     		$cat['status']	= 1;
     		$cat['thirdclick']       = $this->security->xss_clean($this->input->post('thirdclick'));
     		 
@@ -65,6 +66,7 @@ class Category extends CI_Controller{
 	    	if ($this->form_validation->run() == TRUE) {
 	    		$cat['parentid']  		= $this->security->xss_clean($this->input->post('themetype'));
 	    		$cat['name']       = $this->security->xss_clean($this->input->post('category'));
+	    		$cat['normalized_name']   = $this->common->getNormalizedName($cat['name']);
 	    		$cat['priority']       = $this->security->xss_clean($this->input->post('priority'));
 	    		$cat['status']	= $this->security->xss_clean($this->input->post('status'));
 	    		$cat['thirdclick']       = $this->security->xss_clean($this->input->post('thirdclick'));
