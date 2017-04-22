@@ -30,18 +30,21 @@ if (!defined('BASEPATH'))
 			$loginData = $this->authentication->checkLogin(array(ACCOUNT_LISTENER, ACCOUNT_USER));
 			if(!$loginData){
 				$loginData = ['error'=> true, 'login'=>'required'];
-			}
-			echo json_encode($loginData);
-			exit;
+				echo json_encode($loginData);
+				exit;
+			}			
 		}
 
 		public function index()
 		{
 			$json = '';
 			if(isset($_POST['rq'])):
-			$myid = isset($_POST['myid'])?(int)$_POST['myid']:0;
+			//$myid = isset($_POST['myid'])?(int)$_POST['myid']:0;
+			$myid = $this->session->userdata('userid');
 			if(!$myid){
-				$myid = $this->session->userdata('userid');
+				$notLogin = ['error'=> true, 'login'=>'required'];
+				echo json_encode($notLogin);
+				exit;
 			}
 			
 			if (!isset($_POST['fid'])) {
@@ -184,10 +187,11 @@ if (!defined('BASEPATH'))
 		
 		public function like(){
 			$json = '';
-			$myid = isset($_POST['myid'])?(int)$_POST['myid']:0;
+			/*$myid = isset($_POST['myid'])?(int)$_POST['myid']:0;
 			if(!$myid){
 				$myid = $this->session->userdata('userid');
-			}
+			}*/
+			$myid = $this->session->userdata('userid');
 				
 			if (!isset($_POST['fid'])) {
 				$fid = 0;
@@ -235,7 +239,8 @@ if (!defined('BASEPATH'))
 		
 		public function recentLikedMsg($myid, $fid){
 			$json = '';
-			$myid = (int)$myid;
+			//$myid = (int)$myid;
+			$myid = $this->session->userdata('userid');
 			$fid = (int)$fid;
 			if(!$fid || !$myid){
 				$json = array('error' => true, 'msg'=> 'Invalid parameters');
