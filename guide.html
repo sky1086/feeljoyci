@@ -2471,6 +2471,8 @@ div {
     background-color: var(--paper-light-green-300); }
   div.white {
     background-color: #fff;
+    font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
     color: var(--paper-blue-grey-500); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
         display: inline-block;
         overflow: hidden;
@@ -3090,11 +3092,10 @@ paper-card {
       -ms-user-select: none;
           user-select: none;
   position: absolute;
-  left: calc(50% - 40vw);
-  top: calc(50% - 35vh);
-  width: 80vw;
-  height: 70vh;
-  max-width: 560px;
+  left: calc(50% - 47vw);
+  top: 0;
+  bottom: 40px;
+  width: 94vw;
   cursor: move;
   cursor: -webkit-grab;
   font-size: 26px;
@@ -3676,9 +3677,6 @@ paper-progress.green {
 app-header {
   background-color: var(--paper-blue-grey-500); }
 
-.header-center {
-  padding-left: 48px; }
-
 app-toolbar .logo {
   width: 72px;
   height: 72px;
@@ -3693,7 +3691,7 @@ neon-animated-pages {
   @apply (--layout-fit); }
 
 .elivate2 {
-  z-index: 2; }</style><app-location id="location" route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}" active="{{isFirstClick}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}" active="{{isSecondClick}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}" active="{{isThirdClick}}"></app-route><iron-ajax auto="" id="routeRequest" url="{{routeurl}}" handle-as="json" last-response="{{routeinfo}}"></iron-ajax><iron-ajax id="routeDataRequest" handle-as="json" last-response="{{routedatainfo}}"></iron-ajax><iron-ajax id="titleRequest" handle-as="json" last-response="{{titleinfo}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page class="page" animation-change="[[pageAnimations.0]]" force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page class="page" animation-change="[[pageAnimations.1]]" force-side-menu="{{forceSideMenu}}" side-menu="{{sideMenu}}" route-data="{{secondRoute}}" tracking="{{tracking}}" cards="[[scrollcards]]" white-card=""></scroll-page><swipe-page class="page" is-rendered="{{isPageReady.2}}" full-path="[[fullPath]]" animation-change="[[pageAnimations.2]]" title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[routeinfo]]"></highlight-menu></app-drawer-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[diversionClass]]" hidethree="[[hidethree]]" style$="[[diversionStyle]]"></diversion-container><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  z-index: 2; }</style><app-location id="location" route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}" active="{{isFirstClick}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}" active="{{isSecondClick}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}" active="{{isThirdClick}}"></app-route><iron-ajax auto="" id="routeRequest" url="{{routeurl}}" handle-as="json" last-response="{{routeinfo}}"></iron-ajax><iron-ajax id="routeDataRequest" handle-as="json" last-response="{{routedatainfo}}"></iron-ajax><iron-ajax id="titleRequest" handle-as="json" last-response="{{titleinfo}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><paper-icon-button id="backButton" icon="arrow-back"></paper-icon-button><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page id="scrollpage" class="page" animation-change="[[pageAnimations.0]]" force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page class="page" animation-change="[[pageAnimations.1]]" force-side-menu="{{forceSideMenu}}" side-menu="{{sideMenu}}" route-data="{{secondRoute}}" tracking="{{tracking}}" cards="[[scrollcards]]" white-card=""></scroll-page><swipe-page class="page" is-rendered="{{isPageReady.2}}" full-path="[[fullPath]]" animation-change="[[pageAnimations.2]]" title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[routeinfo]]"></highlight-menu></app-drawer-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[diversionClass]]" hidethree="[[hidethree]]" style$="[[diversionStyle]]"></diversion-container><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3703,4 +3701,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-5fd4951495.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-1b391fc549.js"></script></body></html>
