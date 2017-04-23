@@ -2468,7 +2468,10 @@ div {
   div.darkgreen {
     background-color: var(--paper-green-300); }
   div.green {
-    background-color: var(--paper-light-green-300); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
+    background-color: var(--paper-light-green-300); }
+  div.white {
+    background-color: #fff;
+    color: var(--paper-blue-grey-500); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
         display: inline-block;
         overflow: hidden;
         position: relative;
@@ -3036,7 +3039,12 @@ app-toolbar {
   width: 100%; }
 
 .title {
-  padding-left: 12px; }</style><div id="overlay" class="overlay"></div><app-toolbar id="toolbar"><paper-icon-button id="back" icon="arrow-back"></paper-icon-button><div class="title">lola phone</div></app-toolbar></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">/**
+  padding-left: 12px; }
+  .title div {
+    display: inline-block;
+    vertical-align: middle; }
+    .title div:last-of-type iron-icon {
+      display: none; }</style><div id="overlay" class="overlay"></div><app-toolbar id="toolbar"><paper-icon-button id="back" icon="arrow-back"></paper-icon-button><div class="title"><template is="dom-repeat" items="[[fullPath]]" as="item"><div>[[item]]<iron-icon icon="chevron-right"></iron-icon></div></template></div></app-toolbar></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -3093,7 +3101,7 @@ paper-card {
   padding: 24px 16px;
   line-height: 40px;
   color: #000;
-  --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; border-radius: 2px; } }
+  --paper-card: { font-family: "quicksand", Helvetica, Arial, Sans-Serif; border-radius: 4px; } }
   paper-card.dummy {
     visibility: hidden; }
   paper-card:not(.dummy) {
@@ -3113,7 +3121,7 @@ paper-icon-button {
   --paper-icon-button-ink-color: #fff;
   --paper-icon-button:  { color: #fff; } ; }
   paper-icon-button:last-of-type {
-    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" route="{{route}}" query-params="{{queryParams}}"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class="inner-container"><template is="dom-repeat" items="[[cards]]" as="item"><template is="dom-if" if="[[computeIfLast(index)]]"><paper-card heading="[[title]]">[[item]]</paper-card></template><template is="dom-if" if="[[!computeIfLast(index)]]"><paper-card class$="[[computeIfClass(index)]]">[[item]]</paper-card></template></template></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="{{queryParams}}"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
+    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" full-path="[[fullPath]]" route="{{route}}" query-params="[[queryParams]]"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class="inner-container"></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="[[queryParams]]"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
         display: block;
         margin: 24px 40px;
 
@@ -3685,7 +3693,7 @@ neon-animated-pages {
   @apply (--layout-fit); }
 
 .elivate2 {
-  z-index: 2; }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}"></app-route><app-route route="{{thirdRoute}}" pattern="/:page" data="{{subRouteData}}" tail="{{tail}}"></app-route><iron-ajax auto="" id="first" url="{{firsturl}}" handle-as="json" last-response="{{firstclick}}"></iron-ajax><template is="dom-repeat" items="[[firstclick]]" as="item"><iron-ajax auto="" url="{{computeSecondUrl(item.id)}}" handle-as="json" on-response="processSecondClick"></iron-ajax></template><iron-ajax auto="" id="third" url="{{thirdurl}}" handle-as="json" last-response="{{curclick}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page selected-color="{{selectedColor}}" tracking="{{tracking}}" cards="[[scrollcards]]"></scroll-page><swipe-page title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[firstclick]]"></highlight-menu></app-drawer-layout><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  z-index: 2; }</style><app-location id="location" route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}" active="{{isFirstClick}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}" active="{{isSecondClick}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}" active="{{isThirdClick}}"></app-route><iron-ajax auto="" id="routeRequest" url="{{routeurl}}" handle-as="json" last-response="{{routeinfo}}"></iron-ajax><iron-ajax id="routeDataRequest" handle-as="json" last-response="{{routedatainfo}}"></iron-ajax><iron-ajax id="titleRequest" handle-as="json" last-response="{{titleinfo}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page class="page" animation-change="[[pageAnimations.0]]" force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page class="page" animation-change="[[pageAnimations.1]]" force-side-menu="{{forceSideMenu}}" side-menu="{{sideMenu}}" route-data="{{secondRoute}}" tracking="{{tracking}}" cards="[[scrollcards]]" white-card=""></scroll-page><swipe-page class="page" is-rendered="{{isPageReady.2}}" full-path="[[fullPath]]" animation-change="[[pageAnimations.2]]" title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[routeinfo]]"></highlight-menu></app-drawer-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[diversionClass]]" hidethree="[[hidethree]]" style$="[[diversionStyle]]"></diversion-container><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3695,4 +3703,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-f5f673723d.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-5fd4951495.js"></script></body></html>

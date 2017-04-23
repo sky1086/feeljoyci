@@ -78,6 +78,7 @@ class Guide extends CI_Controller {
 			if ($categoryData->thirdclick == 0) {
 				// this has no thirdclik, show answer page here
 				$result [0] ['answerPage'] = 1;
+				$result [0] ['question'] = $questions [0]->question;
 				$result [0] ['answer'] = $questions [0]->answer;
 				return $result;
 			}
@@ -105,6 +106,7 @@ class Guide extends CI_Controller {
 			
 			// this has no thirdclik, show answer page here
 			$result [0] ['answerPage'] = 1;
+			$result [0] ['question'] = $questions [0]->question;
 			$result [0] ['answer'] = $questions [0]->answer;
 			return $result;
 		}
