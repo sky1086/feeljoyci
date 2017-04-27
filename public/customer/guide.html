@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
     };
-    
+
     --layout-no-wrap: {
       -ms-flex-wrap: nowrap;
       -webkit-flex-wrap: nowrap;
@@ -1355,6 +1355,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--shadow-elevation-16dp);
       }</style></template></dom-module><dom-module id="paper-material" assetpath="js/paper-material/"><template><style include="paper-material-shared-styles"></style><style>:host([animated]) {
         @apply(--shadow-transition);
+      }
+      :host {
+        @apply(--paper-material);
       }</style><content></content></template></dom-module><dom-module id="paper-button" assetpath="js/paper-button/"><template strip-whitespace=""><style include="paper-material-shared-styles">:host {
         @apply(--layout-inline);
         @apply(--layout-center-center);
@@ -1414,7 +1417,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: inline-block;
         position: fixed;
         clip: rect(0px,0px,0px,0px);
-      }</style><div aria-live$="[[mode]]">[[_text]]</div></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700"><style is="custom-style">:root {
+      }</style><div aria-live$="[[mode]]">[[_text]]</div></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous"><style is="custom-style">:root {
 
     /* Shared Styles */
     --paper-font-common-base: {
@@ -1752,6 +1755,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--paper-input-container-input);
       }
 
+      .input-content.focused ::content input,
+      .input-content.focused ::content textarea,
+      .input-content.focused ::content iron-autogrow-textarea,
+      .input-content.focused ::content .paper-input-input {
+        @apply(--paper-input-container-input-focus);
+      }
+
+      .input-content.is-invalid ::content input,
+      .input-content.is-invalid ::content textarea,
+      .input-content.is-invalid ::content iron-autogrow-textarea,
+      .input-content.is-invalid ::content .paper-input-input {
+        @apply(--paper-input-container-input-invalid);
+      }
+
       .input-content ::content input::-webkit-outer-spin-button,
       .input-content ::content input::-webkit-inner-spin-button {
         @apply(--paper-input-container-input-webkit-spinner);
@@ -1817,6 +1834,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: none !important;
       }
 
+      input::-webkit-outer-spin-button,                                                                                                     
+      input::-webkit-inner-spin-button {                                                                                                    
+        @apply(--paper-input-container-input-webkit-spinner);                                                                                                                                                                                      
+      }
+      
+      input::-webkit-clear-button {
+        @apply(--paper-input-container-input-webkit-clear);  
+      }
+
       input::-webkit-input-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
       }
@@ -1827,6 +1853,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       input::-moz-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-ms-clear {
+        @apply(--paper-input-container-ms-clear);
       }
 
       input:-ms-input-placeholder {
@@ -2434,46 +2464,111 @@ paper-toast {
 /* ==========  Color Palettes  ========== */
 /* colors.scss */
 :host {
-  @apply (--layout-vertical);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  margin-top: 64px; }
-
-div {
-  @apply (--layout);
-  @apply (--layout-center-center);
+  margin-top: 64px;
   font-family: "quicksand", Helvetica, Arial, Sans-Serif;
+  overflow: hidden; }
+
+.container {
+  @apply (--layout-fit);
+  @apply (--layout-vertical);
+  overflow: hidden; }
+  .container div {
+    @apply (--layout);
+    @apply (--layout-center-center);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -ms-flex: 1 0 25%;
+    -webkit-box-flex: 1;
+            flex: 1 0;
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    height: 25%;
+    min-height: 90px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    box-sizing: border-box; }
+    .container div.cyan {
+      background-color: var(--paper-cyan-300); }
+    .container div.darkcyan {
+      background-color: var(--paper-teal-300); }
+    .container div.darkgreen {
+      background-color: var(--paper-green-300); }
+    .container div.green {
+      background-color: var(--paper-light-green-300); }
+    .container div.white {
+      background-color: #fff;
+      font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      color: var(--paper-blue-grey-500); }</style></template></dom-module><dom-module id="scroll-cards" assetpath="elements/components/"><template><style is="custom-style">/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* ==========  Color Palettes  ========== */
+/* colors.scss */
+:host {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -ms-flex: 1 0 25%;
-  -webkit-box-flex: 1;
-          flex: 1 0;
-  -ms-flex-preferred-size: 25%;
-      flex-basis: 25%;
-  height: 25%;
-  min-height: 90px;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 16px;
-  cursor: pointer;
-  box-sizing: border-box; }
-  div.cyan {
-    background-color: var(--paper-cyan-300); }
-  div.darkcyan {
-    background-color: var(--paper-teal-300); }
-  div.darkgreen {
-    background-color: var(--paper-green-300); }
-  div.green {
-    background-color: var(--paper-light-green-300); }
-  div.white {
-    background-color: #fff;
-    font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-    color: var(--paper-blue-grey-500); }</style><template is="dom-repeat" items="[[cards]]" as="item"><div class$="{{getColorClass(index)}}" on-tap="handleTap">[[item.name]]</div></template></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
+  margin-top: 64px;
+  font-family: "quicksand", Helvetica, Arial, Sans-Serif;
+  overflow: hidden; }
+
+.container {
+  @apply (--layout-fit);
+  @apply (--layout-vertical);
+  overflow: hidden; }
+  .container div {
+    @apply (--layout);
+    @apply (--layout-center-center);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -ms-flex: 1 0 25%;
+    -webkit-box-flex: 1;
+            flex: 1 0;
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    height: 25%;
+    min-height: 90px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    box-sizing: border-box; }
+    .container div.cyan {
+      background-color: var(--paper-cyan-300); }
+    .container div.darkcyan {
+      background-color: var(--paper-teal-300); }
+    .container div.darkgreen {
+      background-color: var(--paper-green-300); }
+    .container div.green {
+      background-color: var(--paper-light-green-300); }
+    .container div.white {
+      background-color: #fff;
+      font-family: "quicksand-bold", Helvetica, Arial, Sans-Serif;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      color: var(--paper-blue-grey-500); }</style><div id="container" class="container"></div></template></dom-module><dom-module id="iron-image" assetpath="js/iron-image/"><template><style>:host {
         display: inline-block;
         overflow: hidden;
         position: relative;
@@ -3038,13 +3133,20 @@ app-toolbar {
   right: 0;
   color: #fff;
   background-color: var(--paper-blue-grey-500);
-  width: 100%; }
+  width: 100%;
+  height: auto; }
+
+paper-icon-button {
+  -ms-flex-negative: 0;
+      flex-shrink: 0; }
 
 .title {
   padding-left: 12px; }
   .title div {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    text-transform: capitalize;
+    padding: 8px 0; }
     .title div:last-of-type iron-icon {
       display: none; }</style><div id="overlay" class="overlay"></div><app-toolbar id="toolbar"><paper-icon-button id="back" icon="arrow-back"></paper-icon-button><div class="title"><template is="dom-repeat" items="[[fullPath]]" as="item"><div>[[item]]<iron-icon icon="chevron-right"></iron-icon></div></template></div></app-toolbar></template></dom-module><dom-module id="swipe-page" assetpath="elements/components/"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
@@ -3085,6 +3187,18 @@ app-toolbar {
 .inner-container {
   @apply (--layout-fit);
   top: 64px; }
+  .inner-container.cyan paper-card {
+    --paper-card-header-color: var(--paper-cyan-300);
+    --paper-card-header-text:  { padding: 0; font-size: 18px; } ; }
+  .inner-container.darkcyan paper-card {
+    --paper-card-header-color: var(--paper-teal-300);
+    --paper-card-header-text:  { padding: 0; font-size: 18px; } ; }
+  .inner-container.darkgreen paper-card {
+    --paper-card-header-color: var(--paper-green-300);
+    --paper-card-header-text:  { padding: 0; font-size: 18px; } ; }
+  .inner-container.green paper-card {
+    --paper-card-header-color: var(--paper-light-green-300);
+    --paper-card-header-text:  { padding: 0; font-size: 18px; } ; }
 
 paper-card {
   -webkit-user-select: none;
@@ -3122,7 +3236,7 @@ paper-icon-button {
   --paper-icon-button-ink-color: #fff;
   --paper-icon-button:  { color: #fff; } ; }
   paper-icon-button:last-of-type {
-    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" full-path="[[fullPath]]" route="{{route}}" query-params="[[queryParams]]"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class="inner-container"></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="[[queryParams]]"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
+    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" full-path="[[fullPath]]" route="{{route}}" query-params="[[queryParams]]"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class$="inner-container [[selectedColor]]"></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="[[queryParams]]"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
         display: block;
         margin: 24px 40px;
 
@@ -3691,7 +3805,7 @@ neon-animated-pages {
   @apply (--layout-fit); }
 
 .elivate2 {
-  z-index: 2; }</style><app-location id="location" route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}" active="{{isFirstClick}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}" active="{{isSecondClick}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}" active="{{isThirdClick}}"></app-route><iron-ajax auto="" id="routeRequest" url="{{routeurl}}" handle-as="json" last-response="{{routeinfo}}"></iron-ajax><iron-ajax id="routeDataRequest" handle-as="json" last-response="{{routedatainfo}}"></iron-ajax><iron-ajax id="titleRequest" handle-as="json" last-response="{{titleinfo}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><paper-icon-button id="backButton" icon="arrow-back"></paper-icon-button><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[tracking]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-page id="scrollpage" class="page" animation-change="[[pageAnimations.0]]" force-side-menu="{{forceSideMenu}}" selected-color="{{selectedColor}}" route-data="{{firstRoute}}" side-menu="{{sideMenu}}" tracking="{{tracking}}" cards="[[scroll]]"></scroll-page><scroll-page class="page" animation-change="[[pageAnimations.1]]" force-side-menu="{{forceSideMenu}}" side-menu="{{sideMenu}}" route-data="{{secondRoute}}" tracking="{{tracking}}" cards="[[scrollcards]]" white-card=""></scroll-page><swipe-page class="page" is-rendered="{{isPageReady.2}}" full-path="[[fullPath]]" animation-change="[[pageAnimations.2]]" title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" selected="{{menuSelected}}" force-side-menu="{{forceSideMenu}}" route-data="{{routeData}}" items="[[routeinfo]]"></highlight-menu></app-drawer-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[diversionClass]]" hidethree="[[hidethree]]" style$="[[diversionStyle]]"></diversion-container><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  z-index: 2; }</style><app-location id="location" route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><app-route route="{{route}}" pattern="/:firstclick" data="{{routeData}}" tail="{{firstRoute}}" active="{{isFirstClick}}"></app-route><app-route route="{{firstRoute}}" pattern="/:secondclick" data="{{secondRouteData}}" tail="{{secondRoute}}" active="{{isSecondClick}}"></app-route><app-route route="{{secondRoute}}" pattern="/:thirdclick" data="{{thirdRouteData}}" tail="{{thirdRoute}}" active="{{isThirdClick}}"></app-route><iron-ajax auto="" id="routeRequest" url="{{routeurl}}" handle-as="json" last-response="{{routeinfo}}"></iron-ajax><iron-ajax id="routeDataRequest" handle-as="json" last-response="{{routedatainfo}}"></iron-ajax><iron-ajax id="titleRequest" handle-as="json" last-response="{{titleinfo}}"></iron-ajax><app-drawer-layout force-narrow="" fullbleed=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout id="headerLayout"><app-header><app-toolbar><paper-icon-button id="backButton" icon="arrow-back"></paper-icon-button><img id="logo" class="logo" src="svg/feeljoy.svg" alt="logo"><div id="title" class="header-center" main-title="">[[title]]</div><paper-button class="menu-button" id="menu" data-activates="fj-main-menu" data-icon-name="hamburger"></paper-button></app-toolbar></app-header></app-header-layout><neon-animated-pages class$="[[trackingClass]]" id="pages" selected="[[selected]]" fullbleed=""><scroll-cards class="page" animation-change="[[pageAnimations.0]]" items="[[scroll]]" tracking="{{tracking}}" opened="{{sideMenu}}" toggle-animated="{{sideMenuAnimated}}" selected="{{scrollSelected}}" attr-display="name" attr-selection="url" has-menu=""></scroll-cards><scroll-cards class="page" animation-change="[[pageAnimations.1]]" items="[[scrollcards]]" selected="{{scrollCardsSelected}}" item-class="white" attr-display="name" attr-selection="url" dummy-items=""></scroll-cards><swipe-page class="page" is-rendered="{{isPageReady.2}}" full-path="[[fullPath]]" animation-change="[[pageAnimations.2]]" title="[[swipetitle]]" route="{{route}}" selected="[[selected]]" query-params="{{queryParams}}" selected-color="[[selectedColor]]" cards="[[cards]]"></swipe-page></neon-animated-pages><highlight-menu opened="{{sideMenu}}" route="{{route}}" toggle-animated="{{sideMenuAnimated}}" scroll="{{scroll}}" selected="{{menuSelected}}" items="[[routeinfo]]"></highlight-menu></app-drawer-layout><diversion-container opened="{{opened}}" isanimated="{{isanimated}}" themeclass="[[diversionClass]]" hidethree="[[hidethree]]"></diversion-container><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3701,4 +3815,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-1b391fc549.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-869a92a1ff.js"></script></body></html>

@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
     };
-    
+
     --layout-no-wrap: {
       -ms-flex-wrap: nowrap;
       -webkit-flex-wrap: nowrap;
@@ -1697,6 +1697,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--shadow-elevation-16dp);
       }</style></template></dom-module><dom-module id="paper-material" assetpath="js/paper-material/"><template><style include="paper-material-shared-styles"></style><style>:host([animated]) {
         @apply(--shadow-transition);
+      }
+      :host {
+        @apply(--paper-material);
       }</style><content></content></template></dom-module><dom-module id="paper-button" assetpath="js/paper-button/"><template strip-whitespace=""><style include="paper-material-shared-styles">:host {
         @apply(--layout-inline);
         @apply(--layout-center-center);
@@ -1756,7 +1759,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: inline-block;
         position: fixed;
         clip: rect(0px,0px,0px,0px);
-      }</style><div aria-live$="[[mode]]">[[_text]]</div></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700"><style is="custom-style">:root {
+      }</style><div aria-live$="[[mode]]">[[_text]]</div></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous"><style is="custom-style">:root {
 
     /* Shared Styles */
     --paper-font-common-base: {
@@ -2094,6 +2097,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--paper-input-container-input);
       }
 
+      .input-content.focused ::content input,
+      .input-content.focused ::content textarea,
+      .input-content.focused ::content iron-autogrow-textarea,
+      .input-content.focused ::content .paper-input-input {
+        @apply(--paper-input-container-input-focus);
+      }
+
+      .input-content.is-invalid ::content input,
+      .input-content.is-invalid ::content textarea,
+      .input-content.is-invalid ::content iron-autogrow-textarea,
+      .input-content.is-invalid ::content .paper-input-input {
+        @apply(--paper-input-container-input-invalid);
+      }
+
       .input-content ::content input::-webkit-outer-spin-button,
       .input-content ::content input::-webkit-inner-spin-button {
         @apply(--paper-input-container-input-webkit-spinner);
@@ -2159,6 +2176,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: none !important;
       }
 
+      input::-webkit-outer-spin-button,                                                                                                     
+      input::-webkit-inner-spin-button {                                                                                                    
+        @apply(--paper-input-container-input-webkit-spinner);                                                                                                                                                                                      
+      }
+      
+      input::-webkit-clear-button {
+        @apply(--paper-input-container-input-webkit-clear);  
+      }
+
       input::-webkit-input-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
       }
@@ -2169,6 +2195,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       input::-moz-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-ms-clear {
+        @apply(--paper-input-container-ms-clear);
       }
 
       input:-ms-input-placeholder {
@@ -3284,4 +3314,4 @@ paper-fab {
       }
       body.green {
         background-color: rgb(174,213,129);
-      }</style></div><customer-profile></customer-profile><script src="js/profile-32146c6450.js"></script></body></html>
+      }</style></div><customer-profile></customer-profile><script src="js/profile-2cb46093ca.js"></script></body></html>

@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
     };
-    
+
     --layout-no-wrap: {
       -ms-flex-wrap: nowrap;
       -webkit-flex-wrap: nowrap;
@@ -1572,7 +1572,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         opacity: 1;
         -webkit-transform: translateY(0px);
         transform: translateY(0px);
-      }</style><span id="label">{{text}}</span><content></content></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700"><style is="custom-style">:root {
+      }</style><span id="label">{{text}}</span><content></content></template></dom-module><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous"><style is="custom-style">:root {
 
     /* Shared Styles */
     --paper-font-common-base: {
@@ -1910,6 +1910,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--paper-input-container-input);
       }
 
+      .input-content.focused ::content input,
+      .input-content.focused ::content textarea,
+      .input-content.focused ::content iron-autogrow-textarea,
+      .input-content.focused ::content .paper-input-input {
+        @apply(--paper-input-container-input-focus);
+      }
+
+      .input-content.is-invalid ::content input,
+      .input-content.is-invalid ::content textarea,
+      .input-content.is-invalid ::content iron-autogrow-textarea,
+      .input-content.is-invalid ::content .paper-input-input {
+        @apply(--paper-input-container-input-invalid);
+      }
+
       .input-content ::content input::-webkit-outer-spin-button,
       .input-content ::content input::-webkit-inner-spin-button {
         @apply(--paper-input-container-input-webkit-spinner);
@@ -1975,6 +1989,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: none !important;
       }
 
+      input::-webkit-outer-spin-button,                                                                                                     
+      input::-webkit-inner-spin-button {                                                                                                    
+        @apply(--paper-input-container-input-webkit-spinner);                                                                                                                                                                                      
+      }
+      
+      input::-webkit-clear-button {
+        @apply(--paper-input-container-input-webkit-clear);  
+      }
+
       input::-webkit-input-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
       }
@@ -1985,6 +2008,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       input::-moz-placeholder {
         color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-ms-clear {
+        @apply(--paper-input-container-ms-clear);
       }
 
       input:-ms-input-placeholder {
@@ -2428,4 +2455,4 @@ paper-button {
         background-color: #00bcd4;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-welcome></buddy-welcome><script src="js/welcome-f9a32a7bc2.js"></script></body></html>
+      }</style></div><buddy-welcome></buddy-welcome><script src="js/welcome-bb936e06bc.js"></script></body></html>
