@@ -3134,6 +3134,7 @@ app-toolbar {
   color: #fff;
   background-color: var(--paper-blue-grey-500);
   width: 100%;
+  min-height: 64px;
   height: auto; }
 
 paper-icon-button {
@@ -3236,7 +3237,18 @@ paper-icon-button {
   --paper-icon-button-ink-color: #fff;
   --paper-icon-button:  { color: #fff; } ; }
   paper-icon-button:last-of-type {
-    margin-right: 0; }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" full-path="[[fullPath]]" route="{{route}}" query-params="[[queryParams]]"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class$="inner-container [[selectedColor]]"></div><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="[[queryParams]]"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
+    margin-right: 0; }
+
+paper-fab {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  background: var(--paper-blue-grey-500);
+  color: #fff;
+  font-size: 32px;
+  --paper-fab-iron-icon: { width: 32px; height: 32px; min-height: 32px; min-width: 32px; } }
+  paper-fab:focus {
+    background: var(--paper-blue-grey-400); }</style><div id="container" class$="container [[selectedColor]]"></div><app-toolbar id="toolbar"><paper-icon-button id="home" icon="home"></paper-icon-button><paper-progress value="[[progress]]"></paper-progress><paper-icon-button id="info" icon="info-outline"></paper-icon-button><paper-icon-button id="share" icon="social:share"></paper-icon-button></app-toolbar><path-breadcrumbs opened="{{opened}}" full-path="[[fullPath]]" route="{{route}}" query-params="[[queryParams]]"></path-breadcrumbs><paper-card id="dummy" class="dummy">dummy</paper-card><div id="innerContainer" class$="inner-container [[selectedColor]]"></div><paper-fab icon="chevron-left" id="prevButton"></paper-fab><share-api opened="{{share}}" text="[[title]]" url="[[url]]" route="{{route}}" query-params="[[queryParams]]"></share-api></template></dom-module><dom-module id="paper-dialog-shared-styles" assetpath="js/paper-dialog-behavior/"><template><style>:host {
         display: block;
         margin: 24px 40px;
 
@@ -3815,4 +3827,4 @@ neon-animated-pages {
         background-color: #607d8b;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><customer-guide></customer-guide><script src="js/guide-869a92a1ff.js"></script></body></html>
+      }</style></div><customer-guide></customer-guide><script src="js/guide-46c9be8f08.js"></script></body></html>
