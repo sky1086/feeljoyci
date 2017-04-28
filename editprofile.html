@@ -2480,7 +2480,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         opacity: 1;
         -webkit-transform: translateY(0px);
         transform: translateY(0px);
-      }</style><span id="label">{{text}}</span><content></content></template></dom-module><dom-module id="paper-fab" assetpath="js/paper-fab/"><template strip-whitespace=""><style include="paper-material-shared-styles">:host {
+      }</style><span id="label">{{text}}</span><content></content></template></dom-module><dom-module id="iron-swipeable-container2" assetpath="js/app-toast/"><template><style>:host {
+        display: block;
+      }</style><content id="content"></content></template></dom-module><iron-iconset-svg name="toast-icons" size="24"><svg><defs><g id="check-circle"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></g><g id="check"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></g><g id="check-box"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></g><g id="info"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></g><g id="info-outline"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"></path></g><g id="warning"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path></g><g id="error"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></g><g id="error-outline"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></g><g id="close"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></g></defs></svg></iron-iconset-svg><dom-module id="app-toast" assetpath="js/app-toast/"><template><style>:host:not([disable-swipe]) iron-swipeable-container2 {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+      }
+      paper-toast {
+        @apply --paper-font-body2;
+        @apply --layout-horizontal;
+        @apply --layout-center;
+        @apply --app-toast;
+      }
+      .content-container {
+        @apply --layout-flex;
+        @apply --layout-vertical;
+      }
+      paper-button {
+        color: var(--accent-color);
+        @apply --app-toast-button;
+      }
+      #mainIcon {
+        margin-right: 4px;
+        @apply --app-toast-main-icon;
+        --iron-icon-stroke-color: var(--app-toast-main-icon-stroke-color);
+      }
+      #cancelIcon {
+        --iron-icon-height: 14px;
+        --iron-icon-width: 14px;
+        margin-left: 2px;
+        padding: 2px;
+        @apply --app-toast-cancel-icon;
+      }
+      /*HACK*/
+      [hidden] {
+        display: none !important;
+      }</style><div id="container"><iron-swipeable-container2 id="swiper" disabled="[[disableSwipe]]" on-iron-swipe="__onSwiped"><paper-toast id="toast" duration="[[duration]]" on-tap="__onTap" on-iron-overlay-closed="__onClosed"><iron-icon id="mainIcon" icon="{{_getIcon(iconset, icon)}}" src="[[src]]" hidden$="{{_hideIcon(icon, src)}}"></iron-icon><div class="content-container"><slot></slot><span>[[text]]</span></div><paper-button id="actionButton" on-tap="_onAction" hidden$="[[!actionText]]">[[actionText]]</paper-button><paper-button id="action2Button" on-tap="_onAction2" hidden$="[[!action2Text]]">[[action2Text]]</paper-button><iron-icon id="cancelIcon" icon="toast-icons:close" on-tap="_cancelTapped" hidden$="[[!showCancel]]"></iron-icon></paper-toast></iron-swipeable-container2></div></template></dom-module><dom-module id="paper-fab" assetpath="js/paper-fab/"><template strip-whitespace=""><style include="paper-material-shared-styles">:host {
         @apply(--layout-vertical);
         @apply(--layout-center-center);
 
@@ -3385,7 +3423,7 @@ paper-radio-button {
 
 .main-content.green paper-radio-button {
   --paper-radio-button-unchecked-color: var(--paper-light-green-300);
-  --paper-radio-button-checked-color: var(--paper-light-green-300); }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><iron-ajax id="ajaxbaba" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" with-credentials=""></iron-ajax><iron-ajax id="aCustomer" url="{{userurl}}" handle-as="json" last-response="{{customerresponse}}" with-credentials=""></iron-ajax><iron-ajax id="aSave" url="{{detailsurl}}" method="POST" handle-as="json" content-type="application/x-www-form-urlencoded" last-response="{{detailsresponse}}" body="[[sendDetails]]" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}" userdata="{{userdata}}" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout><app-header class$="[[themeclass]]" fixed=""><app-toolbar><a class="home-redirect header-center" href="/">FeelJoy</a><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div class$="layout vertical start center-justified top-padded main-content [[themeclass]]"><paper-input id="name" class="self-stretch" label="Display Name" value="{{name}}"></paper-input><paper-input id="age" class="self-stretch" label="Age" type="number" value="{{age}}" minlength="2" maxlength="2" min="10" max="99"></paper-input><paper-radio-group class="layout vertical start top-padded" selected="{{gender}}"><paper-radio-button name="male">Male</paper-radio-button><paper-radio-button name="female">Female</paper-radio-button><paper-radio-button name="nonbinary">Non-Binary</paper-radio-button></paper-radio-group></div><div class="layout horizontal end-justified top-padded"><paper-button class$="save [[themeclass]]" id="save" raised="">Save</paper-button></div></app-header-layout></app-drawer-layout><paper-toast id="updated" text="Your profile has been updated"></paper-toast><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
+  --paper-radio-button-checked-color: var(--paper-light-green-300); }</style><app-location route="{{route}}" query-params="{{queryParams}}" use-hash-as-path=""></app-location><iron-ajax id="ajaxbaba" url="{{baseurl}}" handle-as="json" last-response="{{baseresponse}}" with-credentials=""></iron-ajax><iron-ajax id="aCustomer" url="{{userurl}}" handle-as="json" last-response="{{customerresponse}}" with-credentials=""></iron-ajax><iron-ajax id="aSave" url="{{detailsurl}}" method="POST" handle-as="json" content-type="application/x-www-form-urlencoded" last-response="{{detailsresponse}}" body="[[sendDetails]]" with-credentials=""></iron-ajax><app-drawer-layout fullbleed="" force-narrow=""><app-drawer id="drawer" align="right" class="fj-main-menu" swipe-open=""><menu-element showlistener="[[showlistener]]" authchecked="{{authchecked}}" loggedin="{{loggedin}}" userdata="{{userdata}}" addtohomescreen="{{addtohomescreen}}" themeclass="{{themeclass}}"></menu-element></app-drawer><app-header-layout><app-header class$="[[themeclass]]" fixed=""><app-toolbar><a class="home-redirect header-center" href="/">FeelJoy</a><paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button></app-toolbar></app-header><div class$="layout vertical start center-justified top-padded main-content [[themeclass]]"><paper-input id="name" class="self-stretch" label="Display Name" value="{{name}}"></paper-input><paper-input id="age" class="self-stretch" label="Age" type="number" value="{{age}}" minlength="2" maxlength="2" min="10" max="99"></paper-input><paper-radio-group class="layout vertical start top-padded" selected="{{gender}}"><paper-radio-button name="male">Male</paper-radio-button><paper-radio-button name="female">Female</paper-radio-button><paper-radio-button name="nonbinary">Non-Binary</paper-radio-button></paper-radio-group></div><div class="layout horizontal end-justified top-padded"><paper-button class$="save [[themeclass]]" id="save" raised="">Save</paper-button></div></app-header-layout></app-drawer-layout><app-toast id="updated" text="Your profile has been updated"></app-toast><add-homescreen themeclass="[[themeclass]]" addtohomescreen="{{addtohomescreen}}"></add-homescreen></template></dom-module><style>body,
       html {
         overflow-x: hidden;
         font-family: 'quicksand', Helvetica, Arial, Sans-Serif;
@@ -3395,4 +3433,4 @@ paper-radio-button {
         margin: 0;
         -webkit-font-smoothing: antialiased;
         background-color: #fff;
-      }</style></div><customer-editprofile></customer-editprofile><script src="js/editprofile-06b0fb8898.js"></script></body></html>
+      }</style></div><customer-editprofile></customer-editprofile><script src="js/editprofile-73c66bc279.js"></script></body></html>
