@@ -3856,7 +3856,7 @@ paper-icon-button {
 paper-menu-button {
   padding: 5px; }
   paper-menu-button paper-icon-button {
-    color: var(--paper-grey-800); }</style><template><iron-localstorage name="recentemoji" value="{{recentlyUsedEmojis}}" on-iron-localstorage-load-empty="initRecentEmoji"></iron-localstorage><iron-localstorage name="skintone" value="{{tone}}" on-iron-localstorage-load-empty="initSkintone"></iron-localstorage><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{rawemoji}}" with-credentials=""></iron-ajax><iron-collapse opened="{{opened}}"><paper-tabs class$="[[themeclass]]" selected="{{selected}}" noink=""><paper-tab class$="[[themeclass]]"><iron-icon icon="icons:history"></iron-icon></paper-tab><template is="dom-repeat" items="[[category]]" as="category"><paper-tab class$="[[themeclass]]"><iron-icon src="{{_getCategoryImg(category)}}"></iron-icon></paper-tab></template></paper-tabs><div class="tab-container"><paper-menu-button dynamic-align="" vertical-offset="8"><div class="dropdown-trigger"><div class$="dummycon [[tone]]"></div><paper-ripple></paper-ripple></div><paper-material elevation="1" class="dropdown-content"><iron-selector class="tone-container" attr-for-selected="name" selected="{{tone}}"><div name="tone0"></div><template is="dom-repeat" items="[[modifiers]]" as="modifier"><div name="{{modifier._tag}}" class$="{{modifier._tag}}"></div></template></iron-selector></paper-material></paper-menu-button><paper-input-autocomplete-chips id="searchField" class$="[[themeclass]]" no-label-float="" search-if-empty="" no-chip-image="" allow-select-unknown-token="" selected-objects="{{search}}" token-accept-key-codes="32,188" label="Search emoji"></paper-input-autocomplete-chips><paper-icon-button id="clearSearch" icon="cancel"></paper-icon-button></div><div class="list"><template is="dom-repeat" id="mainList" items="[[currentList]]" initial-count="25" target-framerate="30" as="emoji"><div class$="emoji-container [[themeclass]]" on-tap="setEmojiTap"><iron-image fade="" class="[[emoji._class]]" alt="[[emoji._alt]]" title="[[emoji._title]]" sizing="contain" src="[[emoji._src]]"></iron-image><paper-ripple></paper-ripple></div></template></div></iron-collapse></template></dom-module><dom-module id="buddy-chat" assetpath="./"><template><style is="custom-style">/**
+    color: var(--paper-grey-800); }</style><template><iron-localstorage name="recentemoji" value="{{recentlyUsedEmojis}}" on-iron-localstorage-load-empty="initRecentEmoji"></iron-localstorage><iron-localstorage name="skintone" value="{{tone}}" on-iron-localstorage-load-empty="initSkintone"></iron-localstorage><iron-ajax auto="" id="ajaxbaba" url="{{url}}" handle-as="json" last-response="{{rawemoji}}" with-credentials=""></iron-ajax><iron-collapse opened="{{opened}}"><paper-tabs class$="[[themeclass]]" selected="{{selected}}" noink=""><paper-tab class$="[[themeclass]]"><iron-icon icon="icons:history"></iron-icon></paper-tab><template is="dom-repeat" items="[[category]]" as="category"><paper-tab class$="[[themeclass]]"><iron-icon src="{{_getCategoryImg(category)}}"></iron-icon></paper-tab></template></paper-tabs><div class="tab-container"><paper-menu-button dynamic-align="" vertical-offset="8"><div class="dropdown-trigger"><div class$="dummycon [[tone]]"></div><paper-ripple></paper-ripple></div><paper-material elevation="1" class="dropdown-content"><iron-selector class="tone-container" attr-for-selected="name" selected="{{tone}}"><div name="tone0"></div><template is="dom-repeat" items="[[modifiers]]" as="modifier"><div name="{{modifier._tag}}" class$="{{modifier._tag}}"></div></template></iron-selector></paper-material></paper-menu-button><paper-input-autocomplete-chips id="searchField" class$="[[themeclass]]" no-label-float="" search-if-empty="" no-chip-image="" allow-select-unknown-token="" selected-objects="{{search}}" token-accept-key-codes="32,188" label="Search emoji"></paper-input-autocomplete-chips><paper-icon-button id="clearSearch" icon="cancel"></paper-icon-button></div><iron-list id="mainList" items="[[currentList]]" as="emoji" grid=""><template><div class$="emoji-container [[themeclass]]" on-tap="setEmojiTap"><iron-image fade="" class="[[emoji._class]]" alt="[[emoji._alt]]" title="[[emoji._title]]" sizing="contain" src="[[emoji._src]]"></iron-image><paper-ripple></paper-ripple></div></template></iron-list></iron-collapse></template></dom-module><dom-module id="buddy-chat" assetpath="./"><template><style is="custom-style">/**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -4103,10 +4103,9 @@ paper-dialog h5 {
   border-radius: 4px;
   color: var(--paper-grey-800);
   min-width: 48px;
-  max-width: 57%;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  word-break: break-all; }
+  word-break: break-word; }
 
 .card-figure {
   @apply (--layout-horizontal);
@@ -4320,4 +4319,4 @@ paper-dialog {
         background-color: #fff;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-      }</style></div><buddy-chat></buddy-chat><script src="js/chat-f7f53c4469.js"></script></body></html>
+      }</style></div><buddy-chat></buddy-chat><script src="js/chat-8a3dc3b136.js"></script></body></html>
