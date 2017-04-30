@@ -63,7 +63,7 @@ class Authentication extends CI_Model{
     	}
     }
     
-    public function redirect2ApiDash() {
+    public function redirect2ApiDash($originalRedirectUrl = '') {
     	$redirecturl = $this->session->userdata('redirecturl');
     	if(!empty($redirecturl))
     	{
@@ -72,9 +72,18 @@ class Authentication extends CI_Model{
     	}
     	if($this->session->userdata('validated')){//var_dump($this->session->userdata);exit;
     		if($this->session->userdata('usertype') == ACCOUNT_USER){
-    			redirect('/editprofile');
-    		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){
-    			header('location: https://buddy.feeljoy.in');
+    			if(!empty($originalRedirectUrl)){
+    				header('location: '. $originalRedirectUrl);
+    			}else{
+    				redirect('/editprofile');
+    			}    			
+    			
+    		}elseif($this->session->userdata('usertype') == ACCOUNT_LISTENER){    			
+    			if(!empty($originalRedirectUrl)){
+    				header('location: '. $originalRedirectUrl);
+    			}else{
+    				header('location: https://buddy.feeljoy.in');
+    			}
     		}elseif($this->session->userdata('usertype') == ACCOUNT_ADMIN){
     			redirect('admin/dashboard');
     		}

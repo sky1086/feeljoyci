@@ -32,6 +32,11 @@ class User_Authentication extends CI_Controller
             $this->session->set_userdata('token', $gClient->getAccessToken());
             //redirect($redirectUrl);
         }
+        
+        $originalRedirectUrl = '';
+        if(isset($_GET['state']) && !filter_var($_GET['state'], FILTER_VALIDATE_URL) === false){
+        	$originalRedirectUrl = $_GET['state'];
+        }
 
         $token = $this->session->userdata('token');
         if (!empty($token)) {
@@ -54,7 +59,7 @@ class User_Authentication extends CI_Controller
             $userID = $this->user->checkUser($userData);
             if(!empty($userID)){
                 $this->login_model->forceUserLogin($userData['email']);
-                $this->authentication->redirect2ApiDash();
+                $this->authentication->redirect2ApiDash($originalRedirectUrl);
             } else {
             	echo 'Something went wrong';
                $data['userData'] = array();
