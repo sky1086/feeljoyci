@@ -40,7 +40,7 @@ class Buddyguide extends CI_Controller {
 		
 		$result = [ ];
 		if (! empty ( $subtopic ) && ! empty ( $question )) {
-			$result = $this->processAnswerPage ( $subtopic );
+			$result = $this->processAnswerPage ( $subtopic, $question);
 			echo json_encode ( $result );
 			exit ();
 		}
@@ -90,17 +90,26 @@ class Buddyguide extends CI_Controller {
 			return $result;
 		}
 	}
-	function processAnswerPage($subtopic) {
+	function processAnswerPage($subtopic, $question = '') {
 		$category = $this->category_model->getCategoryByNormalizedName ( $subtopic );
 		if (count ( $category )) {
 			$categoryData = $category [0];
 			$id = $categoryData->id;
 			// get associated questions
 			$questions = $this->question_model->getAssocQuestionDetails ( $id );
-			if (! count ( $questions )) {
+			$questionCount = count ( $questions );
+			if (! $questionCount) {
 				return [ ];
 			}
 			
+			for ($i = 0 ; $i < $questionCount; $i++){
+				if($question == $this->common->getNormalizedName ( $questions [$i]->question)){
+					$result [0] ['answerPage'] = 1;
+					$result [0] ['question'] = $questions [$i]->question;
+					$result [0] ['answer'] = $questions [$i]->answer;
+					return $result;
+				}
+			}
 			// this has no thirdclik, show answer page here
 			$result [0] ['answerPage'] = 1;
 			$result [0] ['question'] = $questions [0]->question;
