@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" style="height: 100%;">
+<html class="no-js">
 
 <head>
     <meta charset="utf-8">
