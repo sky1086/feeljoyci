@@ -54,13 +54,38 @@
               </tr>
               <tr>
               <td colspan="3" style="text-align: left;">
-              Answer
+              Answer Cards
               </td>
               </tr>
+              <?php 
+              if($questiondata['answer']){
+              $answers = explode('##$##', $questiondata['answer']);
+              $i = 0;
+              foreach ($answers as $answer){
+              ?>
               <tr>
-              <td colspan="3" style="text-align: left;">
-              <textarea name="answer" class="jqt-editor" id="answer" rows=50 id="category" style="width: 50%;height:100px;"><?php echo $questiondata['answer'];?></textarea>
+              <td colspan="2" style="text-align: left;padding-bottom: 10px;">
+              <textarea name="answer[]" class="ck-editor" rows=30 id="answer<?php echo $i;?>" style="width: 50%;" maxlength="150"><?php echo $answer;?></textarea> 
               </td>
+              <td>&nbsp;&nbsp;
+              <?php if($i > 0){
+              	echo '<i class="ion-android-delete" onclick="removeAnswerRow(this)"></i>';
+              }?>
+              </td>
+              </tr>
+              <?php 
+              $i++;
+              }}else{?>
+              <tr>
+              <td colspan="2" style="text-align: left;padding-bottom: 10px;">
+              <textarea name="answer[]" class="ck-editor" rows=30 id="answer0" style="width: 50%;" maxlength="150"><?php echo $answer;?></textarea> 
+              </td>
+              <td>&nbsp;&nbsp;</td>
+              </tr>
+              <?php }?>
+              <tr>
+              <td colspan="2">&nbsp;</td>
+              <td><a href="javascript:void(0)" class="add-more" onclick="addMoreAnswers(this)">Add more cards</a></td>
               </tr>
               <tr>
               <td><input type="submit" name="add" onclick="addTheme();" value="Save" style="width: 100px;" /></td>
@@ -110,7 +135,8 @@ $('#themeedit').Tabledit({
 	
 });
 
-$('.jqt-editor').jqte();
+
+//$('.jqt-editor').jqte();
 });
 function addTheme(){
 	var theme = $('#theme').val();
@@ -124,15 +150,20 @@ function addTheme(){
 	var quest = $('#question').val();
 	var priority = $('#priority').val();
 	var status = $('#status').val();
-	var answer = CKEDITOR.instances.answer.getData();
+	var answer = getCkeditorData();
 	$.ajax({
 		type: 'post',
+		dataType: "json",
 		url: '<?php echo base_url();?>admin/thirdclick/add',
 		data:  {pid: theme, cid: secondclick, thirdclick:hasThirdClick, question:quest, priority: priority, status: status, answer:answer, questionid: questionid},
 		success: function(rsp){
 				if(rsp == 0){
 					//alert(rsp.msg);
 				}else if(rsp == 1){
+					if(questionid){
+						alert('Updated successfully');
+						return;
+					}
 					alert('Added succuessfully');					
 				}
 			}
@@ -176,8 +207,42 @@ function getSecondClicks(id){
 	}
 }
 //$('.jqt-editor').jqte();
-CKEDITOR.replace('answer');
-CKEDITOR.instances['answer'].setData($('#answer').val());
+//CKEDITOR.replace('answer');
+//CKEDITOR.instances['answer'].setData($('#answer').val());
+function ckeditorReplace(){	
+	$('.ck-editor').each(function(e){
+		if(!CKEDITOR.instances[this.id]){
+			CKEDITOR.replace( this.id);
+	        //CKEDITOR.instances['answer'].setData($('#answer').val());
+		}        
+    });
+}
+
+ckeditorReplace();
+
+function addMoreAnswers(){
+	var newRow = '<tr><td colspan="2" style="text-align: left;padding-bottom: 10px;"><textarea name="answer[]" class="ck-editor" rows=30 id="answer'+parseInt(Math.random()*1000)+'" style="width: 50%;height:80px;" maxlength="150"></textarea></td><td>&nbsp;&nbsp;<i class="ion-android-delete" onclick="removeAnswerRow(this)"></i></td></tr>';
+	$('.add-more').parent().parent('tr').before(newRow);
+	ckeditorReplace();
+}
+
+function removeAnswerRow(event){
+	//$('.ion-android-delete').click(function(){
+		$(event).parent().parent('tr').remove()
+	//});
+}
+
+function getCkeditorData(){
+	var answerData = '';
+	$('.ck-editor').each(function(e){
+		var answer = CKEDITOR.instances[this.id].getData();
+		if(answer){
+			answerData += answer.trim()+'##$##';
+		}
+    });
+    answerData = answerData.slice(0, -5);
+    return answerData;
+}
 //-->
 </script>
   

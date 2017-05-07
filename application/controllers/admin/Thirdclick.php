@@ -43,17 +43,18 @@ class Thirdclick extends CI_Controller{
 		if ($this->form_validation->run() == TRUE) {
 			$id  		= $this->security->xss_clean($this->input->post('questionid'));
 			$quest['question']  		= $this->security->xss_clean($this->input->post('question'));
-			$quest['answer']       = htmlentities($this->input->post('answer'));
+			$quest['answer']       = $this->input->post('answer');
 			$quest['status']	= $this->security->xss_clean($this->input->post('status'));
 			$quest['priority']	= $this->security->xss_clean($this->input->post('priority'));
 			$thirdclick	= $this->security->xss_clean($this->input->post('thirdclick'));
 			
 			if(!$thirdclick && !$id){
 				$quest['question']  ='';
-				$quest['answer']    = htmlentities($this->input->post('answer'));
+				$quest['answer']    = $this->input->post('answer');
 				$quest['status']	= 1;
 				$quest['priority']	= 2;
 			}
+			
 			if($id > 0){
 				$this->question_model->updateQuestion($id, $quest);
 				$questId = $id;
