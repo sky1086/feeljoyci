@@ -212,7 +212,30 @@ function getSecondClicks(id){
 function ckeditorReplace(){	
 	$('.ck-editor').each(function(e){
 		if(!CKEDITOR.instances[this.id]){
-			CKEDITOR.replace( this.id);
+			CKEDITOR.replace( this.id, { 
+		        height: 150, 
+		        extraPlugins: 'wordcount,notification',
+		        toolbar: 'TinyBare', 
+		        toolbar_TinyBare: [
+		             ['Bold','Italic','Underline'],
+		             ['Undo','Redo'],['Cut','Copy','Paste'],
+		             ['NumberedList','BulletedList','Table'],['Source']
+		        ],
+		        wordcount : {
+
+		        	    // Whether or not you want to show the Word Count
+		        	    showWordCount: true,
+
+		        	    // Whether or not you want to show the Char Count
+		        	    showCharCount: true,
+		        	    
+		        	    // Maximum allowed Word Count
+		        	    maxWordCount: -1,
+
+		        	    // Maximum allowed Char Count
+		        	    maxCharCount: 150
+		        	} 
+		        });
 	        //CKEDITOR.instances['answer'].setData($('#answer').val());
 		}        
     });

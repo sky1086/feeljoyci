@@ -79,11 +79,11 @@ class Guide extends CI_Controller {
 				// this has no thirdclik, show answer page here
 				$result [0] ['answerPage'] = 1;
 				$result [0] ['question'] = $questions [0]->question;
+				$cards = [];
 				if(!empty($questions [0]->answer)){
 					$cards = explode('##$##', $questions [0]->answer);
 				}
-				$result [0] ['cardCount'] = count($cards);
-				$result [0] ['cards'] = $cards;
+				$result [0] ['answer'] = $cards;
 				
 				return $result;
 			}
@@ -114,11 +114,11 @@ class Guide extends CI_Controller {
 				if($question == $this->common->getNormalizedName ( $questions [$i]->question)){
 					$result [0] ['answerPage'] = 1;
 					$result [0] ['question'] = $questions [$i]->question;
+					$cards = [];
 					if(!empty($questions [$i]->answer)){
 						$cards = explode('##$##', $questions [$i]->answer);
 					}
-					$result [$i] ['cardCount'] = count($cards);
-					$result [$i] ['cards'] = $cards;
+					$result [$i] ['answer'] = $cards;
 					//$result [$i] ['answer'] = $questions [$i]->answer;
 					return $result;
 				}
@@ -126,11 +126,11 @@ class Guide extends CI_Controller {
 			// this has no thirdclik, show answer page here
 			$result [0] ['answerPage'] = 1;
 			$result [0] ['question'] = $questions [0]->question;
+			$cards = [];
 			if(!empty($questions [0]->answer)){
 				$cards = explode('##$##', $questions [0]->answer);
 			}
-			$result [0] ['cardCount'] = count($cards);
-			$result [0] ['cards'] = $cards;
+			$result [0] ['answer'] = $cards;
 			return $result;
 		}
 	}
