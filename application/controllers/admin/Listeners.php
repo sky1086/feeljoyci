@@ -39,15 +39,18 @@ class Listeners extends CI_Controller{
    				$listData['age']	= $this->security->xss_clean($this->input->post('age'));
    				$listData['gender']	= $this->security->xss_clean($this->input->post('gender'));
    				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
-   				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
+   				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));   				
    				$user['email']	= $this->security->xss_clean($this->input->post('email'));
    				$user['contact_name']	= $listData['name'];
    				$user['password']	= $this->security->xss_clean($this->input->post('password'));
+   				$user['user_type']	= 'Listener';
    				
    				if(!$user['password']){
    					unset($user['password']);
-   				}else{
-   					//$user['password'] = md5($user['password']);
+   				}
+   				
+   				if(isset($user['password']) && !empty($user['password'])){
+   					$user['password'] = password_hash($user['password'], PASSWORD_DEFAULT);
    				}
    				
    
