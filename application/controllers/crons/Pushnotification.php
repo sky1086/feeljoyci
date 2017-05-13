@@ -83,7 +83,7 @@ class Pushnotification extends CI_Controller{
     				$appId = $this->config->item('push_notification_api_token');
     				
     				$signatureToken = $appId.'|'.$campaignName .'|'.$this->config->item('MOE_SECRET_KEY');
-    				$signature = hash('sha256', $signatureToken, true);
+    				$signature = hash('sha256', $signatureToken, false);
     				
     				$curlUrl = 'https://pushapi.moengage.com/v2/transaction/sendpush';
     				
@@ -97,6 +97,16 @@ class Pushnotification extends CI_Controller{
     					"attribute"=> "USER_ATTRIBUTE_UNIQUE_ID",
     					"comparisonParameter"=> "is",
     					"attributeValue"=> $subscriberId
+    					],
+    					"payload" => [
+    							"WEB"=> [
+    							"message"=> $message, // Message
+    									"title"=> $title, // title
+    							"redirectURL"=> $url, // URL on which user should be redirected on click.
+    							"iconURL"=>"", // URL for the icon to be displayed
+    							"fallback"=>[ //  replica of the complete dict in case there is personalization failure.
+    					]
+    					]
     					]
     				];
     				
