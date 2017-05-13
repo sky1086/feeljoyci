@@ -83,9 +83,9 @@ class Pushnotification extends CI_Controller{
     				$appId = $this->config->item('push_notification_api_token');
     				
     				$signatureToken = $appId.'|'.$campaignName .'|'.$this->config->item('MOE_SECRET_KEY');
-    				$signature = hash('sha256', $signatureToken);
+    				$signature = hash('sha256', $signatureToken, true);
     				
-    				$curlUrl = 'https://pushapi.moengage.com/v1/transaction/sendpush';
+    				$curlUrl = 'https://pushapi.moengage.com/v2/transaction/sendpush';
     				
     				//set POST variables
     				$data_string= [
@@ -100,6 +100,7 @@ class Pushnotification extends CI_Controller{
     					]
     				];
     				
+    				$data_string = json_encode($data_string);
     				
     				$httpHeadersArray = Array();
     				$httpHeadersArray[] = 'Content-Type: application/json';
@@ -112,7 +113,7 @@ class Pushnotification extends CI_Controller{
     				curl_setopt($ch, CURLOPT_URL, $curlUrl);
     				curl_setopt($ch, CURLOPT_POST, true);
     				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_string));
+    				curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     				curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeadersArray);
     				
     				//execute post
