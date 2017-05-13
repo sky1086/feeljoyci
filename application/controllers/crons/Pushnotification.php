@@ -83,7 +83,7 @@ class Pushnotification extends CI_Controller{
     				$appId = $this->config->item('push_notification_api_token');
     				
     				$signatureToken = $appId.'|'.$campaignName .'|'.$this->config->item('MOE_SECRET_KEY');
-    				$signature = hash('sha256', $signatureToken, true);
+    				$signature = hash('sha256', $signatureToken, false);
     				
     				$curlUrl = 'https://pushapi.moengage.com/v2/transaction/sendpush';
     				
@@ -134,7 +134,7 @@ class Pushnotification extends CI_Controller{
     				var_dump($result);
 	    			$resultArray = json_decode($result, true);
 					 echo $resultArray['message'];
-	    			if($resultArray['status'] == 'success') {
+					 if($resultArray['status'] == 'success' || $resultArray['status'] == 'Success') {
 	    				//update notified status on success
 	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
 	    			}
