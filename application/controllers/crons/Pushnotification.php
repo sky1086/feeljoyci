@@ -117,7 +117,7 @@ class Pushnotification extends CI_Controller{
     				
     				//execute post
     				$result = curl_exec($ch);
-	    			 
+    				var_dump($result);
 	    			$resultArray = json_decode($result, true);
 					 echo $resultArray['message'];
 	    			if($resultArray['status'] == 'success') {
@@ -141,7 +141,7 @@ class Pushnotification extends CI_Controller{
     	//$subid = $_POST['subid'];
     	$subid = $this->session->userdata('userid');
     	$d_type = $_POST['d_type'];
-    	$status = $_POST['status'] == true?1:0;
+    	$status = $_POST['status'];
     	if($subid){
     		$this->notification_model->addSubscriber($subid, $d_type, $status);
     		echo 1;
