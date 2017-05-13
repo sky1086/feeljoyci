@@ -230,12 +230,13 @@ class Chat_model extends CI_Model{
     
     public function getContactedUsers($uid, $user_type = 'User') {
     	//select distinct(msg.from) from msg where msg.to = 9 group by msg.from order by max(id) desc limit 20;
-    	$this->db->select('msg.from');
+    	$this->db->select('msg.from, msg.to');
     	$this->db->from('msg');
     	$this->db->where('msg.to', $uid);
-    	$this->db->group_by('msg.from');
-    	$this->db->order_by('max(id)', 'desc');
-    	$this->db->limit(20);
+    	$this->db->or_where('msg.from', $uid);
+    	//$this->db->group_by('msg.from');
+    	$this->db->order_by('msg.id', 'desc');
+    	$this->db->limit(200);
     	 
     	$query = $this->db->get();
     
@@ -254,6 +255,13 @@ class Chat_model extends CI_Model{
     		}
     		
     		foreach ($row as $user){
+    			$userId = $user['from'];
+    			if($userId == $uid){
+    				$userId = $user['to'];
+    			}
+    			if(isset($userdata[$userId])){
+    				continue;
+    			}
     			$this->db->where('userid', $user['from']);
     			$this->db->where('user_type', $user_type);
     			$this->db->where_not_in('userid', $spamUsers);
@@ -262,7 +270,7 @@ class Chat_model extends CI_Model{
     			
     			if(count($query1->result()))
     			{
-    				$userdata[] = $query1->result_array();
+    				$userdata[$userId] = $query1->result_array();
     			}
     		}
     		return $userdata;
