@@ -138,9 +138,10 @@ class Pushnotification extends CI_Controller{
     }
     
     public function upsertNotificationUser() {
-    	$subid = $_POST['subid'];
+    	//$subid = $_POST['subid'];
+    	$subid = $this->session->userdata('userid');
     	$d_type = $_POST['d_type'];
-    	$status = (int)$_POST['status'];
+    	$status = $_POST['status']?1:0;
     	if($subid){
     		$this->notification_model->addSubscriber($subid, $d_type, $status);
     		echo 1;
