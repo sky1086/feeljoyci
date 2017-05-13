@@ -69,6 +69,12 @@ if (!defined('BASEPATH'))
 		public function details(){
 			$data['message'] = 'Something went wrong, please try again.';
 			$data['error'] = true;
+			$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER, ACCOUNT_LISTENER));
+			if(!$loginData){
+				$loginData = ['error'=> true, 'login'=>'required'];
+				echo json_encode($loginData);
+				exit;
+			}	 
 			
 			$emailid = $this->security->xss_clean($this->input->post('email'));
 			if(empty($emailid)){

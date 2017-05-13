@@ -17,6 +17,9 @@ public function isUserExists($email)
 	}
 
 public function addSystemUser($data){
+		if(!isset($data['userid'])){
+			$data['userid']= abs( crc32( uniqid() ) );
+		}
 		$this->db->insert('user_detail', $data);
 		return $this->db->insert_id();		
 	}
