@@ -48,10 +48,10 @@ class Pushnotification extends CI_Controller{
     				$url = 'https://buddy.feeljoy.in/chat?id='.$notif_data['from'];
     			}
     			
-    			$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];
-    			 
+    			//$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];
+    			$subscriberId = $subscriberData['userid'];
     			if($subscriberId){
-	    			$apiToken = $this->config->item('push_notification_api_token');
+	    			/* $apiToken = $this->config->item('push_notification_api_token');
 	    			 
 	    			$curlUrl = 'https://pushcrew.com/api/v1/send/individual/';
 	    			 
@@ -77,7 +77,46 @@ class Pushnotification extends CI_Controller{
 	    			curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeadersArray);
 	    			 
 	    			//execute post
-	    			$result = curl_exec($ch);
+	    			$result = curl_exec($ch); */
+    				$campaignName = 'Feeljoy_'.$subscriberId.'_'.time();
+    				
+    				$appId = $this->config->item('push_notification_api_token');
+    				
+    				$signatureToken = $appId.'|'.$campaignName .'|'.$this->config->item('MOE_SECRET_KEY');
+    				$signature = hash('sha256', $signatureToken);
+    				
+    				$curlUrl = 'https://pushapi.moengage.com/v1/transaction/sendpush';
+    				
+    				//set POST variables
+    				$data_string= [
+    						"appId"=>$appId,
+    					"signature"=>$signature,
+    						"campaignName"=> $campaignName,
+    					"targetAudience"=>"User",
+    					"targetUserAttributes"=>[
+    					"attribute"=> "USER_ATTRIBUTE_UNIQUE_ID",
+    					"comparisonParameter"=> "is",
+    					"attributeValue"=> $subscriberId
+    					]
+    				];
+    				
+    				
+    				$httpHeadersArray = Array();
+    				$httpHeadersArray[] = 'Content-Type: application/json';
+    				$httpHeadersArray[] = 'Content-Length: ' . strlen($data_string);
+    				
+    				//open connection
+    				$ch = curl_init();
+    				
+    				//set the url, number of POST vars, POST data
+    				curl_setopt($ch, CURLOPT_URL, $curlUrl);
+    				curl_setopt($ch, CURLOPT_POST, true);
+    				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_string));
+    				curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeadersArray);
+    				
+    				//execute post
+    				$result = curl_exec($ch);
 	    			 
 	    			$resultArray = json_decode($result, true);
 					 echo $resultArray['message'];
