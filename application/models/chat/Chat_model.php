@@ -262,7 +262,8 @@ class Chat_model extends CI_Model{
     			if(isset($userdata[$userId])){
     				continue;
     			}
-    			$this->db->where('userid', $user['from']);
+    			$this->db->select('userid, username, contact_name, gender, user_type, age');
+    			$this->db->where('userid', $userId);
     			$this->db->where('user_type', $user_type);
     			$this->db->where_not_in('userid', $spamUsers);
     			$this->db->from('user_detail');
@@ -283,12 +284,10 @@ class Chat_model extends CI_Model{
      *
      * @param array $where
      */
-    public function getLastMsgFromUsr($uid, $to = 0)
+    public function getLastMsgFromUsr($uid, $to)
     {
-    	$this->db->where('from', $uid);
-    	if($to){
-    		$this->db->where('to', $to);
-    	}
+    	$this->db->where("(msg.from = $uid and msg.to = $to) or (msg.from = $to and msg.to = $uid)");
+    	
     	$this->db->order_by('id', 'desc');
     	$this->db->limit(1);
     	$query = $this->db->get_where('msg');
