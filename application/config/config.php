@@ -506,5 +506,5 @@ $config['proxy_ips'] = '';
 
 //api token for push notifications
 //$config['push_notification_api_token'] = '85efb27b092fc7ab11bfc3b120f39b4d';
-$config['push_notification_api_token'] = 'R7G754Z0D0IJ7DIYCSK1USX1_DEBUG';
-$config['MOE_SECRET_KEY'] = '3V3E9NYUXYCB';
+$config['push_notification_api_token'] = 'R7G754Z0D0IJ7DIYCSK1USX1';
+$config['MOE_SECRET_KEY'] = 'FF9PLKMAI2MR';
