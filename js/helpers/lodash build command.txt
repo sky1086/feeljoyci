@@ -1,0 +1,2 @@
+run it from js directory
+lodash exports=global include=uniqBy,findIndex,replace,extend,cloneDeep,concat,endsWith,startsWith,isEqual,find -o ./lodash.js
