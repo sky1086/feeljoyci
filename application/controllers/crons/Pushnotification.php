@@ -114,7 +114,7 @@ class Pushnotification extends CI_Controller{
     				];
     				
     				$data_string = json_encode($data_string);
-    				
+    				var_dump($data_string);
     				$httpHeadersArray = Array();
     				$httpHeadersArray[] = 'Content-Type: application/json';
     				$httpHeadersArray[] = 'Content-Length: ' . strlen($data_string);
