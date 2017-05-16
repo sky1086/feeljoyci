@@ -103,7 +103,7 @@ class Pushnotification extends CI_Controller{
     					],
     					"payload" => [
     							"WEB"=> [
-    							"message"=> $message, // Message
+    							"message"=> trim($message), // Message
     									"title"=> $title, // title
     							"redirectURL"=> $url, // URL on which user should be redirected on click.
     							"iconURL"=>"", // URL for the icon to be displayed
