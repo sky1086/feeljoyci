@@ -1,0 +1,31 @@
+{
+  "src/customer/components/pre-loader.html": {
+    "src/customer/bower_components/polymer/polymer.html": {
+      "type": "document",
+      "weight": 1
+    },
+    "src/customer/bower_components/polymer/polymer-mini.html": {
+      "type": "document",
+      "weight": 1
+    },
+    "src/customer/bower_components/polymer/polymer-micro.html": {
+      "type": "document",
+      "weight": 1
+    },
+    "src/customer/bower_components/font-roboto/roboto.html": {
+      "type": "document",
+      "weight": 1
+    }
+  },
+  "src/customer/feel-joy.html": {},
+  "src/customer/views/customer-home.html": {},
+  "src/customer/views/customer-helpus.html": {},
+  "src/customer/views/customer-blog.html": {},
+  "src/customer/views/customer-chat.html": {},
+  "src/customer/views/customer-profile.html": {},
+  "src/customer/views/customer-guide.html": {},
+  "src/customer/views/customer-listeners.html": {},
+  "src/customer/views/customer-editprofile.html": {},
+  "src/customer/views/customer-welcome.html": {},
+  "src/customer/views/customer-404.html": {}
+}
