@@ -15,7 +15,7 @@ class User_Authentication extends CI_Controller
 		// Google Project API Credentials
 		$clientId = '679180648415-fch3v2k0t3qns5vml3hf1qp0drcspb6e.apps.googleusercontent.com';
         $clientSecret = 'r-03D8jBEPpmi_WWWA2rN-IK';
-        $redirectUrl = base_url().'user_authentication/';
+        $redirectUrl = 'https://api.feeljoy.in/apis/user_authentication/';
 		
 		// Google Client Configuration
         $gClient = new Google_Client();
@@ -75,6 +75,6 @@ class User_Authentication extends CI_Controller
 		$this->session->unset_userdata('token');
 		$this->session->unset_userdata('userData');
         $this->session->sess_destroy();
-		redirect('/user_authentication');
+		redirect('https://api.feeljoy.in/apis/user_authentication');
     }
 }
