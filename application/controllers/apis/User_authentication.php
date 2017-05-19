@@ -14,7 +14,8 @@ class User_Authentication extends CI_Controller
 		
 		// Google Project API Credentials
 		$clientId = '679180648415-fch3v2k0t3qns5vml3hf1qp0drcspb6e.apps.googleusercontent.com';
-        $clientSecret = 'r-03D8jBEPpmi_WWWA2rN-IK';
+        //$clientSecret = 'r-03D8jBEPpmi_WWWA2rN-IK';
+        $clientSecret = '0mkKChGTnJHuPvU1LSlE5sDv';
         $redirectUrl = 'https://api.feeljoy.in/apis/user_authentication/';
 		
 		// Google Client Configuration
