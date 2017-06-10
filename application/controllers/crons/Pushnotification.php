@@ -43,7 +43,7 @@ class Pushnotification extends CI_Controller{
     			$title = $senderData['contact_name']. ' has sent you message -';
     			$message = $this->chat_model->decodeMsg($notif_data['msg'], $notif_data['int_vec']);
 				$logoUrl = 'https://feeljoy.in/android-chrome-192x192.png';
-    			if($senderData['user_type'] == 'Listener'){
+    			if($senderData['user_type'] == 'User'){
     				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
 					$logoUrl = 'https://buddy.feeljoy.in/android-chrome-192x192.png';
     			}else{
