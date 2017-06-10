@@ -9,6 +9,16 @@ if (!defined('BASEPATH'))
 			parent::__construct();
 			//$this->session->set_userdata(array('redirecturl'=>null));
 			//$this->authentication->redirect2Dash();
+			if (isset($_SERVER['HTTP_ORIGIN'])) {
+				// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+				// you want to allow, and if so:
+				header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+				header('Access-Control-Allow-Credentials: true');
+				header('Access-Control-Max-Age: 86400');    // cache for 1 day
+			}else{
+				header('Access-Control-Allow-Origin: *'); //need to remove after developement done
+			}
+			header("X-Frame-Options: SAMEORIGIN");
 			$this->load->model(array('signup_model','login_model'));
 		}
 
