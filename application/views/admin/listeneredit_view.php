@@ -42,13 +42,13 @@
               	<input type="text" name="tagline" value="<?php echo set_value('tagline', $listener->tagline); ?>" />
               	</td>
               </tr>
-              <tr>
+              <!--tr>
               	<td></td>
               	<td>Qualification</td>
               	<td>
-              	<input type="text" name="qualification" value="<?php echo set_value('qualification', $listener->qualification); ?>" required />
+              	<input type="text" name="qualification" value="<?php //echo set_value('qualification', $listener->qualification); ?>" required />
               	</td>
-              </tr>
+              </tr-->
               <tr>
               	<td></td>
               	<td>Priority</td>
@@ -56,13 +56,13 @@
               	<input type="text" name="priority" value="<?php echo set_value('priority', $listener->priority); ?>" required />
               	</td>
               </tr>	
-              <tr>
+              <!--tr>
               	<td></td>
               	<td>Mobile</td>
               	<td>
-              	<input type="text" name="mobile" value="<?php echo set_value('mobile', $listener->mobile); ?>" />
+              	<input type="text" name="mobile" value="<?php //echo set_value('mobile', $listener->mobile); ?>" />
               	</td>
-              </tr>
+              </tr-->
               <tr>
               	<td></td>
               	<td>Username/Email</td>

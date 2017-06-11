@@ -20,7 +20,7 @@ class Listeners extends CI_Controller{
    		$data['successmsg'] = '';
    		$data['errmsg'] = '';
    		if($this->input->post('name')){
-   			$this->form_validation->set_rules('qualification', 'Qualification', 'required');
+   			//$this->form_validation->set_rules('qualification', 'Qualification', 'required');
    			$this->form_validation->set_rules('name', 'Name', 'required');
    			$this->form_validation->set_rules('priority', 'Priority', 'required');
    			$this->form_validation->set_rules('status', 'Status', 'required');
@@ -30,7 +30,7 @@ class Listeners extends CI_Controller{
    			$this->form_validation->set_rules('description', 'Description', 'required');
    			
    			if ($this->form_validation->run() == TRUE) {
-   				$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
+   				//$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
    				$listData['name']       = $this->security->xss_clean($this->input->post('name'));
    				$listData['interests']       = $this->security->xss_clean($this->input->post('interests'));
    				$listData['tagline']       = $this->security->xss_clean($this->input->post('tagline'));
@@ -39,7 +39,7 @@ class Listeners extends CI_Controller{
    				$listData['age']	= $this->security->xss_clean($this->input->post('age'));
    				$listData['gender']	= $this->security->xss_clean($this->input->post('gender'));
    				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
-   				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));   				
+   				//$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));   				
    				$user['email']	= $this->security->xss_clean($this->input->post('email'));
    				$user['contact_name']	= $listData['name'];
    				$user['password']	= $this->security->xss_clean($this->input->post('password'));
@@ -75,7 +75,7 @@ class Listeners extends CI_Controller{
 	   		$data['successmsg'] = '';
 	   		$data['errmsg'] = '';
 	   		if($this->input->post('name')){
-	   			$this->form_validation->set_rules('qualification', 'Qualification', 'required');
+	   			//$this->form_validation->set_rules('qualification', 'Qualification', 'required');
 	   			$this->form_validation->set_rules('name', 'Name', 'required');
 	   			$this->form_validation->set_rules('priority', 'Priority', 'required');
 	   			$this->form_validation->set_rules('status', 'Status', 'required');
@@ -85,7 +85,7 @@ class Listeners extends CI_Controller{
 	   			$this->form_validation->set_rules('description', 'Description', 'required');
 	   			
 	   			if ($this->form_validation->run() == TRUE) {
-	   				$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
+	   				//$listData['qualification']  		= $this->security->xss_clean($this->input->post('qualification'));
 	   				$listData['name']       = $this->security->xss_clean($this->input->post('name'));
 	   				$listData['interests']       = $this->security->xss_clean($this->input->post('interests'));
 	   				$listData['tagline']       = $this->security->xss_clean($this->input->post('tagline'));
@@ -94,7 +94,7 @@ class Listeners extends CI_Controller{
 	   				$listData['age']	= $this->security->xss_clean($this->input->post('age'));
 	   				$listData['gender']	= $this->security->xss_clean($this->input->post('gender'));
 	   				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
-	   				$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
+	   				//$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
 	   				$user['email']	= $this->security->xss_clean($this->input->post('email'));
 	   				$user['contact_name']	= $listData['name'];
 	   				$user['password']	= $this->security->xss_clean($this->input->post('password'));
