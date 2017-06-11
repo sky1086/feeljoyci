@@ -95,3 +95,4 @@ define('ACTIVEINLASTSECS', 1800);
 //chat encryt/decrypt key
 //define('CHATENCODESECKEY', 'ch@tenc0de2348jrejdf');
 define('CHATENCODESECKEY', 'chtenc0de2jrejdf');
+define('SESUSERPROFILE', 'sesemailuser');

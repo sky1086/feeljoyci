@@ -22,21 +22,21 @@ class Mail extends CI_Controller{
     	
     	// Replace us-west-2 with the AWS region you're using for Amazon SES.
     	define('REGION','us-east-1');
+    	//define('REGION','ap-south-1');
     	
     	define('SUBJECT','Amazon SES test (AWS SDK for PHP)');
     	define('BODY','This email was sent with Amazon SES using the AWS SDK for PHP.');
     	
     	
     	$client = SesClient::factory(array(
-    			'credentials' => array(
-    					'key'    => SESUSER_AWS_ACCESS_KEY_ID,
-    					'secret' => SESUSER_AWS_SECRET_ACCESS_KEY,
-    					),
+    			'profile' => SESUSERPROFILE,
     			'version'=> 'latest',
     			'region' => REGION
     	));
     	
+    	//print_r($client->verifyEmailAddress(['EmailAddress' => 'skya.1086@gmail.com']));
     	//print_r($client->listVerifiedEmailAddresses());
+    	
     	$request = array();
     	$request['Source'] = SENDER;
     	$request['Destination']['ToAddresses'] = array(RECIPIENT);
