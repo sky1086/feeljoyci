@@ -78,7 +78,7 @@ class Guide extends CI_Controller {
 			if ($categoryData->thirdclick == 0) {
 				// this has no thirdclik, show answer page here
 				$result [0] ['answerPage'] = 1;
-				$result [0] ['question'] = $questions [0]->question;
+				$result [0] ['question'] =  empty($questions [0]->question)?$subtopic:$questions [0]->question;
 				$cards = [];
 				if(!empty($questions [0]->answer)){
 					$cards = explode('##$##', $questions [0]->answer);
