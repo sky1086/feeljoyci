@@ -95,3 +95,5 @@ define('ACTIVEINLASTSECS', 1800);
 //chat encryt/decrypt key
 define('CHATENCODESECKEY', 'ch@tenc0de2348jrejdf');
 //define('CHATENCODESECKEY', 'chtenc0de2jrejdf');
+define('SESUSER_AWS_ACCESS_KEY_ID', 'AKIAIJWBJYK4Y4JBCNJA');
+define('SESUSER_AWS_SECRET_ACCESS_KEY', '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');
