@@ -103,6 +103,7 @@ class Listeners extends CI_Controller{
 	   					unset($user['password']);
 	   				}else{
    						//$user['password'] = md5($user['password']);
+	   					$user['password'] = password_hash($password, PASSWORD_DEFAULT);
    					}
 	   
 	   				if(empty($data['errmsg'])){
