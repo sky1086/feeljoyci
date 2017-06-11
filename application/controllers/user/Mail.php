@@ -18,7 +18,7 @@ class Mail extends CI_Controller{
     	
     	// Replace recipient@example.com with a "To" address. If your account
     	// is still in the sandbox, this address must be verified.
-    	define('RECIPIENT', 'skya.1086@gmail.com');
+    	define('RECIPIENT', 'vashishthapranav@gmail.com');
     	
     	// Replace us-west-2 with the AWS region you're using for Amazon SES.
     	define('REGION','us-east-1');
