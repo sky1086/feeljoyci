@@ -35,6 +35,16 @@ class Pushnotification extends CI_Controller{
     		//Get subscriber details
     		$subscriberData = $this->notification_model->getSubscriberDetails($notif_data['to']);
     		
+    		
+    		if($subscriberData['last_notified']){
+    			$to_time = strtotime($subscriberData['last_notified']);
+    			$from_time = date("Y-m-d H:i:s");
+    			$diffMinute = round(abs($to_time - $from_time) / 60,2);
+    			if($diffMinute > 30){
+    				continue;
+    			}
+    		}
+    		
     		if(is_array($subscriberData) && sizeof($subscriberData) > 0){
     			$senderData = $this->user_model->getUserDetails($notif_data['from']);
     			//$receiverData = $this->user_model->getUserDetails($notif_data['to']);
@@ -42,6 +52,22 @@ class Pushnotification extends CI_Controller{
     			//notification code start here
     			$title = $senderData['contact_name']. ' has sent you message -';
     			$message = $this->chat_model->decodeMsg($notif_data['msg'], $notif_data['int_vec']);
+    			$message = trim($message);
+    			$subscriberId = $subscriberData['userid'];
+    			
+    			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
+    				$this->load->library('../controllers/user/mail');
+    				$mailSent = $this->mail->send($subscriberData['email'], $title, $message);
+    				if($mailSent){
+    					//update notified status on success
+    					$this->chat_model->updateNotifiedStatus($notif_data['id']);
+    					//update subscriber data last modified
+    					$subData['last_notified'] = date('Y-m-d H:i:s');
+    					$this->notification_model->updateSubscriber($subData, $subscriberId);
+    				}
+    				continue;
+    			}
+    			
 				$logoUrl = 'https://feeljoy.in/android-chrome-192x192.png';
     			if($senderData['user_type'] == 'User'){
     				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
@@ -50,8 +76,7 @@ class Pushnotification extends CI_Controller{
     				$url = 'https://buddy.feeljoy.in/chat/'.$notif_data['from'];
     			}
     			
-    			//$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];
-    			$subscriberId = $subscriberData['userid'];
+    			//$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];    			
     			if($subscriberId){
 	    			/* $apiToken = $this->config->item('push_notification_api_token');
 	    			 
@@ -139,6 +164,9 @@ class Pushnotification extends CI_Controller{
 					 if($resultArray['status'] == 'success' || $resultArray['status'] == 'Success') {
 	    				//update notified status on success
 	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
+	    				//update subscriber data last modified
+	    				$subData['last_notified'] = date('Y-m-d H:i:s');
+	    				$this->notification_model->updateSubscriber($subData, $subscriberId);
 	    			}
 	    			else if($resultArray['status'] == 'failure') {
 	    				//failure

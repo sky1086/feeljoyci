@@ -38,6 +38,13 @@ class Notification_model extends CI_Model{
 		}
     }
     
+    public function updateSubscriber($data, $subid){
+    	if($subid){
+    		$this->db->where('userid', $subid);
+    		$this->db->update('notification_users', $data);
+    	}	
+    }
+    
     public function subscriberExists($userid){
     	$query = $this->db->query('select userid from notification_users where userid = '.$userid);
 		if ($query->num_rows() > 0) {
