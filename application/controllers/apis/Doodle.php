@@ -23,7 +23,7 @@ class Doodle extends CI_Controller{
 		$doodleId = $this->security->xss_clean($this->input->post('doodleId'));
 		$userId = (int)$this->session->userdata('userid');
 		
-		if(!$fingerPrintId || !empty($fingerPrintId) || $doodleId || !empty($doodleId)){
+		if(!$fingerPrintId || empty($fingerPrintId) || !$doodleId || empty($doodleId)){
 			echo json_encode(array('error'=> true, 'msg'=>'Invalid parameters.'));
 			exit;
 		}
