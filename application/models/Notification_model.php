@@ -4,7 +4,7 @@ class Notification_model extends CI_Model{
 		$this->load->model('user_model');
 	}
 	
-	public function addSubscriber($subid, $d_type, $status){
+	public function addSubscriber($subid, $d_type, $status, $os){
 		
 		if(!$subid)
 			return 0;
@@ -12,6 +12,10 @@ class Notification_model extends CI_Model{
 		$myid = $this->session->userdata('userid');
 		$email = $this->session->userdata('email');
 		$data = array();
+		$data['device_type'] = $d_type;
+		if(!empty($os)){
+			$data['operatingsystem'] = $os;
+		}
 		if($d_type == 1){//mobile
 			$data['subscriberid_mob'] =  $subid;
 		}else{
