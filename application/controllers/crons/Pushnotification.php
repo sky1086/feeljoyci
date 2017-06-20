@@ -22,6 +22,9 @@ class Pushnotification extends CI_Controller{
     public function index($time){
     	//ini_set('display_errors', 'On');
 		//error_reporting(E_ALL);
+		if (!isset($time)){
+			$time = 1;
+		}
     	$time = (int)$time;
     	if($time == 1){
     		$time = 2;
