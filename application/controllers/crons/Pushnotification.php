@@ -8,6 +8,7 @@ class Pushnotification extends CI_Controller{
         $this->load->model(array(
         		'chat/chat_model', 'notification_model', 'user_model'
         ));
+        $this->load->library('mail');
         if (isset($_SERVER['HTTP_ORIGIN'])) {
         	// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
         	// you want to allow, and if so:
@@ -63,7 +64,7 @@ class Pushnotification extends CI_Controller{
     			$subscriberId = $subscriberData['userid'];
     			
     			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
-    				$this->load->library('../controllers/user/mail');
+    				//$this->load->library('../controllers/user/mail');
     				$mailSent = $this->mail->send($subscriberData['email'], $title, $message);
     				if($mailSent){
     					//update notified status on success
