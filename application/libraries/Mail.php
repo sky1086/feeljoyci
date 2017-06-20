@@ -2,17 +2,9 @@
 require_once 'application/libraries/aws/aws-autoloader.php';
 use Aws\Ses\SesClient;
 
-class Mail extends CI_Controller{
-	
-	function __construct(){
-		parent::__construct();
-		//$this->load->model(array('notification_model'));
-		ini_set('display_errors', '1');
-		error_reporting(E_ALL);
-	}
+class Mail{
 	
 	public function send($to, $subject, $message){
-		require_once 'application/libraries/aws/aws-autoloader.php';
 		
 		define('SENDER', 'noreply@feeljoy.in');
 		
