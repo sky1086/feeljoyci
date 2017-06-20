@@ -20,8 +20,8 @@ class Pushnotification extends CI_Controller{
     }
 
     public function index($time){
-    	//ini_set('display_errors', 'On');
-		//error_reporting(E_ALL);
+    	ini_set('display_errors', 'On');
+		error_reporting(E_ALL);
 		if (!isset($time)){
 			$time = 1;
 		}
@@ -30,6 +30,10 @@ class Pushnotification extends CI_Controller{
     		$time = 2;
     	}
     	$dataToBeNotified = $this->chat_model->getUnreadMsgForNotification($time);
+    	if(!$dataToBeNotified){
+    		echo 'No Pending Msg(s)!';
+    		exit;
+    	}
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified'] || !$notif_data['to']){
     			continue;
