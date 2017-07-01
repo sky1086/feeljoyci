@@ -69,7 +69,7 @@ class Listener extends CI_Controller{
 	    	$data = $this->listener_model->getDetailByID($id);
 	    	if(isset($data['id'])){
 	    		$data['profile_img'] = base_url().'pics_listener/'.$data['profile_img'];
-	    		unset($data['created_date'], $data['edited_date'], $data['mobile'], $data['priority'], $data['status']);
+	    		unset($data['description'], $data['qualification'], $data['created_date'], $data['edited_date'], $data['mobile'], $data['priority'], $data['status']);
 	    	}
 	    	echo json_encode(array('error'=> false, 'data'=>$data));	    	
 	    }

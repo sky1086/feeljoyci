@@ -13,7 +13,9 @@ class Listener_model extends CI_Model{
         if(count($query->result()))
         {
             $row = $query->result_array();
-            return $row[0];
+            $details = $row[0];
+            $details['practice_area'] = $this->getListenerAssocCategoryDetails($id);
+            return $details;
         }
         return false;    	
     }
@@ -27,6 +29,21 @@ class Listener_model extends CI_Model{
     	}
     	return false; 
     	
+    }
+    public function getListenerAssocCategoryDetails($id){
+    	//$this->db->where('id', $id);
+    	$categories = array();
+    	$query = $this->db->query('SELECT c.* FROM categories c, cat_listener_assoc ca WHERE ca.catid = c.id and ca.listenerid = '.$id);
+    	if ($query->num_rows() > 0) {
+    		$res_array = $query->result_array();
+    		foreach ($res_array as $catd){
+    			$categories[] =  $catd['name'];
+    		}
+    	}
+    	if(empty($categories)){
+    		return '';
+    	}
+    	return implode(',', $categories);
     }
     public function getPublisherRevenue($pubId){
     	$query = $this->rdb->query($this->query->getPublisherInterfaceRevenue, array($pubId,date("Y-m-d", strtotime("-30 day"))));
