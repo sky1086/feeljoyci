@@ -57,7 +57,7 @@ class Notification_model extends CI_Model{
     }
     
     public function getSubscriberDetails($userid){
-    	$query = $this->db->query('select * from notification_users where userid = '.$userid.' and status = 1' );
+    	$query = $this->db->query('select nouser.*, ud.contact_name from notification_users nouser, user_detail ud  where nouser.userid = '.$userid.' and nouser.userid = ud.userid and nouser.status = 1' );
     	if ($query->num_rows() > 0) {
     		$row = $query->result_array();
     		return $row[0];

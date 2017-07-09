@@ -63,9 +63,23 @@ class Pushnotification extends CI_Controller{
     			$message = trim($message);
     			$subscriberId = $subscriberData['userid'];
     			
+    			$logoUrl = 'https://feeljoy.in/android-chrome-192x192.png';
+    			if($senderData['user_type'] == 'User'){
+    				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
+    				$logoUrl = 'https://buddy.feeljoy.in/android-chrome-192x192.png';
+    			}else{
+    				$url = 'https://buddy.feeljoy.in/chat/'.$notif_data['from'];
+    			}
+    			
     			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
     				//$this->load->library('../controllers/user/mail');
-    				$mailSent = $this->mail->send($subscriberData['email'], $title, $message);
+    				require_once 'application/libraries/Email-templates/ios-notification.php';
+    				$mailTemplate = $iosEmailNotificationTemplate;
+    				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
+    				$mailTemplate = str_replace('##BUDDYNAME##', $senderData['contact_name'], $mailTemplate);
+    				$mailTemplate = str_replace('##CHATPAGELINK##', $url, $mailTemplate);
+    				
+    				$mailSent = $this->mail->send($subscriberData['email'], $title, $mailTemplate);
     				if($mailSent){
     					//update notified status on success
     					$this->chat_model->updateNotifiedStatus($notif_data['id']);
@@ -74,14 +88,6 @@ class Pushnotification extends CI_Controller{
     					$this->notification_model->updateSubscriber($subData, $subscriberId);
     				}
     				continue;
-    			}
-    			
-				$logoUrl = 'https://feeljoy.in/android-chrome-192x192.png';
-    			if($senderData['user_type'] == 'User'){
-    				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
-					$logoUrl = 'https://buddy.feeljoy.in/android-chrome-192x192.png';
-    			}else{
-    				$url = 'https://buddy.feeljoy.in/chat/'.$notif_data['from'];
     			}
     			
     			//$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];    			
