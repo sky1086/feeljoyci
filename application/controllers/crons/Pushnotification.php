@@ -46,9 +46,10 @@ class Pushnotification extends CI_Controller{
     		
     		if($subscriberData['last_notified']){
     			$to_time = strtotime($subscriberData['last_notified']);
-    			$from_time = date("Y-m-d H:i:s");
-    			$diffMinute = round(abs($to_time - $from_time) / 60,2);
+    			$from_time = strtotime(date("Y-m-d H:i:s"));
+    			$diffMinute = round(abs($from_time- $to_time) / 60,2);
     			if($diffMinute > 30){
+    				echo 'Already notified in last 30 minutes.';
     				continue;
     			}
     		}
@@ -78,7 +79,7 @@ class Pushnotification extends CI_Controller{
     				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##BUDDYNAME##', $senderData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##CHATPAGELINK##', $url, $mailTemplate);
-    				
+    				echo 'Sending mail to IOS subscriber';
     				$mailSent = $this->mail->send($subscriberData['email'], $title, $mailTemplate);
     				if($mailSent){
     					//update notified status on success
@@ -159,7 +160,7 @@ class Pushnotification extends CI_Controller{
     				$httpHeadersArray = Array();
     				$httpHeadersArray[] = 'Content-Type: application/json';
     				$httpHeadersArray[] = 'Content-Length: ' . strlen($data_string);
-    				
+    				echo 'Pushing web notification';
     				//open connection
     				$ch = curl_init();
     				
