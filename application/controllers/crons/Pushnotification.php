@@ -74,7 +74,7 @@ class Pushnotification extends CI_Controller{
     			
     			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
     				//$this->load->library('../controllers/user/mail');
-    				require_once '../../libraries/Email-templates/ios-notification.php';
+    				require_once 'application/libraries/Email-templates/ios-notification.php';
     				$mailTemplate = $iosEmailNotificationTemplate;
     				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##BUDDYNAME##', $senderData['contact_name'], $mailTemplate);
