@@ -24,7 +24,7 @@ class Listeners extends CI_Controller{
    			$this->form_validation->set_rules('name', 'Name', 'required');
    			$this->form_validation->set_rules('priority', 'Priority', 'required');
    			$this->form_validation->set_rules('status', 'Status', 'required');
-   			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+   			$this->form_validation->set_rules('emailaddress', 'Email', 'required|valid_email');
    			$this->form_validation->set_rules('age', 'Age', 'required');
    			$this->form_validation->set_rules('gender', 'Gender', 'required');
    			$this->form_validation->set_rules('description', 'Description', 'required');
@@ -40,9 +40,9 @@ class Listeners extends CI_Controller{
    				$listData['gender']	= $this->security->xss_clean($this->input->post('gender'));
    				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
    				//$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));   				
-   				$user['email']	= $this->security->xss_clean($this->input->post('email'));
+   				$user['email']	= $this->security->xss_clean($this->input->post('emailaddress'));
    				$user['contact_name']	= $listData['name'];
-   				$user['password']	= $this->security->xss_clean($this->input->post('password'));
+   				$user['password']	= $this->security->xss_clean($this->input->post('password1'));
    				$user['user_type']	= 'Listener';
    				
    				if(!$user['password']){
@@ -79,7 +79,7 @@ class Listeners extends CI_Controller{
 	   			$this->form_validation->set_rules('name', 'Name', 'required');
 	   			$this->form_validation->set_rules('priority', 'Priority', 'required');
 	   			$this->form_validation->set_rules('status', 'Status', 'required');
-	   			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+	   			$this->form_validation->set_rules('emailaddress', 'Email', 'required|valid_email');
 	   			$this->form_validation->set_rules('age', 'Age', 'required');
 	   			$this->form_validation->set_rules('gender', 'Gender', 'required');
 	   			$this->form_validation->set_rules('description', 'Description', 'required');
@@ -95,9 +95,9 @@ class Listeners extends CI_Controller{
 	   				$listData['gender']	= $this->security->xss_clean($this->input->post('gender'));
 	   				$listData['description']	= $this->security->xss_clean($this->input->post('description'));
 	   				//$listData['mobile']	= $this->security->xss_clean($this->input->post('mobile'));
-	   				$user['email']	= $this->security->xss_clean($this->input->post('email'));
+	   				$user['email']	= $this->security->xss_clean($this->input->post('emailaddress'));
 	   				$user['contact_name']	= $listData['name'];
-	   				$user['password']	= $this->security->xss_clean($this->input->post('password'));
+	   				$user['password']	= $this->security->xss_clean($this->input->post('password1'));
 	   				
 	   				if(!$user['password']){
 	   					unset($user['password']);

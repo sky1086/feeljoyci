@@ -33,7 +33,7 @@ class Mail{
 		$request['Source'] = SENDER;
 		$request['Destination']['ToAddresses'] = array(RECIPIENT);
 		$request['Message']['Subject']['Data'] = SUBJECT;
-		$request['Message']['Body']['Text']['Data'] = BODY;
+		$request['Message']['Body']['Html']['Data'] = BODY;
 		
 		try {
 			$result = $client->sendEmail($request);

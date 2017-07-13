@@ -67,14 +67,14 @@
               	<td></td>
               	<td>Username/Email</td>
               	<td>
-              	<input type="email" name="email" value="<?php echo set_value('email', $listener->email); ?>" required />
+              	<input type="email" name="emailaddress" value="<?php echo set_value('emailaddress', $listener->email); ?>" required />
               	</td>
               </tr>
               <tr>
               	<td></td>
               	<td>Password</td>
               	<td>
-              	<input type="password" name="password" value="" required />
+              	<input type="password" name="password1" value="" required />
               	</td>
               </tr>
               <tr>
