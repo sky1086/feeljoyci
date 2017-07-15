@@ -66,10 +66,10 @@ class Pushnotification extends CI_Controller{
     			
     			$logoUrl = 'https://feeljoy.in/android-chrome-192x192.png';
     			if($senderData['user_type'] == 'User'){
-    				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
+    				$url = 'https://buddy.feeljoy.in/chat/'.$notif_data['from'];
     				$logoUrl = 'https://buddy.feeljoy.in/android-chrome-192x192.png';
     			}else{
-    				$url = 'https://buddy.feeljoy.in/chat/'.$notif_data['from'];
+    				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
     			}
     			
     			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
