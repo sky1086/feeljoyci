@@ -48,7 +48,7 @@ class Pushnotification extends CI_Controller{
     			$to_time = strtotime($subscriberData['last_notified']);
     			$from_time = strtotime(date("Y-m-d H:i:s"));
     			$diffMinute = round(abs($from_time- $to_time) / 60,2);
-    			if($diffMinute > 30){
+    			if($diffMinute < 30){
     				echo 'Already notified in last 30 minutes.';
     				continue;
     			}
