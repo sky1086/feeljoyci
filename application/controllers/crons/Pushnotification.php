@@ -183,7 +183,7 @@ class Pushnotification extends CI_Controller{
 	    				$this->notification_model->updateSubscriber($subData, $subscriberId);
 	    			}
 	    			else if($resultArray['status'] == 'failure') {
-	    				//failure
+	    				echo 'Moengage messaging failed.';
 	    			}
 	    			else {
 	    				//failure
