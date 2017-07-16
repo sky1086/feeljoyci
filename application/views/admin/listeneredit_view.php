@@ -74,7 +74,7 @@
               	<td></td>
               	<td>Password</td>
               	<td>
-              	<input type="password" name="password1" value="" required />
+              	<input type="password" name="password1" value="" required autocomplete="new-password" />
               	</td>
               </tr>
               <tr>
