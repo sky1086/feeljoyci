@@ -28,7 +28,7 @@
      					  </tr>
      					  <tr>
           					<td rowspan="5" style="width:20%;padding-left:20px;padding-top:5px;vertical-align:top;"><img src="'.base_url().'pics_listener/'.$listener->profile_img.'" style="width:100px; height:100px;" /></td>
- 							<td colspan="2">'.ucfirst($listener->qualification).'</td>
+ 							<td colspan="2">'.ucfirst($listener->interests).'</td>
      					  </tr>
               			  <tr>
  							<td colspan="2"><b>Status: </b>'.$theme_status.'</td>
