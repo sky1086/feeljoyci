@@ -40,7 +40,8 @@ class Notification_model extends CI_Model{
     
     public function updateSubscriber($sender, $receiver){
     	if($receiver && $sender){
-    		$this->db->query("insert into last_notified (sender, receiver, notified_datetime) values ($sender, $receiver, ".date('Y-m-d H:i:s').") on duplicate key update notified_datetime = ".date('Y-m-d H:i:s'));
+    		$query = "insert into last_notified (sender, receiver, notified_datetime) values ($sender, $receiver, '".date('Y-m-d H:i:s')."') on duplicate key update notified_datetime = '".date('Y-m-d H:i:s')."'";
+    		$this->db->query($query);
     	}	
     }
     
