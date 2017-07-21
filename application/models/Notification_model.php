@@ -38,10 +38,9 @@ class Notification_model extends CI_Model{
 		}
     }
     
-    public function updateSubscriber($data, $subid){
-    	if($subid){
-    		$this->db->where('userid', $subid);
-    		$this->db->update('notification_users', $data);
+    public function updateSubscriber($sender, $receiver){
+    	if($receiver && $sender){
+    		$this->db->query("insert into last_notified (sender, receiver, notified_datetime) values ($sender, $receiver, ".date('Y-m-d H:i:s').") on duplicate key update notified_datetime = ".date('Y-m-d H:i:s'));
     	}	
     }
     
@@ -61,6 +60,18 @@ class Notification_model extends CI_Model{
     	if ($query->num_rows() > 0) {
     		$row = $query->result_array();
     		return $row[0];
+    	}
+    	else
+    	{
+    		return 0;
+    	}
+    }
+    
+    public function getLastConversationDateTime($sender, $receiver){
+    	$query = $this->db->query('select notified_datetime from last_notified where sender = '.$sender.' and receiver = '.$receiver);
+    	if ($query->num_rows() > 0) {
+    		$row = $query->result_array();
+    		return $row[0]['notified_datetime'];
     	}
     	else
     	{

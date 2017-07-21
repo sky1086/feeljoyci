@@ -43,13 +43,15 @@ class Pushnotification extends CI_Controller{
     		//Get subscriber details
     		$subscriberData = $this->notification_model->getSubscriberDetails($notif_data['to']);
     		
-    		
-    		if($subscriberData['last_notified']){
-    			$to_time = strtotime($subscriberData['last_notified']);
+    		$senderId = $notif_data['from'];
+    		$receiverID = $notif_data['to'];
+    		$lastNotified = $this->notification_model->getLastConversationDateTime($senderId, $receiverID);
+    		if($lastNotified){
+    			$to_time = strtotime($lastNotified);
     			$from_time = strtotime(date("Y-m-d H:i:s"));
     			$diffMinute = round(abs($from_time- $to_time) / 60,2);
-    			if($diffMinute < 30){
-    				echo 'Already notified in last 30 minutes: Difference is - '.$diffMinute;
+    			if($diffMinute < SENDNOTIFICATION_FROM_SAMEUSER_AFTER){
+    				echo 'Already notified in last '.SENDNOTIFICATION_FROM_SAMEUSER_AFTER.' minutes: Difference is - '.$diffMinute;
     				continue;
     			}
     		}
@@ -84,8 +86,7 @@ class Pushnotification extends CI_Controller{
     					//update notified status on success
     					$this->chat_model->updateNotifiedStatus($notif_data['id']);
     					//update subscriber data last modified
-    					$subData['last_notified'] = date('Y-m-d H:i:s');
-    					$this->notification_model->updateSubscriber($subData, $subscriberId);
+    					$this->notification_model->updateSubscriber($senderId, $receiverID);
     				}
     				continue;
     			}
@@ -179,8 +180,7 @@ class Pushnotification extends CI_Controller{
 	    				//update notified status on success
 	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
 	    				//update subscriber data last modified
-	    				$subData['last_notified'] = date('Y-m-d H:i:s');
-	    				$this->notification_model->updateSubscriber($subData, $subscriberId);
+	    				$this->notification_model->updateSubscriber($senderId, $receiverID);
 	    			}
 	    			else if($resultArray['status'] == 'failure') {
 	    				echo 'Moengage messaging failed.';

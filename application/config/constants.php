@@ -96,3 +96,4 @@ define('ACTIVEINLASTSECS', 1800);
 //define('CHATENCODESECKEY', 'ch@tenc0de2348jrejdf');
 define('CHATENCODESECKEY', 'chtenc0de2jrejdf');
 define('SESUSERPROFILE', 'sesemailuser');
+define('SENDNOTIFICATION_FROM_SAMEUSER_AFTER', 15);
