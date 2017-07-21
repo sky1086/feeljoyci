@@ -335,7 +335,7 @@ class Chat_model extends CI_Model{
     public function getUnreadMsgForNotification($time)
     {	
     	if($time){
-    		$timeWhere = ' and time > NOW() - INTERVAL '.$time.' MINUTE';
+    		//$timeWhere = ' and time > NOW() - INTERVAL '.$time.' MINUTE';
     	}
     	$query = $this->db->query('SELECT m.to, MAX(id), m.* FROM msg as m where status = 1 '.$timeWhere.' GROUP BY m.to, m.from ORDER BY MAX(id) DESC limit 5000');
     
