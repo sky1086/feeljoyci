@@ -79,6 +79,7 @@ class Pushnotification extends CI_Controller{
     				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
     			}
     			
+    			echo 'Sending msg from '.$senderData['contact_name'].'('.$senderId.')  -  To '.$subscriberData['contact_name'].'('.$receiverID.')'.$newLineSeparator;
     			$isAndroidUser = 0;
     			$updateNotificationDate = 0;
     			if($subscriberId){//ios user send notification in mail
