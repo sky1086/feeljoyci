@@ -88,17 +88,19 @@ class Pushnotification extends CI_Controller{
     				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##BUDDYNAME##', $senderData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##CHATPAGELINK##', $url, $mailTemplate);
-    				echo 'Sending mail to IOS subscriber'.$newLineSeparator;
     				$mailSent = $this->mail->send($subscriberData['email'], $title, $mailTemplate);
     				if($mailSent){
     					//update notified status on success
     					$this->updateNotificationAction($notif_data['id'], $senderId, $receiverID);
     					$updateNotificationDate = 1;
     				}
-    				continue;
+    				//continue;
     			}
-    			if(($subscriberData['operatingsystem'] != 'ios' && $subscriberData['operatingsystem'] != 'IOS' && $subscriberData['operatingsystem'] != 1)){
+    			if(($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){    				
+    				echo 'Sending mail to IOS subscriber'.$newLineSeparator;
+    			}else{
     				$isAndroidUser = 1;
+    				echo 'Sending mail to other subscriber'.$newLineSeparator;
     			}
     			
     			if($subscriberId && $isAndroidUser){
