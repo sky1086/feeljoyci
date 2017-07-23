@@ -74,7 +74,9 @@ class Pushnotification extends CI_Controller{
     				$url = 'https://feeljoy.in/chat/'.$notif_data['from'];
     			}
     			
-    			if($subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
+    			$isAndroidUser = 0;
+    			$updateNotificationDate = 0;
+    			if($subscriberId && $subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
     				$this->load->config('email_conf');
     				$mailTemplate = $this->config->item('iosEmailNotificationTemplate');
     				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
@@ -84,15 +86,15 @@ class Pushnotification extends CI_Controller{
     				$mailSent = $this->mail->send($subscriberData['email'], $title, $mailTemplate);
     				if($mailSent){
     					//update notified status on success
-    					$this->chat_model->updateNotifiedStatus($notif_data['id']);
-    					//update subscriber data last modified
-    					$this->notification_model->updateSubscriber($senderId, $receiverID);
+    					$this->updateNotificationAction($notif_data['id'], $senderId, $receiverID);
+    					$updateNotificationDate = 1;
     				}
     				continue;
+    			}else{
+    				$isAndroidUser = 1;
     			}
     			
-    			//$subscriberId = empty($subscriberData['subscriberid_desktop'])?$subscriberData['subscriberid_mob']:$subscriberData['subscriberid_desktop'];    			
-    			if($subscriberId){
+    			if($subscriberId && $isAndroidUser){
 	    			/* $apiToken = $this->config->item('push_notification_api_token');
 	    			 
 	    			$curlUrl = 'https://pushcrew.com/api/v1/send/individual/';
@@ -177,11 +179,11 @@ class Pushnotification extends CI_Controller{
 	    			$resultArray = json_decode($result, true);
 					 echo $resultArray['message'];
 					 if($resultArray['status'] == 'success' || $resultArray['status'] == 'Success') {
-	    				//update notified status on success
-	    				$this->chat_model->updateNotifiedStatus($notif_data['id']);
-	    				//update subscriber data last modified
-	    				$this->notification_model->updateSubscriber($senderId, $receiverID);
-	    			}
+					 	if(!$updateNotificationDate){
+					 		//update notified status on success
+					 		$this->updateNotificationAction($notif_data['id'], $senderId, $receiverID);
+					 	}
+					 	}
 	    			else if($resultArray['status'] == 'failure') {
 	    				echo 'Moengage messaging failed.';
 	    			}
@@ -205,6 +207,12 @@ class Pushnotification extends CI_Controller{
     		$this->notification_model->addSubscriber($subid, $d_type, $status, $os);
     		echo 1;
     	}
+    }
+    
+    private function updateNotificationAction($notificationId, $senderId, $receiverId) {
+    	$this->chat_model->updateNotifiedStatus($notificationId);
+    	//update subscriber data last modified
+    	$this->notification_model->updateSubscriber($senderId, $receiverId);
     }
 }
 ?>
