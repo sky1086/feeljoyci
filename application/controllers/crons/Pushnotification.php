@@ -23,6 +23,8 @@ class Pushnotification extends CI_Controller{
     public function index($time){
     	ini_set('display_errors', 'On');
 		error_reporting(1);
+		$newLineSeparator = '   ###   ';
+		
 		if (!isset($time)){
 			$time = 1;
 		}
@@ -52,9 +54,9 @@ class Pushnotification extends CI_Controller{
     			$to_time = strtotime($lastNotified);
     			$from_time = strtotime(date("Y-m-d H:i:s"));
     			$diffMinute = round(abs($from_time- $to_time) / 60,2);
-    			echo 'Last notified '.$diffMinute.' minutes ago.';
+    			echo 'Last notified '.$diffMinute.' minutes ago.'.$newLineSeparator;
     			if($diffMinute < SENDNOTIFICATION_FROM_SAMEUSER_AFTER){
-    				echo 'Already notified in last '.SENDNOTIFICATION_FROM_SAMEUSER_AFTER.' minutes: Difference is - '.$diffMinute;
+    				echo 'Already notified in last '.SENDNOTIFICATION_FROM_SAMEUSER_AFTER.' minutes: Difference is - '.$diffMinute.$newLineSeparator;
     				continue;
     			}
     		}
@@ -79,13 +81,13 @@ class Pushnotification extends CI_Controller{
     			
     			$isAndroidUser = 0;
     			$updateNotificationDate = 0;
-    			if($subscriberId && $subscriberData['device_type'] == 1 && ($subscriberData['operatingsystem'] == 'ios' || $subscriberData['operatingsystem'] == 'IOS' || $subscriberData['operatingsystem'] == 1)){//ios user send notification in mail
+    			if($subscriberId){//ios user send notification in mail
     				$this->load->config('email_conf');
     				$mailTemplate = $this->config->item('iosEmailNotificationTemplate');
     				$mailTemplate = str_replace('##CUSTOMERNAME##', $subscriberData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##BUDDYNAME##', $senderData['contact_name'], $mailTemplate);
     				$mailTemplate = str_replace('##CHATPAGELINK##', $url, $mailTemplate);
-    				echo 'Sending mail to IOS subscriber';
+    				echo 'Sending mail to IOS subscriber'.$newLineSeparator;
     				$mailSent = $this->mail->send($subscriberData['email'], $title, $mailTemplate);
     				if($mailSent){
     					//update notified status on success
@@ -93,7 +95,8 @@ class Pushnotification extends CI_Controller{
     					$updateNotificationDate = 1;
     				}
     				continue;
-    			}else{
+    			}
+    			if(($subscriberData['operatingsystem'] != 'ios' && $subscriberData['operatingsystem'] != 'IOS' && $subscriberData['operatingsystem'] != 1)){
     				$isAndroidUser = 1;
     			}
     			
@@ -165,7 +168,7 @@ class Pushnotification extends CI_Controller{
     				$httpHeadersArray = Array();
     				$httpHeadersArray[] = 'Content-Type: application/json';
     				$httpHeadersArray[] = 'Content-Length: ' . strlen($data_string);
-    				echo 'Pushing web notification';
+    				echo 'Pushing web notification'.$newLineSeparator;
     				//open connection
     				$ch = curl_init();
     				
@@ -180,7 +183,7 @@ class Pushnotification extends CI_Controller{
     				$result = curl_exec($ch);
     				var_dump($result);
 	    			$resultArray = json_decode($result, true);
-					 echo $resultArray['message'];
+					 //echo $resultArray['message'];
 					 if($resultArray['status'] == 'success' || $resultArray['status'] == 'Success') {
 					 	if(!$updateNotificationDate){
 					 		//update notified status on success
@@ -188,7 +191,7 @@ class Pushnotification extends CI_Controller{
 					 	}
 					 	}
 	    			else if($resultArray['status'] == 'failure') {
-	    				echo 'Moengage messaging failed.';
+	    				echo 'Moengage messaging failed.'.$newLineSeparator;
 	    			}
 	    			else {
 	    				//failure
