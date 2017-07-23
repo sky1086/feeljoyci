@@ -38,7 +38,7 @@ class Pushnotification extends CI_Controller{
     		exit;
     	}
     	
-    	echo count($dataToBeNotified). ' Unread message(s) found.';
+    	echo count($dataToBeNotified). ' Unread message(s) found.'.$newLineSeparator;
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified'] || !$notif_data['to']){
     			continue;
@@ -49,6 +49,7 @@ class Pushnotification extends CI_Controller{
     		
     		$senderId = $notif_data['from'];
     		$receiverID = $notif_data['to'];
+    		echo 'From '.$senderId.'    -   to  '.$receiverID.$newLineSeparator;
     		$lastNotified = $this->notification_model->getLastConversationDateTime($senderId, $receiverID);
     		if($lastNotified){
     			$to_time = strtotime($lastNotified);
