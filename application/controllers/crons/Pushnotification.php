@@ -22,7 +22,7 @@ class Pushnotification extends CI_Controller{
 
     public function index($time){
     	ini_set('display_errors', 'On');
-		error_reporting(0);
+		error_reporting(1);
 		if (!isset($time)){
 			$time = 1;
 		}
@@ -35,6 +35,8 @@ class Pushnotification extends CI_Controller{
     		echo 'No Pending Msg(s)!';
     		exit;
     	}
+    	
+    	echo count($dataToBeNotified). ' Unread message(s) found.';
     	foreach ($dataToBeNotified as $notif_user => $notif_data){
     		if($notif_data['notified'] || !$notif_data['to']){
     			continue;
@@ -50,6 +52,7 @@ class Pushnotification extends CI_Controller{
     			$to_time = strtotime($lastNotified);
     			$from_time = strtotime(date("Y-m-d H:i:s"));
     			$diffMinute = round(abs($from_time- $to_time) / 60,2);
+    			echo 'Last notified '.$diffMinute.' minutes ago.';
     			if($diffMinute < SENDNOTIFICATION_FROM_SAMEUSER_AFTER){
     				echo 'Already notified in last '.SENDNOTIFICATION_FROM_SAMEUSER_AFTER.' minutes: Difference is - '.$diffMinute;
     				continue;
