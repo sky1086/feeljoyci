@@ -73,7 +73,7 @@ function sendEmailToListeners(listenerId, unreadMsg){
 					if(parseInt(rsp) == ''){
 						alert('Something went wrong.');
 					}else {
-						alert(resp);
+						alert(rsp);
 					}
 				}
 		});
