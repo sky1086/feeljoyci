@@ -34,7 +34,7 @@
 							<td> - </td>
 							<td>'.$listener->unreadMsg.'</td>
 							<td>'.$listener->caseLoad.'</td>
-							<td style="padding-top:5px;"><button type="button" onclick="sendEmailToListeners('.$listener->userid.', '. $listener->unreadMsg.')" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none;"><span class="glyphicon glyphicon-envelope"></span> &nbsp; Email</button></td>
+							<td style="padding-top:5px;"><button type="button" onclick="sendEmailToListeners(this, '.$listener->userid.', '. $listener->unreadMsg.')" class="tabledit-edit-button btn btn-sm btn-primary" style="float: none;"><span class="glyphicon glyphicon-envelope"></span> &nbsp; Email</button></td>
      					  </tr>';
               	}
               	}else{
@@ -63,8 +63,9 @@
     
     <!-- End of Main Container -->
 <script type="text/javascript">
-function sendEmailToListeners(listenerId, unreadMsg){
+function sendEmailToListeners(btn, listenerId, unreadMsg){
 	if(unreadMsg && listenerId){
+		btn.disabled = true;
 		$.ajax({
 			type: 'post',
 			url: '<?php echo base_url();?>admin/monitor/notifybyemail',
@@ -75,6 +76,7 @@ function sendEmailToListeners(listenerId, unreadMsg){
 					}else {
 						alert(rsp);
 					}
+					btn.disabled = false;
 				}
 		});
 		}
