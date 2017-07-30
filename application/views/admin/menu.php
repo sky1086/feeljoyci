@@ -19,6 +19,7 @@
                         <li>
                             <a href="<?php echo base_url();?>admin/listeners/add" onclick="window.location=this.href;">Add</a>
                             <a href="<?php echo base_url();?>admin/listeners" onclick="window.location=this.href;">List Listeners</a>
+                            <a href="<?php echo base_url();?>admin/monitor" onclick="window.location=this.href;">Listener Monitoring</a>
                         </li>
                     </ul>
                 </div>

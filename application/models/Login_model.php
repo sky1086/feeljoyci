@@ -43,6 +43,7 @@ class Login_model extends CI_Model{
             	setcookie("sp_u", base64_encode($row->userid), time()+60*60*24*100, "/");
             	setcookie("sp_p", base64_encode($password), time()+60*60*24*100, "/");
             }
+            $this->updateLogins($row->userid);
             return true;
         }
         return false;
@@ -51,6 +52,11 @@ class Login_model extends CI_Model{
     public function forceUserLogin($emailid){
     	if($emailid)
     	$this->validate($emailid, '', 1);
+    }
+    
+    public function updateLogins($userid){
+    	$this->db->where('userid', $userid);
+    	$this->db->update('user_detail', array('last_login' => date('Y-m-d H:i:s')));
     }
 }
 ?>
