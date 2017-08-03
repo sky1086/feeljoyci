@@ -5,7 +5,7 @@ class User extends CI_Controller{
     function __construct(){
         parent::__construct();
     	//$this->authentication->isLoggedIn();  
-		$this->load->model(array('authentication', 'admin/question_model', 'admin/category_model', 'user/listeners_model', 'user_model'));
+        $this->load->model(array('authentication', 'admin/question_model', 'admin/category_model', 'user/listeners_model', 'user_model', 'listener/listener_model'));
 		if (isset($_SERVER['HTTP_ORIGIN'])) {
 			// Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
 			// you want to allow, and if so:
@@ -46,6 +46,7 @@ class User extends CI_Controller{
 	    		$resultRow['link'] = base_url().'user/chat/index/'.$row['id'];	
 	    		$resultRow['profile_link'] = base_url().'listener/details/index/'.$row['id'];
 	    		$resultRow['priority'] = $row['priority'];
+	    		$resultRow['practice_area'] = $this->listener_model->getListenerAssocCategoryDetails($row['id']);
 	    		$result[] = $resultRow;
 	    	}
 	    	echo json_encode($result);	

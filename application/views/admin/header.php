@@ -122,18 +122,6 @@ if(isset($heading) && $heading != ''){
             background-size: 60%,60%;
         }
     </style>
-    <script type="text/javascript">
-    (function(p,u,s,h){
-        p._pcq=p._pcq||[];
-        p._pcq.push(['_currentTime',Date.now()]);
-        s=u.createElement('script');
-        s.type='text/javascript';
-        s.async=true;
-        s.src='https://cdn.pushcrew.com/js/2af3528e08af3f47d8eedf0b5be2ac28.js';
-        h=u.getElementsByTagName('script')[0];
-        h.parentNode.insertBefore(s,h);
-    })(window,document);
-</script>
     <?php $this->load->view('user/theme-common');?>
 </head>
 
