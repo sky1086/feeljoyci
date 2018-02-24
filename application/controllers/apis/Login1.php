@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller{
+class Login1 extends CI_Controller{
 	 
 	function __construct(){
 		parent::__construct();
@@ -46,7 +46,14 @@ class Login extends CI_Controller{
 				$response['error'] = false;
 				$response['message'] = 'Login Successful!';
 				$response['userdata'] = $userData;
-				echo json_encode($response);exit;
+				$pos = strpos($_SERVER[HTTP_HOST], 'feeljoy.in');
+				if($pos !== false){
+					redirect('http://betaweb.feeljoy.in/dashboard');exit;
+				}else {
+					redirect('http://localhost:3000/dashboard');exit;
+				}
+				//redirect('http://localhost:3000/dashboard');exit;
+				//echo json_encode($response);exit;
 			}else{
 				$response['error'] = true;
 				$response['message'] = 'Something went wrong.';

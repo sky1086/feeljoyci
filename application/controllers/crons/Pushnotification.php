@@ -51,6 +51,7 @@ class Pushnotification extends CI_Controller{
     		$receiverID = $notif_data['to'];
     		echo 'From '.$senderId.'    -   to  '.$receiverID.$newLineSeparator;
     		$lastNotified = $this->notification_model->getLastConversationDateTime($senderId, $receiverID);
+		echo 'Last notified = '.$lastNotified.$newLineSeparator;
     		if($lastNotified){
     			$to_time = strtotime($lastNotified);
     			$from_time = strtotime(date("Y-m-d H:i:s"));
@@ -63,6 +64,7 @@ class Pushnotification extends CI_Controller{
     		}
     		
     		if(is_array($subscriberData) && sizeof($subscriberData) > 0){
+			echo 'Got the subsriber details';
     			$senderData = $this->user_model->getUserDetails($notif_data['from']);
     			//$receiverData = $this->user_model->getUserDetails($notif_data['to']);
     			

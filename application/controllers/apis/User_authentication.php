@@ -5,6 +5,8 @@ class User_Authentication extends CI_Controller
 		parent::__construct();
 		// Load user model
 		$this->load->model(array('user','login_model'));
+		ini_set('display_errors', 'On');
+		error_reporting('E_ALL');
     }
     
     public function index(){

@@ -99,9 +99,9 @@ $db['default'] = array(
 
 $db['production'] = array(
 		'dsn'	=> '',
-		'hostname' => 'mysql.hostinger.in',
-		'username' => 'u198752769_uchat',
-		'password' => 'mychat123',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => 'sanjeev',
 		'database' => 'u198752769_chat',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
