@@ -20,7 +20,18 @@ class User extends CI_Controller{
 	    public function isLoggedIn(){
 	    	$loginData = $this->authentication->checkLogin(array(ACCOUNT_USER));
 	    	if(!$loginData){
-	    		$loginData = ['error'=> true, 'login'=>'required'];
+	    		$token= $this->security->xss_clean($this->input->post('token'));
+	    		if(!empty($token)){//handle token response
+	    			$token_decoded = JWT::decode($token, JWT_SERVER_KEY);
+	    			if($token_decoded->id && $token_decoded->id != ''){
+	    				$loginData = ['error'=> false, 'userid'=>$token_decoded->id];
+	    			} else {
+	    				$loginData = ['error'=> true, 'login'=>'required'];
+	    			}
+	    			echo $token->id;
+	    		} else {
+	    			$loginData = ['error'=> true, 'login'=>'required'];
+	    		}
 	    	}
 	    	echo json_encode($loginData);
 	    }
